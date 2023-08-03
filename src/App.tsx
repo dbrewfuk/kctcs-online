@@ -1,12 +1,16 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
+<<<<<<< HEAD
 import "./App.css";
+=======
+>>>>>>> 293d051 (Another commit.)
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <div className="App">
+<<<<<<< HEAD
       <div>
         <a href="https://reactjs.org" target="_blank" rel="noreferrer">
           <img src={reactLogo} className="logo react" alt="React logo" />
@@ -33,6 +37,13 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+=======
+      <div className="container">
+      <div className="p-4">
+      <h1>App</h1>
+      </div>
+      </div>
+>>>>>>> 293d051 (Another commit.)
     </div>
   );
 }
