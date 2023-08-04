@@ -17,9 +17,9 @@ function Home() {
     </div>
     <div className="py-5">
     <div className="container">
-    <div class="row">
-    <div class="col"><h1 className="display-1">Home</h1></div>
-    <div class="col"><form className="mb-3" onSubmit={handleSubmit}>
+    <div className="row">
+    <div className="col"><h1 className="display-1">Home</h1></div>
+    <div className="col"><form className="mb-3" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Search programs"
