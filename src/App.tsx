@@ -18,7 +18,7 @@ function App() {
   return (
 <div>
 
-    <Router>
+    <Router basename="/">
     <div>
     
 
