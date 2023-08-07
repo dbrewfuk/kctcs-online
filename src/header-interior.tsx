@@ -36,7 +36,6 @@ const HeaderInterior = () => {
             </nav>
             <div className="d-flex gap-2">
               <div className="btn btn-primary">Request Information</div>
-              <div className="btn btn-primary">Contact</div>
             </div>
           </div>
         </div>
