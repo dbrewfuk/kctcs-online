@@ -146,6 +146,7 @@ const filteredPrograms = programs.filter((program) =>
                                 className="dropdown-item"
                                 href="#"
                                 rel="nofollow"
+                                
                                 onClick={(e) => {
 
 
@@ -164,13 +165,13 @@ const filteredPrograms = programs.filter((program) =>
                     </div>
                     <div>
                       <a
-                        type="button"
-                        className="btn btn-secondary w-100"
-                        href={selectedColleges[index]?.url || ''}
-                        
-                      >
-                       Visit Website
-                      </a>
+  type="button"
+  className={`btn btn-secondary w-100 ${!selectedColleges[index]?.url ? 'disabled' : ''}`}
+  href={selectedColleges[index]?.url || ''}
+>
+  Visit Website
+</a>
+
                     </div>
                   </div>
                 </div>

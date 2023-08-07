@@ -19,7 +19,7 @@ function StoryPage() {
 
       <div className="col">
       <h1 className="display-1 py-5">{story?.headline}</h1>
-         <p className="fs-3">{story?.name}, <a className="btn btn-outline-dark me-1" >{story?.major}</a>, {story?.college}, {story?.year}</p>
+         <p className="fs-3">{story?.name}, <a className="btn btn-outline-dark me-1" href={`/programs?search=${story.career}`}>{story?.career}</a>, <br/><a className="btn btn-outline-dark me-1" href={`/programs?search=${story.major}`}>{story?.major}</a>, {story?.college}, {story?.year}</p>
       </div>
     </div>
 

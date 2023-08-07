@@ -7,7 +7,7 @@ function StudentStories() {
   return (
     <div>
     <HeaderInterior/>
-    
+
 
       <div>
         
@@ -44,7 +44,15 @@ function StudentStories() {
             </div>
             <div className="col-4">
                <p className="h5 lh-base">
-                    John Smith, 
+                    John Smith, <span className="d-inline-block mx-1">
+                    <a
+                      className="d-inline btn btn-outline-dark"
+                      href={`/programs?search=nurse`}
+                    >
+                      Nurse
+                    </a> 
+                    </span>
+                    <br/>
                     <span className="d-inline-block mx-1">
                     <a
                       className="d-inline btn btn-outline-dark"
