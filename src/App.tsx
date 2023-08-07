@@ -18,7 +18,7 @@ function App() {
   return (
 <div>
 
-    <Router basename="/">
+    <Router basename="./">
     <div>
     
 
@@ -40,7 +40,9 @@ function App() {
         <StudentSupportServices />
       </Route>
       <Route path="/student-stories" component={StudentStories} />
-          <Route exact path="/stories/:id" component={StoryPage} />
+      <Route exact path="/stories/:id">
+      <StoryPage />
+      </Route>
     </Switch>
 
     </div>
