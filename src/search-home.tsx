@@ -16,7 +16,7 @@ return (
 <div className="text-white w-100">
     <div className="container">
     <div className="row align-items-end">
-    <div className="col"><h1 className="display-1">Start Your Future Now.</h1></div>
+    <div className="col"><h1 className="display-1">Real World Success, Anywhere.</h1></div>
     <div className="col"><h3>Explore Programs</h3>
     <form className="mb-3" onSubmit={handleSubmit}>
     <div className="input-group mb-3">

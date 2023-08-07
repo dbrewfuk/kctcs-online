@@ -9,7 +9,7 @@ export default defineConfig({
   base: './',
   build: {
     outDir: 'dist',
-    assetsDir: '',
+    assetsDir: 'assets',
   },
   server: {
     fs: {
