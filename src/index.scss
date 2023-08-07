@@ -15,6 +15,10 @@ $spacer: 2rem;
   overflow: hidden;
 }
 
+header a:hover {
+  color: initial;
+}
+
 @import "bootstrap/scss/bootstrap";
 
 
