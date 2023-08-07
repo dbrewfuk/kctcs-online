@@ -94,7 +94,7 @@ function Admissions() {
     </div>
     <div className="container-fluid px-3">
     <div className="ratio ratio-16x9 bg-primary">
-    <img className="object-fit-cover" src="./src/assets/header.jpeg" alt="Placeholder Image"/>
+    <img className="object-fit-cover" src="./assets/header.jpeg" alt="Placeholder Image"/>
     </div>
     </div>
     </div>

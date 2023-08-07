@@ -40,6 +40,7 @@ function Home() {
     <div className="container">
     <div className="d-flex flex-column flex-md-row gap-4">
     <div className="w-100">
+    <h1>Start Your Future Now.</h1>
     <p className="h3 mb-4">Learn from anywhere in the world. Whether you’re interested in a certificate or a degree, our online programs will prepare you to thrive in a high-demand field.</p>
   
     <div><a className="btn btn-secondary" href="">Learn More</a></div>
