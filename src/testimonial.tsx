@@ -23,11 +23,11 @@ const Testimonial = () => {
       <div className="py-5 bg-black text-white">
         <div className="container">
           <div className="d-flex flex-column gap-5 align-items-center">
-            <div className="row w-100">
+            <div className="row w-100 gap-4">
               <div className="col-8">
                 <h1 className="display-3">{currentSlide.quote}</h1>
               </div>
-              <div className="col-4">
+              <div className="col">
                 <div className="d-flex flex-column gap-3">
                   <div className="d-flex gap-3">
                     <div onClick={handlePreviousSlide}>
