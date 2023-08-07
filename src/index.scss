@@ -4,15 +4,15 @@ $success:       #000;
 $info:          #000;
 $warning:       #000;
 $danger:        #000;
-$light:         #000;
 $dark:          #000;
 $disabled:      #f3f3f3;
+$font-size-base: 1.125rem;
+$spacer: 2rem;
 
 .btn {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 100%;
 }
 
 @import "bootstrap/scss/bootstrap";

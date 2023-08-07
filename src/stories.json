@@ -1,0 +1,36 @@
+[
+  {
+    "name": "John Smith",
+    "id": "john-smith",
+    "career": "Nurse",
+    "major": "Nurse Aid",
+    "headline": "Story Headline",
+    "college": "Gateway Community and Technical College",
+    "quote": "Home is where you make it.",
+    "year": 2023,
+    "avatar": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+  },
+  {
+    "name": "Jane Doe",
+    "id": "jane-doe",
+    "career": "Software Engineer",
+    "major": "Computer and Information Technologies",
+    "keywords": "",
+    "headline": "Story Headline",
+    "college": "Western Kentucky Community and Technical College",
+    "quote": "If you're not first your last.",
+    "year": 2024,
+    "avatar": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+  },
+  {
+    "name": "Chris Rick",
+    "id": "chris-rick",
+    "career": "Graphic Designer",
+    "major": "Associate in Arts",
+    "headline": "Story Headline",
+    "college": "Jefferson Community and Technical College",
+    "quote": "If you're not first your last.",
+    "year": 2024,
+    "avatar": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+  }
+]

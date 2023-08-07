@@ -84,6 +84,7 @@
   {
     "program": "Associate in Arts (AA)",
     "description": "Bachelor’s Bound? Our AA degree transfers easily to a university for continued education in areas like Elementary Education, Psychology and Social Work.",
+    "keywords": "Graphic Designer, Art Director",
     "colleges": [
       {
         "name": "Ashland Community and Technical College",
@@ -254,7 +255,7 @@
   {
     "program": "Computer and Information Technologies",
     "description": "Get the hands on experience you need to design, maintain and use different computing technologies.",
-    "keywords": "A+ Prep, AWS Cloud Architecting, Business Software and Support Track, Cisco Networking Associate, Cisco  Networking Enhanced, CIT Fundamentals, Cloud Computing Technologies, Computer Tech Basic, Computer Technician, Digital Forensics Specialist, General Track, Information Security Specialist , Information Security Track, Internet Technologies Track, Microsoft Enterprise Administrator, Microsoft Network Administrator, Net+ Prep, Network Administration Track, Network Technologies, Productivity Software Specialist, Programmer, Programming Track, Security+ Prep, Web Server Administrator, Web Programmer",
+    "keywords": "Software Engineer, A+ Prep, AWS Cloud Architecting, Business Software and Support Track, Cisco Networking Associate, Cisco  Networking Enhanced, CIT Fundamentals, Cloud Computing Technologies, Computer Tech Basic, Computer Technician, Digital Forensics Specialist, General Track, Information Security Specialist , Information Security Track, Internet Technologies Track, Microsoft Enterprise Administrator, Microsoft Network Administrator, Net+ Prep, Network Administration Track, Network Technologies, Productivity Software Specialist, Programmer, Programming Track, Security+ Prep, Web Server Administrator, Web Programmer",
     "colleges": [
       {
         "name": "Ashland Community and Technical College",
