@@ -1,0 +1,5 @@
+/home                /
+/admissions    /admissions
+/tuition-and-cost               /tuition-and-cost
+/student-support-services       /student-support-services
+/student-stories /student-stories
