@@ -1,8 +1,11 @@
 import stories from "./stories.json";
 import { useParams } from "react-router-dom";
 import HeaderInterior from "./header-interior";
+import VideoBlock from "./video-block";
+
 
 function StoryPage() {
+
 
     const { id }: { id: string } = useParams();
 
@@ -27,11 +30,7 @@ function StoryPage() {
     </div>
     <div className="container-fluid px-3">
     <div className="ratio ratio-16x9">
-                <video
-                  src="https://www.dropbox.com/s/sd90kljtxqp68dg/background-video.mp4?raw=1"
-                  className="object-fit-cover"
-                  autoPlay
-                />
+                <VideoBlock />
               </div>
     </div>
    
@@ -43,7 +42,7 @@ function StoryPage() {
           <div className="row justify-content-center">
             <div className="col-8">
               
-              <p>
+              <p className="fs-5">
                 Yorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
                 eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
                 metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
@@ -65,7 +64,7 @@ function StoryPage() {
                 Proin vitae facilisis nisi, ac posuere leo
               </p>
               <p className="display-3 my-5">{story?.quote}</p>
-              <p>
+              <p className="fs-5">
                 Yorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
                 eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
                 metus nec fringilla accumsan, risus sem sollicitudin lacus, ut

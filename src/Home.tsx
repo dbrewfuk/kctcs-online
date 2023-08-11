@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import Testimonial from "./testimonial";
 import SearchHome from "./search-home";
 import Header from "./header";
+import RequestInformationModal from "./rfi";
 
 function Home() {
   const history = useHistory();
@@ -16,6 +17,7 @@ function Home() {
 
   return (
     <>
+
     <Header/>
 
 
@@ -40,17 +42,13 @@ function Home() {
     <div className="container">
     <div className="d-flex flex-column flex-md-row gap-4">
     <div className="w-100">
-    <h1>Learn Anywhere, Anytime</h1>
-    <p className="h3 mb-4">Looking for a convenient education at an affordable cost? KCTCS Online offers more than 90 online certificate and degree programs, all designed to help you get a better education and a better life.</p>
+    <h1 className="display-2 mb-3 text-info">Learn Anywhere, Anytime</h1>
+    <p className="h2 mb-4 text-info">Looking for a convenient education at an affordable cost? KCTCS Online offers more than 90 online certificate and degree programs, all designed to help you get a better education and a better life.</p>
   
-    <div><a className="btn btn-secondary" href="/programs">Explore Online Programs</a></div>
+    <div><a className="btn btn-shadow" href="/programs">Explore Online Programs</a></div>
 
     </div>
-    <div className="w-100 w-md-25">
-    <div className="ratio ratio-4x3">
-    <img className="object-fit-cover" src="https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"/>
-    </div>
-    </div>
+   
     </div>
     </div>
     </div>
@@ -60,14 +58,14 @@ function Home() {
     <div className="d-flex flex-column flex-md-row gap-4">
     <div className="w-100 w-md-25">
     <div className="ratio ratio-4x3">
-    <img className="object-fit-cover" src="https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"/>
+    <img className="object-fit-cover media-shadow rounded-3" src="./src/assets/as2.jpeg"/>
     </div>
     </div>
     <div className="w-100">
-    <h1>Start Your Future Now</h1>
-    <p className="h3 mb-4">Learn from anywhere in the world. Whether you’re interested in a certificate or a degree, our online programs will prepare you to thrive in a high-demand field.</p>
+    <h1 className="text-info">Start Your Future Now</h1>
+    <p className="h3 mb-4 text-info">Learn from anywhere in the world. Whether you’re interested in a certificate or a degree, our online programs will prepare you to thrive in a high-demand field.</p>
   
-    <div><a className="btn btn-secondary" href="">Request Information</a></div>
+    <div><a className="btn btn-shadow" href="">Request Information</a></div>
 
     </div>
     
@@ -80,15 +78,15 @@ function Home() {
     <div className="container">
     <div className="d-flex flex-column flex-md-row gap-4">
     <div className="w-100">
-    <h1>About KCTCS</h1>
-    <p className="h3 mb-4">With 16 colleges and more than 70 campuses, KCTCS is a community where you’ll find confidence, collaboration and success. As an online student, you’ll enroll in the college that offers your program of choice. But whichever college you choose, you’ll experience the same high-quality education and welcoming attitude.</p>
+    <h1 className="text-info">About KCTCS</h1>
+    <p className="h3 mb-4 text-info">With 16 colleges and more than 70 campuses, KCTCS is a community where you’ll find confidence, collaboration and success. As an online student, you’ll enroll in the college that offers your program of choice. But whichever college you choose, you’ll experience the same high-quality education and welcoming attitude.</p>
   
-    <div><a className="btn btn-secondary" href="">Learn More</a></div>
+    <div><a className="btn btn-shadow" href="">Learn More</a></div>
 
     </div>
     <div className="w-100 w-md-25">
     <div className="ratio ratio-4x3">
-    <img className="object-fit-cover" src="https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"/>
+    <img className="object-fit-cover media-shadow rounded-3" src="./src/assets/as1.jpeg"/>
     </div>
     </div>
     </div>
@@ -100,14 +98,14 @@ function Home() {
     <div className="d-flex flex-column flex-md-row gap-4">
     <div className="w-100 w-md-25">
     <div className="ratio ratio-4x3">
-    <img className="object-fit-cover" src="https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"/>
+    <img className="object-fit-cover media-shadow rounded-3" src="./src/assets/as6.jpeg"/>
     </div>
     </div>
     <div className="w-100">
-    <h1>The Value of KCTCS Online</h1>
-    <p className="h3 mb-4">When you study with KCTCS Online, you get the same powerful credential as our on-campus students – but on your own schedule and without the commute. Whether you want to complete your degree online, transfer to a four-year program or earn a work-ready certificate, we’ll help you reach your goals.</p>
+    <h1 className="text-info">The Value of KCTCS Online</h1>
+    <p className="h3 mb-4 text-info">When you study with KCTCS Online, you get the same powerful credential as our on-campus students – but on your own schedule and without the commute. Whether you want to complete your degree online, transfer to a four-year program or earn a work-ready certificate, we’ll help you reach your goals.</p>
   
-    <div><a className="btn btn-secondary" href="">Learn More</a></div>
+    <div><a className="btn btn-shadow" href="">Learn More</a></div>
 
     </div>
     
@@ -115,7 +113,56 @@ function Home() {
     </div>
     </div>
 
-    <div className="py-5"><div className="container"><div className="d-flex flex-column flex-sm-row gap-4"><div className="flex-fill w-100 w-md-33 d-flex flex-column gap-3"><div className=""><div className="ratio ratio-4x3"><img className="img-fluid object-fit-cover" src="https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"/></div></div><div className=""><div className="d-flex flex-column"><h3>Admissions</h3><p>Applying to KCTCS Online is easy, and we’ll be with you at every step of the way. So let’s get this journey started!</p><div className="btn btn-primary">Learn How to Apply</div></div></div></div><div className="flex-fill w-100 w-md-33 d-flex flex-column gap-3"><div className=""><div className="ratio ratio-4x3"><img className="img-fluid object-fit-cover" src="https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"/></div></div><div className=""><div className="d-flex flex-column"><h3>Tuition &amp; Costs</h3><p>Concerned about paying for your online education? We’ve got you covered. We have the lowest tuition in Kentucky, and online students are eligible for a wide array of scholarships and financial aid.</p><div className="btn btn-primary">Learn About Paying For College</div></div></div></div><div className="flex-fill w-100 w-md-33 d-flex flex-column gap-3"><div className=""><div className="ratio ratio-4x3"><img className="img-fluid object-fit-cover" src="https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"/></div></div><div className=""><div className="d-flex flex-column"><div><h3>Student Support Services</h3><p>Concerned about paying for your online education? We’ve got you covered. We have the lowest tuition in Kentucky, and online students are eligible for a wide array of scholarships and financial aid.</p></div><div className="btn btn-primary">Explore Resources</div></div></div></div></div></div></div>
+    <div className="py-5">
+    <div className="container">
+    <div className="d-flex flex-column flex-sm-row gap-4">
+    <div className="flex-fill p-3 border rounded-3 hover-shadow w-100 w-md-33 d-flex flex-column gap-2">
+    <div className="">
+    <div className="ratio ratio-4x3">
+    <img className="img-fluid object-fit-cover rounded-3" src="./src/assets/admissions.jpeg"/>
+    </div>
+    </div>
+    <div className="">
+    <div className="d-flex flex-column">
+    <h3 className="text-info">Admissions</h3>
+    <p className="text-info mb-2">Applying to KCTCS Online is easy, and we’ll be with you at every step of the way. So let’s get this journey started!</p>
+    <div class="d-inline-block"><a className="btn btn-shadow" href="./admissions">Learn How to Apply</a></div>
+    </div>
+    </div>
+    </div>
+    <div className="flex-fill p-3 border rounded-3 hover-shadow w-100 w-md-33 d-flex flex-column gap-2">
+    <div className="">
+    <div className="ratio ratio-4x3">
+    <img className="img-fluid object-fit-cover rounded-3" src="./src/assets/tuition-and-cost.jpeg"/>
+    </div>
+    </div>
+    <div className="">
+    <div className="d-flex flex-column">
+    <h3 className="text-info">Tuition &amp; Costs</h3>
+    <p className="text-info mb-2">Concerned about paying for your online education? We’ve got you covered. We have the lowest tuition in Kentucky, and online students are eligible for a wide array of scholarships and financial aid.</p>
+    <div class="d-inline-block"><a className="btn btn-shadow" href="./tuition-and-cost">Learn About Paying For College</a></div>
+    </div>
+    </div>
+    </div>
+    <div className="flex-fill p-3 border rounded-3 hover-shadow w-100 w-md-33 d-flex flex-column gap-2">
+    <div className="">
+    <div className="ratio ratio-4x3">
+    <img className="img-fluid  object-fit-cover rounded-3" src="./src/assets/student-support.jpeg"/>
+    </div>
+    </div>
+    <div className="">
+    <div className="d-flex flex-column">
+    <div>
+    <h3 className="text-info">Student Support Services</h3>
+    <p className="text-info mb-2">Concerned about paying for your online education? We’ve got you covered. We have the lowest tuition in Kentucky, and online students are eligible for a wide array of scholarships and financial aid.</p>
+    </div>
+    <div class="d-inline-block"><a className="btn btn-shadow" href="./student-support">Explore Resources</a></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
 
 

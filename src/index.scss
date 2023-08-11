@@ -1,12 +1,13 @@
-$primary:       #000;
-$secondary:     #000;
-$success:       #000;
-$info:          #000;
+$primary:       #005cb8;
+$secondary:     #ffd000;
+$success:       #3bb3e5;
+$info:          #182467;
+$black:         #182467;
 $warning:       #000;
 $danger:        #000;
-$dark:          #000;
+$dark:          #182467;
 $disabled:      #f3f3f3;
-$font-size-base: 1.125rem;
+$font-size-base: 1rem;
 $spacer: 2rem;
 
 .btn {
@@ -15,11 +16,63 @@ $spacer: 2rem;
   overflow: hidden;
 }
 
+
+
 header a:hover {
   color: initial;
 }
 
 @import "bootstrap/scss/bootstrap";
+
+.hover-shadow:hover {
+  box-shadow: 0 .5rem 1rem rgba($black, .15);
+}
+
+.media-shadow {
+  box-shadow: -8px 8px $secondary;
+}
+
+.btn-shadow {
+  background-color: rgba(255, 255, 255, 1);
+  border-color: $blue-900;
+  color: $blue-900 !important;
+  border-radius: $border-radius-pill;
+  position: relative;
+  transition: none;
+  overflow: visible;
+  padding-top: $spacer * 0.25;
+  padding-bottom: $spacer * 0.25;
+  padding-left: $spacer;
+  padding-right: $spacer;
+}
+
+.btn-shadow:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: $yellow;
+  transform: translate(-4px, 4px);
+  left: 0;
+  top: 0;
+  border-radius: $border-radius-pill;
+  z-index: -1 !important;
+}
+
+.btn-shadow:hover {
+  background: $blue;
+  color: white !important;
+  border-color: $blue;
+  box-shadow: none;
+  transform: translate(-4px, 4px);
+}
+
+.btn-shadow:hover:after {
+  opacity: 0;
+
+  z-index: -1 !important;
+  background-color: transparent;
+}
 
 
 

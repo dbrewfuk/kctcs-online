@@ -15,6 +15,10 @@ const HeaderInterior = () => {
     };
   }, []);
 
+   const handleRequestButtonClick = () => {
+    setShowModal(true);
+  };
+
   return (
     <header
       className={`w-100 p-3 z-3 ${scrolled ? "fixed-top" : "position-absolute"}`}
@@ -29,13 +33,13 @@ const HeaderInterior = () => {
           </div>
           <div className="d-flex gap-4 align-items-center">
             <nav className="d-lg-flex gap-3 align-items-center d-none">
-              <a href="/admissions">Admissions</a>
-              <a href="/tuition-and-cost">Tuition &amp; Cost</a>
-              <a href="/programs">Programs</a>
-              <a href="/student-support-services">Student Support Services</a>
+              <a className="text-info" href="/admissions">Admissions</a>
+              <a className="text-info" href="/tuition-and-cost">Tuition &amp; Cost</a>
+              <a className="text-info" href="/programs">Programs</a>
+              <a className="text-info" href="/student-support-services">Student Support Services</a>
             </nav>
             <div className="d-flex gap-2">
-              <div className="btn btn-primary">Request Information</div>
+              <div className="btn btn-shadow" onClick={handleRequestButtonClick}>Request Information</div>
             </div>
           </div>
         </div>

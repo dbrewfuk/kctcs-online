@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
+import SearchNav from "./search-nav";
 
 const Header = () => {
+  const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
+
+  const handleToggleSearchBar = () => {
+    setIsSearchBarVisible(!isSearchBarVisible);
+  };
+
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -14,6 +21,10 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+   const handleRequestButtonClick = () => {
+    setShowModal(true);
+  };
 
   return (
     <header
@@ -29,14 +40,14 @@ const Header = () => {
           </div>
           <div className="d-flex gap-4 align-items-center">
             <nav className="d-lg-flex gap-3 align-items-center d-none">
-              <a className={`${scrolled ? "" : "text-white"}`} href="/admissions">Admissions</a>
-              <a className={`${scrolled ? "" : "text-white"}`} href="/tuition-and-cost">Tuition &amp; Cost</a>
-              <a className={`${scrolled ? "" : "text-white"}`} href="/programs">Programs</a>
-              <a className={`${scrolled ? "" : "text-white"}`} href="/student-support-services">Student Support Services</a>
+              <a className={`${scrolled ? "text-info" : "text-white"}`} href="/admissions">Admissions</a>
+              <a className={`${scrolled ? "text-info" : "text-white"}`} href="/tuition-and-cost">Tuition &amp; Cost</a>
+              <a className={`${scrolled ? "text-info" : "text-white"}`} href="/programs">Programs</a>
+              <a className={`${scrolled ? "text-info" : "text-white"}`} href="/student-support-services">Student Support Services</a>
             </nav>
             <div className="d-flex gap-2">
-              <div className="btn btn-primary">Request Information</div>
-             
+              <div className="btn btn-shadow" onClick={handleRequestButtonClick}>Request Information</div>
+  
             </div>
           </div>
         </div>

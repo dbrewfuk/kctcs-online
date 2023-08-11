@@ -1,14 +1,17 @@
 [
   {
-    "name": "John Smith",
+    "name": "Jay Freeman",
     "id": "john-smith",
     "career": "Nurse",
     "major": "Nurse Aid",
     "headline": "Story Headline",
-    "college": "Gateway Community and Technical College",
+    "college": "West Kentucky Community and Technical College",
     "quote": "I was hesitant to start an online learning program at first, but I'm so glad I did! The flexibility of being able to learn at my own pace and on my own time has been amazing. I've been able to balance my studies with my work and family life without any problems..",
     "year": 2023,
-    "avatar": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+    "avatar": "./src/assets/avatar1.jpeg",
+    "vimeo_id": "853712282",
+    "clip": "",
+    "featured": true
   },
   {
     "name": "Jane Doe",
@@ -20,7 +23,9 @@
     "college": "Western Kentucky Community and Technical College",
     "quote": "I was looking for a way to further my education without having to quit my job or relocate. Online learning was the perfect solution for me. I've been able to stay up-to-date on the latest industry trends and learn new skills without disrupting my life.",
     "year": 2024,
-    "avatar": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+    "avatar": "./src/assets/avatar2.jpeg",
+    "video": "",
+    "clip": ""
   },
   {
     "name": "Chris Rick",
@@ -31,6 +36,21 @@
     "college": "Jefferson Community and Technical College",
     "quote": "I've been able to learn a lot in this program and I feel confident that I'm on track to achieve my goals. I would definitely recommend online learning to anyone who is looking for a flexible and convenient way to further their education.",
     "year": 2024,
-    "avatar": "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+    "avatar": "./src/assets/avatar3.jpeg",
+    "video": "",
+    "clip": ""
+  },
+  {
+    "name": "Rebecca James",
+    "id": "rebecca-james",
+    "career": "Teacher",
+    "major": "Interdisciplinary Early Childhood Education",
+    "headline": "Story Headline",
+    "college": "Gateway Community and Technical College",
+    "quote": "I had a fantastic experience with the online program at GCTC. The instructors were highly knowledgeable and provided engaging and interactive lectures. The virtual classrooms allowed for easy collaboration with classmates, and the online resources provided ample support for my learning journey.",
+    "year": 2022,
+    "avatar": "./src/assets/avatar4.jpeg",
+    "video": "",
+    "clip": ""
   }
 ]

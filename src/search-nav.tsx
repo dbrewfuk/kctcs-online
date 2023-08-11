@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const SearchHome = () => {
+const SearchNav = () => {
 
 	 const history = useHistory();
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    history.push(`/programs?search=${searchQuery}#results`);
+    history.push(`/programs?search=${searchQuery}`);
     window.location.href = `/programs?search=${searchQuery}`;
   };
 return (
 
-<div className="text-white w-100">
+<div>
     <div className="container">
     <div className="row align-items-end">
-    <div className="col col-md-7"><h1 className="display-1">Real World Success, Anywhere.</h1></div>
-    <div className="col"><h3>Explore Programs</h3>
+   
+    <div className="col">
     <form className="mb-3" onSubmit={handleSubmit}>
     <div className="input-group mb-3">
             <input
@@ -27,7 +27,7 @@ return (
               onChange={(e) => setSearchQuery(e.target.value)}
               className="form-control"
             />
-            <button type="submit" className="btn btn-outline-light" onClick={handleSubmit}>
+            <button type="submit" className="btn btn-outline-dark" onClick={handleSubmit}>
               Search
             </button>
             </div>
@@ -42,4 +42,4 @@ return (
 
 };
 
-export default SearchHome;
+export default SearchNav;

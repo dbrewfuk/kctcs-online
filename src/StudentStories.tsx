@@ -2,8 +2,11 @@ import stories from "./stories.json";
 import { Link } from "react-router-dom";
 import Search from "./search";
 import HeaderInterior from "./header-interior";
+import VideoBlock from "./video-block";
+
 
 function StudentStories() {
+  const featured = stories.filter((story) => story.featured)[0];
   return (
     <div>
     <HeaderInterior/>
@@ -29,11 +32,7 @@ function StudentStories() {
       </div>
 
       <div className="ratio ratio-16x9">
-        <video
-          src="https://www.dropbox.com/s/sd90kljtxqp68dg/background-video.mp4?raw=1"
-          className="object-fit-cover"
-          autoPlay
-        />
+        <VideoBlock />
       </div>
 
       <div className="py-4">
@@ -44,24 +43,24 @@ function StudentStories() {
             </div>
             <div className="col-4">
                <p className="h5 lh-base">
-                    John Smith, <span className="d-inline-block mx-1">
+                    {featured.name}, <span className="d-inline-block mx-1">
                     <a
                       className="d-inline btn btn-outline-dark"
                       href={`/programs?search=nurse`}
                     >
-                      Nurse
+                      {featured.career}
                     </a> 
                     </span>
                     <br/>
-                    <span className="d-inline-block mx-1">
+                    <span className="d-inline-block me-1">
                     <a
                       className="d-inline btn btn-outline-dark"
                       href={`/programs?search=nurse`}
                     >
-                      Nurse Aide
+                      {featured.major}
                     </a> 
                     </span>
-                    , Gateway Community and Technical College, 2023
+                    , {featured.college}, {featured.year}
                   </p>
             </div>
           </div>
@@ -71,18 +70,15 @@ function StudentStories() {
       <div className="section py-5">
         <div className="container">
           <div className="d-flex gap-4">
-            {stories.map((story, index) => (
-              <div className="col" key={index}>
-                <div>
-                  <div className="ratio ratio-4x5">
-                    <img src={story.avatar} alt="Card" />
-                  </div>
-                </div>
+            {stories.filter((story) => !story.featured).map((story, index) => (
+              
+              <div className="col d-flex flex-column" key={index}>
+              
                 <div className="">
                   <div className="d-flex flex-column">
-                    <div>
-                      <div className="ratio ratio-4x3">
-                        <img className="object-fit-cover" src={story.avatar} />
+                    <div className="d-flex flex-column">
+                      <div className="ratio ratio-4x3 mb-2">
+                        <img className="object-fit-cover media-shadow rounded-3" src={story.avatar} />
                       </div>
                       <h3>Story Headline</h3>
                       <p>
@@ -90,13 +86,13 @@ function StudentStories() {
                         <br />
                         {story.major}
                       </p>
-                      <a
-                        className="btn btn-primary"
+                      <div className="d-inline-block"><a
+                        className="btn btn-shadow"
                         href={`/stories/${story.id}`}
                         key={story.id}
                       >
-                        Learn more
-                      </a>
+                        Read {story.name}'s Story
+                      </a></div>
                     </div>
                   </div>
                 </div>

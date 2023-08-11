@@ -20,12 +20,12 @@ const Testimonial = () => {
 
   return (
     <div>
-      <div className="py-5 bg-black text-white">
+      <div className="py-5 bg-secondary text-info">
         <div className="container">
           <div className="d-flex flex-column gap-5 align-items-center">
             <div className="row w-100 gap-4">
               <div className="col-8">
-                <h1 className="display-3">{currentSlide.quote}</h1>
+                <h1 className="display-4">{currentSlide.quote}</h1>
               </div>
               <div className="col">
                 <div className="d-flex flex-column gap-3">
@@ -65,12 +65,12 @@ const Testimonial = () => {
                     src={currentSlide.avatar}
                     className="rounded-circle"
                     alt="Avatar"
-                    style={{ width: "80px" }}
+                    style={{ width: "80px", height: "80px", objectFit: "cover" }}
                   />
                   <p className="fs-4 lh-base">
                     {currentSlide.name}, <span className="d-inline-block mx-1">
                     <a
-                      className="d-inline btn btn-outline-light"
+                      className="d-inline btn btn-outline-dark"
                       href={`/programs?search=${currentSlide.career}`}
                     >
                       {currentSlide.career}
@@ -79,7 +79,7 @@ const Testimonial = () => {
                     <br />
                     <span className="d-inline-block me-1">
                     <a
-                      className="d-inline btn btn-outline-light"
+                      className="d-inline btn btn-outline-dark"
                       href={`/programs?search=${currentSlide.major}`}
                     >
                       {currentSlide.major}
@@ -91,7 +91,7 @@ const Testimonial = () => {
               </div>
             </div>
             <div>
-              <a className="btn btn-light" href="./student-stories">Read More Stories</a>
+              <a className="btn btn-shadow" href="./student-stories">Read More Stories</a>
             </div>
           </div>
         </div>

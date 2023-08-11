@@ -5,9 +5,9 @@ import HeaderInterior from "./header-interior";
 
 const colleges = [
   { name: "Select a College", url: "" },
-  { name: "College 1", url: "" },
-  { name: "College 2", url: "" },
-  { name: "College 3", url: "" },
+  { name: "Bluegrass Community & Technical College", url: "" },
+  { name: "Jefferson Community & Technical College", url: "" },
+  { name: "Western Kentucky Community & Technical College", url: "" },
 ];
 
 interface CardData {
@@ -16,41 +16,41 @@ interface CardData {
 
 const cardData = {
   "Select a College": [],
-  "College 1": [
+  "Bluegrass Community & Technical College": [
     {
-      title: "Card Title 1",
+      title: "GoKCTCS! Student Service Center",
       content: "Card Content 1",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
     {
-      title: "Card Title 2",
+      title: "Blackboard",
       content: "Card Content 2",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
     {
-      title: "Card Title 3",
+      title: "Help Desk",
       content: "Card Content 3",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
   ],
-  "College 2": [
+  "Jefferson Community & Technical College": [
     {
-      title: "Card Title 4",
+      title: "Student Services Virtual Support",
       content: "Card Content 4",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
     {
-      title: "Card Title 5",
+      title: "Student Tips & Resources",
       content: "Card Content 5",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
     {
-      title: "Card Title 6",
-      content: "Card Content 6",
+      title: "Accessibility Resource Center",
+      content: "The mission of the Access*Ability Resource Center (ARC) is to ensure program access for students with disabilities on all campuses.",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
   ],
-  "College 3": [
+  "Western Kentucky Community & Technical College": [
     {
       title: "Card Title 7",
       content: "Card Content 7",
@@ -86,14 +86,14 @@ function StudentSupportServices() {
     <HeaderInterior/>
 
 
-    <div className="pt-5 pb-5">
+    <div className="pt-5 pb-5 bg-success">
     <div className="container">
-    <h1 className="display-1 mt-5">Student Support Services</h1>
+    <h1 className="display-1 mt-5 mb-0 text-info">Student Support Services</h1>
     </div>
     </div>
-    <div className="container-fluid px-3">
+    <div className="container-fluid p-3 pb-4 bg-success">
     <div className="ratio ratio-16x9 bg-primary">
-    <img className="object-fit-cover" src="./assets/header.jpeg" alt="Placeholder Image"/>
+    <img className="object-fit-cover media-shadow rounded-3" src="./src/assets/as7.jpeg" alt="Placeholder Image"/>
     </div>
     </div>
    
@@ -104,7 +104,7 @@ function StudentSupportServices() {
         <div className="row">
         <div className="col">
        
-          <p className="h3 mb-3">Your success is our top priority. That’s why we offer so many resources to help you succeed. Need help choosing classes or understanding an assignment? Connect online with advisors or tutors. Want to get involved in student life? Join an online club or student organization. Whatever you need, we’re here to support you at each step of the way. Resources vary from one college to the next, so check your college’s website to see what’s available.</p>
+          <p className="h2 mb-3">Your success is our top priority. That’s why we offer so many resources to help you succeed. Need help choosing classes or understanding an assignment? Connect online with advisors or tutors. Want to get involved in student life? Join an online club or student organization. Whatever you need, we’re here to support you at each step of the way. Resources vary from one college to the next, so check your college’s website to see what’s available.</p>
         <div className="d-flex gap-2">
                 <div>
   <button
@@ -148,20 +148,18 @@ function StudentSupportServices() {
     </div>
 
 
-    <div className="py-5">
+    <div className="pb-5">
         <div className="container">
           <div className="row">
             {collegeCards.slice(0, 3).map((card: any) => (
               <div className="col" key={card.title}>
-                <div>
-                  <div className="ratio ratio-4x3 mb-2">
-                    <img className="object-fit-cover" src={card.img} />
-                  </div>
+                <div className="p-3 border rounded-3 hover-shadow">
+                  
                   <h3>
-                    {selectedCollege.name} {card.title}
+                    {card.title}
                   </h3>
                   <p className="mb-3">{card.content}</p>
-                  <div className="btn btn-primary">Learn More</div>
+                  <div className="btn btn-shadow">Learn More</div>
                 </div>
               </div>
             ))}

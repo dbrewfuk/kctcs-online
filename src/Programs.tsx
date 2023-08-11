@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import programs from "./programs.json";
 import Testimonial from "./testimonial";
-import HeaderInterior from "./header-interior";
+import Header from "./header";
 
 type College = Partial<{
   name: string;
@@ -70,22 +70,22 @@ const filteredPrograms = programs.filter((program) =>
     <div>
 
 
-    <HeaderInterior/>
-     <div className="pt-5 pb-5">
+    <Header/>
+     <div className="pt-5 pb-5 bg-primary">
     <div className="container">
-    <h1 className="display-1 mt-5">Explore Programs</h1>
+    <h1 className="display-1 mt-5 text-white">Explore Programs</h1>
     </div>
     </div>
-    <div className="container-fluid px-3">
+    <div className="container-fluid bg-primary px-3 pb-4">
     <div className="ratio ratio-16x9 bg-primary">
-    <img className="object-fit-cover" src="./assets/header.jpeg" alt="Placeholder Image"/>
+    <img className="object-fit-cover media-shadow rounded-3" src="./assets/header.jpeg" alt="Placeholder Image"/>
     </div>
     </div>
    
 
-      <div className="py-5">
+      <div id="results" className="py-5">
       <div className="container">
-      <p className="h1 mb-5">From <a
+      <p className="h1 mb-5 text-info">From <a
                       className="d-inline btn btn-outline-dark"
                       href={`/programs?search=agriculture`}
                     >agriculture</a> to <a
@@ -104,7 +104,7 @@ const filteredPrograms = programs.filter((program) =>
               onChange={(e) => setSearchQuery(e.target.value)}
               className="form-control"
             />
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-outline-info">
               Search
             </button>
             </div>
@@ -121,7 +121,7 @@ const filteredPrograms = programs.filter((program) =>
   (program.keywords && program.keywords.toLowerCase().includes(searchQuery.toLowerCase()))          )
           .map((program, index) => (
             <div className="col-3">
-            <div className="border" key={index}>
+            <div className="border rounded-3 hover-shadow" key={index}>
               <div className="d-flex gap-4">
                 <div className="p-3 w-100">
                   <h3 className="text-wrap text-break">{program.program}</h3>
