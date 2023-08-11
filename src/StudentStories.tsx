@@ -46,9 +46,9 @@ function StudentStories() {
                     {featured.name}, <span className="d-inline-block mx-1">
                     <a
                       className="d-inline btn btn-outline-dark"
-                      href={`/programs?search=nurse`}
+                      href={`/programs?search=law-school`}
                     >
-                      {featured.career}
+                     Aspiring Lawyer
                     </a> 
                     </span>
                     <br/>
@@ -71,7 +71,7 @@ function StudentStories() {
         <div className="container">
           <div className="d-flex gap-4">
             {stories.filter((story) => !story.featured).map((story, index) => (
-              
+
               <div className="col d-flex flex-column" key={index}>
               
                 <div className="">
