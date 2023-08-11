@@ -93,7 +93,7 @@ function StudentSupportServices() {
     </div>
     <div className="container-fluid p-3 pb-4 bg-success">
     <div className="ratio ratio-16x9 bg-primary">
-    <img className="object-fit-cover media-shadow rounded-3" src="./src/assets/as7.jpeg" alt="Placeholder Image"/>
+    <img className="object-fit-cover media-shadow rounded-3" src="./assets/as7.jpeg" alt="Placeholder Image"/>
     </div>
     </div>
    
