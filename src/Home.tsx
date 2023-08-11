@@ -147,7 +147,7 @@ function Home() {
     <div className="flex-fill p-3 border rounded-3 hover-shadow w-100 w-md-33 d-flex flex-column gap-2">
     <div className="">
     <div className="ratio ratio-4x3">
-    <img className="img-fluid  object-fit-cover rounded-3" src="./assets/student-support-services.jpeg"/>
+    <img className="img-fluid  object-fit-cover rounded-3" src="./assets/student-support.jpeg"/>
     </div>
     </div>
     <div className="">
@@ -156,7 +156,7 @@ function Home() {
     <h3 className="text-info">Student Support Services</h3>
     <p className="text-info mb-2">Concerned about paying for your online education? We’ve got you covered. We have the lowest tuition in Kentucky, and online students are eligible for a wide array of scholarships and financial aid.</p>
     </div>
-    <div class="d-inline-block"><a className="btn btn-shadow" href="./student-support">Explore Resources</a></div>
+    <div class="d-inline-block"><a className="btn btn-shadow" href="./student-support-services">Explore Resources</a></div>
     </div>
     </div>
     </div>
