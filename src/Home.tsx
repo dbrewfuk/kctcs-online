@@ -58,7 +58,7 @@ function Home() {
     <div className="d-flex flex-column flex-md-row gap-4">
     <div className="w-100 w-md-25">
     <div className="ratio ratio-4x3">
-    <img className="object-fit-cover media-shadow rounded-3" src="./src/assets/as2.jpeg"/>
+    <img className="object-fit-cover media-shadow rounded-3" src="./assets/as2.jpeg"/>
     </div>
     </div>
     <div className="w-100">
@@ -86,7 +86,7 @@ function Home() {
     </div>
     <div className="w-100 w-md-25">
     <div className="ratio ratio-4x3">
-    <img className="object-fit-cover media-shadow rounded-3" src="./src/assets/as1.jpeg"/>
+    <img className="object-fit-cover media-shadow rounded-3" src="./assets/as1.jpeg"/>
     </div>
     </div>
     </div>
@@ -98,7 +98,7 @@ function Home() {
     <div className="d-flex flex-column flex-md-row gap-4">
     <div className="w-100 w-md-25">
     <div className="ratio ratio-4x3">
-    <img className="object-fit-cover media-shadow rounded-3" src="./src/assets/as6.jpeg"/>
+    <img className="object-fit-cover media-shadow rounded-3" src="./assets/as6.jpeg"/>
     </div>
     </div>
     <div className="w-100">
@@ -119,7 +119,7 @@ function Home() {
     <div className="flex-fill p-3 border rounded-3 hover-shadow w-100 w-md-33 d-flex flex-column gap-2">
     <div className="">
     <div className="ratio ratio-4x3">
-    <img className="img-fluid object-fit-cover rounded-3" src="./src/assets/admissions.jpeg"/>
+    <img className="img-fluid object-fit-cover rounded-3" src="./assets/admissions.jpeg"/>
     </div>
     </div>
     <div className="">
@@ -133,7 +133,7 @@ function Home() {
     <div className="flex-fill p-3 border rounded-3 hover-shadow w-100 w-md-33 d-flex flex-column gap-2">
     <div className="">
     <div className="ratio ratio-4x3">
-    <img className="img-fluid object-fit-cover rounded-3" src="./src/assets/tuition-and-cost.jpeg"/>
+    <img className="img-fluid object-fit-cover rounded-3" src="./assets/tuition-and-cost.jpeg"/>
     </div>
     </div>
     <div className="">
@@ -147,7 +147,7 @@ function Home() {
     <div className="flex-fill p-3 border rounded-3 hover-shadow w-100 w-md-33 d-flex flex-column gap-2">
     <div className="">
     <div className="ratio ratio-4x3">
-    <img className="img-fluid  object-fit-cover rounded-3" src="./src/assets/student-support.jpeg"/>
+    <img className="img-fluid  object-fit-cover rounded-3" src="./assets/student-support.jpeg"/>
     </div>
     </div>
     <div className="">
