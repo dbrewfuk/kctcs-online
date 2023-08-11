@@ -147,7 +147,7 @@ function Home() {
     <div className="flex-fill p-3 border rounded-3 hover-shadow w-100 w-md-33 d-flex flex-column gap-2">
     <div className="">
     <div className="ratio ratio-4x3">
-    <img className="img-fluid  object-fit-cover rounded-3" src="./assets/student-support.jpeg"/>
+    <img className="img-fluid  object-fit-cover rounded-3" src="./assets/student-support-services.jpeg"/>
     </div>
     </div>
     <div className="">
