@@ -8,9 +8,9 @@
     "college": "West Kentucky Community and Technical College",
     "quote": "I was hesitant to start an online learning program at first, but I'm so glad I did! The flexibility of being able to learn at my own pace and on my own time has been amazing. I've been able to balance my studies with my work and family life without any problems..",
     "year": 2023,
-    "avatar": "./assets/avatar1.jpeg",
+    "avatar": "./assets/freeman-avatar.jpeg",
     "vimeo_id": "853712282",
-    "clip": "",
+    "clip": "./assets/freeman-clip.gif",
     "featured": true
   },
   {

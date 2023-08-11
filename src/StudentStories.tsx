@@ -44,12 +44,7 @@ function StudentStories() {
             <div className="col-4">
                <p className="h5 lh-base">
                     {featured.name}, <span className="d-inline-block mx-1">
-                    <a
-                      className="d-inline btn btn-outline-dark"
-                      href={`/programs?search=law-school`}
-                    >
-                     Aspiring Lawyer
-                    </a> 
+                    
                     </span>
                     <br/>
                     <span className="d-inline-block me-1">

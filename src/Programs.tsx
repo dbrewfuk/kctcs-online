@@ -167,7 +167,7 @@ const filteredPrograms = programs.filter((program) =>
                       <a
   type="button"
   className={`btn btn-secondary w-100 ${!selectedColleges[index]?.url ? 'disabled' : ''}`}
-  href={selectedColleges[index]?.url || ''}
+  href={selectedColleges.url || ''}
 >
   Visit Website
 </a>
