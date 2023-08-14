@@ -113,9 +113,9 @@ function Home() {
     </div>
     </div>
 
-    <div className="py-5">
+    <div className="pb-5">
     <div className="container">
-    <div className="d-flex flex-column flex-sm-row gap-4">
+    <div className="d-flex flex-column flex-sm-row gap-3">
     <div className="flex-fill p-3 border rounded-3 hover-shadow w-100 w-md-33 d-flex flex-column gap-2">
     <div className="">
     <div className="ratio ratio-4x3">

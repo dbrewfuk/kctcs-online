@@ -1,5 +1,9 @@
-$primary:       #005cb8;
-$secondary:     #ffd000;
+
+
+$primary:       #00467f;
+$secondary:     #e7a614;
+$secondary-teal: #3bb3e5;
+$secondary-navy: #182467;
 $success:       #3bb3e5;
 $info:          #182467;
 $black:         #182467;
@@ -10,12 +14,29 @@ $disabled:      #f3f3f3;
 $font-size-base: 1rem;
 $spacer: 2rem;
 
+
 .btn {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
+
+.btn.btn-primary, .btn.dropdown-toggle {
+  padding: 0.5rem 2rem !important;
+}
+
+.bg-secondary-teal {
+  background-color: $secondary-teal;
+}
+
+.bg-secondary-navy {
+  background-color: $secondary-navy;
+}
+
+.text-secondary-navy {
+  color: $secondary-navy;
+}
 
 
 header a:hover {
@@ -60,11 +81,10 @@ header a:hover {
 }
 
 .btn-shadow:hover {
-  background: $blue;
+  background: $primary;
   color: white !important;
-  border-color: $blue;
+  border-color: $primary;
   box-shadow: none;
-  transform: translate(-4px, 4px);
 }
 
 .btn-shadow:hover:after {
@@ -104,6 +124,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
 }
 
 h1 {

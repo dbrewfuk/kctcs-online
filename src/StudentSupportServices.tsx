@@ -86,14 +86,14 @@ function StudentSupportServices() {
     <HeaderInterior/>
 
 
-    <div className="pt-5 pb-5 bg-success">
+    <div className="pt-5 pb-4 bg-secondary-teal">
     <div className="container">
-    <h1 className="display-1 mt-5 mb-0 text-info">Student Support Services</h1>
+    <h1 className="display-1 mt-5 pt-5 text-info">Student Support Services</h1>
     </div>
     </div>
-    <div className="container-fluid p-3 pb-4 bg-success">
+    <div className="container-fluid px-3 pb-4 bg-secondary-teal">
     <div className="ratio ratio-16x9 bg-primary">
-    <img className="object-fit-cover media-shadow rounded-3" src="./assets/as7.jpeg" alt="Placeholder Image"/>
+    <img className="object-fit-cover rounded-3" src="./assets/as7.jpeg" alt="Placeholder Image"/>
     </div>
     </div>
    
@@ -132,7 +132,7 @@ function StudentSupportServices() {
 </div>
 <div>
                 <button
-                  className="btn btn-secondary"
+                  className="btn btn-primary"
                   onClick={() => (window.location.href = selectedCollege.url)}
                   disabled={selectedCollege.name === "Select a College"}
                 >

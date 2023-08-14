@@ -6,20 +6,20 @@ import Header from "./header";
 function TuitionAndCost() {
 
   return (
-    <div>
+    <div className="text-secondary-navy">
     <Header/>
 
    {/* Hero */}
     <div>
       
-    <div className="pt-5 pb-5 bg-info">
+    <div className="pt-5 pb-4 bg-info">
     <div className="container">
-    <h1 className="display-1 mt-5 text-white">Tuition and Cost</h1>
+    <h1 className="display-1 mt-5 pt-5 text-white">Tuition and Cost</h1>
     </div>
     </div>
-    <div className="container-fluid px-3 bg-info pb-3">
+    <div className="container-fluid px-3 pb-4 bg-info pb-3">
     <div className="ratio ratio-16x9 bg-primary">
-    <img className="object-fit-cover media-shadow rounded-3" src="./assets/header-3.jpeg" alt="Placeholder Image"/>
+    <img className="object-fit-cover rounded-3" src="./assets/header-3.jpeg" alt="Placeholder Image"/>
     </div>
     </div>
     </div>

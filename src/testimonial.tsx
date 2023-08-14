@@ -20,15 +20,16 @@ const Testimonial = () => {
 
   return (
     <div>
-      <div className="py-5 bg-secondary text-info">
+      <div className="py-5 bg-secondary-teal text-info">
         <div className="container">
           <div className="d-flex flex-column gap-5 align-items-center">
             <div className="row w-100 gap-4">
               <div className="col-8">
-                <h1 className="display-4">{currentSlide.quote}</h1>
+                <h1 className="display-5">{currentSlide.quote}</h1>
               </div>
               <div className="col">
-                <div className="d-flex flex-column gap-3">
+                <div className="d-flex flex-column gap-5">
+                <div>
                   <div className="d-flex gap-3">
                     <div onClick={handlePreviousSlide}>
                       <svg
@@ -61,14 +62,16 @@ const Testimonial = () => {
                       </svg>
                     </div>
                   </div>
+                  </div>
+                  <div>
                   <img
                     src={currentSlide.avatar}
-                    className="rounded-circle"
+                    className="rounded-circle mb-2"
                     alt="Avatar"
-                    style={{ width: "80px", height: "80px", objectFit: "cover" }}
+                    style={{ width: "96px", height: "96px", objectFit: "cover" }}
                   />
-                  <p className="fs-4 lh-base">
-                    {currentSlide.name}, <span className="d-inline-block mx-1">
+                  <p className="fs-5 lh-base">
+                    {currentSlide.name}, <span className="d-inline-block m-1">
                     <a
                       className="d-inline btn btn-outline-dark"
                       href={`/programs?search=${currentSlide.career}`}
@@ -77,7 +80,7 @@ const Testimonial = () => {
                     </a> 
                     </span>
                     <br />
-                    <span className="d-inline-block me-1">
+                    <span className="d-inline-block me-1 mb-1">
                     <a
                       className="d-inline btn btn-outline-dark"
                       href={`/programs?search=${currentSlide.major}`}
@@ -87,6 +90,7 @@ const Testimonial = () => {
                     </span>
                     , {currentSlide.college}, {currentSlide.year}
                   </p>
+                  </div>
                 </div>
               </div>
             </div>

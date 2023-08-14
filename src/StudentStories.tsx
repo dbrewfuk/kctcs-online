@@ -8,7 +8,7 @@ import VideoBlock from "./video-block";
 function StudentStories() {
   const featured = stories.filter((story) => story.featured)[0];
   return (
-    <div>
+    <div className="text-secondary-navy">
     <HeaderInterior/>
 
 
@@ -23,7 +23,7 @@ function StudentStories() {
 
       <div className="py-5">
         <div className="container">
-        <h1 className="display-1 py-5">Success Stories</h1>
+        <h1 className="display-1 pt-5">Success Stories</h1>
           <p className="h1">
             Hear from students and alumni about the transformative impact of a
             credential from KCTCS Online.
@@ -64,16 +64,16 @@ function StudentStories() {
 
       <div className="section py-5">
         <div className="container">
-          <div className="d-flex gap-4">
+          <div className="d-flex gap-3">
             {stories.filter((story) => !story.featured).map((story, index) => (
 
-              <div className="col d-flex flex-column" key={index}>
+              <div className="col p-3 rounded-3 border hover-shadow d-flex flex-column" key={index}>
               
                 <div className="">
                   <div className="d-flex flex-column">
                     <div className="d-flex flex-column">
                       <div className="ratio ratio-4x3 mb-2">
-                        <img className="object-fit-cover media-shadow rounded-3" src={story.avatar} />
+                        <img className="object-fit-cover rounded-3" src={story.avatar} />
                       </div>
                       <h3>Story Headline</h3>
                       <p>

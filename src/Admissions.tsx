@@ -82,17 +82,17 @@ function Admissions() {
 
 
 
-    <div>
+    <div className="text-secondary-navy">
     <HeaderInterior/>
 
     <div>
       
-    <div className="pt-5 pb-5 bg-secondary">
+    <div className="pt-5 pb-4 bg-secondary">
     <div className="container">
-    <h1 className="display-1 text-info mt-5 mb-0">Admissions</h1>
+    <h1 className="display-1 text-info mt-5 pt-5 mb-0">Admissions</h1>
     </div>
     </div>
-    <div className="container-fluid bg-secondary px-3 pb-3">
+    <div className="container-fluid bg-secondary px-3 pb-4">
     <div className="ratio ratio-16x9 bg-primary">
     <img className="object-fit-cover media-shadow rounded-3" src="./assets/header.jpeg" alt="Placeholder Image"/>
     </div>
@@ -136,7 +136,7 @@ function Admissions() {
 </div>
 <div>
                 <button
-                  className="btn btn-secondary"
+                  className="btn btn-primary"
                   onClick={() => (window.location.href = selectedCollege.url)}
                   disabled={selectedCollege.name === "Select a College"}
                 >

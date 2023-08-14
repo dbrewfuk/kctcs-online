@@ -28,18 +28,18 @@ const Header = () => {
 
   return (
     <header
-      className={`w-100 p-3 z-3 ${scrolled ? "fixed-top" : "position-absolute"}`}
+      className={`w-100 p-3 z-3 ${scrolled ? "fixed-top shadow-sm" : "position-absolute"}`}
       style={{ background: scrolled ? "white" : "transparent" }}
     >
       <div className="">
         <div className="d-flex align-items-center justify-content-between">
           <div>
-            <a className="py-2 px-3 bg-primary text-white" href="/">
-              Logo
+            <a className="" href="/">
+              <img src={`${scrolled ? "./assets/horizontal-logo.svg" : "./assets/vertical-logo-light.svg"}`}/>
             </a>
           </div>
           <div className="d-flex gap-4 align-items-center">
-            <nav className="d-lg-flex gap-3 align-items-center d-none">
+            <nav className="d-lg-flex fs-5 gap-3 align-items-center d-none">
               <a className={`${scrolled ? "text-info" : "text-white"}`} href="/admissions">Admissions</a>
               <a className={`${scrolled ? "text-info" : "text-white"}`} href="/tuition-and-cost">Tuition &amp; Cost</a>
               <a className={`${scrolled ? "text-info" : "text-white"}`} href="/programs">Programs</a>

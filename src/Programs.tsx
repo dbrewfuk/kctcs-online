@@ -67,18 +67,18 @@ const filteredPrograms = programs.filter((program) =>
 
 
   return (
-    <div>
+    <div className="text-secondary-navy">
 
 
     <Header/>
-     <div className="pt-5 pb-5 bg-primary">
+     <div className="pt-5 pb-4 bg-primary">
     <div className="container">
-    <h1 className="display-1 mt-5 text-white">Explore Programs</h1>
+    <h1 className="display-1 mt-5 pt-5 text-white">Explore Programs</h1>
     </div>
     </div>
     <div className="container-fluid bg-primary px-3 pb-4">
     <div className="ratio ratio-16x9 bg-primary">
-    <img className="object-fit-cover media-shadow rounded-3" src="./assets/header.jpeg" alt="Placeholder Image"/>
+    <img className="object-fit-cover rounded-3" src="./assets/header.jpeg" alt="Placeholder Image"/>
     </div>
     </div>
    
@@ -128,10 +128,10 @@ const filteredPrograms = programs.filter((program) =>
                   <p>{program.description}</p>
                   <div className="btn-group d-flex flex-column gap-1">
                     <div>
-                      <div className="dropdown w-100">
+                      <div className="dropdown rounded-pill w-100">
                         <button
                           type="button"
-                          className="btn btn-secondary dropdown-toggle w-100"
+                          className="btn btn-outline-dark dropdown-toggle w-100"
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
                           rel="nofollow"
@@ -166,8 +166,8 @@ const filteredPrograms = programs.filter((program) =>
                     <div>
                       <a
   type="button"
-  className={`btn btn-secondary w-100 ${!selectedColleges[index]?.url ? 'disabled' : ''}`}
-  href={selectedColleges.url || ''}
+  className={`btn btn-primary rounded-pill w-100 ${!selectedColleges[index]?.url ? 'disabled' : ''}`}
+  href={selectedColleges[index]?.url || ''}
 >
   Visit Website
 </a>

@@ -27,12 +27,12 @@ const HeaderInterior = () => {
       <div className="">
         <div className="d-flex align-items-center justify-content-between">
           <div>
-            <a className="py-2 px-3 bg-primary text-white" href="/">
-              Logo
+            <a className="" href="/">
+              <img src={`${scrolled ? "./assets/horizontal-logo.svg" : "./assets/vertical-logo-dark.svg"}`}/>
             </a>
           </div>
           <div className="d-flex gap-4 align-items-center">
-            <nav className="d-lg-flex gap-3 align-items-center d-none">
+            <nav className="d-lg-flex gap-3 fs-5 align-items-center d-none">
               <a className="text-info" href="/admissions">Admissions</a>
               <a className="text-info" href="/tuition-and-cost">Tuition &amp; Cost</a>
               <a className="text-info" href="/programs">Programs</a>
