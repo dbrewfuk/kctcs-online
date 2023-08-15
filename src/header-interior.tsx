@@ -28,7 +28,7 @@ const HeaderInterior = () => {
         <div className="d-flex align-items-center justify-content-between">
           <div>
             <a className="" href="/">
-              <img src={`${scrolled ? "./assets/horizontal-logo.svg" : "./assets/vertical-logo-dark.svg"}`}/>
+              <img src={`${scrolled ? "./assets/horizontal-logo.svg" : "./assets/horizontal-logo.svg"}`}/>
             </a>
           </div>
           <div className="d-flex gap-4 align-items-center">
