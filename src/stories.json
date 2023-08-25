@@ -14,8 +14,8 @@
     "featured": true
   },
   {
-    "name": "Jane Doe",
-    "id": "jane-doe",
+    "name": "John Doe",
+    "id": "john-doe",
     "career": "Software Engineer",
     "major": "Computer and Information Technologies",
     "keywords": "",
@@ -28,8 +28,8 @@
     "clip": ""
   },
   {
-    "name": "Chris Rick",
-    "id": "chris-rick",
+    "name": "Sarah Smith",
+    "id": "sarah-smith",
     "career": "Graphic Designer",
     "major": "Associate in Arts",
     "headline": "Story Headline",
@@ -41,8 +41,8 @@
     "clip": ""
   },
   {
-    "name": "Rebecca James",
-    "id": "rebecca-james",
+    "name": "Rebecca East",
+    "id": "rebecca-east",
     "career": "Teacher",
     "major": "Interdisciplinary Early Childhood Education",
     "headline": "Story Headline",

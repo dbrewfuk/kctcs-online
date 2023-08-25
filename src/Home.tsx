@@ -67,9 +67,7 @@ function Home() {
       <div className="py-4">
         <div className="container">
           <div className="row">
-            <div className="col-6">
-              <h1 className="text-info">A Student Success Story</h1>
-            </div>
+           
             <div className="col-6">
             <h1 className="text-info">A Student Success Story</h1>
                <p className="h4 lh-base text-info">
@@ -242,7 +240,7 @@ function Home() {
     <div className="d-flex flex-column flex-md-row gap-4">
     <div className="w-75">
     <h1 className="display-2 mb-3 text-info">What does an online course look like?</h1>
-    <p className="h2 mb-4 pb-2 text-info fw-normal mb-4">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
+    <p className="h2 mb-4 pb-2  text-info fw-normal mb-4">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
   
     
 
