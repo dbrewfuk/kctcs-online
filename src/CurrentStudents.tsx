@@ -14,7 +14,7 @@ function CurrentStudents() {
       
     <div className="pt-5 pb-4 bg-info">
     <div className="container">
-    <h1 className="display-1 mt-5 pt-5 text-white">Current Students</h1>
+    <h1 className="display-1 mt-5  pt-4 mt-0 text-white">Current Students</h1>
     </div>
     </div>
     <div className="container-fluid px-3 pb-4 bg-info pb-3">
@@ -98,7 +98,7 @@ function CurrentStudents() {
       </div>
     </div>
     
-    <Testimonial/>
+
     <Search/>
     </div>
   );

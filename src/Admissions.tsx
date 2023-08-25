@@ -89,11 +89,11 @@ function Admissions() {
       
     <div className="pt-5 pb-4 bg-secondary">
     <div className="container">
-    <h1 className="display-1 text-info mt-5 pt-5 mb-0">Admissions</h1>
+    <h1 className="display-1 text-info mt-5  pt-4 mt-0 mb-0">Admissions</h1>
     </div>
     </div>
     <div className="container-fluid bg-secondary px-3 pb-4">
-    <div className="ratio ratio-16x9 bg-primary">
+    <div className="ratio ratio-21x9 bg-primary">
     <img className="object-fit-cover media-shadow rounded-3" src="./assets/header.jpeg" alt="Placeholder Image"/>
     </div>
     </div>

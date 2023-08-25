@@ -88,7 +88,7 @@ function StudentSupportServices() {
 
     <div className="pt-5 pb-4 bg-secondary-teal">
     <div className="container">
-    <h1 className="display-1 mt-5 pt-5 text-info">Student Support Services</h1>
+    <h1 className="display-1 mt-5 pt-4 mt-0 text-info">Student Support Services</h1>
     </div>
     </div>
 
