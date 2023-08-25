@@ -42,8 +42,9 @@ const Header = () => {
             <nav className="d-lg-flex fs-5 gap-3 align-items-center d-none">
               <a className={`${scrolled ? "text-info" : "text-white"}`} href="/admissions">Admissions</a>
               <a className={`${scrolled ? "text-info" : "text-white"}`} href="/tuition-and-cost">Tuition &amp; Cost</a>
-              <a className={`${scrolled ? "text-info" : "text-white"}`} href="/programs">Programs</a>
+              <a className={`${scrolled ? "text-info" : "text-white"}`} href="/programs">Explore Programs</a>
               <a className={`${scrolled ? "text-info" : "text-white"}`} href="/student-support-services">Student Support Services</a>
+              <a className={`${scrolled ? "text-info" : "text-white"}`} href="/current-students">Current Students</a>
             </nav>
             <div className="d-flex gap-2">
               <div className="btn btn-shadow" onClick={handleRequestButtonClick}>Request Information</div>

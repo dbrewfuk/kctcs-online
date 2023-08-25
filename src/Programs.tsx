@@ -77,9 +77,7 @@ const filteredPrograms = programs.filter((program) =>
     </div>
     </div>
     <div className="container-fluid bg-primary px-3 pb-4">
-    <div className="ratio ratio-16x9 bg-primary">
-    <img className="object-fit-cover rounded-3" src="./assets/header.jpeg" alt="Placeholder Image"/>
-    </div>
+   
     </div>
    
 
@@ -118,10 +116,10 @@ const filteredPrograms = programs.filter((program) =>
           {programs
           .filter((program) =>
   program.program.toLowerCase().includes(searchQuery.toLowerCase()) || program.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  (program.keywords && program.keywords.toLowerCase().includes(searchQuery.toLowerCase()))          )
+  (program.keywords && program.keywords.toLowerCase().includes(searchQuery.toLowerCase()))          ).sort((a, b) => a.program.localeCompare(b.program))
           .map((program, index) => (
             <div className="col-3">
-            <div className="border rounded-3 hover-shadow" key={index}>
+            <div className="border rounded-3 hover-shadow h-100" key={index}>
               <div className="d-flex gap-4">
                 <div className="p-3 w-100">
                   <h3 className="text-wrap text-break">{program.program}</h3>
@@ -129,16 +127,26 @@ const filteredPrograms = programs.filter((program) =>
                   <div className="btn-group d-flex flex-column gap-1">
                     <div>
                       <div className="dropdown rounded-pill w-100">
-                        <button
-                          type="button"
-                          className="btn btn-outline-dark dropdown-toggle w-100"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                          rel="nofollow"
-                          onClick={() => handleCollegeChange(index, 0)}
-                        >
-                          {selectedColleges[index]?.name || "Select College"}
-                        </button>
+                        {program.colleges.length > 0 ? (
+  <button
+    type="button"
+    className="btn btn-outline-dark dropdown-toggle w-100"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+    rel="nofollow"
+    onClick={() => handleCollegeChange(index, 0)}
+  >
+    {`${selectedColleges[index]?.name || ""} Available at ${program.colleges.length} Colleges`}
+  </button>
+) : (
+  <button
+    type="button"
+    className="btn btn-outline-dark w-100"
+    disabled
+  >
+    No Colleges Available
+  </button>
+)}
                         <ul className="dropdown-menu">
                           {program.colleges.map((college, collegeIndex) => (
                             <li key={collegeIndex}>

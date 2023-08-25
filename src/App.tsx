@@ -9,6 +9,7 @@ import TuitionAndCost from "./TuitionAndCost";
 import StudentSupportServices from "./StudentSupportServices";
 import StudentStories from "./StudentStories";
 import StoryPage from "./StoryPage";
+import CurrentStudents from "./CurrentStudents";
 
 import "./App.css";
 
@@ -38,6 +39,9 @@ function App() {
       </Route>
       <Route path="/student-support-services">
         <StudentSupportServices />
+      </Route>
+       <Route path="/current-students">
+        <CurrentStudents />
       </Route>
       <Route path="/student-stories" component={StudentStories} />
       <Route exact path="/stories/:id">

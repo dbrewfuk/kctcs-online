@@ -19,29 +19,29 @@ const cardData = {
   "Bluegrass Community & Technical College": [
     {
       title: "GoKCTCS! Student Service Center",
-      content: "Card Content 1",
+      content: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.1",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
     {
       title: "Blackboard",
-      content: "Card Content 2",
+      content: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.2",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
     {
       title: "Help Desk",
-      content: "Card Content 3",
+      content: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
   ],
   "Jefferson Community & Technical College": [
     {
       title: "Student Services Virtual Support",
-      content: "Card Content 4",
+      content: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
     {
       title: "Student Tips & Resources",
-      content: "Card Content 5",
+      content: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
     {
@@ -53,17 +53,17 @@ const cardData = {
   "Western Kentucky Community & Technical College": [
     {
       title: "Card Title 7",
-      content: "Card Content 7",
+      content: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
     {
       title: "Card Title 8",
-      content: "Card Content 8",
+      content: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.8",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
     {
       title: "Card Title 9",
-      content: "Card Content 9",
+      content: "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
       img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80"
     },
   ],
@@ -91,20 +91,19 @@ function StudentSupportServices() {
     <h1 className="display-1 mt-5 pt-5 text-info">Student Support Services</h1>
     </div>
     </div>
+
     <div className="container-fluid px-3 pb-4 bg-secondary-teal">
-    <div className="ratio ratio-16x9 bg-primary">
-    <img className="object-fit-cover rounded-3" src="./assets/as7.jpeg" alt="Placeholder Image"/>
-    </div>
+    
     </div>
    
 
 
     <div className="py-5">
       <div className="container">
-        <div className="row">
-        <div className="col">
+        <div className="row gap-5">
+        <div className="col-6">
        
-          <p className="h2 mb-3">Your success is our top priority. That’s why we offer so many resources to help you succeed. Need help choosing classes or understanding an assignment? Connect online with advisors or tutors. Want to get involved in student life? Join an online club or student organization. Whatever you need, we’re here to support you at each step of the way. Resources vary from one college to the next, so check your college’s website to see what’s available.</p>
+          <p className="h2 mb-3 fw-normal text-info">Your success is our top priority. That’s why we offer so many resources to help you succeed. Need help choosing classes or understanding an assignment? Connect online with advisors or tutors. Want to get involved in student life? Join an online club or student organization. Whatever you need, we’re here to support you at each step of the way. Resources vary from one college to the next, so check your college’s website to see what’s available.</p>
         <div className="d-flex gap-2">
                 <div>
   <button
@@ -141,6 +140,11 @@ function StudentSupportServices() {
                 </div>
               </div>
 
+        </div>
+        <div className="col">
+          <div className="ratio ratio-4x3">
+    <img className="object-fit-cover media-shadow rounded-3" src="./assets/as6.jpeg"/>
+    </div>
         </div>
        
         </div>

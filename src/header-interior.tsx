@@ -35,8 +35,9 @@ const HeaderInterior = () => {
             <nav className="d-lg-flex gap-3 fs-5 align-items-center d-none">
               <a className="text-info" href="/admissions">Admissions</a>
               <a className="text-info" href="/tuition-and-cost">Tuition &amp; Cost</a>
-              <a className="text-info" href="/programs">Programs</a>
+              <a className="text-info" href="/programs">Explore Programs</a>
               <a className="text-info" href="/student-support-services">Student Support Services</a>
+              <a className="text-info" href="/current-students">Current Students</a>
             </nav>
             <div className="d-flex gap-2">
               <div className="btn btn-shadow" onClick={handleRequestButtonClick}>Request Information</div>

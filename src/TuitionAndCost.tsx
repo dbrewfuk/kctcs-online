@@ -29,7 +29,7 @@ function TuitionAndCost() {
       <div className="container">
         <div className="row">
         <div className="col">
-          <p className="h2 mb-4">Concerned about paying for your online education? We’ve got you covered. We have the lowest tuition in Kentucky, and online students are eligible for a wide array of scholarships and financial aid.</p>
+          <p className="h1 mb-4">Concerned about paying for your online education? We’ve got you covered. We have the lowest tuition in Kentucky, and online students are eligible for a wide array of scholarships and financial aid.</p>
           
           <div className="d-inline-block"><a className="btn btn-shadow">Review Our Costs</a></div>
         </div>
@@ -67,7 +67,7 @@ function TuitionAndCost() {
       </div>
     </div>
     
-    <Testimonial/>
+
     <Search/>
     </div>
   );
