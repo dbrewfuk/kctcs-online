@@ -87,12 +87,12 @@ function Admissions() {
 
     <div>
       
-    <div className="pt-5 pb-4 bg-secondary">
+    <div className="pt-5 pb-4 bg-secondary-teal">
     <div className="container">
     <h1 className="display-1 text-info mt-5  pt-2 mb-0 mt-0 mb-0">Admissions</h1>
     </div>
     </div>
-    <div className="container-fluid bg-secondary px-3 pb-4">
+    <div className="container-fluid bg-secondary-teal px-3 pb-4">
     
     </div>
     </div>
