@@ -14,7 +14,7 @@ function CurrentStudents() {
       
     <div className="pt-5 pb-4 bg-info">
     <div className="container">
-    <h1 className="display-1 mt-5  pt-4 mt-0 text-white">Current Students</h1>
+    <h1 className="display-1 mt-5  pt-2 mb-0 mt-0 text-white">Current Students</h1>
     </div>
     </div>
     <div className="container-fluid px-3 pb-4 bg-info pb-3">
@@ -43,7 +43,8 @@ function CurrentStudents() {
    {/* Card Row */}
     <div className="pb-5">
       <div className="container">
-        <div className="row mb-3">
+        <div className="row mb-3 pt-3 border-top">
+        <h2 className="mb-4">Yorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
           <div className="col">
             <div className="p-3 border rounded-3 hover-shadow">
               <h3>Card Title</h3>

@@ -73,7 +73,7 @@ const filteredPrograms = programs.filter((program) =>
     <Header/>
      <div className="pt-5 pb-4 bg-primary">
     <div className="container">
-    <h1 className="display-1 mt-5  pt-4 mt-0 text-white">Explore Programs</h1>
+    <h1 className="display-1 mt-5  pt-2 mb-0 mt-0 text-white">Explore Programs</h1>
     </div>
     </div>
     <div className="container-fluid bg-primary px-3 pb-4">

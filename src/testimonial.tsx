@@ -23,8 +23,8 @@ const Testimonial = () => {
       <div className="py-5 bg-secondary-teal text-info">
         <div className="container">
           <div className="d-flex flex-column gap-5 align-items-center">
-            <div className="row w-100 gap-4">
-              <div className="col-8">
+            <div className="row w-100 gap-5">
+              <div className="col-7">
                 <h1 className="display-5">{currentSlide.quote}</h1>
               </div>
               <div className="col">

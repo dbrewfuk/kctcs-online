@@ -88,7 +88,7 @@ function StudentSupportServices() {
 
     <div className="pt-5 pb-4 bg-secondary-teal">
     <div className="container">
-    <h1 className="display-1 mt-5 pt-4 mt-0 text-info">Student Support Services</h1>
+    <h1 className="display-1 mt-5 pt-2 mb-0 mt-0 text-info">Student Support Services</h1>
     </div>
     </div>
 
@@ -103,8 +103,27 @@ function StudentSupportServices() {
         <div className="row gap-5">
         <div className="col-6">
        
-          <p className="h2 mb-3 fw-normal text-info">Your success is our top priority. That’s why we offer so many resources to help you succeed. Need help choosing classes or understanding an assignment? Connect online with advisors or tutors. Want to get involved in student life? Join an online club or student organization. Whatever you need, we’re here to support you at each step of the way. Resources vary from one college to the next, so check your college’s website to see what’s available.</p>
-        <div className="d-flex gap-2">
+          <p className="h1 mb-3 text-info">Your success is our top priority. That’s why we offer so many resources to help you succeed.</p>
+          <p className="h3 mb-3 fw-normal text-info">Need help choosing classes or understanding an assignment? Connect online with advisors or tutors. Want to get involved in student life? Join an online club or student organization. Whatever you need, we’re here to support you at each step of the way.</p>
+        
+        </div>
+        <div className="col">
+          <div className="ratio ratio-4x3">
+    <img className="object-fit-cover media-shadow rounded-3" src="./assets/as5.jpeg"/>
+    </div>
+        </div>
+       
+        </div>
+        
+      </div>
+    </div>
+
+
+    <div className="pb-5">
+        <div className="container">
+        <div className="row mb-4 pt-4 border-top">
+          <p className="h2 w-75 text-info mb-3">Resources vary from one college to the next, so check your college’s website to see what’s available.</p>
+          <div className="d-flex gap-2">
                 <div>
   <button
     type="button"
@@ -141,29 +160,21 @@ function StudentSupportServices() {
               </div>
 
         </div>
-        <div className="col">
-          <div className="ratio ratio-4x3">
-    <img className="object-fit-cover media-shadow rounded-3" src="./assets/as6.jpeg"/>
-    </div>
-        </div>
-       
-        </div>
-      </div>
-    </div>
-
-
-    <div className="pb-5">
-        <div className="container">
           <div className="row">
             {collegeCards.slice(0, 3).map((card: any) => (
               <div className="col" key={card.title}>
-                <div className="p-3 border rounded-3 hover-shadow">
-                  
+                <div className="p-3 text-info border rounded-3 hover-shadow h-100">
+                  <div className="d-flex flex-column h-100 justify-content-between">
+                  <div>
                   <h3>
                     {card.title}
                   </h3>
                   <p className="mb-3">{card.content}</p>
+                  </div>
+                  <div>
                   <div className="btn btn-shadow">Learn More</div>
+                  </div>
+                  </div>
                 </div>
               </div>
             ))}

@@ -89,20 +89,18 @@ function Admissions() {
       
     <div className="pt-5 pb-4 bg-secondary">
     <div className="container">
-    <h1 className="display-1 text-info mt-5  pt-4 mt-0 mb-0">Admissions</h1>
+    <h1 className="display-1 text-info mt-5  pt-2 mb-0 mt-0 mb-0">Admissions</h1>
     </div>
     </div>
     <div className="container-fluid bg-secondary px-3 pb-4">
-    <div className="ratio ratio-21x9 bg-primary">
-    <img className="object-fit-cover media-shadow rounded-3" src="./assets/header.jpeg" alt="Placeholder Image"/>
-    </div>
+    
     </div>
     </div>
       <div className="py-5">
         <div className="container">
           <div className="d-flex flex-column flex-md-row gap-4">
-            <div className="w-100">
-              <p className="h2 mb-4">
+            <div className="col">
+              <p className="h2 fw-normal mb-4">
                 Applying to KCTCS Online is easy, and we’re here for you at
                 every step of the way. So let’s get this journey started! Each
                 college has its own online programs, so the first step is to
@@ -110,6 +108,26 @@ function Admissions() {
                 you’ll apply directly to that college in four simple steps.
               </p>
               <div className="d-flex gap-2">
+<div>
+                <div class="btn btn-shadow">Apply Today</div>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+          <div className="ratio ratio-4x3">
+    <img className="object-fit-cover media-shadow rounded-3" src="./assets/admissions.jpeg"/>
+    </div>
+        </div>
+           
+          </div>
+        </div>
+      </div>
+      
+    <div className="pb-5">
+        <div className="container">
+        <div className="row mb-4 pt-4 border-top">
+          <p className="h2 w-75 text-info mb-3">Yorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div className="d-flex gap-2">
                 <div>
   <button
     type="button"
@@ -144,24 +162,23 @@ function Admissions() {
                 </button>
                 </div>
               </div>
-            </div>
-           
-          </div>
+
         </div>
-      </div>
-      
-    <div className="pb-5">
-        <div className="container">
           <div className="row">
             {collegeCards.slice(0, 3).map((card: any) => (
               <div className="col" key={card.title}>
-                <div className="p-3 border rounded-3 hover-shadow">
-                 
+                <div className="p-3 text-info border rounded-3 hover-shadow h-100">
+                  <div className="d-flex flex-column h-100 justify-content-between">
+                  <div>
                   <h3>
-                   {card.title}
+                    {card.title}
                   </h3>
                   <p className="mb-3">{card.content}</p>
+                  </div>
+                  <div>
                   <div className="btn btn-shadow">Learn More</div>
+                  </div>
+                  </div>
                 </div>
               </div>
             ))}

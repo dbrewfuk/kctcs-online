@@ -23,11 +23,13 @@ function StudentStories() {
 
       <div className="py-5">
         <div className="container">
+        <div className="w-75">
         <h1 className="display-1 pt-5">Success Stories</h1>
-          <p className="h1">
+          <p className="h1 fw-normal">
             Hear from students and alumni about the transformative impact of a
             credential from KCTCS Online.
           </p>
+        </div>
         </div>
       </div>
 
@@ -38,15 +40,13 @@ function StudentStories() {
       <div className="py-4">
         <div className="container">
           <div className="row">
-            <div className="col-8">
+            <div className="col-6">
               <h1>A Student Success Story</h1>
             </div>
-            <div className="col-4">
-               <p className="h5 lh-base">
-                    {featured.name}, <span className="d-inline-block mx-1">
+            <div className="col-6">
+               <p className="h4 lh-base">
+                    {featured.name},<span className="d-inline-block mx-1"></span>
                     
-                    </span>
-                    <br/>
                     <span className="d-inline-block me-1">
                     <a
                       className="d-inline btn btn-outline-dark"
@@ -62,9 +62,9 @@ function StudentStories() {
         </div>
       </div>
 
-      <div className="section py-5">
+      <div className="section pb-5">
         <div className="container">
-          <div className="d-flex gap-3">
+          <div className="d-flex gap-3 pt-4 border-top">
             {stories.filter((story) => !story.featured).map((story, index) => (
 
               <div className="col p-3 rounded-3 border hover-shadow d-flex flex-column" key={index}>
