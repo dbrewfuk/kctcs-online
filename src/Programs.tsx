@@ -132,13 +132,15 @@ const filteredPrograms = programs.filter((program) =>
                 <div>
                   <h3 className="text-wrap text-break">{program.program}</h3>
                   <p>{program.description}</p>
+                  </div>
+                  <div>
                   <div className="d-flex flex-column gap-1">
                     <div>
                       <div className="dropdown rounded-pill w-100">
                         {program.colleges.length > 0 ? (
  <button
   type="button"
-  className={`btn btn-outline-dark dropdown-toggle w-100 mb-3 ${selectedColleges[index] ? 'btn-dark text-white' : ''}`}
+  className={`btn btn-outline-dark dropdown-toggle w-100 ${selectedColleges[index] ? 'btn-dark text-white' : ''}`}
   data-bs-toggle="dropdown"
   aria-expanded="false"
   rel="nofollow"
@@ -184,8 +186,9 @@ const filteredPrograms = programs.filter((program) =>
                       </div>
                     </div>
                     </div>
+
                     </div>
-                    <div>
+               
                  
                       {
   selectedColleges[index]?.url ? (
@@ -209,7 +212,7 @@ const filteredPrograms = programs.filter((program) =>
 }
 
 
-                    </div>
+                   
                     </div>
              
                 </div>
