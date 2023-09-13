@@ -13,7 +13,7 @@ const Search = () => {
   };
 return (
 
-<div className="py-5 border">
+<div className="py-5 border bg-secondary">
     <div className="container">
     <div className="row align-items-end">
     <div className="col"><h1 className="display-1 text-info">Start Your Future Now.</h1></div>

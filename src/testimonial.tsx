@@ -24,13 +24,13 @@ const Testimonial = () => {
         <div className="container">
           <div className="d-flex flex-column gap-5 align-items-center">
             <div className="row w-100 gap-5">
-              <div className="col-7">
-                <h1 className="display-5">{currentSlide.quote}</h1>
+              <div className="col-8">
+                <h1 className="display-6">{currentSlide.quote}</h1>
               </div>
               <div className="col">
                 <div className="d-flex flex-column gap-5">
                 <div>
-                  <div className="d-flex gap-3">
+                  <div className="d-flex gap-2">
                     <div onClick={handlePreviousSlide}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -71,15 +71,7 @@ const Testimonial = () => {
                     style={{ width: "96px", height: "96px", objectFit: "cover" }}
                   />
                   <p className="fs-5 lh-base">
-                    {currentSlide.name}, <span className="d-inline-block m-1">
-                    <a
-                      className="d-inline btn btn-outline-dark"
-                      href={`/programs?search=${currentSlide.career}`}
-                    >
-                      {currentSlide.career}
-                    </a> 
-                    </span>
-                    <br />
+                    {currentSlide.name}, 
                     <span className="d-inline-block me-1 mb-1">
                     <a
                       className="d-inline btn btn-outline-dark"

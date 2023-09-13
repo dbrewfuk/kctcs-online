@@ -126,7 +126,7 @@ function Admissions() {
     <div className="pb-5">
         <div className="container">
         <div className="row mb-4 pt-4 border-top">
-          <p className="h2 w-75 text-info mb-3">Yorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p className="h1 w-75 text-info mb-3">Select from one of our 16 colleges to check out available resources.</p>
           <div className="d-flex gap-2">
                 <div>
   <button

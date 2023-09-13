@@ -31,6 +31,13 @@ function Programs() {
   };
 
   setSelectedColleges(updatedSelectedColleges);
+
+  const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+  dropdownMenus.forEach((menu) => {
+    menu.classList.remove('show');
+  });
+
+
 };
 
   const handleProgramCardClick = (programIndex: any) => {
@@ -120,28 +127,33 @@ const filteredPrograms = programs.filter((program) =>
           .map((program, index) => (
             <div className="col-3">
             <div className="border rounded-3 hover-shadow h-100" key={index}>
-              <div className="d-flex gap-4">
-                <div className="p-3 w-100">
+              <div className="p-3 h-100">
+                <div className="d-flex flex-column justify-content-between gap-1 h-100 w-100">
+                <div>
                   <h3 className="text-wrap text-break">{program.program}</h3>
                   <p>{program.description}</p>
-                  <div className="btn-group d-flex flex-column gap-1">
+                  <div className="d-flex flex-column gap-1">
                     <div>
                       <div className="dropdown rounded-pill w-100">
                         {program.colleges.length > 0 ? (
-  <button
-    type="button"
-    className="btn btn-outline-dark dropdown-toggle w-100"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
-    rel="nofollow"
-    onClick={() => handleCollegeChange(index, 0)}
-  >
-    {`${selectedColleges[index]?.name || ""} Available at ${program.colleges.length} Colleges`}
-  </button>
+ <button
+  type="button"
+  className={`btn btn-outline-dark dropdown-toggle w-100 mb-3 ${selectedColleges[index] ? 'btn-dark text-white' : ''}`}
+  data-bs-toggle="dropdown"
+  aria-expanded="false"
+  rel="nofollow"
+
+>
+  {selectedColleges[index]?.name || ""} 
+  Available at <span className="fw-bold">{program.colleges.length}</span> Colleges
+  
+</button>
+
+
 ) : (
   <button
     type="button"
-    className="btn btn-outline-dark w-100"
+    className="btn btn-outline-dark w-100 mb-2"
     disabled
   >
     No Colleges Available
@@ -171,19 +183,37 @@ const filteredPrograms = programs.filter((program) =>
                         </ul>
                       </div>
                     </div>
+                    </div>
+                    </div>
                     <div>
-                      <a
-  type="button"
-  className={`btn btn-primary rounded-pill w-100 ${!selectedColleges[index]?.url ? 'disabled' : ''}`}
-  href={selectedColleges[index]?.url || ''}
->
-  Visit Website
-</a>
+                 
+                      {
+  selectedColleges[index]?.url ? (
+    <div class="d-flex flex-column gap-1">
+    <a
+      type="button"
+      className="btn btn-primary rounded-pill w-100"
+      href=""
+    >
+     Request Information
+    </a>
+     <a
+      type="button"
+      className="btn btn-outline-dark btn-text rounded-pill w-100"
+      href={selectedColleges[index]?.url}
+    >
+     Visit College Website
+    </a>
+    </div>
+  ) : null
+}
+
 
                     </div>
-                  </div>
+                    </div>
+             
                 </div>
-              </div>
+         
             </div>
             </div>
           ))}

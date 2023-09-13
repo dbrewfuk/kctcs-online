@@ -25,7 +25,7 @@ function Home() {
 
 
     <div className="">
-     <div className="ratio ratio-21x9 bg-primary vh-100">
+     <div className="ratio ratio-21x9 bg-primary vh-85">
     <video src="https://www.dropbox.com/s/sd90kljtxqp68dg/background-video.mp4?raw=1" className="object-fit-cover" autoPlay></video>
     <div className="py-5 d-flex align-items-end">
    
@@ -68,11 +68,11 @@ function Home() {
         <div className="container">
           <div className="row">
            
-            <div className="col-6">
+            <div className="col-8">
             <h1 className="text-info">A Student Success Story</h1>
                
             </div>
-            <div className="col-6"><p className="h4 lh-base text-info">
+            <div className="col-4"><p className="h4 lh-base text-info">
                     {featured.name}, <span className="d-inline-block mr-1">
                     
                     </span>
@@ -107,9 +107,15 @@ function Home() {
                       <h3>Story Headline</h3>
                       <p>
                         {story.name}
+                        {story?.major && (
+                          <>
                         <br />
+
                         {story.major}
+                        </>
+                        )}
                       </p>
+
                       <div className="d-inline-block"><a
                         className="btn btn-shadow"
                         href={`/stories/${story.id}`}
@@ -128,6 +134,7 @@ function Home() {
 
     <div className="py-5">
     <div className="container">
+    <h1 className="display-2 mb-3 text-info mb-5 pb-4">Explore KCTCS Online</h1>
     <div className="d-flex flex-column flex-md-row gap-5">
     <div className="w-100 w-md-25">
     <div className="ratio ratio-4x3">
@@ -239,12 +246,11 @@ function Home() {
 
      <div className="py-5">
     <div className="container">
-    <div className="d-flex flex-column flex-md-row gap-4 py-4 border-top">
+    <div className="d-flex flex-column flex-md-row gap-4 pb-4">
     <div className="col">
     <h1 className="display-3 mb-0 text-info">What does an online course look like?</h1>
     </div>
     <div className="col">
-    <p className="h3 mb-4 pb-2  text-info fw-normal mb-4">Torem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.</p>
 
     
 
@@ -254,7 +260,11 @@ function Home() {
     </div>
     <div className="container">
     <div className="ratio ratio-16x9 media-shadow">
-        <VideoBlock />
+        <div className="video-block">
+
+        <iframe style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} src="https://player.vimeo.com/video/862384232?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="West Ky Online Learning"></iframe>
+     
+    </div>
 
       </div>
       

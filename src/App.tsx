@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import reactLogo from "./assets/react.svg";
 import Header from "./header";
-import Home from "./Home";
+import Home from "./Home-alt";
 import Programs from "./Programs";
 import Admissions from "./Admissions";
 import TuitionAndCost from "./TuitionAndCost";

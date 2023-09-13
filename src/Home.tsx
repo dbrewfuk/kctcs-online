@@ -25,7 +25,7 @@ function Home() {
 
 
     <div className="">
-     <div className="ratio ratio-21x9 bg-primary vh-100">
+     <div className="ratio ratio-21x9 bg-primary vh-85">
     <video src="https://www.dropbox.com/s/sd90kljtxqp68dg/background-video.mp4?raw=1" className="object-fit-cover" autoPlay></video>
     <div className="py-5 d-flex align-items-end">
    
