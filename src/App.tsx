@@ -4,7 +4,6 @@ import Footer from "./components/Footer";
 import Home from "./Home-alt";
 import Programs from "./Programs";
 import Admissions from "./Admissions";
-import Rfi from "./components/Rfi";
 import TuitionAndCost from "./TuitionAndCost";
 import StudentSupportServices from "./StudentSupportServices";
 import CurrentStudents from "./CurrentStudents";
@@ -40,7 +39,6 @@ function App() {
       </Router>
 
       <Footer />
-      <Rfi />
     </div>
   );
 }
