@@ -1,3 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-blue-900 {
+  background: #005cb8 !important;
+}
+
+.hover\:bg-white:hover {
+  background: white !important;
+}
+
+.text-blue-900 {
+  color: #005cb8 !important;
+}
+
+.hover\:text-blue-900:hover {
+  color: #005cb8 !important;
+}
+
+.bg-amber-500 {
+  background: #ffd000 !important;
+}
+
+.hover\:border-amber-500:hover {
+  border-color: #ffd000 !important;
+}
+
+.text-amber-500 {
+  color: #ffd000 !important;
+}
+
+.text-xl {
+  font-size: 1.125rem !important;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+}
+
+.transform.-translate-x-100 {
+  transform: translateX(-100%);
+}
+
+.transform.-translate-x-200 {
+  transform: translateX(-200%);
+}
+
+.transform.-translate-x-300 {
+  transform: translateX(-300%);
+}
+
+.dropdown-button::after {
+  content: "";
+  display: inline-block;
+  width: 16px; /* Adjust the width and height to match the size of your SVG */
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 10.293L12 15.293L17 10.293L16.293 9.586L12 13.879L7.707 9.586L7 10.293Z' fill='black'/%3E%3C/svg%3E"); /* Replace the placeholder URL with the SVG code URL encoded */
+  background-repeat: no-repeat;
+  background-position: right center;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
 #root {
   width: 100%;
 }

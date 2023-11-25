@@ -1,232 +1,228 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import programs from "./programs.json";
-import Testimonial from "./testimonial";
-import Header from "./header";
+import Testimonial from "./components/Testimonial";
+import Header from "./components/Header";
+import HeroRfi from "./components/HeroRfi";
 
 type College = Partial<{
   name: string;
   url: string;
   tracks: string;
-}>; 
+}>;
 
 function Programs() {
-   const location = useLocation();
+  const location = useLocation();
   const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
-  const initialSearchQuery = searchParams.get("search") || "";
-  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
+  const searchParam = searchParams.get("search") || "";
+  const programParam = searchParams.get("program") || "";
+  const interestParam = searchParams.get("interest") || "";
+
+  const [searchQuery, setSearchQuery] = useState(searchParam);
+  const [selectedProgram, setSelectedProgram] = useState(programParam);
+  const [selectedInterest, setSelectedInterest] = useState(interestParam);
+
+  useEffect(() => {
+    setSearchQuery(searchParam);
+    setSelectedProgram(programParam);
+    setSelectedInterest(interestParam);
+  }, [searchParam, programParam, interestParam]);
+
+  useEffect(() => {
+    if (programParam) {
+      setSearchQuery(programParam);
+    }
+  }, [programParam]);
+
+  useEffect(() => {
+    if (interestParam) {
+      setSearchQuery(interestParam);
+    }
+  }, [interestParam]);
+
   const [selectedColleges, setSelectedColleges] = useState<
-  { name: string; url: string }[]
->([]);
+    { name: string; url: string }[]
+  >(new Array(programs.length).fill({ name: "", url: "" }));
 
-  const handleCollegeChange = (programIndex: any, collegeIndex: any) => {
-  const updatedSelectedColleges = [...selectedColleges];
-  const selectedProgram = programs[programIndex];
-  const selectedCollege = selectedProgram.colleges[collegeIndex];
+  const handleCollegeChange = (index, collegeName, collegeUrl) => {
+    const updatedSelectedColleges = [...selectedColleges];
+    updatedSelectedColleges[index] = {
+      name: collegeName,
+      url: collegeUrl, // Assign the value of collegeUrl to the url property
+    };
+    console.log(collegeName);
+    console.log(collegeUrl); // Log the URL value to the console
+    setSelectedColleges(updatedSelectedColleges);
 
-  updatedSelectedColleges[programIndex] = {
-    name: selectedCollege?.name || "",
-    url: selectedCollege?.url || "",
+    setIsDropdownOpen((prevState) => {
+      const newState = [...prevState];
+      newState[index] = false;
+      return newState;
+    });
   };
 
-  setSelectedColleges(updatedSelectedColleges);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(
+    Array(programs.length).fill(false),
+  );
 
-  const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-  dropdownMenus.forEach((menu) => {
-    menu.classList.remove('show');
-  });
-
-
-};
-
-  const handleProgramCardClick = (programIndex: any) => {
-    const updatedPrograms = programs.map((program, index) => ({
-      ...program,
-      selected: index === programIndex,
-    }));
-
-    const selectedProgram = updatedPrograms.find(
-      (program) => program.selected === true
-    );
-    const selectedCollege = selectedProgram?.colleges.find(
-      (college) => college.selected === true
-    );
-
-    const updatedSelectedColleges = [...selectedColleges];
-    updatedSelectedColleges[programIndex] = {
-      name: selectedCollege?.name || "",
-      url: selectedCollege?.url || "",
-    };
-
-    setSelectedColleges(updatedSelectedColleges);
+  const toggleDropdown = (index) => {
+    setIsDropdownOpen((prevState) => {
+      const newState = [...prevState];
+      newState[index] = !newState[index];
+      return newState;
+    });
   };
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    history.push(`/programs?search=${searchQuery}`);
+    const programPageURL = `/programs?search=${searchQuery}`;
+    history.push(programPageURL);
   };
 
-const filteredPrograms = programs.filter((program) =>
-  program.program.toLowerCase().includes(searchQuery.toLowerCase()) || program.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  (program.keywords && program.keywords.toLowerCase().includes(searchQuery.toLowerCase()))
-);
-
+  const filteredPrograms = programs.filter(
+    (program) =>
+      program.program.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      program.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      program.sector.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (program.keywords &&
+        program.keywords.toLowerCase().includes(searchQuery.toLowerCase())),
+  );
 
   return (
-    <div className="text-secondary-navy">
+    <>
+      <Header />
+      <HeroRfi title="Explore Programs" highlighted="" />
+      <div className="text-secondary-navy">
+        <div className="bg-blue-900">
+          <div className="container mx-auto px-8 py-16">
+            <p className="text-3xl lg:text-4xl leading-tight font-semibold text-white text-info mb-10 lg:w-3/4">
+              From{" "}
+              <a className="border-b-2" href={`/programs?search=agriculture`}>
+                agriculture
+              </a>{" "}
+              to{" "}
+              <a className="border-b-2" href={`/programs?search=health`}>
+                health science technology
+              </a>{" "}
+              to{" "}
+              <a className="border-b-2" href={`/programs?search=paralegal`}>
+                paralegal
+              </a>
+              , we offer more than 90 programs entirely online. Explore the
+              options and start your journey to a better job and a better life!
+            </p>
+            <h4 className="text-xl font-semibold text-white">
+              Search by career, interest, or program.
+            </h4>
+            <form onSubmit={handleSubmit} className="mt-3">
+              <div className="flex items-center gap-4">
+                <input
+                  type="text"
+                  placeholder="Search programs"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="p-2 border border-gray-300 rounded-lg w-full"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
 
-
-    <Header/>
-     <div className="pt-5 pb-4 bg-primary">
-    <div className="container">
-    <h1 className="display-1 mt-5  pt-2 mb-0 mt-0 text-white">Explore Programs</h1>
-    </div>
-    </div>
-    <div className="container-fluid bg-primary px-3 pb-4">
-   
-    </div>
-   
-
-      <div id="results" className="py-5">
-      <div className="container">
-      <p className="h1 mb-5 text-info">From <a
-                      className="d-inline btn btn-outline-dark"
-                      href={`/programs?search=agriculture`}
-                    >agriculture</a> to <a
-                      className="d-inline btn btn-outline-dark"
-                      href={`/programs?search=health`}
-                    >health science technology</a> to <a
-                      className="d-inline btn btn-outline-dark"
-                      href={`/programs?search=paralegal`}
-                    >paralegal</a> , we offer more than 90 programs entirely online. Explore the options and start your journey to a better job and a better life!</p>
-                    <form onSubmit={handleSubmit} className="mb-3">
-       <div className="input-group input-group-lg">
-            <input
-              type="text"
-              placeholder="Search programs"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="form-control"
-            />
-            <button type="submit" className="btn btn-outline-info">
-              Search
-            </button>
-            </div>
-          </form>
-      </div>
-      </div>
-       
-          <div className="pb-5">
-        <div className="container">
-        <div className="row row-gap-4">
-          {programs
-          .filter((program) =>
-  program.program.toLowerCase().includes(searchQuery.toLowerCase()) || program.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-  (program.keywords && program.keywords.toLowerCase().includes(searchQuery.toLowerCase()))          ).sort((a, b) => a.program.localeCompare(b.program))
-          .map((program, index) => (
-            <div className="col-3">
-            <div className="border rounded-3 hover-shadow h-100" key={index}>
-              <div className="p-3 h-100">
-                <div className="d-flex flex-column justify-content-between gap-1 h-100 w-100">
-                <div>
-                  <h3 className="text-wrap text-break">{program.program}</h3>
-                  <p>{program.description}</p>
+        <div className="container mx-auto px-8 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredPrograms
+              .sort((a, b) => a.program.localeCompare(b.program))
+              .map((program, index) => (
+                <div
+                  className="border flex flex-col border-gray-300 rounded-none hover:shadow-md"
+                  key={index}
+                >
+                  <div className="aspect-w-1 aspect-h-1">
+                    <img
+                      className="w-full h-full object-cover"
+                      src="https://via.placeholder.com/400x400"
+                      alt="Placeholder"
+                    />
                   </div>
-                  <div>
-                  <div className="d-flex flex-column gap-1">
-                    <div>
-                      <div className="dropdown rounded-pill w-100">
-                        {program.colleges.length > 0 ? (
- <button
-  type="button"
-  className={`btn btn-outline-dark dropdown-toggle w-100 ${selectedColleges[index] ? 'btn-dark text-white' : ''}`}
-  data-bs-toggle="dropdown"
-  aria-expanded="false"
-  rel="nofollow"
-
->
-  {selectedColleges[index]?.name || ""} 
-  Available at <span className="fw-bold">{program.colleges.length}</span> Colleges
-  
-</button>
-
-
-) : (
-  <button
-    type="button"
-    className="btn btn-outline-dark w-100 mb-2"
-    disabled
-  >
-    No Colleges Available
-  </button>
-)}
-                        <ul className="dropdown-menu">
-                          {program.colleges.map((college, collegeIndex) => (
-                            <li key={collegeIndex}>
-                              <a
-                                className="dropdown-item"
-                                href="#"
-                                rel="nofollow"
-                                
-                                onClick={(e) => {
-
-
-                                e.preventDefault();
-                                  handleCollegeChange(index, collegeIndex);
-
-                                  }
-                                }
-                              >
-                                {college.name}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
+                  <div className="flex flex-col h-full justify-between">
+                    <div className="p-5">
+                      <h3 className="text-3xl text-blue-900 font-semibold mb-5">
+                        {program.program}
+                      </h3>
+                      <p className="text-blue-900 mb-6">
+                        {program.description}
+                      </p>
+                      {program.colleges.length > 0 ? (
+                        <div>
+                          <div
+                            className="px-6 rounded-full py-2 whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer font-semibold border text-blue-900 text-center w-full"
+                            onClick={() => {
+                              toggleDropdown(index);
+                            }}
+                          >
+                            {selectedColleges[index]?.name
+                              ? selectedColleges[index]?.name
+                              : `Available at ${program.colleges.length} Colleges`}
+                          </div>
+                          <div
+                            id={`college-select-${index}`}
+                            className="form-select w-full"
+                          ></div>
+                          {isDropdownOpen[index] && (
+                            <div className="p-4 absolute bg-white border shadow flex flex-col gap-2">
+                              {program.colleges.map((college, collegeIndex) => (
+                                <div
+                                  className="font-semibold text-blue-900 cursor-pointer"
+                                  key={collegeIndex}
+                                  onClick={() => {
+                                    handleCollegeChange(
+                                      index,
+                                      college.name,
+                                      college.url,
+                                    );
+                                  }}
+                                >
+                                  {college.name}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          className="btn btn-outline-dark w-100 mb-2"
+                          disabled
+                        >
+                          No Colleges Available
+                        </button>
+                      )}
+                    </div>
+                    {selectedColleges[index]?.name && (
+                      <div className="flex flex-col lg:flex-row border-t p-6">
+                        <button
+                          className="bg-blue-900 py-3 px-6 text-white font-semibold rounded-full w-full"
+                          href=""
+                        >
+                          Request Information
+                        </button>
+                        <a
+                          className="text-blue-900 py-4 px-5 font-semibold text-center rounded-full w-full"
+                          href={selectedColleges[index]?.url || "#"}
+                        >
+                          Visit College Website
+                        </a>
                       </div>
-                    </div>
-                    </div>
-
-                    </div>
-               
-                 
-                      {
-  selectedColleges[index]?.url ? (
-    <div class="d-flex flex-column gap-1">
-    <a
-      type="button"
-      className="btn btn-primary rounded-pill w-100"
-      href=""
-    >
-     Request Information
-    </a>
-     <a
-      type="button"
-      className="btn btn-outline-dark btn-text rounded-pill w-100"
-      href={selectedColleges[index]?.url}
-    >
-     Visit College Website
-    </a>
-    </div>
-  ) : null
-}
-
-
-                   
-                    </div>
-             
+                    )}
+                  </div>
                 </div>
-         
-            </div>
-            </div>
-          ))}
+              ))}
+          </div>
         </div>
       </div>
-      </div>
-      <Testimonial />
-    </div>
+    </>
   );
 }
 
 export default Programs;
-

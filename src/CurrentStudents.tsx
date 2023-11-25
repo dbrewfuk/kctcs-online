@@ -1,107 +1,164 @@
-import React from "react";
-import Testimonial from "./testimonial";
-import Search from "./search";
-import Header from "./header";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import Testimonial from "./components/Testimonial";
+import HeroSearch from "./components/HeroSearch";
+import Search from "./components/Search";
+import HeroRfi from "./components/HeroRfi";
+import Header from "./components/Header";
+import DynamicSections from "./DynamicSections";
+import VideoBlockSlider from "./components/VideoBlockSlider";
+import InterestGrid from "./components/InterestGrid";
+import VideoSlider from "./components/VideoSlider";
 
 function CurrentStudents() {
+  const videoUrls = [
+    "https://player.vimeo.com/video/665275644?background=1&autoplay=1&loop=1&byline=0&title=0",
+    "https://player.vimeo.com/video/678281924?background=1&autoplay=1&loop=1&byline=0&title=0",
+  ];
+  const captions = [
+    "Bluegrass Community & Technical College",
+    "West Kentucky Community & Technical College",
+  ];
+  const delay = 20000;
+
+  const history = useHistory();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSubmit = (e: Event) => {
+    e.preventDefault();
+    history.push(`/programs?search=${searchQuery}`);
+    window.location.href = `/programs?search=${searchQuery}`;
+  };
 
   return (
-    <div className="text-secondary-navy">
-    <Header/>
-
-   {/* Hero */}
-    <div>
-      
-    <div className="pt-5 pb-4 bg-info">
-    <div className="container">
-    <h1 className="display-1 mt-5  pt-2 mb-0 mt-0 text-white">Current Students</h1>
-    </div>
-    </div>
-    <div className="container-fluid px-3 pb-4 bg-info pb-3">
-    
-    </div>
-    </div>
-
-{/* Intro */}
-    <div className="py-5">
-      <div className="container">
-        <div className="row">
-        <div className="col">
-          <p className="h2 mb-4">Yorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus. Sed dignissim,
-                metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-                interdum tellus elit sed risus. Maecenas eget condimentum velit,
-                sit amet feugiat lectus.</p>
-          
-          <div className="d-inline-block"><a className="btn btn-shadow">Learn More</a></div>
+    <>
+      <Header />
+      <div className="relative">
+        <HeroSearch title="Current Students" highlighted="" />
+      </div>
+      <div className="py-[64px] lg:py-[96px] bg-blue-900 relative">
+        <div className="container mx-auto px-8">
+          <div className="flex flex-col lg:flex-row items-end gap-6">
+            <div className="w-full lg:w-1/2">
+              <h1 className="text-4xl lg:text-6xl font-black text-white mb-5">
+                Information for Current Students
+              </h1>
+              <p className="text-xl lg:text-2xl text-white">
+                Applying to KCTCS Online is easy, and we’ll be with you at every
+                step of the way. So let’s get this journey started!
+              </p>
+            </div>
+          </div>
         </div>
-        
+        <div className="absolute bottom-0 z-50 translate-y-full -translate-x-1/2 left-1/2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="142"
+            height="56"
+            viewBox="0 0 142 71"
+            fill="#005CB8"
+            className="fill-blue-900"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M0.578613 0L71 70.4214L141.421 0H0.578613Z"
+              fill="#005CB8"
+            />
+          </svg>
         </div>
       </div>
-    </div>
 
-   {/* Card Row */}
-    <div className="pb-5">
-      <div className="container">
-        <div className="row mb-3 pt-3 border-top">
-        <h2 className="mb-4">Yorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-          <div className="col">
-            <div className="p-3 border rounded-3 hover-shadow">
-              <h3>Card Title</h3>
-              <p>Yorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus.</p>
-              <div className="d-inline-block"><a className="btn btn-shadow">Learn More</a></div>
+      <div className="">
+        <div className="flex flex-col lg:flex-row">
+          <div className="w-full lg:w-1/2">
+            <div className="aspect-[4/3]">
+              <img
+                className="w-full h-full object-cover"
+                src="./assets/as3.jpeg"
+                alt="Placeholder"
+              />
             </div>
           </div>
-          <div className="col">
-            <div className="p-3 border rounded-3 hover-shadow">
-              <h3>Card Title</h3>
-              <p>Yorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus.</p>
-              <div className="d-inline-block"><a className="btn btn-shadow">Learn More</a></div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3 border rounded-3 hover-shadow">
-              <h3>Card Title</h3>
-              <p>Yorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus.</p>
-              <div className="d-inline-block"><a className="btn btn-shadow">Learn More</a></div>
-            </div>
-          </div>
-        </div>
-         <div className="row">
-          <div className="col">
-            <div className="p-3 border rounded-3 hover-shadow">
-              <h3>Card Title</h3>
-              <p>Yorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus.</p>
-              <div className="d-inline-block"><a className="btn btn-shadow">Learn More</a></div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3 border rounded-3 hover-shadow">
-              <h3>Card Title</h3>
-              <p>Yorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus.</p>
-              <div className="d-inline-block"><a className="btn btn-shadow">Learn More</a></div>
-            </div>
-          </div>
-          <div className="col">
-            <div className="p-3 border rounded-3 hover-shadow">
-              <h3>Card Title</h3>
-              <p>Yorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                eu turpis molestie, dictum est a, mattis tellus.</p>
-              <div className="d-inline-block"><a className="btn btn-shadow">Learn More</a></div>
+          <div className="w-full lg:w-1/2">
+            <div className="p-8 lg:p-[96px] flex flex-col h-full justify-center align-items-center">
+              <h1 className="text-4xl lg:text-5xl font-semibold text-blue-900 mb-3">
+                Admissions
+              </h1>
+              <p className="text-l lg:text-xl text-blue-900 mb-8">
+                Applying to KCTCS Online is easy, and we’ll be with you at every
+                step of the way. So let’s get this journey started!
+              </p>
+              <div className="text-center lg:text-left">
+                <div className="rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-blue-900 text-white py-3 font-semibold px-6 hover:bg-white hover:text-blue-900 hover:border-blue-900">
+                  Learn More
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    
+      <div className="">
+        <div className="flex flex-col lg:flex-row">
+          <div className="w-full lg:w-1/2 lg:order-2">
+            <div className="aspect-[4/3]">
+              <img
+                className="w-full h-full object-cover"
+                src="./assets/as2.jpeg"
+                alt="Placeholder"
+              />
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2">
+            <div className="p-8 lg:p-[96px] flex flex-col h-full justify-center align-items-center">
+              <h1 className="text-4xl lg:text-5xl font-semibold text-blue-900 mb-4">
+                Tuition &amp; Cost
+              </h1>
+              <p className="text-l lg:text-xl text-blue-900 mb-8">
+                Applying to KCTCS Online is easy, and we’ll be with you at every
+                step of the way. So let’s get this journey started!
+              </p>
+              <div className="text-center lg:text-left">
+                <div className="rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-blue-900 text-white py-3 font-semibold px-6 hover:bg-white hover:text-blue-900 hover:border-blue-900">
+                  Learn More
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="">
+        <div className="flex flex-col lg:flex-row">
+          <div className="w-full lg:w-1/2">
+            <div className="aspect-[4/3]">
+              <img
+                className="w-full h-full object-cover"
+                src="./assets/as1.jpeg"
+                alt="Placeholder"
+              />
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2">
+            <div className="p-8 lg:p-[96px] flex flex-col h-full justify-center align-items-center">
+              <h1 className="text-4xl lg:text-5xl font-semibold text-blue-900 mb-4">
+                Student Support Services
+              </h1>
+              <p className="text-l lg:text-xl text-blue-900 mb-8">
+                Applying to KCTCS Online is easy, and we’ll be with you at every
+                step of the way. So let’s get this journey started!
+              </p>
+              <div className="text-center lg:text-left">
+                <div className="rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-blue-900 text-white py-3 font-semibold px-6 hover:bg-white hover:text-blue-900 hover:border-blue-900">
+                  Learn More
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <Search/>
-    </div>
+      <InterestGrid />
+    </>
   );
 }
 
