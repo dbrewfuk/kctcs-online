@@ -35,7 +35,7 @@ const FeaturedAreas = ({ handleProgramAreaClick }) => {
 
   return (
     <div className="">
-      <div className="flex flex-row flex-wrap">
+      <div className="flex flex-row flex-wrap mb-[24px]">
         {cardData.map((card) => (
           <div
             className={`w-1/2 lg:w-1/4 relative group transition ease-in-out cursor-pointer ${
@@ -48,13 +48,13 @@ const FeaturedAreas = ({ handleProgramAreaClick }) => {
             }}
           >
             <div
-              className={`absolute z-30 flex flex-col w-full h-full justify-end p-[32px] hover:p-[22px] hover:border-[12px] hover:border-[#fbbf24] ${selectedArea === card.title ? "border-[12px] border-[#fbbf24]" : ""}`}
+              className={`absolute z-30 flex flex-col w-full h-full justify-center p-[32px] hover:p-[22px] hover:border-[12px] hover:border-[#fbbf24] ${selectedArea === card.title ? "border-[12px] border-[#fbbf24]" : ""}`}
             >
-              <h1 className="text-3xl text-white font-semibold">
+              <h1 className="text-3xl text-[#00467F] font-semibold">
                 {card.title}
               </h1>
             </div>
-            <div className="absolute bg-blue-900 top-0 mix-blend-multiply w-full z-20 h-full opacity-50"></div>
+            <div className="absolute bg-[#f3f3f3] top-0  w-full z-20 h-full border border-[white]"></div>
             <div className="relative top-0 h-full w-full overflow-hidden z-10">
               <div
                 className={`aspect-[4/3] ease-in-out transition group-hover:scale-110 overflow-hidden ${selectedArea === card.title ? "scale-110" : "scale-100"} `}

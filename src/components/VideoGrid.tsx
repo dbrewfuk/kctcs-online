@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const videos = [
   {
     id: 1,
-    title: "Jae Freeman",
+    title: "Jay Freeman",
     college: "West Kentucky Community & Technical College",
     program: "Criminal Justice",
     src: "https://demo.kctcs.edu/ko/media/jae.mp4", // Replace with your video URLs
@@ -78,10 +78,10 @@ function VideoGrid() {
   };
 
   return (
-    <div className="py-[64px] lg:py-[96px] transition-all ease-in-out duration-300">
+    <div className="py-[64px] lg:py-[96px] pb-[0] transition-all ease-in-out duration-300">
       <div className="container relative overflow-hidden px-8 lg:px-0 mx-auto">
         <h1 className="text-6xl font-black text-[#00467F] lg-[96px] mb-[48px]">
-          Your Success Is Our Success
+          Student Stories
         </h1>
 
         {/* Video Content */}
@@ -100,7 +100,7 @@ function VideoGrid() {
                 {isFullscreen[index] && (
                   <button
                     onClick={() => toggleFullscreen(index)}
-                    className="p-[12px] transform rotate-45 inline-block absolute transition-ease-in-out opacity-25 hover:opacity-100 duration-[200ms] group-hover:opacity-100 top-[16px] right-[16px]  text-white rounded-full"
+                    className="p-[12px] transform rotate-45 inline-block absolute transition-ease-in-out opacity-25 hover:opacity-100 duration-[200ms] group-hover:opacity-100 top-[16px] right-[16px]  text-white rounded-full z-[1000]"
                   >
                     <svg
                       width="32"
@@ -164,47 +164,7 @@ function VideoGrid() {
             </div>
           ))}
         </div>
-        <div className="w-full flex justify-end">
-          <div className="flex py-2 gap-2">
-            <button
-              className="text-black p-3 rounded-full bg-white"
-              onClick={prevVideo}
-              disabled={currentVideo === 0}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 32 33"
-                fill="none"
-              >
-                <path
-                  d="M0.290002 17.1264L10.29 27.1264L11.71 25.7064L3.41 17.4164L32 17.4164L32 15.4164L3.41 15.4164L11.7 7.1264L10.29 5.7164L0.290002 15.7164C0.103751 15.9038 -0.000792498 16.1572 -0.000792521 16.4214C-0.000792544 16.6856 0.103751 16.939 0.290002 17.1264Z"
-                  fill="#00467F"
-                />
-              </svg>
-            </button>
-            <button
-              className="text-black p-3 rounded-full bg-white transform rotate-180"
-              onClick={nextVideo}
-              disabled={currentVideo === videos.length - 1}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 32 33"
-                fill="none"
-              >
-                <path
-                  d="M0.290002 17.1264L10.29 27.1264L11.71 25.7064L3.41 17.4164L32 17.4164L32 15.4164L3.41 15.4164L11.7 7.1264L10.29 5.7164L0.290002 15.7164C0.103751 15.903
-                  8 -0.000792498 16.1572 -0.000792521 16.4214C-0.000792544 16.6856 0.103751 16.939 0.290002 17.1264Z"
-                  fill="#00467F"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
+        <div className="w-full flex justify-end"></div>
       </div>
     </div>
   );
