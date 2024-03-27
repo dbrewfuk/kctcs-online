@@ -64,7 +64,7 @@ function HeroRfi({ title, highlighted }) {
             <div className="container px-8 mx-auto  h-full">
               <div className="flex h-full items-center justify-end">
                 <div className="w-full lg:w-1/2 flex flex-col">
-                  <h1 className="text-5xl md:text-6xl xl:text-7xl text-white font-black  mb-12">
+                  <h1 className="text-5xl md:text-6xl xl:text-[76px] text-white font-black  mb-12">
                     {highlightedTitle}
                   </h1>
 

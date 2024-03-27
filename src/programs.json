@@ -10,7 +10,20 @@
       {
         "name": "Bluegrass Community and Technical College",
         "url": "https://bluegrass.kctcs.edu/education-training/program-finder/business-administration.aspx",
-        "tracks": ""
+        "academic_plans": [
+          {
+            "name": "Accounting Recordkeeping Specialist",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Accounting",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "General Business",
+            "credentials_awarded": "Certificate"
+          }
+        ]
       },
       {
         "name": "Big Sandy Community and Technical College",

@@ -53,18 +53,18 @@ const InterestGrid = () => {
   ];
 
   const handleCardClick = (newFilterValue) => {
-    history.push(`/programs?interest=${newFilterValue}`);
-    window.location.href = `/programs?interest=${newFilterValue}`;
+    history.push(`/programs?sector=${newFilterValue}`);
+    window.location.href = `/programs?sector=${newFilterValue}`;
   };
 
   return (
-    <div>
+    <div className="">
       <div className="flex flex-row flex-wrap">
         <div className="w-full md:w-1/2 bg-blue-900">
           <div className="p-8 py-[56px] lg:p-[96px] flex flex-col h-full justify-center">
             <h1 className="text-6xl text-white leading-[120%] font-extrabold mb-4">
               16 Colleges.{" "}
-              <span className="text-amber-500">Unlimited Possibilities.</span>
+              <span className="text-[#fbbf24]">Unlimited Possibilities.</span>
             </h1>
             <p className="text-xl text-white">
               Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
@@ -78,8 +78,8 @@ const InterestGrid = () => {
             key={card.id}
             onClick={() => handleCardClick(card.title)}
           >
-            <div className="absolute z-30 flex flex-col w-full h-full justify-end p-[32px] hover:p-[22px] hover:border-[10px] hover:border-amber-500">
-              <h1 className="text-2xl text-white font-semibold">
+            <div className="absolute z-30 flex flex-col w-full h-full justify-end p-[32px] hover:p-[22px] hover:border-[10px] hover:border-[#fbbf24]">
+              <h1 className="text-3xl text-white font-semibold">
                 {card.title}
               </h1>
             </div>

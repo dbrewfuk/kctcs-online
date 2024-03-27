@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Testimonial from "./components/Testimonial";
 import HeroSearch from "./components/HeroSearch";
@@ -9,8 +9,27 @@ import DynamicSections from "./DynamicSections";
 import VideoBlockSlider from "./components/VideoBlockSlider";
 import InterestGrid from "./components/InterestGrid";
 import VideoSlider from "./components/VideoSlider";
+import programs from "./programs-20240207";
 
 function CurrentStudents() {
+  const [selectedCredential, setSelectedCredential] = useState("");
+  const [selectedArea, setSelectedArea] = useState("");
+  const [selectedPlan, setSelectedPlan] = useState("");
+  const [selectedSector, setSelectedSector] = useState("");
+  const [uniqueCredentialTypes, setUniqueCredentialTypes] = useState([]);
+  const [selectedCredentialTypes, setSelectedCredentialTypes] = useState([]);
+  const [filteredPlans, setFilteredPlans] = useState([]);
+  const [academicPlans, setAcademicPlans] = useState([]);
+  const [uniqueCredentials, setUniqueCredentials] = useState([]);
+  const [uniqueProgramAreas, setUniqueProgramAreas] = useState([]);
+  const [uniquePlanNames, setUniquePlanNames] = useState([]);
+  const [filteredAcademicPlans, setFilteredAcademicPlans] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [expandedPrograms, setExpandedPrograms] = useState({}); // State to track expanded state for each program
+  const [isExpanded] = useState(false);
+  const [selectedColleges, setSelectedColleges] = useState(
+    Array(filteredAcademicPlans.length).fill({ name: "", url: "" }),
+  );
   const videoUrls = [
     "https://player.vimeo.com/video/665275644?background=1&autoplay=1&loop=1&byline=0&title=0",
     "https://player.vimeo.com/video/678281924?background=1&autoplay=1&loop=1&byline=0&title=0",
@@ -29,12 +48,40 @@ function CurrentStudents() {
     history.push(`/programs?search=${searchQuery}`);
     window.location.href = `/programs?search=${searchQuery}`;
   };
+  useEffect(() => {
+    // Extract unique credential types from programsData
+    const credentialTypesSet = new Set();
+
+    // Iterate over each program
+    programs.forEach((program) => {
+      // Iterate over each college in the program
+      program.colleges.forEach((college) => {
+        // Check if academic plans exist and iterate over them
+        if (college.academic_plans && college.academic_plans.length > 0) {
+          college.academic_plans.forEach((plan) => {
+            // Add the credential type to the Set
+            credentialTypesSet.add(plan.credential_type);
+          });
+        }
+      });
+    });
+
+    // Convert the Set to an array
+    const uniqueTypesArray = Array.from(credentialTypesSet);
+
+    // Update state with unique credential types
+    setUniqueCredentialTypes(uniqueTypesArray);
+  }, []); // Empty dependency array ensures this effect runs only once
 
   return (
     <>
-      <Header />
       <div className="relative">
-        <HeroSearch title="Current Students" highlighted="" />
+        <HeroSearch
+          title="Current Students"
+          highlighted=""
+          uniqueCredentialTypes={uniqueCredentialTypes}
+          setUniqueCredentialTypes={setUniqueCredentialTypes}
+        />
       </div>
       <div className="py-[64px] lg:py-[96px] bg-blue-900 relative">
         <div className="container mx-auto px-8">
@@ -44,8 +91,9 @@ function CurrentStudents() {
                 Information for Current Students
               </h1>
               <p className="text-xl lg:text-2xl text-white">
-                Applying to KCTCS Online is easy, and we’ll be with you at every
-                step of the way. So let’s get this journey started!
+                Students come first at KCTCS, and we want you to find what you
+                need quickly and easily. To do that we've put all your favorite
+                links in one place.
               </p>
             </div>
           </div>
@@ -82,15 +130,16 @@ function CurrentStudents() {
           </div>
           <div className="w-full lg:w-1/2">
             <div className="p-8 lg:p-[96px] flex flex-col h-full justify-center align-items-center">
-              <h1 className="text-4xl lg:text-5xl font-semibold text-blue-900 mb-3">
-                Admissions
+              <h1 className="text-4xl lg:text-5xl font-[800] text-[#00467F] mb-3">
+                Academic Resources
               </h1>
-              <p className="text-l lg:text-xl text-blue-900 mb-8">
-                Applying to KCTCS Online is easy, and we’ll be with you at every
-                step of the way. So let’s get this journey started!
+              <p className="text-l lg:text-xl text-[#00467F] mb-8">
+                We want you to succeed. With that in mind, we offer a variety of
+                services and programs to help you achieve your academic and
+                career goals.
               </p>
               <div className="text-center lg:text-left">
-                <div className="rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-blue-900 text-white py-3 font-semibold px-6 hover:bg-white hover:text-blue-900 hover:border-blue-900">
+                <div className="rounded-full text-xl border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-blue-900 text-white py-3 font-semibold px-6 hover:bg-white hover:text-blue-900 hover:border-blue-900">
                   Learn More
                 </div>
               </div>
@@ -111,15 +160,15 @@ function CurrentStudents() {
           </div>
           <div className="w-full lg:w-1/2">
             <div className="p-8 lg:p-[96px] flex flex-col h-full justify-center align-items-center">
-              <h1 className="text-4xl lg:text-5xl font-semibold text-blue-900 mb-4">
-                Tuition &amp; Cost
+              <h1 className="text-4xl lg:text-5xl font-[800] text-[#00467F] mb-4">
+                Student Life
               </h1>
-              <p className="text-l lg:text-xl text-blue-900 mb-8">
-                Applying to KCTCS Online is easy, and we’ll be with you at every
-                step of the way. So let’s get this journey started!
+              <p className="text-l lg:text-xl text-[#00467F] mb-8">
+                Explore your interests, meet new people and try something new.
+                Find out how you can enrich your experience at BCTC.
               </p>
               <div className="text-center lg:text-left">
-                <div className="rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-blue-900 text-white py-3 font-semibold px-6 hover:bg-white hover:text-blue-900 hover:border-blue-900">
+                <div className="rounded-full text-xl border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-blue-900 text-white py-3 font-semibold px-6 hover:bg-white hover:text-blue-900 hover:border-blue-900">
                   Learn More
                 </div>
               </div>
@@ -140,15 +189,15 @@ function CurrentStudents() {
           </div>
           <div className="w-full lg:w-1/2">
             <div className="p-8 lg:p-[96px] flex flex-col h-full justify-center align-items-center">
-              <h1 className="text-4xl lg:text-5xl font-semibold text-blue-900 mb-4">
-                Student Support Services
+              <h1 className="text-4xl lg:text-5xl font-[800] text-[#00467F] mb-4">
+                Student Services
               </h1>
-              <p className="text-l lg:text-xl text-blue-900 mb-8">
-                Applying to KCTCS Online is easy, and we’ll be with you at every
-                step of the way. So let’s get this journey started!
+              <p className="text-l lg:text-xl text-[#00467F] mb-8">
+                Are you a first-year college student? Unsure about what it takes
+                to be successful? Our Student Services can help.
               </p>
               <div className="text-center lg:text-left">
-                <div className="rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-blue-900 text-white py-3 font-semibold px-6 hover:bg-white hover:text-blue-900 hover:border-blue-900">
+                <div className="rounded-full text-xl border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-blue-900 text-white py-3 font-semibold px-6 hover:bg-white hover:text-blue-900 hover:border-blue-900">
                   Learn More
                 </div>
               </div>

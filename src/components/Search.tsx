@@ -4,68 +4,113 @@ import { useHistory } from "react-router-dom";
 const Search = () => {
   const history = useHistory();
   const [searchQuery, setSearchQuery] = useState("");
+  const [showInputLabel, setShowInputLabel] = useState(false);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     history.push(`/programs?search=${searchQuery}`);
     window.location.href = `/programs?search=${searchQuery}`;
   };
+
+  const handlePopularSearchClick = (popularSearch: string) => {
+    setSearchQuery(popularSearch);
+  };
+
   return (
     <div>
       <h3 className="text-xl flex gap-4 lg:text-2xl font-semibold text-white mb-4">
-        <span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <g clipPath="url(#clip0_278_2522)">
-              <path
-                d="M11.9826 1.81138C10.4939 1.81265 9.032 2.20701 7.74468 2.95458C6.77559 3.51046 5.92643 4.2531 5.24638 5.13947C4.56633 6.02585 4.0689 7.03834 3.78292 8.11831C3.49068 9.19672 3.41528 10.3224 3.56107 11.4301C3.70686 12.5379 4.07096 13.6057 4.63227 14.5718C6.83414 18.3862 11.5664 19.8498 15.4975 18.069L16.9627 17.2237C18.5597 16.0817 19.7083 14.4184 20.2104 12.5204C20.7981 10.3266 20.497 8.03459 19.3611 6.0678C18.2251 4.10101 16.392 2.69455 14.1973 2.10523C13.475 1.91147 12.7304 1.81215 11.9826 1.81138ZM18.911 24L16.3984 19.6478C11.5986 21.9156 5.76339 20.1517 3.06399 15.4775C0.219669 10.5504 1.91274 4.23062 6.83897 1.3855C8.01095 0.705132 9.30614 0.26376 10.6497 0.086885C11.9933 -0.0899901 13.3586 0.00113909 14.6667 0.355007C15.9765 0.702209 17.2045 1.30578 18.2795 2.13079C19.3545 2.95579 20.2551 3.98583 20.9293 5.16129C21.6101 6.3331 22.0517 7.6283 22.2286 8.97193C22.4055 10.3156 22.3141 11.6809 21.9598 12.989C21.3438 15.3144 19.9287 17.3486 17.9626 18.7348L20.4793 23.0943L18.911 24Z"
-                fill="#FFD000"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_278_2522">
-                <rect width="24" height="24" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
-        </span>
-        <span>Search Online Programs</span>
+        <span>Explore Online Programs</span>
       </h3>
-      <form className="" onSubmit={handleSubmit}>
-        <div className="flex gap-4 relative">
-          <input
-            type="text"
-            placeholder="Search programs"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="p-2 border border-gray-300 rounded-none w-full"
-          />
+      <div className="relative w-full mb-[16px]">
+        {showInputLabel && (
+          <div className="input-label font-semibold uppercase text-[#00467F] mb-2">
+            Keyword Search
+          </div>
+        )}
 
-          <button
-            type="submit"
-            className="text-white absolute right-0 h-full pr-[12px]"
+        <form onSubmit={handleSubmit} className="">
+          <div className="flex items-center gap-4 text-[18px] relative overflow-hidden">
+            <span className="absolute w-[24px] ml-[12px] left-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 29.811 29.811"
+                alt="search"
+                fill="#00467F"
+              >
+                <path d="M14.884 2.25A10.5 10.5 0 009.62 3.67a10.49 10.49 0 00-4.921 6.414A10.493 10.493 0 005.754 18.1c2.735 4.738 8.613 6.556 13.496 4.344l1.82-1.05a10.476 10.476 0 004.034-5.842c.73-2.725.356-5.572-1.055-8.015s-3.688-4.19-6.414-4.922a10.66 10.66 0 00-2.751-.364zm8.606 27.561l-3.121-5.406c-5.962 2.817-13.21.626-16.563-5.18-3.533-6.12-1.43-13.97 4.689-17.504a12.74 12.74 0 019.723-1.28 12.727 12.727 0 017.779 5.97 12.73 12.73 0 011.28 9.723 12.717 12.717 0 01-4.965 7.137l3.126 5.415z"></path>
+              </svg>
+            </span>
+            <input
+              type="text"
+              placeholder="Search programs"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="text-[16px] leading-[24px] pl-[48px] py-[12px] border border-[#00467F] text-[#00467F] w-full"
+            />
+
+            <span className="absolute h-full flex items-center gap-[16px] right-0 top-0 text-white rounded-md transition-all duration-300 hover:bg-opacity-80 focus:outline-none">
+              <span
+                className={`w-[18px] h-[18px] transition ease-in-out  duration-200 cursor-pointer ${searchQuery ? "opacity-100" : "opacity-0"}`}
+                onClick={() => setSearchQuery("")} // Clear search query
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 27.436 27.436"
+                  fill="#00467F"
+                >
+                  <path d="M1.414 0L0 1.416l12.303 12.303L0 26.022l1.414 1.414 12.303-12.303 12.305 12.303 1.414-1.416-12.303-12.303L27.436 1.414 26.022.002 13.72 12.305 1.414 0z"></path>
+                </svg>
+              </span>
+              <span
+                className={`p-[8px] mr-[8px] rounded-[12px] bg-[#FFD000] cursor-pointer hover:bg-opacity-70 transition ease-in-out  duration-200 cursor-pointer ${searchQuery ? "transform translate-x-[0px]" : "translate-x-[50px]"}`}
+                onClick={handleSubmit} // Clear search query
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="#00467F"
+                  className="bi bi-arrow-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                  ></path>
+                </svg>
+              </span>
+            </span>
+          </div>
+        </form>
+      </div>
+
+      {/* Popular Searches Section */}
+      <div className="flex flex-col lg:flex-row items-center gap-[8px] lg:gap-[16px]">
+        <h4 className="text-lg lg:text-xl text-white font-semibold">
+          Popular Searches:
+        </h4>
+        <ul className="text-white flex gap-[8px] flex-wrap">
+          <li
+            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] bg-[#00467F] rounded-[4px] cursor-pointer"
+            onClick={() => handlePopularSearchClick("Public Leadership")}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              fill="currentColor"
-              className="bi bi-arrow-right fill-blue-900"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fillRule="evenodd"
-                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
-              ></path>
-            </svg>
-          </button>
-        </div>
-      </form>
+            Public Leadership
+          </li>
+          <li
+            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] bg-[#00467F] rounded-[4px] cursor-pointer"
+            onClick={() => handlePopularSearchClick("Web Design")}
+          >
+            Web Design
+          </li>
+          <li
+            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] bg-[#00467F] rounded-[4px] cursor-pointer"
+            onClick={() => handlePopularSearchClick("Marine Culinary")}
+          >
+            Marine Culinary
+          </li>
+          {/* Add more popular searches as needed */}
+        </ul>
+      </div>
     </div>
   );
 };

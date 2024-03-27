@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HeroSearch from "./components/HeroSearch";
 import HeroRfi from "./components/HeroRfi";
 import Header from "./components/Header";
 import DynamicSections from "./DynamicSections";
 import Testimonial from "./components/Testimonial";
 import VideoBlockSlider from "./components/VideoBlockSlider";
+import programs from "./programs-20240207.json";
+
 const videoUrls = [
   "https://player.vimeo.com/video/665275644?background=1&autoplay=1&loop=1&byline=0&title=0",
   "https://player.vimeo.com/video/678281924?background=1&autoplay=1&loop=1&byline=0&title=0",
@@ -22,75 +24,25 @@ const colleges = [
   { name: "Western Kentucky Community & Technical College", url: "" },
 ];
 
-interface CardData {
-  [key: string]: { title: string; content: string; img: string }[];
-}
-
-const cardData = {
-  "Select a College": [],
-  "Bluegrass Community & Technical College": [
-    {
-      title: "GoKCTCS! Student Service Center",
-      content:
-        "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.1",
-      img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80",
-    },
-    {
-      title: "Blackboard",
-      content:
-        "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.2",
-      img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80",
-    },
-    {
-      title: "Help Desk",
-      content:
-        "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-      img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80",
-    },
-  ],
-  "Jefferson Community & Technical College": [
-    {
-      title: "Student Services Virtual Support",
-      content:
-        "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-      img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80",
-    },
-    {
-      title: "Student Tips & Resources",
-      content:
-        "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-      img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80",
-    },
-    {
-      title: "Accessibility Resource Center",
-      content:
-        "The mission of the Access*Ability Resource Center (ARC) is to ensure program access for students with disabilities on all campuses.",
-      img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80",
-    },
-  ],
-  "Western Kentucky Community & Technical College": [
-    {
-      title: "Card Title 7",
-      content:
-        "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-      img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80",
-    },
-    {
-      title: "Card Title 8",
-      content:
-        "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.8",
-      img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80",
-    },
-    {
-      title: "Card Title 9",
-      content:
-        "Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
-      img: "https://images.unsplash.com/photo-1629872430082-93d8912beccf?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=4288&amp;q=80",
-    },
-  ],
-};
-
 function StudentSupportServices() {
+  const [selectedCredential, setSelectedCredential] = useState("");
+  const [selectedArea, setSelectedArea] = useState("");
+  const [selectedPlan, setSelectedPlan] = useState("");
+  const [selectedSector, setSelectedSector] = useState("");
+  const [uniqueCredentialTypes, setUniqueCredentialTypes] = useState([]);
+  const [selectedCredentialTypes, setSelectedCredentialTypes] = useState([]);
+  const [filteredPlans, setFilteredPlans] = useState([]);
+  const [academicPlans, setAcademicPlans] = useState([]);
+  const [uniqueCredentials, setUniqueCredentials] = useState([]);
+  const [uniqueProgramAreas, setUniqueProgramAreas] = useState([]);
+  const [uniquePlanNames, setUniquePlanNames] = useState([]);
+  const [filteredAcademicPlans, setFilteredAcademicPlans] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [expandedPrograms, setExpandedPrograms] = useState({}); // State to track expanded state for each program
+  const [isExpanded] = useState(false);
+  const [selectedColleges, setSelectedColleges] = useState(
+    Array(filteredAcademicPlans.length).fill({ name: "", url: "" }),
+  );
   const [selectedCollege, setSelectedCollege] = useState(colleges[0]);
 
   const handleCollegeChange = (event: any) => {
@@ -101,26 +53,48 @@ function StudentSupportServices() {
     setSelectedCollege?.(selectedCollege!);
   };
 
-  const collegeCards = cardData[selectedCollege.name as keyof typeof cardData];
+  useEffect(() => {
+    // Extract unique credential types from programsData
+    const credentialTypesSet = new Set();
+
+    // Iterate over each program
+    programs.forEach((program) => {
+      // Iterate over each college in the program
+      program.colleges.forEach((college) => {
+        // Check if academic plans exist and iterate over them
+        if (college.academic_plans && college.academic_plans.length > 0) {
+          college.academic_plans.forEach((plan) => {
+            // Add the credential type to the Set
+            credentialTypesSet.add(plan.credential_type);
+          });
+        }
+      });
+    });
+
+    // Convert the Set to an array
+    const uniqueTypesArray = Array.from(credentialTypesSet);
+
+    // Update state with unique credential types
+    setUniqueCredentialTypes(uniqueTypesArray);
+  }, []); // Empty dependency array ensures this effect runs only once
+
+  //const collegeCards = cardData[selectedCollege.name as keyof typeof cardData];
   return (
     <>
-      <Header />
       <div className="relative">
-        <HeroSearch title="Student Support Services" highlighted="" />
+        <HeroSearch
+          title="Student Support Services"
+          highlighted=""
+          uniqueCredentialTypes={uniqueCredentialTypes}
+          setUniqueCredentialTypes={setUniqueCredentialTypes}
+        />
       </div>
 
       <DynamicSections
         title="Explore Student Support Services"
+        supportingText="Are you a first-year college student? Unsure about what it takes to be successful? Do you need assistance getting around campus?"
         contentset="student-support-services"
       />
-
-      <div className="aspect-video w-full relative">
-        <VideoBlockSlider
-          videoUrls={videoUrls}
-          captions={captions}
-          delay={delay}
-        />
-      </div>
 
       <Testimonial />
     </>

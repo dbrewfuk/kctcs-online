@@ -19,7 +19,7 @@ const Testimonial = () => {
   const currentSlide = stories[slideIndex];
 
   return (
-    <div className="py-[64px] lg:py-[96px] relative">
+    <div className="py-[64px] lg:py-[96px] relative z-[1]">
       <div className="absolute w-full h-full top-0 left-0 -z-0">
         <img
           className="object-cover w-full h-full"

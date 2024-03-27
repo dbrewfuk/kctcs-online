@@ -29,41 +29,21 @@ function Programs() {
     setSelectedInterest(interestParam);
   }, [searchParam, programParam, interestParam]);
 
-  useEffect(() => {
-    if (programParam) {
-      setSearchQuery(programParam);
-    }
-  }, [programParam]);
-
-  useEffect(() => {
-    if (interestParam) {
-      setSearchQuery(interestParam);
-    }
-  }, [interestParam]);
-
-  const [selectedColleges, setSelectedColleges] = useState<
-    { name: string; url: string }[]
-  >(new Array(programs.length).fill({ name: "", url: "" }));
+  const [selectedColleges, setSelectedColleges] = useState(
+    new Array(programs.length).fill({ name: "", url: "" }),
+  );
 
   const handleCollegeChange = (index, collegeName, collegeUrl) => {
     const updatedSelectedColleges = [...selectedColleges];
     updatedSelectedColleges[index] = {
       name: collegeName,
-      url: collegeUrl, // Assign the value of collegeUrl to the url property
+      url: collegeUrl,
     };
-    console.log(collegeName);
-    console.log(collegeUrl); // Log the URL value to the console
     setSelectedColleges(updatedSelectedColleges);
-
-    setIsDropdownOpen((prevState) => {
-      const newState = [...prevState];
-      newState[index] = false;
-      return newState;
-    });
   };
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(
-    Array(programs.length).fill(false),
+    new Array(programs.length).fill(false),
   );
 
   const toggleDropdown = (index) => {

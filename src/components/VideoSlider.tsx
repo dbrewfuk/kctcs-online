@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const videos = [
   {
@@ -22,10 +22,44 @@ function VideoSlider() {
   const [isMuted, setIsMuted] = useState(
     [...new Array(videos.length)].map(() => true),
   );
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen((prevFullscreen) => !prevFullscreen);
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
+
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+
+    // Unmute the currently expanded video when expanding
+    if (!isFullscreen) {
+      const updatedMutedState = [...isMuted];
+      updatedMutedState[currentVideo] = false;
+      setIsMuted(updatedMutedState);
+    }
+    // Mute the currently expanded video when collapsing
+    if (isFullscreen) {
+      const updatedMutedState = [...isMuted];
+      updatedMutedState[currentVideo] = true;
+      setIsMuted(updatedMutedState);
+    }
+  };
 
   const toggleMute = (videoIndex) => {
     const updatedMutedState = [...isMuted];
-    updatedMutedState[videoIndex] = !updatedMutedState[videoIndex];
+    if (isFullscreen) {
+      updatedMutedState[videoIndex] = false; // Unmute the video when in fullscreen
+    } else {
+      updatedMutedState[videoIndex] = !updatedMutedState[videoIndex]; // Toggle mute otherwise
+    }
     setIsMuted(updatedMutedState);
   };
 
@@ -38,19 +72,29 @@ function VideoSlider() {
   };
 
   return (
-    <div className="py-[64px] lg:py-[96px]">
+    <div
+      className={`py-[64px] lg:py-[96px] transition-all ease-in-out duration-300 ${
+        isFullscreen ? "fixed top-0 left-0 z-50 bg-white" : ""
+      }`}
+    >
       <div className="container relative overflow-hidden px-8 lg:px-0 mx-auto">
-        <h1 className="text-6xl font-black text-blue-900 mt-[64px] lg-[96px] mb-[48px]">
-          Student Success Stories
+        <h1 className="text-6xl font-black text-blue-900 lg-[96px] mb-[48px]">
+          Your Success Is Our Success
         </h1>
 
-        <div className="relative aspect-video w-3/4">
+        <div
+          className={`aspect-video aspect-w-16 aspect-h-9 ${
+            isFullscreen
+              ? "fixed w-screen transition-all ease-in-out duration-300 h-screen top-0 left-0 z-10 bg-white"
+              : "relative w-3/4 "
+          }`}
+        >
           <div
-            className="w-full h-full gap-5 flex absolute top-0"
+            className={`w-full h-full flex absolute top-0 ${
+              isFullscreen ? "gap-[0px]" : "gap-[24px]"
+            }`}
             style={{
-              transform: `translateX(-${
-                currentVideo * (100 / videos.length)
-              }%)`,
+              transform: `translateX(-${currentVideo * (100 / videos.length)}%)`,
               transition: "transform 0.3s ease-in-out",
               display: "flex",
               width: `${videos.length * 100}%`,
@@ -64,97 +108,120 @@ function VideoSlider() {
                   position: "relative",
                 }}
               >
+                <div className="absolute w-full h-full">
+                  <div className="aspect-video absolute z-50 w-full top-[50%] transform translate-y-[-50%]">
+                    {/* Video Player */}
+                    <div className="group absolute w-[400px] h-[400px] top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]">
+                      <button
+                        onClick={toggleFullscreen}
+                        className="p-[12px] absolute top-[50%] transition-ease-in-out duration-[200ms] left-[50%] opacity-0 group-hover:opacity-100 transform translate-x-[-50%] translate-y-[-50%]  bg-white bg-opacity-20 hover:bg-opacity-70  text-white rounded-full"
+                      >
+                        {isFullscreen && (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 32 32"
+                            fill="none"
+                            className="w-[18px] h-[18px] lg:w-[24px] lg:h-[24px]"
+                          >
+                            <path
+                              d="M14.5889 16.1194H0.446777L0.446842 18.1276L12.1776 18.1206L1.15442 29.1438L2.56864 30.558L13.5918 19.5348L13.592 31.2585L15.5859 31.2586V17.1165C15.5852 16.8523 15.4798 16.5992 15.293 16.4124C15.1062 16.2256 14.8531 16.1202 14.5889 16.1194Z"
+                              fill="white"
+                            />
+                            <path
+                              d="M17.4118 15.2906L31.554 15.2906L31.5539 13.2824L19.8231 13.2894L30.8463 2.2662L29.4321 0.851989L18.4089 11.8752L18.4088 0.151463L16.4148 0.151398L16.4148 14.2935C16.4156 14.5577 16.5209 14.8109 16.7077 14.9976C16.8945 15.1845 17.1476 15.2898 17.4118 15.2906Z"
+                              fill="white"
+                            />
+                          </svg>
+                        )}
+                        {!isFullscreen && (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M8 5v14l11-7z"></path>
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                          </svg>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  className="rounded-full p-[12px]"
+                  onClick={() => toggleFullscreen(index)}
+                >
+                  {isFullscreen[index] ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="48"
+                      height="48"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        d="M14.5889 16.1194H0.446777L0.446842 18.1276L12.1776 18.1206L1.15442 29.1438L2.56864 30.558L13.5918 19.5348L13.592 31.2585L15.5859 31.2586V17.1165C15.5852 16.8523 15.4798 16.5992 15.293 16.4124C15.1062 16.2256 14.8531 16.1202 14.5889 16.1194Z"
+                        fill="none"
+                      />
+                      <path
+                        d="M17.4118 15.2906L31.554 15.2906L31.5539 13.2824L19.8231 13.2894L30.8463 2.2662L29.4321 0.851989L18.4089 11.8752L18.4088 0.151463L16.4148 0.151398L16.4148 14.2935C16.4156 14.5577 16.5209 14.8109 16.7077 14.9976C16.8945 15.1845 17.1476 15.2898 17.4118 15.2906Z"
+                        fill="none"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      width="48"
+                      height="48"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="white"
+                    >
+                      <path d="M8 5v14l11-7z"></path>
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                    </svg>
+                  )}
+                </button>
                 <video
                   src={video.src}
                   className="w-full h-full cover"
                   autoPlay
                   muted={isMuted[index]}
                   loop
+                  controls={isFullscreen}
                 />
-                <div
-                  className="absolute bottom-0 left-0 mb-5 ml-5 text-white transition ease-in-out duration-300ms"
-                  style={{ opacity: index === currentVideo ? 1 : 0 }}
-                >
-                  <div className="text font-semibold">{video.title}</div>
-                  <div className="text font-semibold">{video.program}</div>
-                  <div className="text font-semibold">{video.college}</div>
-                </div>
-                <div className="absolute bottom-0 right-0 mb-5 mr-5 text-white">
-                  <button
-                    onClick={() => toggleMute(index)}
-                    className="p-2 bg-white bg-opacity-50 text-white rounded-full"
+                {!isFullscreen && (
+                  <div
+                    className="absolute bottom-0 left-0 p-[8px] lg:p-[24px] text-white transition ease-in-out duration-300ms"
+                    style={{ opacity: index === currentVideo ? 1 : 0 }}
                   >
-                    {isMuted[index] ? (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
-                        <mask
-                          id="mask0_1_46"
-                          style={{ maskType: "alpha" }}
-                          maskUnits="userSpaceOnUse"
-                          x="0"
-                          y="0"
-                          width="24"
-                          height="24"
-                        >
-                          <rect width="24" height="24" fill="#D9D9D9" />
-                        </mask>
-                        <g mask="url(#mask0_1_46)">
-                          <path
-                            d="M19.8 22.6L16.775 19.575C16.3583 19.8417 15.9167 20.0708 15.45 20.2625C14.9833 20.4542 14.5 20.6083 14 20.725V18.675C14.2333 18.5917 14.4625 18.5083 14.6875 18.425C14.9125 18.3417 15.125 18.2417 15.325 18.125L12 14.8V20L6.99999 15H2.99999V8.99999H6.19999L1.39999 4.19999L2.79999 2.79999L21.2 21.2L19.8 22.6ZM19.6 16.8L18.15 15.35C18.4333 14.8333 18.6458 14.2917 18.7875 13.725C18.9292 13.1583 19 12.575 19 11.975C19 10.4083 18.5417 9.00832 17.625 7.77499C16.7083 6.54165 15.5 5.70832 14 5.27499V3.22499C16.0667 3.69165 17.75 4.73749 19.05 6.36249C20.35 7.98749 21 9.85832 21 11.975C21 12.8583 20.8792 13.7083 20.6375 14.525C20.3958 15.3417 20.05 16.1 19.6 16.8ZM16.25 13.45L14 11.2V7.94999C14.7833 8.31666 15.3958 8.86665 15.8375 9.59999C16.2792 10.3333 16.5 11.1333 16.5 12C16.5 12.25 16.4792 12.4958 16.4375 12.7375C16.3958 12.9792 16.3333 13.2167 16.25 13.45ZM12 9.19999L9.39999 6.59999L12 3.99999V9.19999Z"
-                            fill="black"
-                          />
-                        </g>
-                      </svg>
-                    ) : (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
-                        <mask
-                          id="mask0_1_51"
-                          style={{ maskType: "alpha" }}
-                          maskUnits="userSpaceOnUse"
-                          x="0"
-                          y="0"
-                          width="24"
-                          height="24"
-                        >
-                          <rect width="24" height="24" fill="#D9D9D9" />
-                        </mask>
-                        <g mask="url(#mask0_1_51)">
-                          <path
-                            d="M14 20.725V18.675C15.5 18.2417 16.7083 17.4083 17.625 16.175C18.5417 14.9417 19 13.5417 19 11.975C19 10.4083 18.5417 9.00834 17.625 7.77501C16.7083 6.54167 15.5 5.70834 14 5.27501V3.22501C16.0667 3.69167 17.75 4.73751 19.05 6.36251C20.35 7.98751 21 9.85834 21 11.975C21 14.0917 20.35 15.9625 19.05 17.5875C17.75 19.2125 16.0667 20.2583 14 20.725ZM3 15V9.00001H7L12 4.00001V20L7 15H3ZM14 16V7.95001C14.7833 8.31667 15.3958 8.86667 15.8375 9.60001C16.2792 10.3333 16.5 11.1333 16.5 12C16.5 12.85 16.2792 13.6375 15.8375 14.3625C15.3958 15.0875 14.7833 15.6333 14 16Z"
-                            fill="#1C1B1F"
-                          />
-                        </g>
-                      </svg>
-                    )}
-                  </button>
-                </div>
+                    <div className="text lg:text-[32px] text-amber-500 font-semibold">
+                      {video.title}
+                    </div>
+                    <div className="text lg:text-[20px] font-semibold">
+                      {video.program}
+                    </div>
+                    <div className="text lg:text-[20px] font-semibold">
+                      {video.college}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
         <div className="w-full flex justify-end">
-          <div className="flex py-3 gap-1">
+          <div className="flex py-[16px] gap-[8px]">
             <button
-              className="text-black w-[48px] h-[48px]"
+              className="text-black p-[12px] rounded-full bg-white"
               onClick={prevVideo}
               disabled={currentVideo === 0}
               style={{ opacity: currentVideo === 0 ? 0.5 : 1 }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="33"
+                width="24"
+                height="24"
                 viewBox="0 0 32 33"
                 fill="none"
               >
@@ -170,33 +237,38 @@ function VideoSlider() {
                       width="32"
                       height="32"
                       fill="white"
-                      transform="translate(32 32.4214) rotate(-180)"
+                      transform="translate(32) rotate(90)"
                     />
                   </clipPath>
                 </defs>
               </svg>
             </button>
-            <button className="text-black w-[48px]" onClick={nextVideo}>
+            <button
+              className="text-black p-[12px] rounded-full bg-white"
+              onClick={nextVideo}
+              disabled={currentVideo === videos.length - 1}
+              style={{ opacity: currentVideo === videos.length - 1 ? 0.5 : 1 }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="33"
+                width="24"
+                height="24"
                 viewBox="0 0 32 33"
                 fill="none"
               >
-                <g clipPath="url(#clip0_287_5030)">
+                <g clipPath="url(#clip1_287_5028)">
                   <path
-                    d="M31.71 15.7164L21.71 5.71637L20.29 7.13637L28.59 15.4264H0V17.4264H28.59L20.3 25.7164L21.71 27.1264L31.71 17.1264C31.8963 16.939 32.0008 16.6856 32.0008 16.4214C32.0008 16.1572 31.8963 15.9037 31.71 15.7164Z"
+                    d="M0.290002 17.1264L10.29 27.1264L11.71 25.7064L3.41 17.4164L32 17.4164L32 15.4164L3.41 15.4164L11.7 7.1264L10.29 5.7164L0.290002 15.7164C0.103751 15.9038 -0.000792498 16.1572 -0.000792521 16.4214C-0.000792544 16.6856 0.103751 16.939 0.290002 17.1264Z"
                     fill="#00467F"
                   />
                 </g>
                 <defs>
-                  <clipPath id="clip0_287_5030">
+                  <clipPath id="clip1_287_5028">
                     <rect
                       width="32"
                       height="32"
                       fill="white"
-                      transform="translate(0 0.421387)"
+                      transform="translate(32) rotate(90)"
                     />
                   </clipPath>
                 </defs>
@@ -205,6 +277,74 @@ function VideoSlider() {
           </div>
         </div>
       </div>
+      {isFullscreen && (
+        <div className="w-full flex justify-end">
+          <div className="flex py-[16px] gap-[8px]">
+            <button
+              className="text-black p-[12px] rounded-full bg-white"
+              onClick={prevVideo}
+              disabled={currentVideo === 0}
+              style={{ opacity: currentVideo === 0 ? 0.5 : 1 }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 32 33"
+                fill="none"
+              >
+                <g clipPath="url(#clip0_287_5028)">
+                  <path
+                    d="M0.290002 17.1264L10.29 27.1264L11.71 25.7064L3.41 17.4164L32 17.4164L32 15.4164L3.41 15.4164L11.7 7.1264L10.29 5.7164L0.290002 15.7164C0.103751 15.9038 -0.000792498 16.1572 -0.000792521 16.4214C-0.000792544 16.6856 0.103751 16.939 0.290002 17.1264Z"
+                    fill="#00467F"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_287_5028">
+                    <rect
+                      width="32"
+                      height="32"
+                      fill="white"
+                      transform="translate(32) rotate(90)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+            <button
+              className="text-black p-[12px] rounded-full bg-white"
+              onClick={nextVideo}
+              disabled={currentVideo === videos.length - 1}
+              style={{ opacity: currentVideo === videos.length - 1 ? 0.5 : 1 }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 32 33"
+                fill="none"
+              >
+                <g clipPath="url(#clip1_287_5028)">
+                  <path
+                    d="M0.290002 17.1264L10.29 27.1264L11.71 25.7064L3.41 17.4164L32 17.4164L32 15.4164L3.41 15.4164L11.7 7.1264L10.29 5.7164L0.290002 15.7164C0.103751 15.9038 -0.000792498 16.1572 -0.000792521 16.4214C-0.000792544 16.6856 0.103751 16.939 0.290002 17.1264Z"
+                    fill="#00467F"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip1_287_5028">
+                    <rect
+                      width="32"
+                      height="32"
+                      fill="white"
+                      transform="translate(32) rotate(90)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
