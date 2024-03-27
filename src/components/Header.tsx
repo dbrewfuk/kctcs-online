@@ -46,11 +46,7 @@ const Header = () => {
               <a className="" href="/">
                 <img
                   className="h-[32px] lg:h-[48px]"
-                  src={`${
-                    scrolled
-                      ? "./public/assets/horizontal-logo-light.svg"
-                      : "./public/assets/horizontal-logo-light.svg"
-                  }`}
+                  src="./assets/horizontal-logo-light.svg"
                 />
               </a>
             </div>
