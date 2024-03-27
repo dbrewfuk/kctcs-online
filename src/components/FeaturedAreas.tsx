@@ -35,7 +35,7 @@ const FeaturedAreas = ({ handleProgramAreaClick }) => {
 
   return (
     <div className="">
-      <div className="flex flex-row flex-wrap mb-[24px]">
+      <div className="flex flex-row flex-wrap">
         {cardData.map((card) => (
           <div
             className={`w-1/2 lg:w-1/4 relative group transition ease-in-out cursor-pointer ${
@@ -54,7 +54,7 @@ const FeaturedAreas = ({ handleProgramAreaClick }) => {
                 {card.title}
               </h1>
             </div>
-            <div className="absolute bg-[#f3f3f3] top-0  w-full z-20 h-full border border-[white]"></div>
+            <div className="absolute bg-[#f3f3f3] top-0  w-full z-20 h-full border-[2px] border-[white]"></div>
             <div className="relative top-0 h-full w-full overflow-hidden z-10">
               <div
                 className={`aspect-[4/3] ease-in-out transition group-hover:scale-110 overflow-hidden ${selectedArea === card.title ? "scale-110" : "scale-100"} `}

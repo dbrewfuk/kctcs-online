@@ -320,6 +320,7 @@ function Home() {
         </div>
       </div>
       <VideoGrid />
+      <Testimonial />
       <div className="container relative overflow-hidden px-8 lg:px-0 mx-auto py-[64px] lg:py-[128px] text-center">
         <h1 className="text-[56px] font-[900] text-[#00467F] leading-[56px] mb-[16px]">
           Explore Programs in Growing Professions
@@ -344,7 +345,6 @@ function Home() {
           Explore All Programs
         </a>
       </div>
-      <Testimonial />
 
       <InterestGrid />
     </>
