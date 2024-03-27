@@ -346,7 +346,6 @@ function Home() {
       </div>
       <Testimonial />
       <VideoGrid />
-
       <InterestGrid />
     </>
   );

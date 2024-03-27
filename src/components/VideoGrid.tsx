@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const videos = [
   {
     id: 1,
-    title: "Jae Freeman",
+    title: "Jay Freeman",
     college: "West Kentucky Community & Technical College",
     program: "Criminal Justice",
     src: "https://demo.kctcs.edu/ko/media/jae.mp4", // Replace with your video URLs
@@ -81,7 +81,7 @@ function VideoGrid() {
     <div className="py-[64px] lg:py-[96px] transition-all ease-in-out duration-300">
       <div className="container relative overflow-hidden px-8 lg:px-0 mx-auto">
         <h1 className="text-6xl font-black text-[#00467F] lg-[96px] mb-[48px]">
-          Your Success Is Our Success
+          Student Stories
         </h1>
 
         {/* Video Content */}
@@ -100,7 +100,7 @@ function VideoGrid() {
                 {isFullscreen[index] && (
                   <button
                     onClick={() => toggleFullscreen(index)}
-                    className="p-[12px] transform rotate-45 inline-block absolute transition-ease-in-out opacity-25 hover:opacity-100 duration-[200ms] group-hover:opacity-100 top-[16px] right-[16px]  text-white rounded-full"
+                    className="p-[12px] transform rotate-45 inline-block absolute transition-ease-in-out opacity-25 hover:opacity-100 duration-[200ms] group-hover:opacity-100 top-[16px] right-[16px]  text-white rounded-full z-[1000]"
                   >
                     <svg
                       width="32"
