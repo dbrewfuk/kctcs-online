@@ -481,6 +481,7 @@
     ]
   },
   {
+    "id": "2",
     "program": "Associate in Science (AS)",
     "degree": "Academics Support",
     "sector": "Science",
@@ -568,6 +569,7 @@
     ]
   },
   {
+    "id": "3",
     "program": "Computer and Information Technologies",
     "sector": "Business, Computer, and Information Systems",
     "degree": "Associate",
@@ -586,7 +588,74 @@
       },
       {
         "name": "Big Sandy Community and Technical College",
-        "url": "https://bluegrass.kctcs.edu/education-training/program-finder/computer-information-technology.aspx"
+        "url": "https://bluegrass.kctcs.edu/education-training/program-finder/computer-information-technology.aspx",
+        "academic_plans": [
+          {
+            "name": "A+ Prep",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Application Support Technician",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Cisco Networking Associate",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Cisco Networking Enhanced",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "CIT Fundamentals",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Computer Tech Basic",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Computer Technician",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Information Security Specialist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Information Security Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Microsoft Network Administrator",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Net+ Prep",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Network Administration Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Security+ Prep",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          }
+        ]
       },
       {
         "name": "Elizabethtown Community and Technical College",
@@ -1067,6 +1136,7 @@
     ]
   },
   {
+    "id": "4",
     "program": "Agriculture",
     "sector": "Advanced Manufacturing",
     "degree": "Certificate",
@@ -1112,6 +1182,7 @@
     ]
   },
   {
+    "id": "5",
     "program": "Administrative Office Technology",
     "sector": "Business, Computer, and Information Systems",
     "degree": "Associate",
@@ -1126,7 +1197,54 @@
       {
         "name": "Big Sandy Community and Technical College",
         "url": "https://bigsandy.kctcs.edu/education-training/program-finder/agriculture.aspx",
-        "tracks": "Administrative, Data Entry Operator, Financial Assistant, Financial Assistant Clerk, Financial Assistant Trainee, Financial Record Keeper, Integrated Office Skills, Office Assistant, Receptionist"
+        "tracks": "Administrative, Data Entry Operator, Financial Assistant, Financial Assistant Clerk, Financial Assistant Trainee, Financial Record Keeper, Integrated Office Skills, Office Assistant, Receptionist",
+        "academic_plans": [
+          {
+            "name": "Administrative",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Data Entry Operator",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Financial Assistant",
+            "credential_type": "Diploma",
+            "credentials_awarded": "Diploma"
+          },
+          {
+            "name": "Financial Assistant Clerk",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Financial Assistant Trainee",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Financial Record Keeper",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Integrated Office Skills",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Office Assistant",
+            "credential_type": "Diploma",
+            "credentials_awarded": "Diploma"
+          },
+          {
+            "name": "Receptionist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          }
+        ]
       },
       {
         "name": "Elizabethtown Community and Technical College",
@@ -1233,6 +1351,7 @@
     ]
   },
   {
+    "id": "6",
     "program": "Criminal Justice",
     "sector": "Communications, History, Languages, and Social Sciences",
     "degree": "Associate",
@@ -1247,12 +1366,57 @@
       {
         "name": "Big Sandy Community and Technical College",
         "url": "https://bigsandy.kctcs.edu/education-training/program-finder/criminal-justice.aspx",
-        "academic_plans": []
+        "academic_plans": [
+          {
+            "name": "Computer Forensics",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Corrections",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Corrections Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Criminal Justice Core",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Criminal Justice Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Law Enforcement",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Law Enforcement Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Security and Loss Prevention",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Security and Loss Prevention Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          }
+        ]
       },
       {
         "name": "Elizabethtown Community and Technical College",
         "url": "https://elizabethtown.kctcs.edu/education-training/program-finder/criminal-justice.aspx",
-
         "academic_plans": [
           {
             "name": "Computer Forensics",
@@ -1301,7 +1465,6 @@
           }
         ]
       },
-
       {
         "name": "Hazard Community and Technical College",
         "url": "https://hazard.kctcs.edu/education-training/program-finder/criminal-justice.aspx",
@@ -1381,6 +1544,7 @@
     ]
   },
   {
+    "id": "7",
     "program": "Human Services",
     "sector": "Communications, History, Languages, and Social Sciences",
     "degree": "Associate",
@@ -1395,7 +1559,33 @@
       {
         "name": "Big Sandy Community and Technical College",
         "url": "https://bigsandy.kctcs.edu/education-training/program-finder/human-services.aspx",
-        "academic_plans": []
+        "academic_plans": [
+          {
+            "name": "Aging Services",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Client Service Coordinator",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Direct Support Work",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Psychiatric Mental Health Technician",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Recovery Coach",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          }
+        ]
       },
       {
         "name": "Elizabethtown Community and Technical College",
@@ -1451,6 +1641,7 @@
     ]
   },
   {
+    "id": "8",
     "program": "Medical Information Technology",
     "sector": "Business, Computer, and Information Systems",
     "degree": "Associate",
@@ -1521,7 +1712,73 @@
       {
         "name": "Big Sandy Community and Technical College",
         "url": "https://bigsandy.kctcs.edu/education-training/program-finder/medical-information-technology.aspx",
-        "academic_plans": []
+        "academic_plans": [
+          {
+            "name": "Electronic Health Records Specialist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Electronic Medical Records Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Hospital Admissions Specialist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Medical Administrative Assistant",
+            "credential_type": "Diploma",
+            "credentials_awarded": "Diploma"
+          },
+          {
+            "name": "Medical Administrative Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Medical Coding Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Medical Office Management Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Medical Receptionist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Medical Scribe",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Medical Transcription Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Medical Transcriptionist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Medical Unit Coordinator",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Medical Coding",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          }
+        ]
       },
       {
         "name": "Elizabethtown Community and Technical College",
@@ -1698,7 +1955,63 @@
       {
         "name": "Southeast Community and Technical College",
         "url": "https://southeast.kctcs.edu/education-training/program-finder/medical-information-technology.aspx",
-        "academic_plans": []
+        "academic_plans": [
+          {
+            "name": "Electronic Health Records Specialist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Hospital Admissions Specialist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Medical Administrative Assistant",
+            "credential_type": "Diploma",
+            "credentials_awarded": "Diploma"
+          },
+          {
+            "name": "Medical Administrative Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Medical Coding Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Medical Office Management Track",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Medical Receptionist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Medical Scribe",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Medical Transcriptionist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Medical Unit Coordinator",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Medical Coding",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          }
+        ]
       },
       {
         "name": "West Kentucky Community and Technical College",
@@ -1708,6 +2021,7 @@
     ]
   },
   {
+    "id": "9",
     "program": "Educator Preparation",
     "sector": "Art",
     "degree": "Associate",
@@ -1727,6 +2041,7 @@
     ]
   },
   {
+    "id": "10",
     "program": "Computer Aided Drafting and Design",
     "degree": "Associate",
     "sector": "Computer Science",
@@ -1741,6 +2056,7 @@
     ]
   },
   {
+    "id": "11",
     "program": "Graphic Design",
     "sector": "Art",
     "degree": "Associate",
@@ -1755,6 +2071,7 @@
     ]
   },
   {
+    "id": "12",
     "program": "Health Science",
     "sector": "Art",
     "degree": "Associate",
@@ -1768,6 +2085,7 @@
     ]
   },
   {
+    "id": "13",
     "program": "Healthcare Facilities Leadership",
     "sector": "Art",
     "degree": "Associate",
@@ -1798,6 +2116,7 @@
     ]
   },
   {
+    "id": "14",
     "program": "Interdisciplinary Early Childhood Education",
     "sector": "Art",
     "degree": "Associate",
@@ -1813,6 +2132,17 @@
         "name": "Hazard Community and Technical College",
         "url": "https://hazard.kctcs.edu/education-training/program-finder/interdisciplinary-early-childhood-education.aspx",
         "academic_plans": []
+      },
+      {
+        "name": "Elizabethtown Community and Technical College",
+        "url": "",
+        "academic_plans": [
+          {
+            "name": "Kentucky Child Care Provider",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          }
+        ]
       },
       {
         "name": "Jefferson Community and Technical College",
@@ -1884,6 +2214,7 @@
     ]
   },
   {
+    "id": "15",
     "program": "Logistics and Operations Management",
     "sector": "Art",
     "degree": "Associate",
@@ -1903,6 +2234,7 @@
     ]
   },
   {
+    "id": "16",
     "program": "Marine Technology",
     "sector": "Art",
     "degree": "Associate",
@@ -1958,6 +2290,7 @@
     ]
   },
   {
+    "id": "17",
     "program": "Nurse Aid",
     "sector": "Art",
     "degree": "Associate",
@@ -1972,6 +2305,7 @@
     ]
   },
   {
+    "id": "18",
     "program": "Paralegal",
     "sector": "Academics Support",
     "degree": "Associate",
@@ -2007,6 +2341,7 @@
     ]
   },
   {
+    "id": "19",
     "program": "Surgical First Assisting",
     "sector": "Art",
     "degree": "Associate",
@@ -2020,6 +2355,7 @@
     ]
   },
   {
+    "id": "20",
     "program": "Unmanned Systems Technology",
     "sector": "Art",
     "degree": "Associate",
@@ -2080,6 +2416,7 @@
     ]
   },
   {
+    "id": "21",
     "program": "Visual Communications Multimedia",
     "sector": "Art",
     "degree": "Associate",
@@ -2089,7 +2426,13 @@
       {
         "name": "Big Sandy Community and Technical College",
         "url": "https://bigsandy.kctcs.edu/education-training/program-finder/visual-communications.aspx",
-        "academic_plans": []
+        "academic_plans": [
+          {
+            "name": "Web Design",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          }
+        ]
       },
       {
         "name": "Hazard Community and Technical College",
@@ -2121,13 +2464,46 @@
     ]
   },
   {
+    "id": "22",
     "program": "Transfer Curricula",
     "sector": "Transfer Curricula",
     "description": "",
     "keywords": "",
     "colleges": [
       {
+        "name": "Big Sandy Community and Technical College",
+        "url": "",
+        "academic_plans": [
+          {
+            "name": "Associate in Arts Degree",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Arts"
+          },
+          {
+            "name": "Associate in Science Degree",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Science"
+          }
+        ]
+      },
+      {
         "name": "Gateway Community and Technical College",
+        "url": "",
+        "academic_plans": [
+          {
+            "name": "Associate in Arts Degree",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Arts"
+          },
+          {
+            "name": "Associate in Science Degree",
+            "credential_type": "Degree",
+            "credentials_awarded": "Associate in Science"
+          }
+        ]
+      },
+      {
+        "name": "Elizabethtown Community and Technical College",
         "url": "",
         "academic_plans": [
           {

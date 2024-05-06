@@ -18,10 +18,10 @@ const Search = () => {
 
   return (
     <div>
-      <h3 className="text-xl flex gap-4 lg:text-2xl font-semibold text-white mb-4">
+      <h3 className="text-[20px] flex font-semibold text-white mb-[12px]">
         <span>Explore Online Programs</span>
       </h3>
-      <div className="relative w-full mb-[16px]">
+      <div className="relative w-full mb-[24px]">
         {showInputLabel && (
           <div className="input-label font-semibold uppercase text-[#00467F] mb-2">
             Keyword Search
@@ -29,7 +29,7 @@ const Search = () => {
         )}
 
         <form onSubmit={handleSubmit} className="">
-          <div className="flex items-center gap-4 text-[18px] relative overflow-hidden">
+          <div className="flex items-center gap-[24px] text-[18px] relative overflow-hidden">
             <span className="absolute w-[24px] ml-[12px] left-0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const Search = () => {
               className="text-[16px] leading-[24px] pl-[48px] py-[12px] border border-[#00467F] text-[#00467F] w-full"
             />
 
-            <span className="absolute h-full flex items-center gap-[16px] right-0 top-0 text-white rounded-md transition-all duration-300 hover:bg-opacity-80 focus:outline-none">
+            <span className="absolute h-full flex items-center gap-[16px] right-0 top-0 text-white transition-all duration-300 hover:bg-opacity-80 focus:outline-none">
               <span
                 className={`w-[18px] h-[18px] transition ease-in-out  duration-200 cursor-pointer ${searchQuery ? "opacity-100" : "opacity-0"}`}
                 onClick={() => setSearchQuery("")} // Clear search query
@@ -85,25 +85,25 @@ const Search = () => {
       </div>
 
       {/* Popular Searches Section */}
-      <div className="flex flex-col lg:flex-row items-center gap-[8px] lg:gap-[16px]">
-        <h4 className="text-lg lg:text-xl text-white font-semibold">
-          Popular Searches:
+      <div className="flex flex-row flex-col gap-[8px] lg:gap-[12px]">
+        <h4 className="text-[16px] text-white font-semibold">
+          Popular Searches
         </h4>
-        <ul className="text-white flex gap-[8px] flex-wrap">
+        <ul className="text-white text-[16px] flex gap-[8px] flex-wrap">
           <li
-            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] bg-[#00467F] rounded-[4px] cursor-pointer"
+            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] font-semibold bg-[#00467F] cursor-pointer"
             onClick={() => handlePopularSearchClick("Public Leadership")}
           >
             Public Leadership
           </li>
           <li
-            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] bg-[#00467F] rounded-[4px] cursor-pointer"
+            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] font-semibold bg-[#00467F]  cursor-pointer"
             onClick={() => handlePopularSearchClick("Web Design")}
           >
             Web Design
           </li>
           <li
-            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] bg-[#00467F] rounded-[4px] cursor-pointer"
+            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] font-semibold bg-[#00467F]  cursor-pointer"
             onClick={() => handlePopularSearchClick("Marine Culinary")}
           >
             Marine Culinary

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { motion } from "framer-motion";
 import Testimonial from "./components/Testimonial";
 import HeroSearch from "./components/HeroSearch";
 import Search from "./components/Search";
@@ -10,13 +11,18 @@ import VideoBlockSlider from "./components/VideoBlockSlider";
 import InterestGrid from "./components/InterestGrid";
 import VideoSliderGrow from "./components/VideoSliderGrow";
 import FeaturedAreas from "./components/FeaturedAreas";
-import VideoGrid from "./components/VideoGrid";
+import FeaturedAreasList from "./components/FeaturedAreasList";
+import FeaturedAreasList2 from "./components/FeaturedAreas2";
+import StudentStoryFeature from "./components/StudentStoryFeature";
 import ContentSlider from "./components/ContentSlider";
 import ProgramResults from "./components/ProgramResults";
 import programs from "./programs-20240207";
 import Filters from "./components/Filters";
 import CurrentFilters from "./components/CurrentFilters";
+import TestimonialMarquee from "./components/TestimonialMarquee";
+import MediaMarquee from "./components/MediaMarquee";
 import { Link } from "react-router-dom";
+import VerticalMediaMarquee from "./components/VerticalMediaMarquee";
 
 function Home() {
   const [selectedCredential, setSelectedCredential] = useState("");
@@ -111,28 +117,6 @@ function Home() {
     // Update the filtered academic plans state
     setFilteredAcademicPlans(filteredPlans);
   }, [selectedCredentialTypes, academicPlans]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      const stickyElement = document.getElementById("sticky-search");
-      const stickyOffset = stickyElement.offsetTop;
-
-      if (offset >= stickyOffset) {
-        setIsSticky(true);
-        console.log("Sticky element is at the top of the viewport or above.");
-      } else {
-        setIsSticky(false);
-        console.log("Sticky element is below the top of the viewport.");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     // Extract unique credentials, program areas, and plan names
@@ -283,14 +267,18 @@ function Home() {
         />
       </div>
 
-      <div className="py-[64px] lg:py-[96px] bg-blue-900 relative">
-        <div className="container mx-auto px-8 lg:px-0">
+      <div className="py-[64px] lg:pt-[80px] lg:pb-[72px] bg-[#005cb8] relative">
+        <div className="container mx-auto px-[24px] lg:px-0">
           <div className="flex flex-col lg:flex-row items-end gap-[48px] lg:gap-[64px]">
             <div className="w-full lg:w-1/2">
-              <h1 className="text-[48px] leading-[56px] lg:text-[56px] lg:leading-[64px] font-black text-white mb-5">
-                Something for Everyone
+              <h1 className="text-[48px] leading-[56px] lg:text-[61.04px] lg:leading-[64px] font-black text-white mb-5">
+                Something for{" "}
+                <span className="whitespace-nowrap">
+                  <span className="bar">Everyone</span>
+                  <span className="dot">.</span>
+                </span>
               </h1>
-              <p className="text-xl lg:text-3xl text-white font-semibold">
+              <p className="text-[20px] text-white font-semibold">
                 We’ve been expanding our online offerings for years, and our
                 programs are all designed to help you land an in-demand,
                 high-paying job. So, what are you waiting for?
@@ -301,52 +289,213 @@ function Home() {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 z-25 translate-y-full -translate-x-1/2 left-1/2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="142"
-            height="56"
-            viewBox="0 0 142 71"
-            fill="#005CB8"
-            className="fill-blue-900"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M0.578613 0L71 70.4214L141.421 0H0.578613Z"
-              fill="#005CB8"
-            />
-          </svg>
+      </div>
+
+      <Testimonial />
+
+      <div className="pt-[64px] lg:py-[96px]">
+        <div className="flex flex-col lg:flex-row">
+          <div className="relative w-full group overflow-hidden">
+            <div className="w-full h-full relative z-1 aspect-[6/4]">
+              <img
+                className="w-full group-hover:scale-110 transition ease-in-out duration-[250ms] h-full absolute z-1 object-cover"
+                src="./src/assets/admissions.jpeg"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col w-full justify-center">
+            <div className="p-[24px] pt-[56px] py-[48px] lg:pb-[72px] lg:pl-[64px] max-w-[596px]">
+              <h1 className="text-[56px] lg:text-[61.04px] mb-[16px] leading-[64px] text-[#00467F] font-[900]">
+                Real World Success, <span className="bar">Anywhere</span>
+                <span className="dot">.</span>
+              </h1>
+              <p className="text-[20px] text-[#00467F]">
+                At KCTCS, we recognize that each student has individual needs
+                and aspirations. That's why we provide adaptable scheduling
+                choices.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <VideoGrid />
-      <Testimonial />
-      <div className="container relative overflow-hidden px-8 lg:px-0 mx-auto py-[64px] lg:py-[128px] text-center">
-        <h1 className="text-[56px] font-[900] text-[#00467F] leading-[56px] mb-[16px]">
-          Explore Programs in Growing Professions
-        </h1>
-        <p className="text-[20px] text-[#00467F] mb-[32px] lg:mb-[48px] max-w-[720px] mx-auto">
-          Check out our trending career picks and find the online programs that
-          match your interests. Whether you're into tech or healthcare, there's
-          something here for you to explore!
-        </p>
-        <FeaturedAreas handleProgramAreaClick={handleProgramAreaClick} />
+      <div className="container relative px-[24px] lg:px-0 mx-auto pb-[64px] lg:pt-[0] lg:pb-[96px]">
+        <div className="flex flex-col lg:flex-row gap-[72px]">
+          <div className="lg:w-[50%] sticky top-0 h-full">
+            <h3 className="text-[31px] leading-[36px] lg:text-[39px] leading-[44px] mb-[16px] font-[800] text-[#00467F]">
+              Programs that fit your needs.
+            </h3>
+            <FeaturedAreasList2
+              handleProgramAreaClick={handleProgramAreaClick}
+              academicPlans={academicPlans}
+              setAcademicPlans={setAcademicPlans}
+            />
+          </div>
+          <div className="w-full">
+            {!selectedArea && (
+              <div className="w-full flex flex-row gap-[24px]">
+                <div className="flex flex-col gap-[24px] w-full mb-[48px]">
+                  <div className="w-full">
+                    <div className="aspect-[3/4]">
+                      <img
+                        className="w-full h-full object-cover"
+                        src="/assets/as1.jpeg"
+                        alt="hero"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-[24px] w-full mt-[48px]">
+                  <div className="w-full">
+                    <div className="aspect-square ">
+                      <img
+                        className="w-full h-full object-cover"
+                        src="/assets/as1.jpeg"
+                        alt="hero"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
-        {selectedArea && (
-          <ProgramResults
-            filteredAcademicPlans={filteredAcademicPlans}
-            showLimit={4}
-          />
-        )}
-        <a
-          href="/programs"
-          className="text-[18px] mt-[48px] rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] text-white py-3 font-semibold px-8 hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
-        >
-          Explore All Programs
-        </a>
+            <motion.div
+              className={`w-full hidden lg:block `}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: selectedArea ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              {selectedArea !== "" && (
+                <ProgramResults
+                  key={selectedArea}
+                  filteredAcademicPlans={filteredAcademicPlans}
+                />
+              )}
+            </motion.div>
+          </div>
+        </div>
+        <div className="w-full text-center">
+          <a
+            href="/programs"
+            className="text-[18px] mt-[48px] rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] text-white py-[16px] font-semibold px-[48px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
+          >
+            Explore All Programs
+          </a>
+        </div>
       </div>
 
-      <InterestGrid />
+      <div className="py-[64px] pt-[0] lg:pb-[96px]">
+        <div className="flex flex-col lg:flex-row">
+          <div className="relative w-full group overflow-hidden">
+            <div className="w-full h-full relative z-1 aspect-[6/4]">
+              <img
+                className="w-full group-hover:scale-110 transition ease-in-out duration-[250ms] h-full absolute z-1 object-cover"
+                src="./src/assets/admissions.jpeg"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col w-full justify-center">
+            <div className="p-[24px] pt-[56px] py-[48px] lg:pb-[72px] lg:pl-[64px] max-w-[596px]">
+              <h1 className="text-[56px] lg:text-[61.04px] mb-[16px] leading-[64px] text-[#00467F] font-[900]">
+                Real World Success, <span className="bar">Anywhere</span>
+                <span className="dot">.</span>
+              </h1>
+              <p className="text-[20px] text-[#00467F]">
+                At KCTCS, we recognize that each student has individual needs
+                and aspirations. That's why we provide adaptable scheduling
+                choices.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container relative overflow-hidden px-[24px] lg:px-0 mx-auto pt-[48px] pb-[64px] lg:pb-[128px]">
+        <div className="flex flex-col lg:flex-row gap-[64px] items-center">
+          <div className="w-full flex flex-row gap-[24px]">
+            <div className="flex flex-col gap-[24px] w-full mb-[48px]">
+              <div className="w-full">
+                <div className="aspect-square">
+                  <img
+                    className="w-full h-full object-cover"
+                    src="/assets/as1.jpeg"
+                    alt="hero"
+                  />
+                </div>
+              </div>
+              <div className="w-full">
+                <div className="aspect-square">
+                  <img
+                    className="w-full h-full object-cover"
+                    src="/assets/as1.jpeg"
+                    alt="hero"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-[24px] w-full mt-[48px]">
+              <div className="w-full">
+                <div className="aspect-square ">
+                  <img
+                    className="w-full h-full object-cover"
+                    src="/assets/as1.jpeg"
+                    alt="hero"
+                  />
+                </div>
+              </div>
+              <div className="w-full">
+                <div className="aspect-square">
+                  <img
+                    className="w-full h-full object-cover"
+                    src="/assets/as1.jpeg"
+                    alt="hero"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="w-full flex flex-col gap-[16px]">
+            <h3 className="text-[39px] leading-[44px] mb-[16px] font-[800] text-[#00467F]">
+              Programs that fit your needs.
+            </h3>
+            <div>
+              <h2 className="text-[24px] font-[600] text-[#00467F] mb-[16px]">
+                Degree Seeking
+              </h2>
+              <p className="text-[#00467F] text-[18px]">
+                LSU Online is here to help you accelerate your education goals
+                with excellent, flexible, and affordable programs.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-[24px] font-[600] text-[#00467F] mb-[16px]">
+                Military
+              </h2>
+              <p className="text-[#00467F] text-[18px]">
+                LSU Online is proud to service our active military members,
+                veterans, and their dependents by accepting Military Education
+                benefits.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-[24px] font-[600] text-[#00467F] mb-[16px]">
+                Non-Degree Seeking
+              </h2>
+              <p className="text-[#00467F] text-[18px]">
+                Looking for training and education to stay ahead in your
+                professional career or learn new skills without taking on the
+                demands of a traditional degree program? We have you covered.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="w-full text-center">
+          <a
+            href="/admissions"
+            className="text-[18px] mt-[48px] rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] text-white py-[16px] font-semibold px-[48px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
+          >
+            Explore Admissions
+          </a>
+        </div>
+      </div>
     </>
   );
 }

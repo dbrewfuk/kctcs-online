@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Rfi from "./Rfi";
 
-const Header = () => {
-  const [showModal, setShowModal] = useState(false);
+const Header = ({ showModal, setShowModal }) => {
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // add state for mobile menu
-
-  const handleToggleSearchBar = () => {
-    setIsSearchBarVisible(!isSearchBarVisible);
-  };
-
-  const handleToggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,14 +19,27 @@ const Header = () => {
     };
   }, []);
 
+  const menuItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const handleToggleSearchBar = () => {
+    setIsSearchBarVisible(!isSearchBarVisible);
+  };
+
+  const handleToggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   const handleRequestButtonClick = () => {
     setShowModal(true);
   };
 
   return (
-    <>
+    <div>
       <header
-        className={`w-full py-[16px] px-[24px] z-50 bg-blue-900 ${
+        className={`w-full py-[24px] px-[24px] z-50 bg-blue-900 ${
           scrolled ? "fixed top-0 shadow-sm" : "relative"
         }`}
         style={{ background: scrolled ? "white" : "transparent" }}
@@ -53,7 +57,7 @@ const Header = () => {
             <div className="flex items-center gap-[24px]">
               {/* Menu Icon */}
               <div
-                className={`font-semibold lg:hidden absolute flex bg-[#00467F] items-centered items-center justify-center bottom-0 right-0 w-[80px] h-[80px] ${
+                className={`cursor-pointer font-semibold lg:hidden absolute flex bg-[#00467F] items-centered items-center justify-center bottom-0 right-0 w-[80px] h-full ${
                   scrolled ? "text-blue-900" : "text-white"
                 }`}
                 onClick={handleToggleMobileMenu}
@@ -71,11 +75,17 @@ const Header = () => {
                 </svg>
               </div>
 
-              <div
-                className={`lg:hidden fixed transition-all ease duration-200 bg-blue-900 text-white top-0 left-0 right-0 bottom-0 h-screen bg-white z-90 ${isMobileMenuOpen ? "opacity-1 z-1" : "opacity-0 hidden"}`}
+              <motion.div
+                className={`lg:hidden fixed bg-blue-900 text-white top-0 left-0 right-0 bottom-0 h-screen z-90`}
+                initial={{ opacity: 1 }}
+                animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
+                transition={{ duration: 0.25 }}
+                style={{
+                  pointerEvents: isMobileMenuOpen ? "auto" : "none",
+                }}
               >
                 <div
-                  className="absolute h-[80px] w-[80px] flex items-center justify-center top-0 right-0"
+                  className="absolute h-[64px] w-[80px] flex items-center justify-center top-[8px] right-[0]"
                   onClick={handleToggleMobileMenu}
                 >
                   <svg
@@ -98,86 +108,67 @@ const Header = () => {
                     </defs>
                   </svg>
                 </div>
-                <div className="flex flex-col px-[24px] justify-center h-full">
+                <motion.div
+                  className={`flex flex-col px-[24px] justify-center h-full`}
+                  style={{
+                    pointerEvents: isMobileMenuOpen ? "auto" : "none",
+                  }}
+                >
                   {/* mobile menu items */}
-                  <a
+                  <motion.a
                     className="text-white font-black text-[48px]"
                     href="/admissions"
+                    variants={menuItemVariants}
+                    initial="hidden"
+                    animate={isMobileMenuOpen ? "visible" : "hidden"}
                   >
                     Admissions
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
                     className="text-white font-black text-[48px]"
                     href="/tuition-and-cost"
+                    variants={menuItemVariants}
+                    initial="hidden"
+                    animate={isMobileMenuOpen ? "visible" : "hidden"}
                   >
                     Tuition &amp; Cost
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
                     className="text-white font-black text-[48px]"
                     href="/programs"
+                    variants={menuItemVariants}
+                    initial="hidden"
+                    animate={isMobileMenuOpen ? "visible" : "hidden"}
                   >
                     Explore Programs
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
                     className="text-white font-black text-[48px]"
                     href="/student-support-services"
+                    variants={menuItemVariants}
+                    initial="hidden"
+                    animate={isMobileMenuOpen ? "visible" : "hidden"}
                   >
                     Student Support Services
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
                     className="text-white font-black text-[48px]"
-                    href="/current-students"
+                    href="/success-stories"
+                    variants={menuItemVariants}
+                    initial="hidden"
+                    animate={isMobileMenuOpen ? "visible" : "hidden"}
                   >
-                    Current Students
-                  </a>
-                </div>
-              </div>
+                    Success Stories
+                  </motion.a>
+                </motion.div>
+              </motion.div>
 
-              <nav className="flex items-center gap-[24px] text-[16px] hidden font-semibold lg:flex fs-5 text-white">
-                <a
-                  className={`${scrolled ? "" : "text-white"}`}
-                  href="/admissions"
-                >
-                  Admissions
-                </a>
-                <a
-                  className={`${scrolled ? "" : "text-white"}`}
-                  href="/tuition-and-cost"
-                >
-                  Tuition &amp; Cost
-                </a>
-                <a
-                  className={`${scrolled ? "" : "text-white"}`}
-                  href="/programs"
-                >
-                  Explore Programs
-                </a>
-                <a
-                  className={`${scrolled ? "" : "text-white"}`}
-                  href="/student-support-services"
-                >
-                  Student Support Services
-                </a>
-                <a
-                  className={`${scrolled ? "" : "text-white"}`}
-                  href="/current-students"
-                >
-                  Current Students
-                </a>
-              </nav>
-              <div className="flex gap-2">
-                <div
-                  className="rounded-full transition ease-in-out duration-[250ms] hover:bg-[white] hover:text-[#00467F] hidden text-[16px] lg:block bg-[#00467F] text-white px-[32px] py-[12px] font-semibold px-6"
-                  onClick={() => setShowModal(true)}
-                >
-                  Request Information
-                </div>
-              </div>
+              {/* Rest of the code */}
             </div>
           </div>
         </div>
       </header>
-    </>
+    </div>
   );
 };
 

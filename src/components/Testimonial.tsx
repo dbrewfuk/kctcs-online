@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import stories from "../stories.json";
+import { motion } from "framer-motion";
+// Import the image file
 
 const Testimonial = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -18,39 +20,94 @@ const Testimonial = () => {
 
   const currentSlide = stories[slideIndex];
 
-  return (
-    <div className="py-[64px] lg:py-[96px] relative z-[1]">
-      <div className="absolute w-full h-full top-0 left-0 -z-0">
-        <img
-          className="object-cover w-full h-full"
-          src="./assets/header.jpeg"
-        />
-      </div>
-      <div className="absolute w-full h-full top-0 left-0 z-10 bg-blue-900 opacity-50"></div>
-      <div className="container mx-auto px-8 relative z-20">
-        <div className="flex flex-col lg:flex-row gap-6">
-          <div className="">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="64"
-              height="64"
-              viewBox="0 0 96 97"
-              fill="none"
-            >
-              <circle cx="48" cy="48.4214" r="48" fill="#FFD000" />
-              <path
-                d="M33.41 68.8469C31.3567 68.8469 29.5834 68.2873 28.0901 67.1681C26.7835 66.0489 25.7568 64.5566 25.0102 62.6913C24.4502 60.8259 24.1702 58.6808 24.1702 56.2558C24.1702 52.7117 24.7302 49.1675 25.8501 45.6234C27.1568 41.8927 29.0234 38.5351 31.45 35.5505C34.0633 32.3794 37.1433 29.8612 40.6899 27.9958L44.0498 30.5141C40.3165 32.0063 37.0499 34.5246 34.25 38.0687C31.45 41.6129 29.4901 45.3436 28.3701 49.2608C27.2501 53.178 27.3434 56.7222 28.6501 59.8933H29.2101C29.5834 58.774 30.1434 57.9346 30.89 57.375C31.6367 56.8154 32.6633 56.5356 33.97 56.5356C35.09 56.5356 36.1166 56.8154 37.0499 57.375C37.9833 57.9346 38.6366 58.6808 39.0099 59.6135C39.5699 60.5461 39.8499 61.5721 39.8499 62.6913C39.8499 63.8105 39.5699 64.8364 39.0099 65.7691C38.4499 66.7018 37.7033 67.4479 36.7699 68.0075C35.8366 68.5671 34.7166 68.8469 33.41 68.8469ZM60.8495 68.8469C58.7962 68.8469 57.0229 68.2873 55.5296 67.1681C54.223 66.0489 53.1963 64.5566 52.4497 62.6913C51.8897 60.8259 51.6097 58.6808 51.6097 56.2558C51.6097 52.7117 52.1697 49.1675 53.2896 45.6234C54.5963 41.8927 56.4629 38.5351 58.8895 35.5505C61.5028 32.3794 64.5828 29.8612 68.1294 27.9958L71.4893 30.5141C67.7561 32.0063 64.4894 34.5246 61.6895 38.0687C58.8895 41.6129 56.9296 45.3436 55.8096 49.2608C54.6896 53.178 54.7829 56.7222 56.0896 59.8933H56.6496C57.0229 58.774 57.5829 57.9346 58.3296 57.375C59.0762 56.8154 60.1029 56.5356 61.4095 56.5356C62.5295 56.5356 63.5561 56.8154 64.4894 57.375C65.4228 57.9346 66.0761 58.6808 66.4494 59.6135C67.0094 60.5461 67.2894 61.5721 67.2894 62.6913C67.2894 63.8105 67.0094 64.8364 66.4494 65.7691C65.8894 66.7018 65.1428 67.4479 64.2094 68.0075C63.2761 68.5671 62.1561 68.8469 60.8495 68.8469Z"
-                fill="#00467F"
-              />
-            </svg>
-          </div>
+  useEffect(() => {
+    const handleScroll = () => {
+      const yPos = window.scrollY;
+      const parallaxContainer = document.querySelector(".parallax-container");
+      let backgroundPositionY = yPos * 0.15;
+      backgroundPositionY = Math.min(backgroundPositionY, 100); // Ensure it never goes higher than 100
+      backgroundPositionY = Math.max(backgroundPositionY, 0); // Ensure it never goes lower than 0
+      parallaxContainer.style.backgroundPositionY = `${backgroundPositionY}px`;
+    };
 
-          <div>
-            <blockquote className="text-4xl text-white font-semibold mt-5 mb-6 lg:mt-10">
-              “Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et velit interdum, ac aliquet odio mattis.”
-            </blockquote>
-            <div className="text-xl font-semibold text-white">John Doe</div>
+    // Initial setup
+    handleScroll();
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup on unmount
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="relative py-[64px] lg:py-[96px]">
+      <div className="parallax-container absolute w-full h-full top-0 left-0 -z-0 background-cover">
+        <video
+          src="https://www.dropbox.com/s/sd90kljtxqp68dg/background-video.mp4?raw=1"
+          className="object-cover w-full h-full"
+          autoPlay
+        ></video>
+      </div>
+      <div className="pt-[64px] pb-[48px] lg:pt-[72px] lg:pb-[56px] relative z-[1] px-[48px] lg:px-[64px]  mx-[24px] lg:mx-[auto] bg-[#005CB8] mb-[0] max-w-[1269px] overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,0,0,0.15)]">
+        <div className="container mx-auto relative z-20">
+          <div className="flex flex-col gap-[48px]">
+            <div className="flex flex-row gap-[40px]">
+              <div className="min-w-[64px] min-h-[64px]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="80"
+                  height="67"
+                  viewBox="0 0 80 67"
+                  fill="none"
+                >
+                  <path
+                    d="M7.48438 63.7228L7.49665 63.7337L7.5096 63.7438C9.88807 65.5937 12.9069 66.5 16.5266 66.5C18.8755 66.5 20.9826 65.9772 22.8339 64.9193L22.8558 64.9068L22.8764 64.8921C24.6984 63.5906 26.1376 62.023 27.1856 60.1889C28.2383 58.3467 28.7663 56.3678 28.7663 54.2603C28.7663 51.9209 28.2474 49.9296 27.1771 48.3169C26.1253 46.4828 24.6731 45.1542 22.825 44.3515C21.2411 43.3055 19.5169 42.7781 17.6627 42.7781C15.6168 42.7781 13.9877 43.1552 12.8545 43.9874C11.8388 44.5086 10.9791 45.4607 10.2527 46.7774L10.1337 46.7179C8.96848 42.3476 9.229 37.7265 10.9394 32.8397L10.9394 32.8398L10.9418 32.8327C12.6857 27.6008 15.5525 22.7362 19.5506 18.2381C23.7964 13.493 28.5286 10.1353 33.746 8.14771L34.5447 7.84347L33.8881 7.29635L27.0716 1.61589L26.8104 1.39829L26.5121 1.56105C20.9038 4.62011 16.0583 8.5728 11.9785 13.4176L11.9768 13.4196C8.15288 18.0083 5.22049 23.1081 3.18099 28.7167L3.18082 28.7166L3.17655 28.7294C1.3924 34.0819 0.5 39.5633 0.5 45.1716C0.5 49.2512 1.00978 52.8412 2.04045 55.9333L2.04623 55.9506L2.05325 55.9674C3.34216 59.0608 5.1516 61.6492 7.48438 63.7228ZM51.0347 63.7228L51.0469 63.7337L51.0599 63.7438C53.4384 65.5937 56.4572 66.5 60.0769 66.5C62.4233 66.5 64.4195 65.978 66.0347 64.9012L66.0414 64.8967L66.048 64.8921C67.87 63.5906 69.3092 62.023 70.3572 60.1889C71.4099 58.3467 71.9379 56.3678 71.9379 54.2603C71.9379 51.9325 71.4241 49.9492 70.3645 48.3408C69.5605 46.4915 68.2246 45.1555 66.3753 44.3515C64.7914 43.3055 63.0672 42.7781 61.213 42.7781C59.1433 42.7781 57.4102 43.1641 56.0489 43.9757C55.0244 44.4944 54.2672 45.4447 53.7414 46.7466L53.684 46.7179C52.5188 42.3476 52.7793 37.7265 54.4897 32.8397L54.4897 32.8398L54.4921 32.8327C56.2361 27.6006 59.103 22.7358 63.1015 18.2375L63.1016 18.2376L63.1102 18.2274C67.0969 13.4932 71.8223 10.1383 77.2892 8.15036L78.1066 7.85314L77.4384 7.29635L70.6218 1.61589L70.3607 1.39829L70.0623 1.56105C64.4541 4.62011 59.6086 8.5728 55.5288 13.4176L55.5271 13.4196C51.7032 18.0083 48.7708 23.1081 46.7313 28.7167L46.7311 28.7166L46.7268 28.7294C44.9427 34.0819 44.0503 39.5633 44.0503 45.1716C44.0503 49.2512 44.5601 52.8412 45.5907 55.9333L45.5965 55.9506L45.6035 55.9674C46.8924 59.0608 48.7019 61.6492 51.0347 63.7228Z"
+                    fill="white"
+                    stroke="white"
+                  />
+                </svg>
+              </div>
+              <div className="w-auto flex flex-col gap-[12px] flex-wrap">
+                <div className="text-[31px] leading-[36px] text-[#FFD000] font-[600]">
+                  {currentSlide.name}
+                </div>
+                <div className="text-[16px] lg:text-[20px] font-[600] text-white whitespace-wrap">
+                  {currentSlide.major}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <motion.blockquote
+                className="text-[31px] leading-[40px] lg:text-[39.01px] lg:leading-[48px] text-white font-[200]"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                {currentSlide.quote}
+              </motion.blockquote>
+            </div>
+            <div className="flex justify-center gap-[12px]">
+              {stories.map((story, index) => (
+                <div
+                  key={index}
+                  className={`w-[64px] overflow-hidden border-[6px] transition ease-in-out duration-250 h-[64px] rounded-full cursor-pointer ${
+                    slideIndex === index
+                      ? "bg-white  border-[#FFD000] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.15)]"
+                      : "bg-gray-500 border-[#005CB8]"
+                  }`}
+                  onClick={() => setSlideIndex(index)}
+                >
+                  <img
+                    src={story.avatar}
+                    className="w-full h-full object-cover"
+                    alt="Avatar"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

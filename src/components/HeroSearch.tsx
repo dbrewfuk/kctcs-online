@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import programs from "../programs-20240207.json";
 import Filters from "./Filters";
@@ -85,20 +85,22 @@ function HeroSearch({
   return (
     <div className="bg-primary h-[720px]">
       <div className="w-full h-full">
-        <video
-          src="https://www.dropbox.com/s/sd90kljtxqp68dg/background-video.mp4?raw=1"
-          className="object-cover w-full h-full"
-          autoPlay
-        ></video>
-        <div className="absolute top-0 w-full h-full">
-          <div className="container px-8 lg:px-0 mx-auto h-full">
-            <div className="flex h-full items-center justify-end">
+        <Suspense fallback={<div>Loading...</div>}>
+          <video
+            src="https://www.dropbox.com/s/sd90kljtxqp68dg/background-video.mp4?raw=1"
+            className="object-cover w-full h-full"
+            autoPlay
+          ></video>
+        </Suspense>
+        <div className="absolute top-0 w-full h-full pb-[32px]">
+          <div className="container px-[24px] lg:px-0 mx-auto h-full">
+            <div className="flex h-full items-end lg:items-center justify-end">
               <div className="w-full lg:w-1/2 flex flex-col">
-                <h1 className="text-5xl md:text-6xl xl:text-[76px] text-[white] font-black mb-12">
+                <h1 className="text-[64px] leading-[64px] xl:text-[76px] text-[white] font-black mb-[32px]">
                   {highlightedTitle}
                 </h1>
                 <div>
-                  <h4 className="text-l md:text-xl text-white font-semibold mb-3 uppercase">
+                  <h4 className="text-[20px] text-white font-semibold mb-[12px] uppercase">
                     Your Future Starts Now.
                   </h4>
                   <div className="flex flex-col gap-[16px] items-start">

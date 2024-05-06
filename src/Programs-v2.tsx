@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useHistory } from "react-router-dom";
 import Header from "./components/Header";
 import HeroRfi from "./components/HeroRfi";
 import programs from "./programs-20240207";
@@ -8,8 +7,7 @@ import CurrentFilters from "./components/CurrentFilters";
 import KeywordSearch from "./components/KeywordSearch";
 import ProgramResults from "./components/ProgramResults";
 
-const Programs = () => {
-  const history = useHistory();
+function Programs() {
   const [selectedCredential, setSelectedCredential] = useState("");
   const [selectedArea, setSelectedArea] = useState("");
   const [selectedPlan, setSelectedPlan] = useState("");
@@ -178,6 +176,10 @@ const Programs = () => {
       setSearchQuery(searchQueryParam);
     }
   }, []);
+
+  const handleSearchClick = (searchVal: string) => {
+    setSearchQuery(searchVal);
+  };
 
   useEffect(() => {
     // Update URL search query parameter when search query changes
@@ -371,7 +373,7 @@ const Programs = () => {
       <div id="sticky-search" className="flex flex-col lg:flex-row">
         <div
           id="sticky-search"
-          className="w-full lg:min-w-[25vw] lg:max-w-[25vw] sticky h-full top-[80px] lg:top-[100px] z-10 bg-white"
+          className="w-full lg:min-w-[25vw] lg:max-w-[25vw] sticky h-full top-[80px] lg:top-[120px] z-10 bg-white"
         >
           <div className="container mx-auto px-[24px] py-[48px] lg:pl-[56px] lg:pr-[32px]">
             {" "}
@@ -421,17 +423,23 @@ const Programs = () => {
                 <p className="text-[#00467F] text-[18px] mb-[24px]">
                   From{" "}
                   <a
-                    className="border-b-2"
-                    href={`/programs?search=agriculture`}
+                    className="cursor-pointer border-b-2"
+                    onClick={() => handleSearchClick("agriculture")}
                   >
                     agriculture
                   </a>{" "}
                   to{" "}
-                  <a className="border-b-2" href={`/programs?search=health`}>
+                  <a
+                    className="cursor-pointer border-b-2"
+                    onClick={() => handleSearchClick("health")}
+                  >
                     health science technology
                   </a>{" "}
                   to{" "}
-                  <a className="border-b-2" href={`/programs?search=paralegal`}>
+                  <a
+                    className="cursor-pointer border-b-2"
+                    onClick={() => handleSearchClick("Paralegal")}
+                  >
                     paralegal
                   </a>
                   , we offer more than 90 programs entirely online. Explore the
@@ -441,29 +449,34 @@ const Programs = () => {
               </div>
 
               <div className="lg:hidden">
-                <div className=" text-[#00467F] text-[32px] font-[800]">
-                  Explore Programs
+                <div className={`${isSticky ? "" : "hidden"}`}>
+                  <div className="text-[#00467F] text-[32px] font-[800]">
+                    Explore Programs
+                  </div>
+                  <p className="text-[#00467F] text-[18px] mb-[24px]">
+                    From{" "}
+                    <a
+                      className="border-b-2"
+                      href={`/programs?search=agriculture`}
+                    >
+                      agriculture
+                    </a>{" "}
+                    to{" "}
+                    <a className="border-b-2" href={`/programs?search=health`}>
+                      health science technology
+                    </a>{" "}
+                    to{" "}
+                    <a
+                      className="border-b-2"
+                      href={`/programs?search=paralegal`}
+                    >
+                      paralegal
+                    </a>
+                    , we offer more than 90 programs entirely online. Explore
+                    the options and start your journey to a better job and a
+                    better life!
+                  </p>
                 </div>
-                <p className="text-[#00467F] text-[18px] mb-[24px]">
-                  From{" "}
-                  <a
-                    className="border-b-2"
-                    href={`/programs?search=agriculture`}
-                  >
-                    agriculture
-                  </a>{" "}
-                  to{" "}
-                  <a className="border-b-2" href={`/programs?search=health`}>
-                    health science technology
-                  </a>{" "}
-                  to{" "}
-                  <a className="border-b-2" href={`/programs?search=paralegal`}>
-                    paralegal
-                  </a>
-                  , we offer more than 90 programs entirely online. Explore the
-                  options and start your journey to a better job and a better
-                  life!
-                </p>
               </div>
 
               <form className="hidden lg:block mb-[24px]">
@@ -488,7 +501,7 @@ const Programs = () => {
                   {searchQuery && (
                     <span
                       onClick={clearSearchQuery} // Clear search query
-                      className="absolute mr-[16px] right-0 w-[18px] text-white rounded-md transition-colors duration-300 hover:bg-opacity-80 focus:outline-none"
+                      className="absolute cursor-pointer mr-[16px] right-0 w-[18px] text-white rounded-md transition-colors duration-300 hover:bg-opacity-80 focus:outline-none"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -679,7 +692,7 @@ const Programs = () => {
                 </div>
               </div>
             </div>
-            <div className="pt-[32px] mt-[32px] border-t border-[#f3f3f3]">
+            <div className="hidden lg:block pt-[32px] mt-[32px] border-t border-[#f3f3f3]">
               <a
                 href="https://kctcs.edu/class-search.aspx"
                 type="button"
@@ -699,6 +712,6 @@ const Programs = () => {
       </div>
     </>
   );
-};
+}
 
 export default Programs;

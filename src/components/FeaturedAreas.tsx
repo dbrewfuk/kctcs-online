@@ -38,7 +38,7 @@ const FeaturedAreas = ({ handleProgramAreaClick }) => {
       <div className="flex flex-row flex-wrap">
         {cardData.map((card) => (
           <div
-            className={`w-1/2 lg:w-1/4 relative group transition ease-in-out cursor-pointer ${
+            className={`w-1/2 relative group transition ease-in-out cursor-pointer ${
               selectedFilters.includes(card.title) ? "selected" : ""
             }`}
             key={card.id}
@@ -48,13 +48,15 @@ const FeaturedAreas = ({ handleProgramAreaClick }) => {
             }}
           >
             <div
-              className={`absolute z-30 flex flex-col w-full h-full justify-center p-[32px] hover:p-[22px] hover:border-[12px] hover:border-[#fbbf24] ${selectedArea === card.title ? "border-[12px] border-[#fbbf24]" : ""}`}
+              className={`absolute z-30 flex flex-col w-full h-full justify-center p-[24px] lg:p-[32px] hover:p-[22px] hover:border-[12px] hover:border-[#fbbf24] ${selectedArea === card.title ? "border-[12px] border-[#fbbf24]" : ""}`}
             >
-              <h1 className="text-3xl text-[#00467F] font-semibold">
+              <h1
+                className={`text-[24px] lg:text-3xl text-center text-[white] whitespace-wrap font-semibold ${selectedArea === card.title ? "pl-[24px]" : ""}`}
+              >
                 {card.title}
               </h1>
             </div>
-            <div className="absolute bg-[#f3f3f3] top-0  w-full z-20 h-full border-[2px] border-[white]"></div>
+            <div className="absolute bg-[#00467F] top-0  w-full z-20 h-full border-[white]"></div>
             <div className="relative top-0 h-full w-full overflow-hidden z-10">
               <div
                 className={`aspect-[4/3] ease-in-out transition group-hover:scale-110 overflow-hidden ${selectedArea === card.title ? "scale-110" : "scale-100"} `}

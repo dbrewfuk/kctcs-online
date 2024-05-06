@@ -98,7 +98,7 @@ function CurrentStudents() {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 z-50 translate-y-full -translate-x-1/2 left-1/2">
+        <div className="absolute bottom-0 z-10 translate-y-full -translate-x-1/2 left-1/2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="142"
@@ -131,12 +131,12 @@ function CurrentStudents() {
           <div className="w-full lg:w-1/2">
             <div className="p-8 lg:p-[96px] flex flex-col h-full justify-center align-items-center">
               <h1 className="text-4xl lg:text-5xl font-[800] text-[#00467F] mb-3">
-                Academic Resources
+                MyPath
               </h1>
               <p className="text-l lg:text-xl text-[#00467F] mb-8">
-                We want you to succeed. With that in mind, we offer a variety of
-                services and programs to help you achieve your academic and
-                career goals.
+                From Email to Office 365, from Blackboard to Student
+                Self-Service, your path to the right information is super easy
+                thanks to Single Sign On in MyPath.
               </p>
               <div className="text-center lg:text-left">
                 <div className="rounded-full text-xl border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-blue-900 text-white py-3 font-semibold px-6 hover:bg-white hover:text-blue-900 hover:border-blue-900">
@@ -161,11 +161,12 @@ function CurrentStudents() {
           <div className="w-full lg:w-1/2">
             <div className="p-8 lg:p-[96px] flex flex-col h-full justify-center align-items-center">
               <h1 className="text-4xl lg:text-5xl font-[800] text-[#00467F] mb-4">
-                Student Life
+                Academic Resources
               </h1>
               <p className="text-l lg:text-xl text-[#00467F] mb-8">
-                Explore your interests, meet new people and try something new.
-                Find out how you can enrich your experience at BCTC.
+                We want you to succeed. With that in mind, we offer a variety of
+                services and programs to help you achieve your academic and
+                career goals.
               </p>
               <div className="text-center lg:text-left">
                 <div className="rounded-full text-xl border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-blue-900 text-white py-3 font-semibold px-6 hover:bg-white hover:text-blue-900 hover:border-blue-900">

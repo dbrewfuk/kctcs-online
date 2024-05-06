@@ -62,11 +62,11 @@ const InterestGrid = () => {
       <div className="flex flex-row flex-wrap">
         <div className="w-full md:w-1/2 bg-blue-900">
           <div className="p-8 py-[56px] lg:p-[96px] flex flex-col h-full justify-center">
-            <h1 className="text-6xl text-white leading-[120%] font-extrabold mb-4">
+            <h1 className="text-[48px] leading-[56px] lg:text-6xl text-white leading-[120%] font-extrabold mb-4">
               16 Colleges.{" "}
               <span className="text-[#fbbf24]">Unlimited Possibilities.</span>
             </h1>
-            <p className="text-xl text-white">
+            <p className="text-[20px] font-[600] leading-[32px] lg:text-xl text-white">
               Corem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
               vulputate libero et velit interdum, ac aliquet odio mattis.
             </p>

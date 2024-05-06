@@ -49,7 +49,7 @@
     "college": "Gateway Community and Technical College",
     "quote": "I had a fantastic experience with the online program at GCTC. The instructors were highly knowledgeable and provided engaging and interactive lectures. The virtual classrooms allowed for easy collaboration with classmates, and the online resources provided ample support for my learning journey.",
     "year": 2022,
-    "avatar": "./assets/avatar4.jpeg",
+    "avatar": "./src/assets/avatar4.jpeg",
     "video": "",
     "clip": ""
   }

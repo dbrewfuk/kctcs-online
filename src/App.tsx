@@ -4,19 +4,25 @@ import { AnimatePresence, motion } from "framer-motion";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./Home-alt";
-import Programs from "./Programs-v2";
 import Admissions from "./Admissions";
 import TuitionAndCost from "./TuitionAndCost";
 import StudentSupportServices from "./StudentSupportServices";
 import CurrentStudents from "./CurrentStudents";
+import SuccessStories from "./SuccessStories";
+import ProgramList from "./components/ProgramList";
+import RfiModal from "./components/RfiModal";
+import StudentStoryFeature from "./components/StudentStoryFeature";
 
 import "./App.css";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div>
       <Router basename="./">
-        <Header />
+        {showModal && <RfiModal onClose={() => setShowModal(false)} />}
+        <Header showModal={showModal} setShowModal={setShowModal} />
         <div>
           <AnimatePresence mode="wait">
             <Switch>
@@ -70,6 +76,16 @@ function App() {
                   <StudentSupportServices />
                 </motion.div>
               </Route>
+              <Route path="/success-stories">
+                <motion.div
+                  key="success-stories"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <SuccessStories />
+                </motion.div>
+              </Route>
               <Route path="/current-students">
                 <motion.div
                   key="students"
@@ -80,11 +96,14 @@ function App() {
                   <CurrentStudents />
                 </motion.div>
               </Route>
+              <Route path="/program-list">
+                <ProgramList />
+              </Route>
             </Switch>
           </AnimatePresence>
         </div>
       </Router>
-      <Footer />
+      <Footer showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 }

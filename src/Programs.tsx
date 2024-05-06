@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useHistory } from "react-router-dom";
 import programs from "./programs.json";
 import Testimonial from "./components/Testimonial";
 import Header from "./components/Header";
@@ -12,8 +11,6 @@ type College = Partial<{
 }>;
 
 function Programs() {
-  const location = useLocation();
-  const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
   const searchParam = searchParams.get("search") || "";
   const programParam = searchParams.get("program") || "";

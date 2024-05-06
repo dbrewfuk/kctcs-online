@@ -116,7 +116,7 @@ function DynamicSections({ title, supportingText, contentset }) {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-0 z-25 translate-y-full -translate-x-1/2 left-1/2">
+          <div className="absolute bottom-0 z-10 translate-y-full -translate-x-1/2 left-1/2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="142"
