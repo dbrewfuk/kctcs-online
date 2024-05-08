@@ -10,6 +10,7 @@ import StudentSupportServices from "./StudentSupportServices";
 import CurrentStudents from "./CurrentStudents";
 import SuccessStories from "./SuccessStories";
 import ProgramList from "./components/ProgramList";
+import Programs from "./Programs-v2";
 import RfiModal from "./components/RfiModal";
 import StudentStoryFeature from "./components/StudentStoryFeature";
 
@@ -36,16 +37,7 @@ function App() {
                   <Home />
                 </motion.div>
               </Route>
-              <Route exact path="/programs">
-                <motion.div
-                  key="programs"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <Programs />
-                </motion.div>
-              </Route>
+
               <Route path="/admissions">
                 <motion.div
                   key="admissions"
@@ -94,6 +86,16 @@ function App() {
                   exit={{ opacity: 0 }}
                 >
                   <CurrentStudents />
+                </motion.div>
+              </Route>
+              <Route path="/programs">
+                <motion.div
+                  key="programs"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <Programs />
                 </motion.div>
               </Route>
               <Route path="/program-list">

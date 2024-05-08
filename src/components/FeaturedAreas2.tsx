@@ -85,10 +85,10 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
 
   return (
     <div className="">
-      <div className="flex flex-row gap-[8px] flex-wrap">
+      <div className="flex flex-row flex-wrap">
         {cardData.map((card) => (
           <div
-            className={`w-full relative group transition ease-in-out cursor-pointer ${
+            className={`w-full relative group border-l-[2px] border-[#fdd000] transition ease-in-out cursor-pointer ${
               selectedFilters.includes(card.title) ? "selected" : ""
             }`}
             key={card.id}
@@ -98,7 +98,7 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
             }}
           >
             <div
-              className={` flex flex-col transition-all  ease-in-out  text-[#00467F] duration-200 w-full h-full justify-center p-[20px]  ${selectedArea === card.title ? "bg-[#fbbf24] border-[1px] border-[#00467F] shadow-[0_2px_2px_rgba(0,0,0,0.15)]" : " bg-[white] border-[white] hover:bg-[#f3f3f3]"}`}
+              className={` flex flex-col transition-all border-l-[4px] ease-in-out text-[#00467F] duration-[250ms] w-full h-full justify-center p-[20px]  ${selectedArea === card.title ? "bg-[#f5f5f5] border-[#fdd000]" : " bg-[white] border-[transparent] hover:bg-[#f3f3f3]"}`}
             >
               <h1 className="text-[20px] whitespace-wrap font-semibold">
                 {card.title}
@@ -113,6 +113,8 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
                       key={selectedArea}
                       academicPlans={academicPlans}
                       filteredAcademicPlans={filteredAcademicPlans}
+                      showCount={false}
+                      darkBg={true}
                     />
                   </div>
                 </>

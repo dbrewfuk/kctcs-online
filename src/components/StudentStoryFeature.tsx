@@ -91,14 +91,14 @@ function StudentStoryFeature() {
               {videos.map((video, index) => (
                 <div
                   key={index}
-                  className="cursor-pointer"
+                  className="cursor-pointer w-full lg:w-auto"
                   onClick={() => handleVideoTitleClick(index)}
                 >
                   <div
-                    className={`flex flex-col  transition ease-in-out duration-[200ms]  gap-[8px] ${currentVideo === index ? "bg-[white]  hover:bg-[white]  " : "shadow-[0]  hover:bg-[#f3f3f3] border-[white]"}`}
+                    className={`flex flex-col  transition ease-in-out duration-[200ms]  gap-[8px] ${currentVideo === index ? "bg-[white]  hover:bg-[white]  " : "shadow-[0] "}`}
                   >
                     <div
-                      className={`overflow-hidden aspect-video border-[6px] bg-[#f5f5f5] ${currentVideo === index ? "border-[#E7A614] " : "shadow-[0] border-[transparent]"}`}
+                      className={`overflow-hidden aspect-video w-full border-[6px] bg-[#f5f5f5] ${currentVideo === index ? "border-[#E7A614] " : "shadow-[0] border-[transparent]"}`}
                     >
                       {" "}
                       <video
@@ -191,9 +191,9 @@ function StudentStoryFeature() {
                         >
                           <div className="text-[#00467F] absolute flex w-full h-full items-center justify-center  p-[16px] z-[1]">
                             <div className="flex items-center gap-[8px] z-[2] group cursor-pointer">
-                              <button className="p-[8px] lg:p-[12px] group-hover:scale-[1.095] border-[2px] lg:border-[3px] border-[white] transition-ease-in-out duration-[200ms] opacity-1 group-hover:opacity-100 bg-[] text-white rounded-full">
+                              <button className="p-[8px] lg:p-[12px] group-hover:scale-[1.095]  border-[white] transition-ease-in-out duration-[200ms] opacity-1 group-hover:opacity-100 bg-[] text-white rounded-full">
                                 <svg
-                                  className="w-[24px] group-hover:scale-[1] h-[24px] lg:w-[32px] lg:h-[32px] fill-white"
+                                  className="w-[48px] group-hover:scale-[1] h-[48px] lg:w-[48px] mr-[4px] lg:h-[48px] fill-white"
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 24 24"
                                 >

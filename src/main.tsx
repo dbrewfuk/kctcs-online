@@ -1,28 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import { Analytics } from "@vercel/analytics/react";
 import "./index.scss";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Programs from "./Programs-v2";
 import StudentStoryFeature from "./components/StudentStoryFeature";
-
-// Render the StudentStoryFeature component into the container with ID "student-story-feature"
-ReactDOM.createRoot(
-  document.getElementById("student-story-feature") as HTMLElement,
-).render(
-  <React.StrictMode>
-    <StudentStoryFeature />
-  </React.StrictMode>,
-);
-
-// Render the StudentStoryFeature component into the container with ID "student-story-feature"
-ReactDOM.createRoot(
-  document.getElementById("a-ol-programs") as HTMLElement,
-).render(
-  <React.StrictMode>
-    <Programs />
-  </React.StrictMode>,
-);
+import SFeaturedAreas from "./SFeaturedAreas";
+import Testimonial from "./components/Testimonial";
+import ExplorePrograms from "./components/ExplorePrograms";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

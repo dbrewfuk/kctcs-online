@@ -23,6 +23,8 @@ import TestimonialMarquee from "./components/TestimonialMarquee";
 import MediaMarquee from "./components/MediaMarquee";
 import { Link } from "react-router-dom";
 import VerticalMediaMarquee from "./components/VerticalMediaMarquee";
+import ExplorePrograms from "./components/ExplorePrograms";
+import SFeaturedAreas from "./SFeaturedAreas";
 
 function Home() {
   const [selectedCredential, setSelectedCredential] = useState("");
@@ -267,121 +269,13 @@ function Home() {
         />
       </div>
 
-      <div className="py-[64px] lg:pt-[80px] lg:pb-[72px] bg-[#005cb8] relative">
-        <div className="container mx-auto px-[24px] lg:px-0">
-          <div className="flex flex-col lg:flex-row items-end gap-[48px] lg:gap-[64px]">
-            <div className="w-full lg:w-1/2">
-              <h1 className="text-[48px] leading-[56px] lg:text-[61.04px] lg:leading-[64px] font-black text-white mb-5">
-                Something for{" "}
-                <span className="whitespace-nowrap">
-                  <span className="bar">Everyone</span>
-                  <span className="dot">.</span>
-                </span>
-              </h1>
-              <p className="text-[20px] text-white font-semibold">
-                We’ve been expanding our online offerings for years, and our
-                programs are all designed to help you land an in-demand,
-                high-paying job. So, what are you waiting for?
-              </p>
-            </div>
-            <div className="w-full lg:w-1/2">
-              <Search />
-            </div>
-          </div>
-        </div>
-      </div>
+      <ExplorePrograms />
+
+      <StudentStoryFeature />
 
       <Testimonial />
 
-      <div className="pt-[64px] lg:py-[96px]">
-        <div className="flex flex-col lg:flex-row">
-          <div className="relative w-full group overflow-hidden">
-            <div className="w-full h-full relative z-1 aspect-[6/4]">
-              <img
-                className="w-full group-hover:scale-110 transition ease-in-out duration-[250ms] h-full absolute z-1 object-cover"
-                src="./src/assets/admissions.jpeg"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col w-full justify-center">
-            <div className="p-[24px] pt-[56px] py-[48px] lg:pb-[72px] lg:pl-[64px] max-w-[596px]">
-              <h1 className="text-[56px] lg:text-[61.04px] mb-[16px] leading-[64px] text-[#00467F] font-[900]">
-                Real World Success, <span className="bar">Anywhere</span>
-                <span className="dot">.</span>
-              </h1>
-              <p className="text-[20px] text-[#00467F]">
-                At KCTCS, we recognize that each student has individual needs
-                and aspirations. That's why we provide adaptable scheduling
-                choices.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="container relative px-[24px] lg:px-0 mx-auto pb-[64px] lg:pt-[0] lg:pb-[96px]">
-        <div className="flex flex-col lg:flex-row gap-[72px]">
-          <div className="lg:w-[50%] sticky top-0 h-full">
-            <h3 className="text-[31px] leading-[36px] lg:text-[39px] leading-[44px] mb-[16px] font-[800] text-[#00467F]">
-              Programs that fit your needs.
-            </h3>
-            <FeaturedAreasList2
-              handleProgramAreaClick={handleProgramAreaClick}
-              academicPlans={academicPlans}
-              setAcademicPlans={setAcademicPlans}
-            />
-          </div>
-          <div className="w-full">
-            {!selectedArea && (
-              <div className="w-full flex flex-row gap-[24px]">
-                <div className="flex flex-col gap-[24px] w-full mb-[48px]">
-                  <div className="w-full">
-                    <div className="aspect-[3/4]">
-                      <img
-                        className="w-full h-full object-cover"
-                        src="/assets/as1.jpeg"
-                        alt="hero"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-[24px] w-full mt-[48px]">
-                  <div className="w-full">
-                    <div className="aspect-square ">
-                      <img
-                        className="w-full h-full object-cover"
-                        src="/assets/as1.jpeg"
-                        alt="hero"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            <motion.div
-              className={`w-full hidden lg:block `}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: selectedArea ? 1 : 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              {selectedArea !== "" && (
-                <ProgramResults
-                  key={selectedArea}
-                  filteredAcademicPlans={filteredAcademicPlans}
-                />
-              )}
-            </motion.div>
-          </div>
-        </div>
-        <div className="w-full text-center">
-          <a
-            href="/programs"
-            className="text-[18px] mt-[48px] rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] text-white py-[16px] font-semibold px-[48px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
-          >
-            Explore All Programs
-          </a>
-        </div>
-      </div>
+      <SFeaturedAreas />
 
       <div className="py-[64px] pt-[0] lg:pb-[96px]">
         <div className="flex flex-col lg:flex-row">

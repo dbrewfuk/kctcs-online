@@ -80,7 +80,7 @@ const Testimonial = () => {
 
             <div>
               <motion.blockquote
-                className="text-[31px] leading-[40px] lg:text-[39.01px] lg:leading-[48px] text-white font-[200]"
+                className="text-[31px] leading-[40px] lg:text-[39.01px] lg:leading-[56px] text-white font-[200]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}

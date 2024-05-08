@@ -182,6 +182,7 @@ body {
   background-color: #ffd000;
   width: 100%;
   z-index: -1;
+  border-radius: 2px;
 }
 
 .dot {

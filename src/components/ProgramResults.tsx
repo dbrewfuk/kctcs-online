@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-const ProgramResults = ({ filteredAcademicPlans, showLimit, filters }) => {
+const ProgramResults = ({
+  darkBg,
+  filteredAcademicPlans,
+  showLimit,
+  filters,
+  showCount,
+}) => {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [expandedPrograms, setExpandedPrograms] = useState({});
   const [selectedColleges, setSelectedColleges] = useState([]);
@@ -47,16 +53,16 @@ const ProgramResults = ({ filteredAcademicPlans, showLimit, filters }) => {
       animate={{ opacity: 1, y: 0 }} // Fade up effect
       transition={{ duration: 0.25 }}
     >
-      <div className="w-full relative bg-[white] shadow-[0px_4px_4px_rgba(0,0,0,0.15)] border rounded-[12.5px] border-[#00467F]">
+      <div className="w-full relative ">
         <div className="h-full">
-          <div className="container  flex flex-col mx-auto">
+          <div className="container flex flex-col">
             {filters && (
-              <div className="flex flex-wrap gap-2 p-2">
+              <div className="flex items-start flex-wrap gap-[12px]">
                 {filters.map((filter, index) => (
                   <button
                     key={index}
                     onClick={() => handleFilterChange(filter)}
-                    className={`border px-2 py-1 rounded-md text-sm ${
+                    className={`border px-[12px] py-[12px] rounded-[2px] text-[14px] ${
                       selectedFilters.includes(filter)
                         ? "bg-blue-500 text-white"
                         : "bg-white text-blue-500"
@@ -68,10 +74,13 @@ const ProgramResults = ({ filteredAcademicPlans, showLimit, filters }) => {
               </div>
             )}
             {/* Results section */}
-            <span className="text-semibold text-[#00467F] px-[32px] py-[16px] border-b">
-              Showing {filteredAcademicPlans.length} Programs
-            </span>
-            <div className="grid grid-cols-1 group">
+            {showCount && (
+              <span className="text-[#00467F] py-[16px]">
+                Showing {filteredAcademicPlans.length} Programs
+              </span>
+            )}
+
+            <div className="flex flex-col lg:flex-row items-start flex-wrap gap-[24px] group">
               {filteredAcademicPlans
                 .filter(
                   (plan) =>
@@ -91,77 +100,58 @@ const ProgramResults = ({ filteredAcademicPlans, showLimit, filters }) => {
                 .map((plan, index) => (
                   <div
                     key={index}
-                    className={`hover:opacity-100  border-[#00467F] transition-all bg-[white] ease-in-out duration-[200ms] ${expandedPrograms[index] ? "shadow-[0px_4px_4px_rgba(0,0,0,0.15)] absolute w-[105%] border-[1px] left-[-2.5%] transform translate-y-[-4px] z-[9]" : ""} ${index === filteredAcademicPlans.length - 1 ? "border-b-0" : "border-b-[1px]"}`}
+                    className={`hover:opacity-100 w-[365px]  transition-all  ease-in-out duration-[200ms] ${expandedPrograms[index] ? "shadow-[0px_4px_4px_rgba(0,0,0,0.15)] transform translate-y-[-4px] z-[9]" : ""} ${index === filteredAcademicPlans.length - 1 ? "" : ""}`}
                   >
                     {/* Render each unique academic plan */}
-                    <div className="px-[24px] lg:px-[32px] transition-all text-[#00467F]  group-hover:hover:opacity-[1] transition ease duration-[200ms] cursor-pointer">
-                      <div className="flex flex-col h-full justify-between relative">
+
+                    <div
+                      className={`px-[24px] lg:px-[32px] py-[32px] transition-all text-[#00467F]  group-hover:hover:opacity-[1] transition ease duration-[200ms] cursor-pointer ${darkBg === true ? "bg-[white] lg:bg-[#f5f5f5]" : "bg-[#f5f5f5]"} `}
+                    >
+                      <div className="flex flex-col gap-[20px] h-full justify-between relative">
                         <div
                           className="flex justify-between cursor-pointer"
                           onClick={() => toggleExpanded(index)}
                         >
-                          <div className="flex py-[24px] flex-col items-start md:flex-row gap-[8px]">
-                            <h3 className="text-[32px]  leading-[36px]  font-semibold pr-[48px]">
+                          <div className="flex flex-col  gap-[8px]">
+                            <h3 className="text-[25px]  leading-[32px]  font-semibold pr-[48px]">
                               <span>{plan.name}</span>
-                              <span className="align-super ml-[12px] py-[4px] border-b border-[#00467F] inline font-[400] text-[14px]">
-                                {plan.credentials_awarded}
-                              </span>
                             </h3>
-                          </div>
-
-                          <div
-                            className={`absolute right-[0px] top-[24px] transform transition-transform ease-in-out duration-250 ${expandedPrograms[index] ? "rotate-45" : "rotate-0"}`}
-                          >
-                            <svg
-                              width="33"
-                              height="34"
-                              viewBox="0 0 33 34"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                d="M17.7792 0.904053L16.0287 0.90529L16.0287 16.1254L0.808594 16.1254L0.808594 17.8746H16.0287L16.0299 33.0959L17.7804 33.0947V17.8746H33.0005L32.9992 16.1266L17.7798 16.1272L17.7792 0.904053Z"
-                                fill="#00467F"
-                              />
-                            </svg>
+                            <span className="uppercase tracking-[0.75px] font-[600] text-[14px]">
+                              {plan.credentials_awarded}
+                            </span>
                           </div>
                         </div>
-                        {expandedPrograms[index] && (
-                          <div className="flex flex-col pb-[48px]">
-                            <div className="w-full">
-                              <div className="text-[24px] font-[800] mb-[16px]">
-                                Sorem ipsum dolor sit amet, consectetur
-                                adipiscing elit.
-                              </div>
-                              <p className="text-[18px] mb-[24px]">
-                                Sorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Nunc vulputate libero et velit
-                                interdum, ac aliquet odio mattis. Sorem ipsum
-                                dolor sit amet, consectetur adipiscing elit.
-                                Nunc vulputate libero et velit interdum, ac
-                                aliquet odio mattis. Sorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Nunc vulputate
-                                libero et velit interdum, ac aliquet odio
-                                mattis.
-                              </p>
-                              <p>{selectedColleges[index]?.overview}</p>
-                            </div>
-                            <div className="w-full flex flex-col justify-center items-center">
-                              {plan.colleges.length > 0 ? (
-                                <div>
-                                  <div className="w-full">
-                                    <p>{selectedColleges[index]?.overview}</p>
-                                  </div>
-                                  <div className="relative inline-block">
-                                    <div
-                                      className="border inline-flex gap-[8px] text-[18px] items-center border-[#00467F] font-[600] py-[12px] px-[32px] whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer  text-[#00467F]"
-                                      onClick={() => {
-                                        toggleDropdown(index);
-                                      }}
-                                    >
-                                      {selectedColleges[index]?.name
-                                        ? selectedColleges[index]?.name
-                                        : `Available at ${plan.colleges.length}  College${plan.colleges.length > 1 ? "s" : ""}`}
+
+                        <div className="flex flex-col ">
+                          <div className="w-full">
+                            <p className="text-[16px] mb-[24px]">
+                              Sorem ipsum dolor sit amet, consectetur adipiscing
+                              elit. Nunc vulputate libero et velit interdum, ac
+                              aliquet odio mattis. Sorem ipsum dolor sit amet,
+                              consectetur adipiscing elit. Nunc vulputate libero
+                              et velit interdum, ac aliquet odio mattis. Sorem
+                              ipsum dolor sit amet, consectetur adipiscing elit.
+                              Nunc vulputate libero et velit interdum, ac
+                              aliquet odio mattis.
+                            </p>
+                            <p>{selectedColleges[index]?.overview}</p>
+                          </div>
+                          <div className="w-full flex flex-col gap-[24px]">
+                            {plan.colleges.length > 0 ? (
+                              <div className="w-full">
+                                <div className="relative inline-block w-full">
+                                  <div
+                                    className={`border border-[2px] w-full gap-[8px] text-[17.5px] items-center border-[#00467F] font-[600] py-[12px] px-[16px] whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer  text-[#00467F]  ${selectedColleges[index] ? "bg-white" : ""}`}
+                                    onClick={() => {
+                                      toggleDropdown(index);
+                                    }}
+                                  >
+                                    <div className="flex items-center">
+                                      <span className="inline-block w-full overflow-hidden text-ellipsis">
+                                        {selectedColleges[index]?.name
+                                          ? selectedColleges[index]?.name
+                                          : `Available at ${plan.colleges.length}  College${plan.colleges.length > 1 ? "s" : ""}`}
+                                      </span>
                                       <span>
                                         <svg
                                           xmlns="http://www.w3.org/2000/svg"
@@ -178,71 +168,51 @@ const ProgramResults = ({ filteredAcademicPlans, showLimit, filters }) => {
                                         </svg>
                                       </span>
                                     </div>
-                                    {selectedCollegeIndex === index && (
-                                      <div className="p-4 absolute bg-white border shadow flex flex-col items-center gap-2 z-10">
-                                        {plan.colleges.map(
-                                          (college, collegeIndex) => (
-                                            <div
-                                              className="font-semibold text-[#00467F] cursor-pointer"
-                                              key={collegeIndex}
-                                              onClick={() => {
-                                                handleCollegeChange(
-                                                  index,
-                                                  college.name,
-                                                  college.url,
-                                                  college.overview,
-                                                );
-                                                toggleDropdown(index);
-                                              }}
-                                            >
-                                              {college.name}
-                                            </div>
-                                          ),
-                                        )}
-                                      </div>
-                                    )}
                                   </div>
-                                </div>
-                              ) : (
-                                <button
-                                  type="button"
-                                  className=" bg-gray-300 w-100 mb-2"
-                                  disabled
-                                >
-                                  No Colleges Available
-                                </button>
-                              )}
-
-                              <div
-                                className={`pt-[24px] ${selectedColleges[index]?.name ? "block" : "hidden"}`}
-                              >
-                                <div className="flex justify-center pt-[24px] gap-[16px] pb-[16px]">
-                                  <a
-                                    className="text-[#00467F] font-semibold"
-                                    href="https://catalog.kctcs.edu/programs-of-study/aas/visual-communication-multimedia/web-design-certificate/"
-                                  >
-                                    View in Course Catalog
-                                  </a>
-                                  <a
-                                    className="text-[#00467F] font-semibold"
-                                    href="{selectedColleges[index]?.url}"
-                                  >
-                                    Visit Program Page
-                                  </a>
-                                </div>
-
-                                <div className="flex flex-col items-center">
-                                  <button
-                                    type="button"
-                                    className="px-[32px] rounded-full border py-[12px] whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer font-semibold bg-[#00467F] text-white text-[18px] hover:bg-[white] hover:text-[#00467F] transition ease-in-out duration-250 hover:border-[#00467F] text-center"
-                                  >
-                                    Request Information
-                                  </button>
+                                  {selectedCollegeIndex === index && (
+                                    <div className="p-4 absolute bg-white border shadow flex flex-col items-center gap-2 z-10">
+                                      {plan.colleges.map(
+                                        (college, collegeIndex) => (
+                                          <div
+                                            className="font-semibold text-[#00467F] cursor-pointer"
+                                            key={collegeIndex}
+                                            onClick={() => {
+                                              handleCollegeChange(
+                                                index,
+                                                college.name,
+                                                college.url,
+                                                college.overview,
+                                              );
+                                              toggleDropdown(index);
+                                            }}
+                                          >
+                                            {college.name}
+                                          </div>
+                                        ),
+                                      )}
+                                    </div>
+                                  )}
                                 </div>
                               </div>
+                            ) : (
+                              <button
+                                type="button"
+                                className=" bg-gray-300 w-100 mb-2"
+                                disabled
+                              >
+                                No Colleges Available
+                              </button>
+                            )}
+                            <div>
+                              <a
+                                className="text-[#00467F] inline-block w-auto font-semibold border-b border-[#00467F]"
+                                href="https://catalog.kctcs.edu/programs-of-study/aas/visual-communication-multimedia/web-design-certificate/"
+                              >
+                                View in Course Catalog
+                              </a>
                             </div>
                           </div>
-                        )}
+                        </div>
                       </div>
                     </div>
                   </div>

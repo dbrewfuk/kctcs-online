@@ -132,6 +132,7 @@ function Filters({
   setUniqueProgramAreas,
   programs,
   backgroundColor,
+  showExplore,
 }) {
   // Extract query parameters from URL when the component mounts
   useEffect(() => {
@@ -214,8 +215,8 @@ function Filters({
   };
 
   return (
-    <div className="w-full flex flex-col gap-[16px]">
-      <div className="flex w-full flex-row  gap-[16px]">
+    <div className="w-full flex flex-wrap gap-[16px]">
+      <div className="flex w-full flex-wrap  gap-[16px]">
         {uniqueSectors && (
           <FilterDropdown
             title="Sector"
@@ -271,15 +272,16 @@ function Filters({
             ))}
           </div>
         </div>
-
-        <div>
-          <span
-            className={`inline-flex gap-[8px] py-[16px] px-[48px] text-[17.5px] inline-block rounded-full bg-white font-semibold text-[#00467F] cursor-pointer hover:bg-[#00467F] hover:text-white transition ease-in-out duration-250  ${isAnyOptionSelected() ? "opacity-100 translate-y-0" : "translate-y-[20px] opacity-0"} cursor-pointer`}
-            onClick={handleApplyClick}
-          >
-            Explore
-          </span>
-        </div>
+        {showExplore && (
+          <div>
+            <span
+              className={`inline-flex gap-[8px] py-[16px] px-[48px] text-[17.5px] inline-block rounded-full bg-white font-semibold text-[#00467F] cursor-pointer hover:bg-[#00467F] hover:text-white transition ease-in-out duration-250  ${isAnyOptionSelected() ? "opacity-100 translate-y-0" : "translate-y-[20px] opacity-0"} cursor-pointer`}
+              onClick={handleApplyClick}
+            >
+              Explore
+            </span>
+          </div>
+        )}
       </div>{" "}
     </div>
   );
