@@ -25,7 +25,7 @@ function App() {
         {showModal && <RfiModal onClose={() => setShowModal(false)} />}
         <Header showModal={showModal} setShowModal={setShowModal} />
         <div>
-          <AnimatePresence mode="wait"></AnimatePresence>
+          <Home />
         </div>
       </Router>
       <Footer showModal={showModal} setShowModal={setShowModal} />
