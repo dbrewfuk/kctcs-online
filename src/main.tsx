@@ -1,18 +1,28 @@
+// main.tsx file
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import { Analytics } from "@vercel/analytics/react";
-import "./index.scss";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import Programs from "./Programs-v2";
-import StudentStoryFeature from "./components/StudentStoryFeature";
-import SFeaturedAreas from "./SFeaturedAreas";
-import Testimonial from "./components/Testimonial";
-import ExplorePrograms from "./components/ExplorePrograms";
+import Home from "./Home-alt";
+import Admissions from "./Admissions";
+import "./index.scss";
 
-// Render the StudentStoryFeature component into the container with ID "student-story-feature"
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
+if (document.getElementById("home-root")) {
+  ReactDOM.createRoot(
+    document.getElementById("home-root") as HTMLElement,
+  ).render(
+    <React.StrictMode>
+      <Home />
+    </React.StrictMode>,
+  );
+}
+
+if (document.getElementById("admissions-root")) {
+  ReactDOM.createRoot(
+    document.getElementById("admissions-root") as HTMLElement,
+  ).render(
+    <React.StrictMode>
+      <Admissions />
+    </React.StrictMode>,
+  );
+}

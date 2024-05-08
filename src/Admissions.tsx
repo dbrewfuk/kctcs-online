@@ -92,4 +92,4 @@ function Admissions() {
   );
 }
 
-ReactDOM.render(<Admissions />, document.getElementById("root"));
+export default Admissions;

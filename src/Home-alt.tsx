@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom/client";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import Testimonial from "./components/Testimonial";
