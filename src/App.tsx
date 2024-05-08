@@ -25,7 +25,84 @@ function App() {
         {showModal && <RfiModal onClose={() => setShowModal(false)} />}
         <Header showModal={showModal} setShowModal={setShowModal} />
         <div>
-          <Home />
+          <AnimatePresence mode="wait">
+            <Switch>
+              <Route exact path="/">
+                <motion.div
+                  key="home"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <Home />
+                </motion.div>
+              </Route>
+
+              <Route path="/admissions">
+                <motion.div
+                  key="admissions"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <Admissions />
+                </motion.div>
+              </Route>
+              <Route path="/tuition-and-cost">
+                <motion.div
+                  key="tuition"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <TuitionAndCost />
+                </motion.div>
+              </Route>
+              <Route path="/student-support-services">
+                <motion.div
+                  key="support"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <StudentSupportServices />
+                </motion.div>
+              </Route>
+              <Route path="/success-stories">
+                <motion.div
+                  key="success-stories"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <SuccessStories />
+                </motion.div>
+              </Route>
+              <Route path="/current-students">
+                <motion.div
+                  key="students"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <CurrentStudents />
+                </motion.div>
+              </Route>
+              <Route path="/programs">
+                <motion.div
+                  key="programs"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <Programs />
+                </motion.div>
+              </Route>
+              <Route path="/program-list">
+                <ProgramList />
+              </Route>
+            </Switch>
+          </AnimatePresence>
         </div>
       </Router>
       <Footer showModal={showModal} setShowModal={setShowModal} />
