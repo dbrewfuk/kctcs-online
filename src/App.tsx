@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./Home-alt";
-import Admissions from "./Admissions";
 import TuitionAndCost from "./TuitionAndCost";
 import StudentSupportServices from "./StudentSupportServices";
 import CurrentStudents from "./CurrentStudents";

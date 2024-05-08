@@ -8,8 +8,13 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: "./",
   build: {
-    outDir: "dist",
     assetsDir: "assets",
+    rollupOptions: {
+      input: {
+        home: "/index.html",
+        admissions: "/admissions.html",
+      },
+    },
   },
   server: {
     fs: {
