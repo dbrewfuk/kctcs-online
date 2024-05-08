@@ -53,3 +53,10 @@ ReactDOM.createRoot(
     <Programs />
   </React.StrictMode>,
 );
+
+// Render the StudentStoryFeature component into the container with ID "student-story-feature"
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
