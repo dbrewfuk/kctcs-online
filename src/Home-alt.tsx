@@ -26,6 +26,7 @@ import { Link } from "react-router-dom";
 import VerticalMediaMarquee from "./components/VerticalMediaMarquee";
 import ExplorePrograms from "./components/ExplorePrograms";
 import SFeaturedAreas from "./SFeaturedAreas";
+import AdmissionsInfo from "./components/AdmissionsInfo";
 
 function Home() {
   const [selectedCredential, setSelectedCredential] = useState("");
@@ -261,6 +262,7 @@ function Home() {
 
   return (
     <>
+      <Header />
       <div className="relative">
         <HeroSearch
           title="Real World Success, Anywhere."
@@ -278,119 +280,7 @@ function Home() {
 
       <SFeaturedAreas />
 
-      <div className="py-[64px] pt-[0] lg:pb-[96px]">
-        <div className="flex flex-col lg:flex-row">
-          <div className="relative w-full group overflow-hidden">
-            <div className="w-full h-full relative z-1 aspect-[6/4]">
-              <img
-                className="w-full group-hover:scale-110 transition ease-in-out duration-[250ms] h-full absolute z-1 object-cover"
-                src="./src/assets/admissions.jpeg"
-              />
-            </div>
-          </div>
-          <div className="flex flex-col w-full justify-center">
-            <div className="p-[24px] pt-[56px] py-[48px] lg:pb-[72px] lg:pl-[64px] max-w-[596px]">
-              <h1 className="text-[56px] lg:text-[61.04px] mb-[16px] leading-[64px] text-[#00467F] font-[900]">
-                Real World Success, <span className="bar">Anywhere</span>
-                <span className="dot">.</span>
-              </h1>
-              <p className="text-[20px] text-[#00467F]">
-                At KCTCS, we recognize that each student has individual needs
-                and aspirations. That's why we provide adaptable scheduling
-                choices.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="container relative overflow-hidden px-[24px] lg:px-0 mx-auto pt-[48px] pb-[64px] lg:pb-[128px]">
-        <div className="flex flex-col lg:flex-row gap-[64px] items-center">
-          <div className="w-full flex flex-row gap-[24px]">
-            <div className="flex flex-col gap-[24px] w-full mb-[48px]">
-              <div className="w-full">
-                <div className="aspect-square">
-                  <img
-                    className="w-full h-full object-cover"
-                    src="/assets/as1.jpeg"
-                    alt="hero"
-                  />
-                </div>
-              </div>
-              <div className="w-full">
-                <div className="aspect-square">
-                  <img
-                    className="w-full h-full object-cover"
-                    src="/assets/as1.jpeg"
-                    alt="hero"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col gap-[24px] w-full mt-[48px]">
-              <div className="w-full">
-                <div className="aspect-square ">
-                  <img
-                    className="w-full h-full object-cover"
-                    src="/assets/as1.jpeg"
-                    alt="hero"
-                  />
-                </div>
-              </div>
-              <div className="w-full">
-                <div className="aspect-square">
-                  <img
-                    className="w-full h-full object-cover"
-                    src="/assets/as1.jpeg"
-                    alt="hero"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full flex flex-col gap-[16px]">
-            <h3 className="text-[39px] leading-[44px] mb-[16px] font-[800] text-[#00467F]">
-              Programs that fit your needs.
-            </h3>
-            <div>
-              <h2 className="text-[24px] font-[600] text-[#00467F] mb-[16px]">
-                Degree Seeking
-              </h2>
-              <p className="text-[#00467F] text-[18px]">
-                LSU Online is here to help you accelerate your education goals
-                with excellent, flexible, and affordable programs.
-              </p>
-            </div>
-            <div>
-              <h2 className="text-[24px] font-[600] text-[#00467F] mb-[16px]">
-                Military
-              </h2>
-              <p className="text-[#00467F] text-[18px]">
-                LSU Online is proud to service our active military members,
-                veterans, and their dependents by accepting Military Education
-                benefits.
-              </p>
-            </div>
-            <div>
-              <h2 className="text-[24px] font-[600] text-[#00467F] mb-[16px]">
-                Non-Degree Seeking
-              </h2>
-              <p className="text-[#00467F] text-[18px]">
-                Looking for training and education to stay ahead in your
-                professional career or learn new skills without taking on the
-                demands of a traditional degree program? We have you covered.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="w-full text-center">
-          <a
-            href="/admissions"
-            className="text-[18px] mt-[48px] rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] text-white py-[16px] font-semibold px-[48px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
-          >
-            Explore Admissions
-          </a>
-        </div>
-      </div>
+      <AdmissionsInfo />
     </>
   );
 }

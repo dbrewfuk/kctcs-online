@@ -13,6 +13,7 @@ export default defineConfig({
       input: {
         home: "/index.html",
         admissions: "/admissions.html",
+        programs: "/programs.html",
       },
     },
   },

@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Testimonial from "./components/Testimonial";
-import HeroSearch from "./components/HeroSearch";
-import HeroRfi from "./components/HeroRfi";
+import Hero from "./components/Hero";
 import Header from "./components/Header";
 import DynamicSections from "./DynamicSections";
+import CollegeCards from "./components/CollegeCards";
+import { collegeContent } from "./components/college-content.json";
 import VideoBlockSlider from "./components/VideoBlockSlider";
 import programs from "./programs-20240207";
 
 function Admissions() {
+  const [showOptions, setShowOptions] = useState(false);
+  const [selectedCollege, setSelectedCollege] = useState("Select a College");
+  const [contentFade, setContentFade] = useState(false); // State for content fade
   const [selectedCredential, setSelectedCredential] = useState("");
   const [selectedArea, setSelectedArea] = useState("");
   const [selectedPlan, setSelectedPlan] = useState("");
@@ -73,21 +77,9 @@ function Admissions() {
 
   return (
     <>
-      <div className="relative">
-        <HeroSearch
-          title="Admissions"
-          highlighted=""
-          uniqueCredentialTypes={uniqueCredentialTypes}
-          setUniqueCredentialTypes={setUniqueCredentialTypes}
-        />
-      </div>
-      <DynamicSections
-        title="Explore Admissions"
-        supportingText="Ready to begin your college journey? Applying to your chosen college is a breeze, and we're here to support you every step of the way. Let's take the first step together!"
-        contentset="admissions"
-      />
-
-      <Testimonial />
+      <Header />
+      <Hero title="Admissions" />
+      <CollegeCards contentset="admissions" />
     </>
   );
 }

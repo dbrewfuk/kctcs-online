@@ -5,7 +5,7 @@ import HeroSearch from "./components/hero-search";
 import HeroRfi from "./components/hero-rfi";
 import Header from "./components/header";
 import VideoBlockSlider from "./components/video-block-slider";
-import { collegeContent } from "./college-content.json";
+import { collegeContent } from "./components/college-content.json";
 
 function DynamicSections({ title, supportingText, contentset }) {
   const [showOptions, setShowOptions] = useState(false);
@@ -115,23 +115,6 @@ function DynamicSections({ title, supportingText, contentset }) {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="absolute bottom-0 z-10 translate-y-full -translate-x-1/2 left-1/2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="142"
-              height="56"
-              viewBox="0 0 142 71"
-              fill="#005CB8"
-              className="fill-blue-900"
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M0.578613 0L71 70.4214L141.421 0H0.578613Z"
-                fill="#005CB8"
-              />
-            </svg>
           </div>
         </div>
 
