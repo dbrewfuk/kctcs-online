@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import HeroSearch from "./components/HeroSearch";
-import HeroRfi from "./components/HeroRfi";
+import Hero from "./components/Hero";
 import Header from "./components/Header";
 import DynamicSections from "./DynamicSections";
 import Testimonial from "./components/Testimonial";
 import VideoBlockSlider from "./components/VideoBlockSlider";
+import CollegeCards from "./components/CollegeCards";
 import programs from "./programs-20240207.json";
 
 const videoUrls = [
@@ -81,22 +81,31 @@ function StudentSupportServices() {
   //const collegeCards = cardData[selectedCollege.name as keyof typeof cardData];
   return (
     <>
-      <div className="relative">
-        <HeroSearch
-          title="Student Support Services"
-          highlighted=""
-          uniqueCredentialTypes={uniqueCredentialTypes}
-          setUniqueCredentialTypes={setUniqueCredentialTypes}
-        />
+      <Header />
+      <Hero title="Student Support Services" />
+      <div className="container mx-auto px-[24px] lg:px-0 pt-[64px] lg:pt-[96px] pb-[64px] lg:pb-[96px]">
+        <div className="flex flex-col lg:flex-row items-center gap-[64px]">
+          <div className="w-full lg:w-1/2 rounded-[12px] overflow-hidden">
+            <img
+              src="./src/assets/admissions.jpeg"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="w-full lg:w-1/2">
+            <h1 className="text-[61.04px] mb-[24px] font-[900] leading-[64px] text-[#00467F]">
+              Online Student Resources
+            </h1>
+            <p className="text-[21px] font-[500] leading-[32px] text-[#00467F]">
+              With our quick change to online classes, we want to make sure
+              you're comfortable with your new learning environment. If you've
+              never taken an online class, or if you're looking for some tips
+              and tricks to keep you on track, you'll find resources to help you
+              here.
+            </p>
+          </div>
+        </div>
       </div>
-
-      <DynamicSections
-        title="Explore Student Support Services"
-        supportingText="Are you a first-year college student? Unsure about what it takes to be successful? Do you need assistance getting around campus?"
-        contentset="student-support-services"
-      />
-
-      <Testimonial />
+      <CollegeCards contentset="student-support-services" />
     </>
   );
 }

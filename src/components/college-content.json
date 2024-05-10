@@ -61,44 +61,52 @@
       {
         "student-support-services": [
           {
-            "title": "Accessibility Services",
-            "content": "Find out what you need to know about disability services in college.",
-            "img": "./assets/as1.jpeg",
-            "url": "https://bluegrass.kctcs.edu/about/student-life/accessibility-services/index.aspx"
-          },
-          {
-            "title": "Cultural Diversity",
-            "content": "Our diverse student body means you'll have a culturally enriching experience.",
-            "img": "./assets/as2.jpeg",
-            "url": "https://bluegrass.kctcs.edu/about/cultural-diversity/index.aspx"
-          },
-          {
-            "title": "Student Success Hub",
-            "content": "Applying to KCTCS Online is easy, and we’ll be with you at every step of the way. So let’s get this journey started!",
-            "img": "./assets/as3.jpeg",
-            "url": "The Hub supports students with first year orientations, peer mentoring and tutoring, and many other services that will enhance success at BCTC."
+            "featured": [
+              {
+                "title": "Accessibility Services",
+                "content": "Find out what you need to know about disability services in college.",
+                "img": "./assets/as1.jpeg",
+                "url": "https://bluegrass.kctcs.edu/about/student-life/accessibility-services/index.aspx"
+              },
+              {
+                "title": "Cultural Diversity",
+                "content": "Our diverse student body means you'll have a culturally enriching experience.",
+                "img": "./assets/as2.jpeg",
+                "url": "https://bluegrass.kctcs.edu/about/cultural-diversity/index.aspx"
+              },
+              {
+                "title": "Student Success Hub",
+                "content": "Applying to KCTCS Online is easy, and we’ll be with you at every step of the way. So let’s get this journey started!",
+                "img": "./assets/as3.jpeg",
+                "url": "The Hub supports students with first year orientations, peer mentoring and tutoring, and many other services that will enhance success at BCTC."
+              }
+            ]
           }
         ]
       },
       {
         "tuition": [
           {
-            "title": "Financial Aid Checklist",
-            "content": "Whether you’re a high school student, a returning student or just looking to take a class on the side, following these steps will make your financial aid experience easy!",
-            "img": "./assets/as1.jpeg",
-            "url": "https://bluegrass.kctcs.edu/financial-aid-checklist/financial-aid-checklist.aspx"
-          },
-          {
-            "title": "Applying for Aid",
-            "content": "We offer a wide range of financial aid programs. You must first complete the Free Application for Federal Student Aid (FAFSA) to determine what types of financial aid you qualify for. Below are some steps that will help you complete the process with ease.",
-            "img": "./assets/as2.jpeg",
-            "url": "https://bluegrass.kctcs.edu/affording-college/paying-for-college/applying-for-aid.aspx"
-          },
-          {
-            "title": "Scholarships",
-            "content": "Complete ONE online scholarship application to be considered for all Scholarships! Our Scholarship Application has two parts: the (1) KCTCS General Application and the (2) BCTC Conditional Application.",
-            "img": "./assets/as3.jpeg",
-            "url": "https://bluegrass.kctcs.edu/affording-college/paying-for-college/scholarships/index.aspx"
+            "featured": [
+              {
+                "title": "Financial Aid Checklist",
+                "content": "Whether you’re a high school student, a returning student or just looking to take a class on the side, following these steps will make your financial aid experience easy!",
+                "img": "./assets/as1.jpeg",
+                "url": "https://bluegrass.kctcs.edu/financial-aid-checklist/financial-aid-checklist.aspx"
+              },
+              {
+                "title": "Applying for Aid",
+                "content": "We offer a wide range of financial aid programs. You must first complete the Free Application for Federal Student Aid (FAFSA) to determine what types of financial aid you qualify for. Below are some steps that will help you complete the process with ease.",
+                "img": "./assets/as2.jpeg",
+                "url": "https://bluegrass.kctcs.edu/affording-college/paying-for-college/applying-for-aid.aspx"
+              },
+              {
+                "title": "Scholarships",
+                "content": "Complete ONE online scholarship application to be considered for all Scholarships! Our Scholarship Application has two parts: the (1) KCTCS General Application and the (2) BCTC Conditional Application.",
+                "img": "./assets/as3.jpeg",
+                "url": "https://bluegrass.kctcs.edu/affording-college/paying-for-college/scholarships/index.aspx"
+              }
+            ]
           }
         ]
       }

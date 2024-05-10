@@ -52,7 +52,7 @@ const Testimonial = () => {
       <div className="pt-[64px] pb-[48px] lg:pt-[72px] lg:pb-[56px] relative z-[1] px-[48px] lg:px-[64px]  mx-[24px] lg:mx-[auto] bg-[#005CB8] mb-[0] max-w-[1269px] overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,0,0,0.15)]">
         <div className="container mx-auto relative z-20">
           <div className="flex flex-col gap-[48px]">
-            <div className="flex flex-row gap-[40px]">
+            <div className="flex flex-col lg:flex-row gap-[40px]">
               <div className="min-w-[64px] min-h-[64px]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -69,7 +69,7 @@ const Testimonial = () => {
                 </svg>
               </div>
               <div className="w-auto flex flex-col gap-[12px] flex-wrap">
-                <div className="text-[31px] leading-[36px] text-[#FFD000] font-[600]">
+                <div className="text-[31px] leading-[36px] text-[#FBBF24] font-[600]">
                   {currentSlide.name}
                 </div>
                 <div className="text-[16px] lg:text-[20px] font-[600] text-white whitespace-wrap">
@@ -95,7 +95,7 @@ const Testimonial = () => {
                   key={index}
                   className={`w-[64px] overflow-hidden border-[6px] transition ease-in-out duration-250 h-[64px] rounded-full cursor-pointer ${
                     slideIndex === index
-                      ? "bg-white  border-[#FFD000] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.15)]"
+                      ? "bg-white  border-[#FBBF24] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.15)]"
                       : "bg-gray-500 border-[#005CB8]"
                   }`}
                   onClick={() => setSlideIndex(index)}

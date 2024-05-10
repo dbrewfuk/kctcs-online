@@ -42,7 +42,7 @@ function HeroSearch({
   const highlightedTitle = words.map((word, index) => {
     if (word.toLowerCase() === highlighted.toLowerCase()) {
       return (
-        <span className="text-amber-500" key={index}>
+        <span className="text-[#FBBF24]" key={index}>
           {word}{" "}
         </span>
       );
@@ -124,6 +124,7 @@ function HeroSearch({
                       setUniqueSectors={setUniqueSectors}
                       programs={programs}
                       backgroundColor={"dark"}
+                      showExplore={"true"}
                     />
                   </div>
                 </div>

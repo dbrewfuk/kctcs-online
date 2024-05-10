@@ -7,6 +7,7 @@ const ProgramResults = ({
   showLimit,
   filters,
   showCount,
+  square,
 }) => {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [expandedPrograms, setExpandedPrograms] = useState({});
@@ -100,7 +101,7 @@ const ProgramResults = ({
                 .map((plan, index) => (
                   <div
                     key={index}
-                    className={`hover:opacity-100 w-[365px]  transition-all  ease-in-out duration-[200ms] ${expandedPrograms[index] ? "shadow-[0px_4px_4px_rgba(0,0,0,0.15)] transform translate-y-[-4px] z-[9]" : ""} ${index === filteredAcademicPlans.length - 1 ? "" : ""}`}
+                    className={`hover:opacity-100 w-[365px]  transition-all  ease-in-out duration-[200ms] ${expandedPrograms[index] ? "shadow-[0px_4px_4px_rgba(0,0,0,0.15)] transform translate-y-[-4px] z-[9]" : ""} ${index === filteredAcademicPlans.length - 1 ? "" : ""} ${square ? "w-[480px]" : ""}`}
                   >
                     {/* Render each unique academic plan */}
 

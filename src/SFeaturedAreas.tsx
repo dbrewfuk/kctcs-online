@@ -28,6 +28,35 @@ function SFeaturedAreas() {
     console.log("Clicked on:", title);
   };
 
+  const [isTextInView, setIsTextInView] = useState(false);
+
+  // Your existing code...
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Measure the width of the text span
+
+            setIsTextInView(true); // Set to true when text span is in view
+          } else {
+            // Reset the width of the bar when leaving view
+
+            setIsTextInView(false); // Set to false when text span leaves view
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(textRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   useEffect(() => {
     // Filter the academic plans based on the search query, selected filters, etc.
     const filteredPlans = academicPlans.filter((plan) => {
@@ -101,6 +130,7 @@ function SFeaturedAreas() {
     const uniqueAcademicPlans = getUniqueAcademicPlans();
     setAcademicPlans(uniqueAcademicPlans);
   }, []);
+  const textRef = useRef(null);
 
   useEffect(() => {
     // Filter the academic plans based on the selected credential types
@@ -114,11 +144,20 @@ function SFeaturedAreas() {
 
   return (
     <>
-      <div className="pt-[64px] lg:pt-[128px] lg:pb-[96px]">
+      <motion.div
+        ref={textRef}
+        initial={{ opacity: 0 }} // Set initial opacity to 0
+        animate={{
+          opacity: isTextInView ? 1 : 0,
+          y: isTextInView ? 0 : 40,
+          transition: { duration: 0.5, ease: "easeInOut" },
+        }}
+        className="pt-[64px] lg:pt-[128px] lg:pb-[96px]"
+      >
         <div className="flex flex-col">
           <div className="relative w-full group overflow-hidden">
-            <div className="px-[24px] lg:px-[96px] flex items-center mb-[48px] w-full">
-              <h1 className="text-[56px] leading-[60px] w-[50%] lg:text-[61.04px] mb-[16px] lg:leading-[64px] text-[#00467F] font-[900]">
+            <div className="px-[24px] container mx-auto px-[24px] lg:px-0 flex items-center mb-[40px] lg:mb-[48px] w-full">
+              <h1 className="text-[48.8px] leading-[52px] w-[50%] lg:text-[61.04px] lg:leading-[64px] text-[#00467F] font-[800]">
                 Real World Success,{" "}
                 <span className="whitespace-nowrap">
                   <span className="bar">Anywhere</span>
@@ -167,7 +206,7 @@ function SFeaturedAreas() {
                 src="./src/assets/admissions.jpeg"
               />
             </div>
-            <div className="p-[24px] pt-[56px] py-[48px] lg:pb-[72px] lg:pl-[64px] max-w-[596px]">
+            <div className="p-[24px] pt-[48px] lg:pt-[56px] py-[48px] lg:pb-[72px] lg:pl-[64px] max-w-[596px]">
               <p className="text-[25px] font-[600] text-[#00467F]">
                 Whether you’re starting college for the first time or thinking
                 about a career change, we’ve got you covered. We offer associate
@@ -175,10 +214,10 @@ function SFeaturedAreas() {
                 reach your goals. Get started by finding the program that works
                 for you!
               </p>
-              <div className="w-full">
+              <div className="w-full text-center">
                 <a
                   href="/programs"
-                  className="text-[18px] mt-[48px] rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] text-white py-[16px] font-semibold px-[48px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
+                  className="text-[17.5px] mt-[32px] lg:mt-[48px] rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] text-white py-[16px] font-semibold px-[48px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
                 >
                   Explore Programs
                 </a>
@@ -186,10 +225,10 @@ function SFeaturedAreas() {
             </div>
           </div>
         </div>
-      </div>
-      <div className="relative px-[24px] w-full lg:px-[96px] mx-auto pb-[64px] lg:pt-[0] lg:pb-[96px]">
+      </motion.div>
+      <div className="relative w-full container mx-auto px-[24px] lg:px-0 mx-auto pb-[64px] lg:pt-[0] lg:pb-[96px]">
         <div className="flex flex-col lg:flex-row gap-[72px]">
-          <div className="w-full lg:w-[50%] lg:sticky lg:top-0 h-full">
+          <div className="w-full lg:w-[30%] lg:sticky lg:top-0 h-full">
             <h3 className="text-[31px] leading-[36px] lg:text-[39px] leading-[44px] mb-[32px] font-[800] text-[#00467F]">
               Programs that fit your needs.
             </h3>
@@ -199,7 +238,7 @@ function SFeaturedAreas() {
               setAcademicPlans={setAcademicPlans}
             />
           </div>
-          <div className="w-full">
+          <div className="w-full lg:w-[70%]">
             {!selectedArea && (
               <div className="w-full flex flex-row gap-[24px]">
                 <div className="flex flex-col gap-[24px] w-full mb-[48px]">
@@ -239,6 +278,7 @@ function SFeaturedAreas() {
                   darkBg={true}
                   showCount={false}
                   filteredAcademicPlans={filteredAcademicPlans}
+                  square={"true"}
                 />
               )}
             </motion.div>

@@ -244,7 +244,7 @@ function Filters({
           backgroundColor={backgroundColor}
         />
       </div>
-      <div className="flex flex-row justify-between items-end mt-[16px]">
+      <div className="flex flex-row justify-between w-full items-end mt-[16px]">
         <div className="hidden lg:flex flex flex-col gap-[8px]">
           <div
             className={`font-semibold uppercase mb-[4px] ${backgroundColor === "dark" ? "text-white" : "text-[#00467F]"}`}

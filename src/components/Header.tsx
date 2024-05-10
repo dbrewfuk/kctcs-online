@@ -146,26 +146,6 @@ const Header = ({ showModal, setShowModal }) => {
               </a>
             </div>
             <div className="">
-              {/* Menu Icon */}
-              <div
-                className={`cursor-pointer font-semibold lg:hidden py-[36px] flex bg-[#00467F] items-centered items-center justify-center w-[80px] h-full ${
-                  scrolled ? "text-blue-900" : "text-white"
-                }`}
-                onClick={handleToggleMobileMenu}
-              >
-                <svg
-                  className="w-[24px] h-[24px] absolute "
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 25 25"
-                  fill="white"
-                >
-                  <path
-                    d="M14.286 18.75v1.786H0V18.75zM25 11.607v1.786H0v-1.786zm0-7.142v2H0v-2z"
-                    fill="white"
-                  ></path>
-                </svg>
-              </div>
-
               <motion.div
                 className={`lg:hidden fixed bg-[#005cb8] text-white top-0 left-0 right-0 bottom-0 h-screen z-90`}
                 initial={{ opacity: 1 }}
@@ -249,45 +229,70 @@ const Header = ({ showModal, setShowModal }) => {
                     initial="hidden"
                     animate={isMobileMenuOpen ? "visible" : "hidden"}
                   >
-                    Success Stories
+                    Student Success
                   </motion.a>
                 </motion.div>
               </motion.div>
             </div>
-            <div className="hidden lg:flex gap-[32px]">
-              <nav className="flex items-center gap-[32px] text-[17.5px] leading-[24px] font-[600] lg:flex text-white">
+            <div className="flex gap-[24px]">
+              <nav className="hidden items-center text-center whitespace-nowrap  xl:flex gap-[32px] text-[17.5px] leading-[20px] font-[600] text-white">
                 <a
-                  className={`py-[24px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#fdd000] ${scrolled ? "" : "text-white"}`}
+                  className={`py-[32px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
                   href="/admissions.aspx"
                 >
                   Admissions
                 </a>
                 <a
-                  className={`py-[24px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#fdd000] ${scrolled ? "" : "text-white"}`}
+                  className={`py-[32px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
                   href="/tuition-and-cost.aspx"
                 >
                   Tuition &amp; Cost
                 </a>
                 <a
-                  className={`py-[24px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#fdd000] ${scrolled ? "" : "text-white"}`}
+                  className={`py-[32px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
                   href="/student-support-services.aspx"
                 >
                   Student Support Services
                 </a>
                 <a
-                  className={`py-[24px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#fdd000] ${scrolled ? "" : "text-white"}`}
+                  className={`py-[32px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
+                  href="/success-stories.aspx"
+                >
+                  Student Success
+                </a>
+                <a
+                  className={`py-[32px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
                   href="/programs.aspx"
                 >
                   Explore Programs
                 </a>
               </nav>
-              <div className="flex items-center">
+              <div className="flex items-center gap-[24px]">
                 <a
-                  className="rounded-full transition ease-in-out duration-[250ms] hover:bg-[white] hover:text-[#00467F] hidden text-[16px] lg:block bg-[#00467F] text-white px-[32px] py-[12px] font-[600]"
-                  href="https://kctcs.edu/admissions/request-information/index.aspx"
+                  href="/programs"
+                  className="text-[16px] whitespace-nowrap hidden border-b-[6px] bg-[white] border-[#00467F] text-[#00467F] rounded-full border md:inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] py-[12px] font-semibold px-[32px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
                 >
                   Request Information
                 </a>
+                {/* Menu Icon */}
+                <div
+                  className={`cursor-pointer font-semibold xl:hidden py-[36px] flex bg-[#00467F] items-centered items-center justify-center w-[80px] h-full ${
+                    scrolled ? "text-blue-900" : "text-white"
+                  }`}
+                  onClick={handleToggleMobileMenu}
+                >
+                  <svg
+                    className="w-[24px] h-[24px] absolute "
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 25 25"
+                    fill="white"
+                  >
+                    <path
+                      d="M14.286 18.75v1.786H0V18.75zM25 11.607v1.786H0v-1.786zm0-7.142v2H0v-2z"
+                      fill="white"
+                    ></path>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>

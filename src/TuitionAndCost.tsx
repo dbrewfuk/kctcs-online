@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Testimonial from "./components/Testimonial";
-import HeroSearch from "./components/HeroSearch";
-import HeroRfi from "./components/HeroRfi";
+import Hero from "./components/Hero";
 import Header from "./components/Header";
+import CollegeCards from "./components/CollegeCards";
 import DynamicSections from "./DynamicSections";
 import VideoBlockSlider from "./components/VideoBlockSlider";
 import programs from "./programs-20240207";
@@ -35,59 +35,39 @@ function TuitionAndCost() {
     "Bluegrass Community & Technical College",
     "West Kentucky Community & Technical College",
   ];
-  const delay = 20000;
-
-  const history = useHistory();
-  const [searchQuery, setSearchQuery] = useState("");
-
-  useEffect(() => {
-    // Extract unique credential types from programsData
-    const credentialTypesSet = new Set();
-
-    // Iterate over each program
-    programs.forEach((program) => {
-      // Iterate over each college in the program
-      program.colleges.forEach((college) => {
-        // Check if academic plans exist and iterate over them
-        if (college.academic_plans && college.academic_plans.length > 0) {
-          college.academic_plans.forEach((plan) => {
-            // Add the credential type to the Set
-            credentialTypesSet.add(plan.credential_type);
-          });
-        }
-      });
-    });
-
-    // Convert the Set to an array
-    const uniqueTypesArray = Array.from(credentialTypesSet);
-
-    // Update state with unique credential types
-    setUniqueCredentialTypes(uniqueTypesArray);
-  }, []); // Empty dependency array ensures this effect runs only once
-
-  const handleSubmit = (e: Event) => {
-    e.preventDefault();
-    history.push(`/programs?search=${searchQuery}`);
-    window.location.href = `/programs?search=${searchQuery}`;
-  };
 
   return (
     <>
-      <div className="relative">
-        <HeroSearch
-          title="Tuition & Costs"
-          highlighted=""
-          uniqueCredentialTypes={uniqueCredentialTypes}
-          setUniqueCredentialTypes={setUniqueCredentialTypes}
-        />
+      <Header />
+      <Hero title="Tuition and Costs" />
+      <div className="container mx-auto px-[24px] lg:px-0 pt-[64px] lg:pt-[96px] pb-[64px] lg:pb-[96px]">
+        <div className="flex flex-col lg:flex-row items-center gap-[64px]">
+          <div className="w-full lg:w-1/2 rounded-[12px] overflow-hidden">
+            <img
+              src="./src/assets/admissions.jpeg"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="w-full lg:w-1/2">
+            <h1 className="text-[61.04px] mb-[24px] font-[900] leading-[64px] text-[#00467F]">
+              AFRAID YOU CAN'T AFFORD COLLEGE<span className="dot">?</span>
+            </h1>
+            <p className="text-[21px] font-[500] leading-[32px] text-[#00467F]">
+              Well, you can. With the lowest tuition in Kentucky, financial aid
+              options, and a helping hand to guide you through the application
+              process, our colleges have you covered. We'll help you reach your
+              dreams at a price that won't break the bank.
+            </p>
+            <div className="mt-[32px] lg:mt-[48px]">
+              <a className="px-[48px] hover:bg-[white] hover:text-[#00467F] transition border-[1px] border-[#00467F] ease-in-out duration-[250ms] py-[16px] bg-[#00467F] rounded-full text-[white] text-[17.5px] font-[600] cursor-pointer">
+                How to Pay for College
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      <DynamicSections
-        title="Explore Tuition & Cost"
-        supportingText="With the lowest tuition in Kentucky, financial aid options, and a helping hand to guide you through the application process, KCTCS has you covered. We'll help you reach your dreams at a price that won't break the bank."
-        contentset="tuition"
-      />
 
-      <Testimonial />
+      <CollegeCards contentset="tuition" />
     </>
   );
 }

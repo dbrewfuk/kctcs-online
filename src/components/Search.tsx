@@ -62,7 +62,7 @@ const Search = () => {
                 </svg>
               </span>
               <span
-                className={`p-[8px] mr-[8px] rounded-[12px] bg-[#FFD000] cursor-pointer hover:bg-opacity-70 transition ease-in-out  duration-200 cursor-pointer ${searchQuery ? "transform translate-x-[0px]" : "translate-x-[50px]"}`}
+                className={`p-[8px] mr-[8px] rounded-[12px] bg-[#FBBF24] cursor-pointer hover:bg-opacity-70 transition ease-in-out  duration-200 cursor-pointer ${searchQuery ? "transform translate-x-[0px]" : "translate-x-[50px]"}`}
                 onClick={handleSubmit} // Clear search query
               >
                 <svg

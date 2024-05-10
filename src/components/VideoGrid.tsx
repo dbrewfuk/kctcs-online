@@ -30,20 +30,6 @@ const videos = [
     program: "Associate in Arts",
     src: "https://demo.kctcs.edu/ko/media/drew.mp4", // Replace with your video URLs
   },
-  {
-    id: 5,
-    title: "Drew Mckinney",
-    college: "Ashland Community & Technical College",
-    program: "Associate in Arts",
-    src: "https://demo.kctcs.edu/ko/media/drew.mp4", // Replace with your video URLs
-  },
-  {
-    id: 6,
-    title: "Drew Mckinney",
-    college: "Ashland Community & Technical College",
-    program: "Associate in Arts",
-    src: "https://demo.kctcs.edu/ko/media/drew.mp4", // Replace with your video URLs
-  },
 ];
 
 function VideoGrid() {
@@ -115,12 +101,17 @@ function VideoGrid() {
   return (
     <div className="pt-[80px] pb-[0px] lg:pt-[96px] lg:pb-[80px] transition-all ease-in-out duration-300">
       <div className="container relative overflow-hidden px-8 lg:px-0 mx-auto">
-        <h1 className="text-6xl font-black text-[#00467F] lg-[96px] mb-[32px] lg:mb-[48px]">
-          Student Stories
-        </h1>
+        <div className="mb-[40px] lg:mb-[48px]">
+          <h1 className="text-[48px] font-[800] leading-[56px] text-[#00467F] lg-[96px] mb-[12px]">
+            From Screens to <span className="bar">Dreams</span>
+          </h1>
+          <p className="text-[31px] font-[600] leading-[36px] text-[#00467F]">
+            Successes of Online Learning at KCTCS.
+          </p>
+        </div>
 
         {/* Video Content */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-[32px] pb-[48px]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-[32px] gap-y-[48px] pb-[48px]">
           {videos.map((video, index) => (
             <div key={video.id}>
               <Suspense fallback={<div>Loading...</div>}>
@@ -176,7 +167,7 @@ function VideoGrid() {
                   )}
                   {/* Video Player */}
 
-                  <div className="aspect-w-16 aspect-h-9">
+                  <div className="aspect-w-16 aspect-h-9 bg-[#f5f5f5]">
                     <video
                       id={`video-${index}`}
                       src={video.src}

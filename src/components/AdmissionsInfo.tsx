@@ -26,14 +26,14 @@ function AdmissionsInfo() {
   ];
   return (
     <>
-      <div className="pt-[64px] lg:pt-[128px] lg:pb-[96px]">
+      <div className="pt-[0px] lg:pt-[80px] lg:pb-[96px]">
         <div className="flex flex-col">
           <div className="relative w-full group overflow-hidden">
-            <div className="px-[24px] lg:px-[96px] flex items-center mb-[48px] w-full">
-              <h1 className="text-[56px] leading-[60px] whitespace-wrap w-[50%] lg:text-[61.04px] mb-[16px] lg:leading-[64px] text-[#00467F] font-[900]">
-                Real World Success
+            <div className="container mx-auto px-[24px] lg:px-0 flex items-center mb-[40px] lg:mb-[52px] w-full">
+              <h1 className="text-[48.8px] leading-[52px] whitespace-wrap w-[50%] lg:text-[61.04px] lg:leading-[64px] text-[#00467F] font-[800]">
+                Let's Get&nbsp;
                 <span className="">
-                  <span className="bar"> Anywhere</span>
+                  <span className="bar"> Started</span>
                   <span className="dot">.</span>
                 </span>
               </h1>
@@ -47,29 +47,27 @@ function AdmissionsInfo() {
                 src="./src/assets/admissions.jpeg"
               />
             </div>
-            <div className="p-[24px] pt-[56px] py-[48px] lg:pb-[72px] lg:pl-[64px] max-w-[596px]">
+            <div className="p-[24px] pt-[48px] lg:pt-[56px] py-[48px] lg:pb-[72px] lg:pl-[64px] max-w-[596px]">
               <p className="text-[25px] font-[600] text-[#00467F]">
-                Whether you’re starting college for the first time or thinking
-                about a career change, we’ve got you covered. We offer associate
-                degrees, diplomas and certificates - and we’re here to help you
-                reach your goals. Get started by finding the program that works
-                for you!
+                Whether you’re a high school student, a returning student or
+                just looking to take a class on the side, we are here for you.
+                Pick a school to learn more about their admission requirements.
               </p>
-              <div className="w-full">
+              <div className="w-full text-center">
                 <a
                   href="/programs"
-                  className="text-[18px] mt-[48px] rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] text-white py-[16px] font-semibold px-[48px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
+                  className="text-[17.5px] mt-[32px] lg:mt-[48px] rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] text-white py-[16px] font-semibold px-[48px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
                 >
-                  Explore Programs
+                  Get Started
                 </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="relative px-[24px] w-full lg:px-[96px] mx-auto pb-[64px] lg:pt-[0] lg:pb-[96px]">
-        <div className="flex flex-row justify-end gap-[64px] w-full">
-          <div className="flex w-full lg:w-[40%] flex-col">
+      <div className="relative px-[24px] w-full container mx-auto px-[24px] lg:px-0 pb-[64px] lg:pt-[0] lg:pb-[96px]">
+        <div className="flex flex-row justify-center gap-[64px] w-full">
+          <div className="flex w-full lg:w-[40%] flex-col order-2">
             <h3 className="text-[31px] leading-[36px] lg:text-[39px] leading-[44px] mb-[32px] font-[800] text-[#00467F]">
               Programs that fit your needs.
             </h3>
@@ -78,11 +76,11 @@ function AdmissionsInfo() {
               {tabs.map((tab, index) => (
                 <div
                   key={index}
-                  className={`w-full relative group border-l-[2px] border-[#fdd000] transition ease-in-out cursor-pointer `}
+                  className={`w-full relative group lg:border-l-[2px] border-[#FBBF24] transition ease-in-out cursor-pointer `}
                   onClick={() => setSelectedTab(index)}
                 >
                   <div
-                    className={`flex flex-col transition-all ease-in-out text-[#00467F] duration-[250ms] w-full h-full justify-center p-[20px] ${selectedTab === index ? "border-l-[6px] bg-[#f5f5f5] border-[#fdd000]" : ""}`}
+                    className={`flex flex-col transition-all ease-in-out text-[#00467F] duration-[250ms] w-full h-full justify-center p-[20px] ${selectedTab === index ? "lg:border-l-[6px] bg-[#f5f5f5] border-[#FBBF24]" : ""}`}
                   >
                     <h1 className="text-[20px] whitespace-wrap font-semibold">
                       {tab.name}
@@ -112,11 +110,11 @@ function AdmissionsInfo() {
             {tabs.map((_, index) => (
               <div className="flex flex-row gap-[24px]" key={index}>
                 <div
-                  className={`aspect-[1/1] w-full transition ease-in-out duration-[250ms] ${selectedTab === index ? "border-[6px] bg-[#00467F] border-[#fdd000]" : "bg-[#fdd000]"}`}
+                  className={`aspect-[1/1] w-full transition ease-in-out duration-[250ms] ${selectedTab === index ? "border-[6px] bg-[#00467F] border-[#FBBF24]" : "bg-[#FBBF24]"}`}
                   onClick={() => setSelectedTab(index)}
                 ></div>
                 <div
-                  className={`aspect-[1/1] w-full transition ease-in-out duration-[250ms] ${selectedTab === index ? "border-[6px] bg-[#fdd000] border-[#fdd000]" : "bg-[#00467F]"}`}
+                  className={`aspect-[1/1] w-full transition ease-in-out duration-[250ms] ${selectedTab === index ? "border-[6px] bg-[#FBBF24] border-[#FBBF24]" : "bg-[#00467F]"}`}
                   onClick={() => setSelectedTab(index)}
                 ></div>
               </div>

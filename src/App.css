@@ -168,7 +168,6 @@ body {
 .bar {
   position: relative;
   display: inline-block;
-  margin-bottom: 16px;
   z-index: 1;
 }
 
@@ -177,14 +176,26 @@ body {
   position: absolute;
   left: 0;
   bottom: 0;
-  transform: translateY(33%);
-  height: 16px;
-  background-color: #ffd000;
+  transform: translateY(-40%);
+  height: 0.5em;
+  background-color: #fbbf24;
   width: 100%;
   z-index: -1;
   border-radius: 2px;
 }
 
 .dot {
-  color: #ffd000;
+  color: #fbbf24;
+}
+
+.text-\[17\.5px\].mt-\[32px\].lg\:mt-\[48px\].rounded-full.border.inline-block.transition.ease-in-out.text-center.cursor-pointer.width-auto.bg-\[\#00467F\].text-white.py-\[16px\].font-semibold.px-\[48px\].hover\:bg-white.hover\:text-\[\#00467F\].hover\:border-\[\#00467F\] {
+  border-bottom-width: 6px;
+  background: white;
+  color: #00467f;
+  border-color: #00467f;
+  transition: ease-in-out 0.25s;
+}
+
+.text-\[17\.5px\].mt-\[32px\].lg\:mt-\[48px\].rounded-full.border.inline-block.transition.ease-in-out.text-center.cursor-pointer.width-auto.bg-\[\#00467F\].text-white.py-\[16px\].font-semibold.px-\[48px\].hover\:bg-white.hover\:text-\[\#00467F\].hover\:border-\[\#00467F\]:hover {
+  border-bottom-width: 2px;
 }

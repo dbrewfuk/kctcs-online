@@ -307,6 +307,7 @@ function Programs() {
 
   return (
     <>
+      <Header />
       <div id="sticky-search" className="flex flex-col lg:flex-row ">
         <div
           id="sticky-search"
