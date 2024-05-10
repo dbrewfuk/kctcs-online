@@ -47,7 +47,7 @@ const Header = ({ showModal, setShowModal }) => {
         <div className="lg:container lg:mx-auto ">
           <div className="flex items-center pl-[24px] pr-0 lg:pl-0 justify-between">
             <div>
-              <a className="flex gap-[8px] items-end" href="/">
+              <a className="flex gap-[8px] items-end" href="./index.aspx">
                 <svg
                   className="h-[32px]"
                   xmlns="http://www.w3.org/2000/svg"
@@ -188,7 +188,7 @@ const Header = ({ showModal, setShowModal }) => {
                   {/* mobile menu items */}
                   <motion.a
                     className="text-white font-black text-[48px]"
-                    href="/admissions.aspx"
+                    href="./admissions.aspx"
                     variants={menuItemVariants}
                     initial="hidden"
                     animate={isMobileMenuOpen ? "visible" : "hidden"}
@@ -197,7 +197,7 @@ const Header = ({ showModal, setShowModal }) => {
                   </motion.a>
                   <motion.a
                     className="text-white font-black text-[48px]"
-                    href="/tuition-and-cost"
+                    href="./tuition-and-cost"
                     variants={menuItemVariants}
                     initial="hidden"
                     animate={isMobileMenuOpen ? "visible" : "hidden"}
@@ -206,7 +206,7 @@ const Header = ({ showModal, setShowModal }) => {
                   </motion.a>
                   <motion.a
                     className="text-white font-black text-[48px]"
-                    href="/programs.aspx"
+                    href="./programs.aspx"
                     variants={menuItemVariants}
                     initial="hidden"
                     animate={isMobileMenuOpen ? "visible" : "hidden"}
@@ -215,7 +215,7 @@ const Header = ({ showModal, setShowModal }) => {
                   </motion.a>
                   <motion.a
                     className="text-white font-black text-[48px]"
-                    href="/student-support-services.aspx"
+                    href="./student-support-services.aspx"
                     variants={menuItemVariants}
                     initial="hidden"
                     animate={isMobileMenuOpen ? "visible" : "hidden"}
@@ -224,7 +224,7 @@ const Header = ({ showModal, setShowModal }) => {
                   </motion.a>
                   <motion.a
                     className="text-white font-black text-[48px]"
-                    href="/success-stories.aspx"
+                    href="./success-stories.aspx"
                     variants={menuItemVariants}
                     initial="hidden"
                     animate={isMobileMenuOpen ? "visible" : "hidden"}
@@ -238,31 +238,31 @@ const Header = ({ showModal, setShowModal }) => {
               <nav className="hidden items-center text-center whitespace-nowrap  xl:flex gap-[32px] text-[17.5px] leading-[20px] font-[600] text-white">
                 <a
                   className={`py-[32px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="/admissions.aspx"
+                  href="./admissions.aspx"
                 >
                   Admissions
                 </a>
                 <a
                   className={`py-[32px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="/tuition-and-cost.aspx"
+                  href="./tuition-and-cost.aspx"
                 >
                   Tuition &amp; Cost
                 </a>
                 <a
                   className={`py-[32px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="/student-support-services.aspx"
+                  href="./student-support-services.aspx"
                 >
                   Student Support Services
                 </a>
                 <a
                   className={`py-[32px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="/success-stories.aspx"
+                  href="./success-stories.aspx"
                 >
                   Student Success
                 </a>
                 <a
                   className={`py-[32px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="/programs.aspx"
+                  href="./programs.aspx"
                 >
                   Explore Programs
                 </a>

@@ -164,7 +164,7 @@ function SFeaturedAreas() {
                   <span className="dot">.</span>
                 </span>
               </h1>
-              <div className="absolute right-[24px] z-[-1] lg:relative w-[50%] flex justify-center">
+              <div className="absolute hidden lg:flex right-[24px] z-[-1] lg:relative w-[50%] flex justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="294"

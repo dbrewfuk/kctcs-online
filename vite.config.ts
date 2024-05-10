@@ -7,6 +7,9 @@ import tailwindcss from "tailwindcss";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: "./",
+  css: {
+    fileName: "styles.css", // Output CSS file name
+  },
   build: {
     assetsDir: "assets",
     rollupOptions: {
@@ -14,6 +17,9 @@ export default defineConfig({
         home: "/index.html",
         admissions: "/admissions.html",
         programs: "/programs.html",
+      },
+      output: {
+        entryFileNames: "app.js", // Output JS file name
       },
     },
   },

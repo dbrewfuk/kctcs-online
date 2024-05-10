@@ -9,7 +9,6 @@ const Search = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     history.push(`/programs?search=${searchQuery}`);
-    window.location.href = `/programs?search=${searchQuery}`;
   };
 
   const handlePopularSearchClick = (popularSearch: string) => {

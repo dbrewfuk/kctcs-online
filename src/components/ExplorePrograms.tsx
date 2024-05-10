@@ -8,11 +8,8 @@ function ExplorePrograms() {
         <div className="flex flex-col lg:flex-row items-end gap-[48px] lg:gap-[64px]">
           <div className="w-full lg:w-1/2">
             <h1 className="text-[48.8px] leading-[52px] lg:text-[61.04px] lg:leading-[64px] font-[800] text-white mb-[24px]">
-              Something for{" "}
-              <span className="whitespace-nowrap">
-                <span className="bar">Everyone</span>
-                <span className="dot">.</span>
-              </span>
+              Something for <span className="">Everyone</span>
+              <span className="dot">.</span>
             </h1>
             <p className="text-[20px] text-white font-semibold">
               We’ve been expanding our online offerings for years, and our

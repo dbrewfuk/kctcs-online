@@ -18,13 +18,27 @@ const videos = [
   },
   {
     id: 3,
+    title: "Jae Freeman",
+    college: "West Kentucky Community & Technical College",
+    program: "Criminal Justice",
+    src: "https://demo.kctcs.edu/ko/media/jae.mp4", // Replace with your video URLs
+  },
+  {
+    id: 4,
     title: "Drew Mckinney",
     college: "Ashland Community & Technical College",
     program: "Associate in Arts",
     src: "https://demo.kctcs.edu/ko/media/drew.mp4", // Replace with your video URLs
   },
   {
-    id: 4,
+    id: 5,
+    title: "Jae Freeman",
+    college: "West Kentucky Community & Technical College",
+    program: "Criminal Justice",
+    src: "https://demo.kctcs.edu/ko/media/jae.mp4", // Replace with your video URLs
+  },
+  {
+    id: 6,
     title: "Drew Mckinney",
     college: "Ashland Community & Technical College",
     program: "Associate in Arts",

@@ -103,59 +103,35 @@ function StudentStoryFeature() {
   }, []);
 
   return (
-    <div className="pt-[64px] pb-[48px] lg:pt-[128px] lg:pb-[96px] transition-all ease-in-out duration-300">
+    <motion.div
+      ref={textRef}
+      initial={{ opacity: 0 }} // Set initial opacity to 0
+      animate={{
+        opacity: isTextInView ? 1 : 0,
+        y: isTextInView ? 0 : 40,
+        transition: { duration: 0.5, ease: "easeInOut" },
+      }} // Set initial opacity to 0
+      className="pt-[64px] pb-[48px] lg:pt-[128px] lg:pb-[96px]"
+    >
       <div className="relative  lg:container lg:mx-auto ">
         <div className="flex flex-col lg:flex-row gap-[24px] lg:gap-[72px]">
           <div className="container mx-auto px-[24px] lg:px-0 w-full lg:w-[50%]">
-            <motion.h1
-              initial={{ opacity: 0 }} // Set initial opacity to 0
-              animate={{
-                opacity: isTextInView ? 1 : 0,
-
-                transition: { duration: 0.95, ease: "easeInOut" },
-              }} // Fade in when text span is in view
-              className="text-[48.8px] leading-[52px] lg:text-[61.04px] lg:leading-[64px] font-[800] text-[#00467F] lg-[96px] mb-[16px] lg:mb-[24px]"
-            >
-              <span ref={textRef} id="text-span" className="relative">
-                <motion.span
-                  id="bar-span"
-                  className="bar absolute bottom-0 z-[-1]"
-                  animate={{
-                    width: isTextInView ? "92%" : 0,
-                    x: isTextInView ? 0 : -20,
-                    opacity: isTextInView ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.25, ease: "easeInOut" }}
-                />
+            <motion.h1 className="text-[48.8px] leading-[52px] lg:text-[61.04px] lg:leading-[64px] font-[800] text-[#00467F] lg-[96px] mb-[16px] lg:mb-[24px]">
+              <span className="relative">
+                <motion.span />
                 Transform{" "}
               </span>
               Your Education
               <span className="dot">.</span>
             </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }} // Set initial opacity to 0
-              animate={{
-                opacity: isTextInView ? 1 : 0,
-
-                transition: { duration: 0.75, ease: "easeInOut" },
-              }}
-              className="text-[18px] lg:text-[21px] lg:leading-[32px] leading-[28px] text-[#00467F] "
-            >
+            <motion.p className="text-[18px] lg:text-[21px] lg:leading-[32px] leading-[28px] text-[#00467F] ">
               At KCTCS, we understand that every student has unique needs and
               goals. That's why we offer flexible scheduling options, including
               online and hybrid courses, to accommodate your busy lifestyle.
               Plus, our affordable tuition rates make it possible for you to
               pursue your dreams without breaking the bank.
             </motion.p>
-            <motion.div
-              initial={{ opacity: 0 }} // Set initial opacity to 0
-              animate={{
-                opacity: isTextInView ? 1 : 0,
-
-                transition: { duration: 0.75, ease: "easeInOut" },
-              }}
-              className="flex gap-[8px] mt-[32px]"
-            >
+            <motion.div className="flex gap-[8px] mt-[32px]">
               {videos.map((video, index) => (
                 <div
                   key={index}
@@ -239,15 +215,7 @@ function StudentStoryFeature() {
                     </div>
                   )}
 
-                  <motion.div
-                    initial={{ opacity: 0 }} // Set initial opacity to 0
-                    animate={{
-                      opacity: isTextInView ? 1 : 0,
-                      y: isTextInView ? 0 : 40,
-                      transition: { duration: 0.5, ease: "easeInOut" },
-                    }}
-                    className="aspect-w-16 aspect-h-9"
-                  >
+                  <motion.div className="aspect-w-16 aspect-h-9">
                     <video
                       id={`video`}
                       src={videos[currentVideo].src}
@@ -289,14 +257,14 @@ function StudentStoryFeature() {
         </div>
         <div className="w-full flex justify-center mt-[32px] lg:mt-[64px]">
           <a
-            className="rounded-full inline-block hover:bg-[white] hover:text-[#00467F] border-[1px] border-[#00467F] transition-ease-in-out duration-[250ms]  font-[600] py-[16px] px-[48px] text-[17.5px] bg-[#00467F] text-white"
+            className="rounded-full inline-block hover:bg-[white] hover:text-[#00467F] border-[1px] border-b-[6px] bg-[white] text-[#00467F] border-[#00467F] transition-ease-in-out duration-[250ms]  font-[600] py-[16px] px-[48px] text-[17.5px]"
             href="/success-stories"
           >
             Watch All Student Stories
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
