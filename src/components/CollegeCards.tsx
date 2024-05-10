@@ -57,7 +57,7 @@ function CollegeCards({ contentset, theme }) {
                   src={
                     selectedCollegeVideo
                       ? selectedCollegeVideo
-                      : "https://player.vimeo.com/video/678281924?background=1&autoplay=1&loop=1&byline=0&title=0"
+                      : "https://player.vimeo.com/video/665275644?background=1&autoplay=1&loop=1&byline=0&title=0"
                   }
                   width="2000px"
                   height="1366px"
