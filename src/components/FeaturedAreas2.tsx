@@ -5,7 +5,7 @@ import ProgramResultCards from "./ProgramResultsCards";
 
 const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
   const history = useHistory();
-  const [selectedArea, setSelectedArea] = useState("");
+
   const [uniquePlanNames, setUniquePlanNames] = useState([]);
   const [filteredAcademicPlans, setFilteredAcademicPlans] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState([]);
@@ -69,6 +69,8 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
         "At KCTCS, we recognize that each student has individual needs and aspirations. That's why we provide adaptable scheduling choices, such as online and hybrid classes, to fit your hectic schedule.",
     },
   ];
+
+  const [selectedArea, setSelectedArea] = useState(cardData[0].title);
 
   useEffect(() => {
     // Filter the academic plans based on the search query, selected filters, etc.

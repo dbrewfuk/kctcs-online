@@ -584,7 +584,164 @@
       {
         "name": "Bluegrass Community and Technical College",
         "url": "https://bluegrass.kctcs.edu/education-training/program-finder/computer-information-technology.aspx",
-        "tracks": "A+ Prep, Application Support Technician, AWS Cloud Architecting, Business Software and Support Track, Cisco Networking Associate, Cisco Networking Enhanced, CIT Fundamentals, Cloud Computing Technologies, Computer Tech Basic, Computer Technician, Geospatial Technologies, Informatics Advanced, Informatics Generalist, Informatics Programming Informatics Track, Information Security Specialist, Internet Technologies Track, Microsoft Enterprise Administrator, Microsoft Network Administrator, Mobile Apps Developer, Net+ Prep, Network Technologies, Network Technologies Specialist, Productivity Software Specialist, Programmer, Programming Track, Security+ Prep, Video Game Design, Video Game Design, Web Server Administrator, Web Programmer"
+        "tracks": "A+ Prep, Application Support Technician, AWS Cloud Architecting, Business Software and Support Track, Cisco Networking Associate, Cisco Networking Enhanced, CIT Fundamentals, Cloud Computing Technologies, Computer Tech Basic, Computer Technician, Geospatial Technologies, Informatics Advanced, Informatics Generalist, Informatics Programming Informatics Track, Information Security Specialist, Internet Technologies Track, Microsoft Enterprise Administrator, Microsoft Network Administrator, Mobile Apps Developer, Net+ Prep, Network Technologies, Network Technologies Specialist, Productivity Software Specialist, Programmer, Programming Track, Security+ Prep, Video Game Design, Video Game Design, Web Server Administrator, Web Programmer",
+        "academic_plans": [
+          {
+            "name": "A+ Prep",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Application Support Technician",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "AWS Cloud Architecting",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Business Software and Support Track",
+            "credential_type": "Associate in Applied Science",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Cisco Networking Associate",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Cisco Networking Enhanced",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "CIT Fundamentals",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Cloud Computing Technologies",
+            "credential_type": "Associate in Applied Science",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Computer Tech Basic",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Computer Technician",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Geospatial Technologies",
+            "credential_type": "Associate in Applied Science",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Informatics Advanced",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Informatics Generalist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Informatics Programming",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Informatics Track",
+            "credential_type": "Associate in Applied Science",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Information Security Specialist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Internet Technologies Track",
+            "credential_type": "Associate in Applied Science",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Microsoft Enterprise Administrator",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Microsoft Network Administrator",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Mobile Apps Developer",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Net+ Prep",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Network Technologies",
+            "credential_type": "Associate in Applied Science",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Network Techcnolgies Specialist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Productivity Software Specialist",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Programmer",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Programming Track",
+            "credential_type": "Associate in Applied Science",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Security+ Prep",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Video Game Design",
+            "credential_type": "Associates in Applied Science",
+            "credentials_awarded": "Associates in Applied Science"
+          },
+          {
+            "name": "Video Game Design",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Web Server Administrator",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Web Programmer",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          }
+        ]
       },
       {
         "name": "Big Sandy Community and Technical College",
@@ -1361,7 +1518,53 @@
       {
         "name": "Bluegrass Community and Technical College",
         "url": "https://bluegrass.kctcs.edu/education-training/program-finder/criminal-justice.aspx",
-        "academic_plans": []
+        "academic_plans": [
+          {
+            "name": "Computer Forensics",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Corrections",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Corrections Track",
+            "credential_type": "Associate in Applied Science",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Criminal Justice Core",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Criminal Justice Track",
+            "credential_type": "Associate in Applied Science",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Law Enforcement",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Law Enforcement Track",
+            "credential_type": "Associate in Applied Science",
+            "credentials_awarded": "Associate in Applied Science"
+          },
+          {
+            "name": "Security and Loss Prevention",
+            "credential_type": "Certificate",
+            "credentials_awarded": "Certificate"
+          },
+          {
+            "name": "Security and Loss Prevention Track",
+            "credential_type": "Associate in Applied Science",
+            "credentials_awarded": "Associate in Applied Science"
+          }
+        ]
       },
       {
         "name": "Big Sandy Community and Technical College",
@@ -2031,7 +2234,13 @@
       {
         "name": "Bluegrass Community and Technical College",
         "url": "https://bluegrass.kctcs.edu/education-training/program-finder/education-teacher-preparation.aspx",
-        "academic_plans": []
+        "academic_plans": [
+          {
+            "name": "Education",
+            "credential_type": "Associates in Applied Science",
+            "credentials_awarded": "Associates in Applied Science"
+          }
+        ]
       },
       {
         "name": "Southeast Community and Technical College",

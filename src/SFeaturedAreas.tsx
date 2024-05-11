@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import programs from "./programs-20240207";
+import programs from "./programs-20240510";
 import FeaturedAreasList2 from "./components/FeaturedAreas2";
 import ProgramsList from "./components/ProgramsList";
 import ProgramResults from "./components/ProgramResults";
@@ -283,6 +283,14 @@ function SFeaturedAreas() {
               )}
             </motion.div>
           </div>
+        </div>
+        <div className="w-full text-center mt-[32px]">
+          <a
+            href="/programs.aspx"
+            className="text-[17.5px] mt-[32px] lg:mt-[48px] rounded-full border inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] text-white py-[16px] font-semibold px-[48px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
+          >
+            Explore All Programs
+          </a>
         </div>
       </div>
     </>

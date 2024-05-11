@@ -235,33 +235,34 @@ const Header = ({ showModal, setShowModal }) => {
               </motion.div>
             </div>
             <div className="flex gap-[24px]">
-              <nav className="hidden items-center text-center whitespace-nowrap  xl:flex gap-[32px] text-[17.5px] leading-[20px] font-[600] text-white">
+              <nav className="hidden items-center group text-center whitespace-nowrap  xl:flex gap-[32px] text-[17.5px] leading-[20px] font-[600] text-white">
                 <a
-                  className={`py-[32px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
+                  className={`py-[24px]  relative border-transparent group transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
                   href="./admissions.aspx"
                 >
                   Admissions
+                  <span className="w-full absolute block bottom-[-1px] left-[0] transition-height ease-in-out duration-[250ms] h-[0] group-hover:h-[6px] bg-[#E3B000] z-[1]"></span>
                 </a>
                 <a
-                  className={`py-[32px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
+                  className={`py-[24px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
                   href="./tuition-and-cost.aspx"
                 >
                   Tuition &amp; Cost
                 </a>
                 <a
-                  className={`py-[32px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
+                  className={`py-[24px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
                   href="./student-support-services.aspx"
                 >
                   Student Support Services
                 </a>
                 <a
-                  className={`py-[32px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
+                  className={`py-[24px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
                   href="./success-stories.aspx"
                 >
                   Student Success
                 </a>
                 <a
-                  className={`py-[32px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
+                  className={`py-[24px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
                   href="./programs.aspx"
                 >
                   Explore Programs
@@ -270,7 +271,7 @@ const Header = ({ showModal, setShowModal }) => {
               <div className="flex items-center gap-[24px]">
                 <a
                   href="/programs"
-                  className="text-[16px] whitespace-nowrap hidden border-b-[6px] bg-[white] border-[#00467F] text-[#00467F] rounded-full border md:inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] py-[12px] font-semibold px-[32px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
+                  className="text-[16px] whitespace-nowrap hidden group relative  border-b-[0px] bg-[white]  text-[#00467F] rounded-full border md:inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] py-[12px] font-semibold px-[32px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
                 >
                   Request Information
                 </a>

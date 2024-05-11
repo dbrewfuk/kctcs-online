@@ -142,7 +142,7 @@ function StudentStoryFeature() {
                     className={`flex flex-col  transition ease-in-out duration-[200ms]  gap-[8px] ${currentVideo === index ? "bg-[white]  hover:bg-[white]  " : "shadow-[0] "}`}
                   >
                     <div
-                      className={`overflow-hidden aspect-video w-full border-[6px] bg-[#f5f5f5] ${currentVideo === index ? "border-[#FBBF24] " : "shadow-[0] border-[transparent]"}`}
+                      className={`overflow-hidden aspect-video w-full border-[6px] border-[outset] bg-[#f5f5f5] ${currentVideo === index ? "border-[#FBBF24] " : "shadow-[0] border-[0]"}`}
                     >
                       {" "}
                       <video
