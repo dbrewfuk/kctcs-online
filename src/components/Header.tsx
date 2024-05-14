@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Button from "./Button";
 import Rfi from "./Rfi";
 
-const Header = ({ showModal, setShowModal }) => {
+const Header = ({ showModal, setShowModal, isActive }) => {
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -44,10 +45,10 @@ const Header = ({ showModal, setShowModal }) => {
         }`}
         style={{ background: scrolled ? "" : "" }}
       >
-        <div className="lg:container lg:mx-auto ">
+        <div className="px-24px lg:px-[96px] lg:mx-auto ">
           <div className="flex items-center pl-[24px] pr-0 lg:pl-0 justify-between">
             <div>
-              <a className="flex gap-[8px] items-end" href="./index.aspx">
+              <a className="flex gap-[8px] items-end" href="./index.html">
                 <svg
                   className="h-[32px]"
                   xmlns="http://www.w3.org/2000/svg"
@@ -188,7 +189,7 @@ const Header = ({ showModal, setShowModal }) => {
                   {/* mobile menu items */}
                   <motion.a
                     className="text-white font-black text-[48px]"
-                    href="./admissions.aspx"
+                    href="./admissions.html"
                     variants={menuItemVariants}
                     initial="hidden"
                     animate={isMobileMenuOpen ? "visible" : "hidden"}
@@ -206,7 +207,7 @@ const Header = ({ showModal, setShowModal }) => {
                   </motion.a>
                   <motion.a
                     className="text-white font-black text-[48px]"
-                    href="./programs.aspx"
+                    href="./programs.html"
                     variants={menuItemVariants}
                     initial="hidden"
                     animate={isMobileMenuOpen ? "visible" : "hidden"}
@@ -215,7 +216,7 @@ const Header = ({ showModal, setShowModal }) => {
                   </motion.a>
                   <motion.a
                     className="text-white font-black text-[48px]"
-                    href="./student-support-services.aspx"
+                    href="./student-support-services.html"
                     variants={menuItemVariants}
                     initial="hidden"
                     animate={isMobileMenuOpen ? "visible" : "hidden"}
@@ -224,7 +225,7 @@ const Header = ({ showModal, setShowModal }) => {
                   </motion.a>
                   <motion.a
                     className="text-white font-black text-[48px]"
-                    href="./success-stories.aspx"
+                    href="./success-stories.html"
                     variants={menuItemVariants}
                     initial="hidden"
                     animate={isMobileMenuOpen ? "visible" : "hidden"}
@@ -237,63 +238,84 @@ const Header = ({ showModal, setShowModal }) => {
             <div className="flex gap-[24px]">
               <nav className="hidden items-center group text-center whitespace-nowrap  xl:flex gap-[32px] text-[17.5px] leading-[20px] font-[600] text-white">
                 <a
-                  className={`py-[24px]  relative border-transparent group transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="./admissions.aspx"
+                  className={`py-[24px]  border-b-[6px] transition ease-in-out duration-[250ms] hover:border-[#00467F] ${scrolled ? "" : "text-white"} ${
+                    isActive === "admissions"
+                      ? "border-[#FBBF24]"
+                      : "border-transparent "
+                  }`}
+                  href="./admissions.html"
                 >
                   Admissions
-                  <span className="w-full absolute block bottom-[-1px] left-[0] transition-height ease-in-out duration-[250ms] h-[0] group-hover:h-[6px] bg-[#E3B000] z-[1]"></span>
                 </a>
                 <a
-                  className={`py-[24px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="./tuition-and-cost.aspx"
+                  className={`py-[24px]  border-b-[6px]  transition ease-in-out duration-[250ms] hover:border-[#00467F] ${scrolled ? "" : "text-white"} ${
+                    isActive === "tuition"
+                      ? "border-[#FBBF24]"
+                      : "border-transparent "
+                  }`}
+                  href="./tuition.html"
                 >
                   Tuition &amp; Cost
                 </a>
                 <a
-                  className={`py-[24px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="./student-support-services.aspx"
+                  className={`py-[24px]  border-b-[6px] transition ease-in-out duration-[250ms] hover:border-[#00467F] ${scrolled ? "" : "text-white"} ${
+                    isActive === "student-services"
+                      ? "border-[#FBBF24]"
+                      : "border-transparent "
+                  }`}
+                  href="./student-services.html"
                 >
                   Student Support Services
                 </a>
                 <a
-                  className={`py-[24px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="./success-stories.aspx"
+                  className={`py-[24px]    border-b-[6px] transition ease-in-out duration-[250ms] hover:border-[#00467F] ${scrolled ? "" : "text-white"} ${
+                    isActive === "success-stories"
+                      ? "border-[#FBBF24]"
+                      : "border-transparent "
+                  }`}
+                  href="./success-stories.html"
                 >
                   Student Success
                 </a>
                 <a
-                  className={`py-[24px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="./programs.aspx"
+                  className={`py-[24px]    border-b-[6px] transition ease-in-out duration-[250ms] hover:border-[#00467F] ${scrolled ? "" : "text-white"} ${
+                    isActive === "programs"
+                      ? "border-[#FBBF24]"
+                      : "border-transparent "
+                  }`}
+                  href="./programs.html"
                 >
                   Explore Programs
                 </a>
               </nav>
               <div className="flex items-center gap-[24px]">
-                <a
-                  href="/programs"
-                  className="text-[16px] whitespace-nowrap hidden group relative  border-b-[0px] bg-[white]  text-[#00467F] rounded-full border md:inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] py-[12px] font-semibold px-[32px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
-                >
-                  Request Information
-                </a>
-                {/* Menu Icon */}
-                <div
-                  className={`cursor-pointer font-semibold xl:hidden py-[36px] flex bg-[#00467F] items-centered items-center justify-center w-[80px] h-full ${
-                    scrolled ? "text-blue-900" : "text-white"
-                  }`}
-                  onClick={handleToggleMobileMenu}
-                >
-                  <svg
-                    className="w-[24px] h-[24px] absolute "
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 25 25"
-                    fill="white"
-                  >
-                    <path
-                      d="M14.286 18.75v1.786H0V18.75zM25 11.607v1.786H0v-1.786zm0-7.142v2H0v-2z"
-                      fill="white"
-                    ></path>
-                  </svg>
+                <div className="hidden md:block">
+                  <Button
+                    size="small"
+                    label="Request Information"
+                    href="https://kctcs.edu/admissions/request-information/index.html"
+                  />
                 </div>
+                {!isMobileMenuOpen && (
+                  <div
+                    className={`cursor-pointer font-semibold xl:hidden py-[36px] flex bg-[#00467F] items-centered items-center justify-center w-[80px] h-full ${
+                      scrolled ? "text-blue-900" : "text-white"
+                    }`}
+                    onClick={handleToggleMobileMenu}
+                  >
+                    <svg
+                      className="w-[24px] h-[24px] absolute "
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 25 25"
+                      fill="white"
+                    >
+                      <path
+                        d="M14.286 18.75v1.786H0V18.75zM25 11.607v1.786H0v-1.786zm0-7.142v2H0v-2z"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </div>
+                )}
               </div>
             </div>
           </div>

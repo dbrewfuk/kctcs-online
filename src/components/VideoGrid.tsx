@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Suspense } from "react";
+import { motion } from "framer-motion";
 import { useHistory } from "react-router-dom";
 
 const videos = [
@@ -113,17 +114,13 @@ function VideoGrid() {
   };
 
   return (
-    <div className="pt-[80px] pb-[0px] lg:pt-[96px] lg:pb-[80px] transition-all ease-in-out duration-300">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }} // Fade up effect
+      animate={{ opacity: 1, y: 0 }} // Fade up effect
+      transition={{ duration: 0.25 }}
+      className="pt-[80px] pb-[0px] lg:pt-[96px] lg:pb-[80px] transition-all ease-in-out duration-300"
+    >
       <div className="container relative overflow-hidden px-8 lg:px-0 mx-auto">
-        <div className="mb-[40px] lg:mb-[48px]">
-          <h1 className="text-[48px] font-[800] leading-[56px] text-[#00467F] lg-[96px] mb-[12px]">
-            From Screens to <span className="bar">Dreams</span>
-          </h1>
-          <p className="text-[31px] font-[600] leading-[36px] text-[#00467F]">
-            Successes of Online Learning at KCTCS.
-          </p>
-        </div>
-
         {/* Video Content */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-[32px] gap-y-[48px] pb-[48px]">
           {videos.map((video, index) => (
@@ -181,7 +178,7 @@ function VideoGrid() {
                   )}
                   {/* Video Player */}
 
-                  <div className="aspect-w-16 aspect-h-9 bg-[#f5f5f5]">
+                  <div className="aspect-w-16 aspect-h-9 bg-[#f5f5f5] rounded-[12px] overflow-hidden">
                     <video
                       id={`video-${index}`}
                       src={video.src}
@@ -211,7 +208,7 @@ function VideoGrid() {
         </div>
         <div className="w-full flex justify-end"></div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -17,6 +17,9 @@ export default defineConfig({
         home: "/index.html",
         admissions: "/admissions.html",
         programs: "/programs.html",
+        tuition: "/tuition.html",
+        studentServices: "/student-services.html",
+        successStories: "/success-stories.html",
       },
       output: {
         entryFileNames: "app.js", // Output JS file name

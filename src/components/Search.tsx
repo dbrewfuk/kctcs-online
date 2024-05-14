@@ -90,19 +90,19 @@ const Search = () => {
         </h4>
         <ul className="text-white text-[16px] flex gap-[8px] flex-wrap">
           <li
-            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] font-semibold bg-[#00467F] cursor-pointer"
+            className="whitespace-nowrap text-ellipsis overflow-hidden rounded-[3px] px-[16px] py-[8px] font-semibold bg-[#00467F] cursor-pointer"
             onClick={() => handlePopularSearchClick("Public Leadership")}
           >
             Public Leadership
           </li>
           <li
-            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] font-semibold bg-[#00467F]  cursor-pointer"
+            className="whitespace-nowrap text-ellipsis overflow-hidden rounded-[3px] px-[16px] py-[8px] font-semibold bg-[#00467F]  cursor-pointer"
             onClick={() => handlePopularSearchClick("Web Design")}
           >
             Web Design
           </li>
           <li
-            className="whitespace-nowrap text-ellipsis overflow-hidden px-[16px] py-[8px] font-semibold bg-[#00467F]  cursor-pointer"
+            className="whitespace-nowrap text-ellipsis overflow-hidden rounded-[3px] px-[16px] py-[8px] font-semibold bg-[#00467F]  cursor-pointer"
             onClick={() => handlePopularSearchClick("Marine Culinary")}
           >
             Marine Culinary

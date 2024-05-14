@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const FeaturedAreas = ({ handleProgramAreaClick }) => {
-  const [selectedArea, setSelectedArea] = useState(cardData[0].title);
+  const [selectedArea, setSelectedArea] = useState("Paralegal");
   const history = useHistory();
   const [selectedFilters, setSelectedFilters] = useState([]);
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Button from "./Button";
 import programs from "../programs-20240207";
 
 // Dropdown component
@@ -34,7 +35,10 @@ function FilterDropdown({
   };
 
   return (
-    <div className="relative w-full">
+    <div
+      className="relative w-full cursor-pointer"
+      onClick={() => setIsOpen(!isOpen)}
+    >
       <div
         className={`font-semibold uppercase mb-[4px] ${isBackgroundColorDark() ? "text-white" : "text-[#00467F]"}`}
       >
@@ -70,10 +74,7 @@ function FilterDropdown({
             </svg>
           </div>
 
-          <div
-            className="cursor-pointer flex items-center justify-center"
-            onClick={() => setIsOpen(!isOpen)}
-          >
+          <div className="cursor-pointer flex items-center justify-center">
             <svg
               className={`transform ${isOpen ? "rotate-180" : ""}`}
               xmlns="http://www.w3.org/2000/svg"
@@ -273,13 +274,10 @@ function Filters({
           </div>
         </div>
         {showExplore && (
-          <div>
-            <span
-              className={`inline-flex gap-[8px] py-[16px] px-[48px] text-[17.5px] inline-block rounded-full bg-white font-semibold text-[#00467F] cursor-pointer hover:bg-[#00467F] hover:text-white transition ease-in-out duration-250  ${isAnyOptionSelected() ? "opacity-100 translate-y-0" : "translate-y-[20px] opacity-0"} cursor-pointer`}
-              onClick={handleApplyClick}
-            >
-              Explore
-            </span>
+          <div
+            className={`transition ease-in-out duration-[250] ${isAnyOptionSelected() ? "opacity-100 translate-y-0" : "translate-y-[20px] opacity-0"}`}
+          >
+            <Button label="Explore" onClick={handleApplyClick} />
           </div>
         )}
       </div>{" "}

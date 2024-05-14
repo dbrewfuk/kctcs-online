@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const FeaturedAreasList = ({ handleProgramAreaClick }) => {
-  const [selectedArea, setSelectedArea] = useState(null);
+  const [selectedArea, setSelectedArea] = useState("Paralegal");
   const history = useHistory();
   const [selectedFilters, setSelectedFilters] = useState([]);
 
@@ -32,6 +32,8 @@ const FeaturedAreasList = ({ handleProgramAreaClick }) => {
     },
     { id: 13, image: "./assets/as1.jpeg", title: "Marine Technology" },
   ];
+
+  // Set to the title of the first card
 
   return (
     <div className="">

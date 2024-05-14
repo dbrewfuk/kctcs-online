@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, Suspense } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import Button from "./Button";
 import ReactDOM from "react-dom"; // Import ReactDOM
 
 const videos = [
@@ -76,62 +77,32 @@ function StudentStoryFeature() {
 
   // Your existing code...
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Measure the width of the text span
-            const width = textRef.current.offsetWidth;
-            setTextWidth(width);
-            setIsTextInView(true); // Set to true when text span is in view
-          } else {
-            // Reset the width of the bar when leaving view
-            setTextWidth(0);
-            setIsTextInView(false); // Set to false when text span leaves view
-          }
-        });
-      },
-      { threshold: 0.5 },
-    );
-
-    observer.observe(textRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   return (
     <motion.div
-      ref={textRef}
-      initial={{ opacity: 0 }} // Set initial opacity to 0
-      animate={{
-        opacity: isTextInView ? 1 : 0,
-        y: isTextInView ? 0 : 40,
-        transition: { duration: 0.5, ease: "easeInOut" },
-      }} // Set initial opacity to 0
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75 }}
       className="pt-[64px] pb-[48px] lg:pt-[128px] lg:pb-[96px]"
     >
-      <div className="relative  lg:container lg:mx-auto ">
-        <div className="flex flex-col lg:flex-row gap-[24px] lg:gap-[72px]">
+      <div className="relative lg:container lg:mx-auto ">
+        <div className="flex flex-col lg:flex-row items-center gap-[24px] lg:gap-[72px]">
           <div className="container mx-auto px-[24px] lg:px-0 w-full lg:w-[50%]">
-            <motion.h1 className="text-[48.8px] leading-[52px] lg:text-[61.04px] lg:leading-[64px] font-[800] text-[#00467F] lg-[96px] mb-[16px] lg:mb-[24px]">
+            <h1 className="text-[48.8px] leading-[52px] lg:text-[61.04px] lg:leading-[64px] font-[800] text-[#00467F] lg-[96px] mb-[16px] lg:mb-[24px]">
               <span className="relative">
                 <motion.span />
                 Transform{" "}
               </span>
               Your Education
               <span className="dot">.</span>
-            </motion.h1>
-            <motion.p className="text-[18px] lg:text-[21px] lg:leading-[32px] leading-[28px] text-[#00467F] ">
+            </h1>
+            <p className="text-[18px] lg:text-[21px] lg:leading-[32px] leading-[28px] text-[#00467F] ">
               At KCTCS, we understand that every student has unique needs and
               goals. That's why we offer flexible scheduling options, including
               online and hybrid courses, to accommodate your busy lifestyle.
               Plus, our affordable tuition rates make it possible for you to
               pursue your dreams without breaking the bank.
-            </motion.p>
-            <motion.div className="flex gap-[8px] mt-[32px]">
+            </p>
+            <div className="flex gap-[8px] mt-[32px]">
               {videos.map((video, index) => (
                 <div
                   key={index}
@@ -142,7 +113,7 @@ function StudentStoryFeature() {
                     className={`flex flex-col  transition ease-in-out duration-[200ms]  gap-[8px] ${currentVideo === index ? "bg-[white]  hover:bg-[white]  " : "shadow-[0] "}`}
                   >
                     <div
-                      className={`overflow-hidden aspect-video w-full border-[6px] border-[outset] bg-[#f5f5f5] ${currentVideo === index ? "border-[#FBBF24] " : "shadow-[0] border-[0]"}`}
+                      className={`overflow-hidden aspect-video w-full  bg-[#f5f5f5] ${currentVideo === index ? "border-[#FBBF24] border-[6px] " : "shadow-[0] border-[0]"}`}
                     >
                       {" "}
                       <video
@@ -160,34 +131,25 @@ function StudentStoryFeature() {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* Video Content */}
-          <motion.div
-            className={`w-full lg:w-[50%] relative`}
-            initial={{ opacity: 0, scale: 0.5 }} // Initial state of the animation
-            animate={{ opacity: 1, scale: 1 }} // Target state of the animation
-            transition={{ duration: 0.75 }} // Duration of the animation
+          <div
+            className="lg:w-[50%]"
+            // Duration of the animation
           >
             <div key={videos[currentVideo].id} className="">
               {isFullscreen && (
                 <div className="fixed top-0 left-0 w-full h-full z-[999] bg-[rgba(0,0,0,0.5)]"></div>
               )}
               <Suspense fallback={<div>Loading...</div>}>
-                <motion.div
+                <div
                   className={` ${
                     isFullscreen
                       ? "m-[24px] fixed w-[calc(100%-48px)] h-auto lg:h-[calc(100%-24px)] top-0 left-0 z-[1000]"
                       : "relative "
                   }`}
-                  initial={{ opacity: 0, scale: 1 }}
-                  animate={
-                    isFullscreen
-                      ? { opacity: 1, scale: 1 }
-                      : { opacity: 1, scale: 1 }
-                  }
-                  transition={{ duration: 0.75 }}
                 >
                   {isFullscreen && (
                     <div className="flex justify-end mb-[16px] lg:absolute top-0 right-0 lg:p-[24px]">
@@ -215,7 +177,7 @@ function StudentStoryFeature() {
                     </div>
                   )}
 
-                  <motion.div className="aspect-w-16 aspect-h-9">
+                  <div className="aspect-w-16 aspect-h-9 rounded-[8px] bg-[#f5f5f5] overflow-hidden">
                     <video
                       id={`video`}
                       src={videos[currentVideo].src}
@@ -232,9 +194,9 @@ function StudentStoryFeature() {
                         >
                           <div className="text-[#00467F] absolute flex w-full h-full items-center justify-center  p-[16px] z-[1]">
                             <div className="flex items-center gap-[8px] z-[2] group cursor-pointer">
-                              <button className="p-[8px] lg:p-[12px] group-hover:scale-[1.095]  border-[white] transition-ease-in-out duration-[200ms] opacity-1 group-hover:opacity-100 bg-[] text-white rounded-full">
+                              <button className="w-[56px] h-[56px] flex items-center justify-center group-hover:scale-[1.095]  border-[white] transition-ease-in-out duration-[200ms] opacity-1 group-hover:opacity-100 bg-[] text-white bg-[#E7A614] rounded-full">
                                 <svg
-                                  className="w-[48px] group-hover:scale-[1] h-[48px] lg:w-[48px] mr-[4px] lg:h-[48px] fill-white"
+                                  className="w-[32px] group-hover:scale-[1] h-[32px] fill-white"
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 24 24"
                                 >
@@ -247,21 +209,19 @@ function StudentStoryFeature() {
                         </div>
                       </>
                     )}
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
 
                 {!isFullscreen && <></>}
               </Suspense>
             </div>
-          </motion.div>
+          </div>
         </div>
-        <div className="w-full flex justify-center mt-[32px] lg:mt-[64px]">
-          <a
-            className="rounded-full inline-block hover:bg-[white] hover:text-[#00467F] border-[1px] border-b-[6px] bg-[white] text-[#00467F] border-[#00467F] transition-ease-in-out duration-[250ms]  font-[600] py-[16px] px-[48px] text-[17.5px]"
-            href="/success-stories"
-          >
-            Watch All Student Stories
-          </a>
+        <div className="w-full flex justify-center mt-[40px] lg:mt-[64px]">
+          <Button
+            label="Watch All Student Stories"
+            href="/success-stories.aspx"
+          />
         </div>
       </div>
     </motion.div>

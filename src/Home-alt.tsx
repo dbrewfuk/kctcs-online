@@ -27,6 +27,7 @@ import VerticalMediaMarquee from "./components/VerticalMediaMarquee";
 import ExplorePrograms from "./components/ExplorePrograms";
 import SFeaturedAreas from "./SFeaturedAreas";
 import AdmissionsInfo from "./components/AdmissionsInfo";
+import FadeInSection from "./components/FadeInSection";
 
 function Home() {
   const [selectedCredential, setSelectedCredential] = useState("");
@@ -280,7 +281,7 @@ function Home() {
 
       <SFeaturedAreas />
 
-      <AdmissionsInfo />
+      <InterestGrid />
     </>
   );
 }

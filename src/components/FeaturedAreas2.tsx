@@ -17,60 +17,60 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
       image: "./assets/as1.jpeg",
       title: "Paralegal",
       content:
-        "At KCTCS, we recognize that each student has individual needs and aspirations. That's why we provide adaptable scheduling choices, such as online and hybrid classes, to fit your hectic schedule.",
+        "Become a vital part of the legal team by assisting lawyers, law offices, corporations and the courts to defend and prosecute the law, and administer justice.",
     },
     {
       id: 3,
       image: "./assets/as3.jpeg",
       title: "Criminal Justice",
       content:
-        "At KCTCS, we recognize that each student has individual needs and aspirations. That's why we provide adaptable scheduling choices, such as online and hybrid classes, to fit your hectic schedule.",
+        "Serve your community while promoting public safety. Our degree and certificate programs prepare for you for police, corrections, or security careers.",
     },
     {
       id: 4,
       image: "./assets/as4.jpeg",
       title: "Medical Information Technology",
       content:
-        "At KCTCS, we recognize that each student has individual needs and aspirations. That's why we provide adaptable scheduling choices, such as online and hybrid classes, to fit your hectic schedule.",
+        "Connect your people skills with technical know-how for administrative work in the medical field, including coding, transcription and billing. ",
     },
     {
       id: 5,
       image: "./assets/as5.jpeg",
       title: "Interdisciplinary Early Childhood Education",
       content:
-        "At KCTCS, we recognize that each student has individual needs and aspirations. That's why we provide adaptable scheduling choices, such as online and hybrid classes, to fit your hectic schedule.",
+        "Inspire a love of learning. You’ll learn about children's growth from birth through age five and prepare to work in preschools, Head Start programs or childcare centers.",
     },
     {
       id: 8,
       image: "./assets/as8.jpeg",
       title: "Human Services",
       content:
-        "At KCTCS, we recognize that each student has individual needs and aspirations. That's why we provide adaptable scheduling choices, such as online and hybrid classes, to fit your hectic schedule.",
+        "Affect change through meaningful work helping people in need. Our programs train you for careers in social, community, education and mental health services.",
     },
     {
       id: 9,
       image: "./assets/as4.jpeg",
       title: "Visual Communications Multimedia",
       content:
-        "At KCTCS, we recognize that each student has individual needs and aspirations. That's why we provide adaptable scheduling choices, such as online and hybrid classes, to fit your hectic schedule.",
+        "Learn the art of animation, audio/video production, web design and graphic design.",
     },
     {
       id: 12,
       image: "./assets/as2.jpeg",
       title: "Unmanned Systems Technology",
       content:
-        "At KCTCS, we recognize that each student has individual needs and aspirations. That's why we provide adaptable scheduling choices, such as online and hybrid classes, to fit your hectic schedule.",
+        "Soar to new heights in your career!  Drone technology is one of the fastest growing sectors of the economy. ",
     },
     {
       id: 13,
       image: "./assets/as1.jpeg",
       title: "Marine Technology",
       content:
-        "At KCTCS, we recognize that each student has individual needs and aspirations. That's why we provide adaptable scheduling choices, such as online and hybrid classes, to fit your hectic schedule.",
+        "Rock the boat with the technical training you need to advance as a professional mariner.",
     },
   ];
 
-  const [selectedArea, setSelectedArea] = useState(cardData[0].title);
+  const [selectedArea, setSelectedArea] = useState("Paralegal");
 
   useEffect(() => {
     // Filter the academic plans based on the search query, selected filters, etc.
@@ -113,7 +113,6 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
                   <div className="lg:hidden mt-[24px]">
                     <ProgramResults
                       key={selectedArea}
-                      academicPlans={academicPlans}
                       filteredAcademicPlans={filteredAcademicPlans}
                       showCount={false}
                       darkBg={true}

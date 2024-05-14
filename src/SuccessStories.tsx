@@ -276,7 +276,7 @@ function SuccessStories() {
 
   return (
     <>
-      <Header />
+      <Header isActive="success-stories" />
       <div className="relative">
         <Hero title="Success Stories" />
       </div>
@@ -286,7 +286,7 @@ function SuccessStories() {
         <div className="container mx-auto px-8 lg:px-0">
           <div className="flex flex-col lg:flex-row items-end gap-[48px] lg:gap-[64px]">
             <div className="w-full lg:w-1/2">
-              <h1 className="text-[48px] leading-[56px] lg:text-[56px] lg:leading-[64px] font-black text-white mb-5">
+              <h1 className="text-[48px] leading-[56px] lg:text-[56px] lg:leading-[64px] font-[800] text-white mb-5">
                 Something for Everyone
               </h1>
               <p className="text-xl lg:text-[21px] leading-[32px] text-white font-semibold">

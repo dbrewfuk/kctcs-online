@@ -99,3 +99,8 @@ input[type="checkbox"]:checked {
 iframe video {
   object-fit: cover;
 }
+
+.container,
+.lg\:container {
+  max-width: 1240px !important;
+}

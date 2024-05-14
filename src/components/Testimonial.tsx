@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import stories from "../stories.json";
-import { motion } from "framer-motion";
 // Import the image file
 
 const Testimonial = () => {
+  const [isTextInView, setIsTextInView] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
 
   const handlePreviousSlide = () => {
@@ -20,43 +20,21 @@ const Testimonial = () => {
 
   const currentSlide = stories[slideIndex];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const yPos = window.scrollY;
-      const parallaxContainer = document.querySelector(".parallax-container");
-      let backgroundPositionY = yPos * 0.15;
-      backgroundPositionY = Math.min(backgroundPositionY, 100); // Ensure it never goes higher than 100
-      backgroundPositionY = Math.max(backgroundPositionY, 0); // Ensure it never goes lower than 0
-      parallaxContainer.style.backgroundPositionY = `${backgroundPositionY}px`;
-    };
-
-    // Initial setup
-    handleScroll();
-
-    // Add scroll event listener
-    window.addEventListener("scroll", handleScroll);
-
-    // Cleanup on unmount
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <div className="relative py-[64px] lg:py-[96px]">
-      <div className="parallax-container absolute w-full h-full top-0 left-0 -z-0 background-cover">
-        <video
-          src="https://www.dropbox.com/s/sd90kljtxqp68dg/background-video.mp4?raw=1"
-          className="object-cover w-full h-full"
-          autoPlay
-        ></video>
-      </div>
-      <div className="pt-[64px] pb-[48px] lg:pt-[72px] lg:pb-[56px] relative z-[1] px-[48px] lg:px-[64px]  mx-[24px] lg:mx-[auto] bg-[#005CB8] mb-[0] max-w-[1269px] overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,0,0,0.15)]">
+    <div className="relative pt-[48px] pb-[96px]">
+      <div className="absolute w-full h-full top-0 left-0 -z-0 background-cover"></div>
+      <div
+        // Set initial opacity to 0
+
+        className="pt-[64px] pb-[56px] rounded-[12px] lg:pt-[72px] lg:pb-[64px] relative z-[1] px-[48px] lg:px-[64px]  mx-[24px] lg:mx-[auto] bg-[#005CB8] mb-[0] max-w-[1269px] overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,0,0,0.15)]"
+      >
         <div className="container mx-auto relative z-20">
-          <div className="flex flex-col gap-[48px]">
-            <div className="flex flex-col lg:flex-row gap-[40px]">
-              <div className="min-w-[64px] min-h-[64px]">
+          <div className="flex flex-col gap-[32px]">
+            <div className="flex flex-col lg:flex-row gap-[24px] lg:gap-[40px]">
+              <div className="w-[56px] lg:min-w-[64px] lg:min-h-[64px]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="80"
+                  width="100%"
                   height="67"
                   viewBox="0 0 80 67"
                   fill="none"
@@ -79,37 +57,35 @@ const Testimonial = () => {
             </div>
 
             <div>
-              <motion.blockquote
-                className="text-[31px] leading-[40px] lg:text-[39.01px] lg:leading-[56px] text-white font-[200]"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              >
+              <blockquote className="text-[25px] leading-[36px] lg:text-[39.01px] lg:leading-[52px] text-white font-[600]">
                 {currentSlide.quote}
-              </motion.blockquote>
-            </div>
-            <div className="flex justify-center gap-[12px]">
-              {stories.map((story, index) => (
-                <div
-                  key={index}
-                  className={`w-[64px] overflow-hidden border-[6px] transition ease-in-out duration-250 h-[64px] rounded-full cursor-pointer ${
-                    slideIndex === index
-                      ? "bg-white  border-[#FBBF24] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.15)]"
-                      : "bg-gray-500 border-[#005CB8]"
-                  }`}
-                  onClick={() => setSlideIndex(index)}
-                >
-                  <img
-                    src={story.avatar}
-                    className="w-full h-full object-cover"
-                    alt="Avatar"
-                  />
-                </div>
-              ))}
+              </blockquote>
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex relative z-[2] transition ease-in-out duration-[250ms] items-center justify-center gap-[12px] pt-[32px]">
+        {stories.map((story, index) => (
+          <div
+            key={index}
+            className={` border-[6px] rounded-full ${
+              slideIndex === index
+                ? "bg-white  border-[#FBBF24] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.15)]"
+                : "border-[white]"
+            }`}
+          >
+            <div
+              className={`w-[64px] overflow-hidden  transition ease-in-out duration-250 h-[64px] rounded-full cursor-pointer`}
+              onClick={() => setSlideIndex(index)}
+            >
+              <img
+                src={story.avatar}
+                className="w-full h-full object-cover"
+                alt="Avatar"
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
