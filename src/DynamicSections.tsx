@@ -4,7 +4,7 @@ import { collegeContent } from "./components/content.json"; // Make sure this pa
 import Button from "./components/Button"; // Import Button component if it exists
 
 const uniqueIndices = [0, 1, 2]; // Example unique indices
-const imageDirectory = "./src/assets/"; // Replace with actual directory path
+const imageDirectory = "./assets/"; // Replace with actual directory path
 // List of image filenames
 const imageFiles = [
   "as1.jpeg",
