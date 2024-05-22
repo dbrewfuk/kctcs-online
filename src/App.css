@@ -181,7 +181,15 @@ body {
   background-color: #fbbf24;
   width: 100%;
   z-index: -1;
-  border-radius: 2px;
+  border-radius: 3px;
+}
+
+.bar.bar--white:after {
+  background-color: white;
+}
+
+.bar.bar--white:after {
+  background-color: #99c6ee;
 }
 
 .dot {
@@ -198,4 +206,8 @@ body {
 
 .text-\[17\.5px\].mt-\[32px\].lg\:mt-\[48px\].rounded-full.border.inline-block.transition.ease-in-out.text-center.cursor-pointer.width-auto.bg-\[\#00467F\].text-white.py-\[16px\].font-semibold.px-\[48px\].hover\:bg-white.hover\:text-\[\#00467F\].hover\:border-\[\#00467F\]:hover {
   border-bottom-width: 2px;
+}
+
+.container {
+  max-width: 1366px;
 }

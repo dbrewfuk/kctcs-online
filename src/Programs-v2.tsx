@@ -154,6 +154,7 @@ function Programs() {
                   sector: program.sector,
                 };
               }
+
               uniquePlans[key].colleges.push(college);
             });
           }
@@ -307,18 +308,18 @@ function Programs() {
 
   return (
     <>
-      <Header />
+      <Header isActive="explore-programs" />
       <div id="sticky-search" className="flex flex-col lg:flex-row ">
         <div
           id="sticky-search"
           className="w-full lg:min-w-[25vw] lg:max-w-[25vw] sticky h-full z-10 bg-white lg:top-[80px] shadow-[0px_2px_2px_rgba(0,0,0,0.15)] lg:shadow-[none]"
         >
-          <div className="container mx-auto px-[24px] py-[48px] lg:pl-[56px] lg:pr-[32px]">
+          <div className="container mx-auto px-[24px] py-[24px] lg:py-[48px] lg:pl-[56px] lg:pr-[32px]">
             {" "}
             <div className="flex flex-col">
-              <div className="hidden lg:block">
-                <div className=" text-[#00467F] text-[32px] font-[800] mb-[12px]">
-                  Program Finder
+              <div className="lg:block">
+                <div className=" text-[#00467F] text-[32px] leading-[36px] font-[800] mb-[12px]">
+                  Unlock Your Future: Explore 90+ Online Program Options
                 </div>
                 <p className="text-[#00467F] text-[18px] mb-[24px]">
                   From{" "}
@@ -347,177 +348,173 @@ function Programs() {
                   life!
                 </p>
               </div>
-              <div className="lg:hidden">
-                <div className={`${isSticky ? "" : "hidden"}`}>
-                  <div className="text-[#00467F] text-[32px] font-[800]">
-                    Explore Programs
-                  </div>
-                  <p className="text-[#00467F] text-[18px] mb-[24px]">
-                    From{" "}
-                    <a
-                      className="border-b-2"
-                      href={`/programs?search=agriculture`}
-                    >
-                      agriculture
-                    </a>{" "}
-                    to{" "}
-                    <a className="border-b-2" href={`/programs?search=health`}>
-                      health science technology
-                    </a>{" "}
-                    to{" "}
-                    <a
-                      className="border-b-2"
-                      href={`/programs?search=paralegal`}
-                    >
-                      paralegal
-                    </a>
-                    , we offer more than 90 programs entirely online. Explore
-                    the options and start your journey to a better job and a
-                    better life!
-                  </p>
-                </div>
-              </div>
-              <form className="hidden lg:block mb-[24px]">
-                <div className="flex items-center gap-4 text-[18px] relative">
-                  <span className="absolute w-[24px] ml-[12px] left-0">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 29.811 29.811"
-                      alt="search"
-                      fill="#00467F"
-                    >
-                      <path d="M14.884 2.25A10.5 10.5 0 009.62 3.67a10.49 10.49 0 00-4.921 6.414A10.493 10.493 0 005.754 18.1c2.735 4.738 8.613 6.556 13.496 4.344l1.82-1.05a10.476 10.476 0 004.034-5.842c.73-2.725.356-5.572-1.055-8.015s-3.688-4.19-6.414-4.922a10.66 10.66 0 00-2.751-.364zm8.606 27.561l-3.121-5.406c-5.962 2.817-13.21.626-16.563-5.18-3.533-6.12-1.43-13.97 4.689-17.504a12.74 12.74 0 019.723-1.28 12.727 12.727 0 017.779 5.97 12.73 12.73 0 011.28 9.723 12.717 12.717 0 01-4.965 7.137l3.126 5.415z"></path>
-                    </svg>
-                  </span>
-                  <input
-                    type="text"
-                    placeholder="Search programs"
-                    value={searchQuery}
-                    onChange={handleSearchInputChange}
-                    className="text-[16px] border-[6px] transition ease-in-out duration-[250ms] border-[transparent] focus:border-[#fdd000] focus:outline-none text-[#00467F] leading-[24px] pl-[48px] py-[12px] bg-[#f3f3f3] text-[#00467F] w-full"
-                  />
-                  {searchQuery && (
-                    <span
-                      onClick={clearSearchQuery} // Clear search query
-                      className="absolute cursor-pointer mr-[16px] right-0 w-[18px] text-white rounded-md transition-colors duration-300 hover:bg-opacity-80 focus:outline-none"
-                    >
+
+              <div className="sticky flex flex-row gap-[16px] items-center lg:flex-col">
+                <form className="lg:block lg:mb-[24px] w-full">
+                  <div className="flex items-center gap-4 text-[18px] relative">
+                    <span className="absolute w-[24px] ml-[12px] left-0">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 27.436 27.436"
+                        viewBox="0 0 29.811 29.811"
+                        alt="search"
                         fill="#00467F"
                       >
-                        <path d="M1.414 0L0 1.416l12.303 12.303L0 26.022l1.414 1.414 12.303-12.303 12.305 12.303 1.414-1.416-12.303-12.303L27.436 1.414 26.022.002 13.72 12.305 1.414 0z"></path>
+                        <path d="M14.884 2.25A10.5 10.5 0 009.62 3.67a10.49 10.49 0 00-4.921 6.414A10.493 10.493 0 005.754 18.1c2.735 4.738 8.613 6.556 13.496 4.344l1.82-1.05a10.476 10.476 0 004.034-5.842c.73-2.725.356-5.572-1.055-8.015s-3.688-4.19-6.414-4.922a10.66 10.66 0 00-2.751-.364zm8.606 27.561l-3.121-5.406c-5.962 2.817-13.21.626-16.563-5.18-3.533-6.12-1.43-13.97 4.689-17.504a12.74 12.74 0 019.723-1.28 12.727 12.727 0 017.779 5.97 12.73 12.73 0 011.28 9.723 12.717 12.717 0 01-4.965 7.137l3.126 5.415z"></path>
                       </svg>
                     </span>
-                  )}
-                </div>
-              </form>
-              <div>
-                <div
-                  className="inline-block items-center justify-center text-[16px] py-[12px] px-[32px] hover:bg-[white] transition ease-in-out duration-[250ms] cursor-pointer hover:border-[#00467F] text-[#00467F] font-[600] text-center  rounded-full border border-[transparent] bg-[#f5f5f5]"
-                  onClick={() => setFilterOpen(true)}
-                >
-                  <span className="">Filter</span>
-                </div>
-              </div>
-
-              <div className="lg:flex flex-col gap-[24px]">
-                <div
-                  ref={filterRef}
-                  className={`
-                    fixed p-[32px] bg-[white] shadow-[0px_2px_4px_rgba(0,0,0,0.15)] top-[0] 
-                    m-[48px] w-[calc(100%-96px)] left-0 h-auto flex-col 
-                    ${filterOpen ? "lg:flex" : "hidden"}
-                  `}
-                >
-                  <Filters
-                    uniqueCredentials={uniqueCredentials}
-                    uniqueCredentialTypes={uniqueCredentialTypes}
-                    setUniqueCredentialTypes={setUniqueCredentialTypes}
-                    selectedCredentialTypes={selectedCredentialTypes}
-                    setSelectedCredentialTypes={setSelectedCredentialTypes}
-                    handleCredentialTypeChange={handleCredentialTypeChange}
-                    uniqueProgramAreas={uniqueProgramAreas}
-                    uniquePlanNames={uniquePlanNames}
-                    setSelectedSector={setSelectedSector}
-                    selectedSector={selectedSector}
-                    setUniqueSectors={setUniqueSectors}
-                    uniqueSectors={uniqueSectors}
-                    selectedCredential={selectedCredential}
-                    setSelectedCredential={setSelectedCredential}
-                    selectedArea={selectedArea}
-                    setSelectedArea={setSelectedArea}
-                    selectedPlan={selectedPlan}
-                    setSelectedPlan={setSelectedPlan}
-                    programs={programs}
-                    searchQuery={searchQuery}
-                    backgroundColor={"light"}
-                  />
-                </div>
-
-                <div className="container">
-                  <div className="flex flex-col ">
-                    <span className="flex text-[14px] flex-wrap gap-[12px]">
-                      {selectedArea && (
-                        <span className="bg-[#00467F] flex gap-[12px] items-center  overflow-hidden text-ellipsis whitespace-nowrap rounded-[4px] px-[12px] py-[12px] text-[14px] text-[white] font-[600]">
-                          <button
-                            className=""
-                            onClick={() => {
-                              setSelectedArea("");
-                            }}
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="8"
-                              height="9"
-                              viewBox="0 0 8 9"
-                              fill="none"
-                            >
-                              <path
-                                d="M0.412305 0.5L0 0.912888L3.5874 4.50029L0 8.08769L0.412305 8.5L3.99971 4.9126L7.58769 8.5L8 8.08711L4.4126 4.49971L8 0.912305L7.58769 0.500583L4.00058 4.08799L0.412305 0.5Z"
-                                fill="white"
-                              ></path>
-                            </svg>
-                          </button>
-                          <span>{selectedArea} </span>
-                        </span>
-                      )}{" "}
-                      {selectedSector && (
-                        <span className="bg-[#00467F] flex gap-[12px] items-center  overflow-hidden text-ellipsis whitespace-nowrap rounded-[6px] px-[12px] py-[8px] text-[16px] text-[white] font-[600]">
-                          <button
-                            className=""
-                            onClick={() => {
-                              setSelectedSector("");
-                            }}
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="8"
-                              height="9"
-                              viewBox="0 0 8 9"
-                              fill="none"
-                            >
-                              <path
-                                d="M0.412305 0.5L0 0.912888L3.5874 4.50029L0 8.08769L0.412305 8.5L3.99971 4.9126L7.58769 8.5L8 8.08711L4.4126 4.49971L8 0.912305L7.58769 0.500583L4.00058 4.08799L0.412305 0.5Z"
-                                fill="white"
-                              ></path>
-                            </svg>
-                          </button>
-                          <span>{selectedSector} </span>
-                        </span>
-                      )}{" "}
-                      {selectedPlan && (
-                        <span
-                          onClick={() => {
-                            setSelectedPlan("");
-                          }}
-                          className="bg-[#00467F] flex gap-[8px] overflow-hidden text-ellipsis whitespace-nowrap items-center rounded-[6px] px-[12px] py-[8px] text-[16px] text-[white] font-[600]"
+                    <input
+                      type="text"
+                      placeholder="Search programs"
+                      value={searchQuery}
+                      onChange={handleSearchInputChange}
+                      className="text-[17.5px] border-[6px] transition ease-in-out duration-[250ms] border-[transparent] focus:border-[#fdd000] focus:outline-none text-[#00467F] leading-[24px] pl-[48px] py-[12px] bg-[#f3f3f3] text-[#00467F] w-full"
+                    />
+                    {searchQuery && (
+                      <span
+                        onClick={clearSearchQuery} // Clear search query
+                        className="absolute cursor-pointer mr-[16px] right-0 w-[18px] text-white rounded-md transition-colors duration-300 hover:bg-opacity-80 focus:outline-none"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 27.436 27.436"
+                          fill="#00467F"
                         >
-                          <button
-                            className=""
+                          <path d="M1.414 0L0 1.416l12.303 12.303L0 26.022l1.414 1.414 12.303-12.303 12.305 12.303 1.414-1.416-12.303-12.303L27.436 1.414 26.022.002 13.72 12.305 1.414 0z"></path>
+                        </svg>
+                      </span>
+                    )}
+                  </div>
+                </form>
+                <div>
+                  <div
+                    className="inline-block lg:hidden items-center justify-center text-[16px] py-[12px] px-[32px] hover:bg-[white] transition ease-in-out duration-[250ms] cursor-pointer hover:border-[#00467F] text-[#00467F] font-[600] text-center  rounded-full border border-[transparent] bg-[#f5f5f5]"
+                    onClick={() => setFilterOpen(true)}
+                  >
+                    <span className="">Filter</span>
+                  </div>
+                </div>
+
+                <div className="lg:flex flex-col gap-[24px]">
+                  <div
+                    ref={filterRef}
+                    className={`
+                    fixed z-[999] lg:relative p-[32px] lg:p-[0px] bg-[white] shadow-[0px_2px_4px_rgba(0,0,0,0.15)] lg:shadow-[none] top-[50%] lg:top-0 max-w-[720px] lg:left-[0] transform  lg:translate-y-[0] lg:translate-x-[0] translate-y-[-50%] 
+                    m-[24px] lg:m-[0] w-[calc(100%-48px)] lg:w-full left-0 h-auto flex-col 
+                    ${filterOpen ? "lg:flex" : "hidden lg:flex"}
+                  `}
+                  >
+                    {" "}
+                    <Filters
+                      uniqueCredentials={uniqueCredentials}
+                      uniqueCredentialTypes={uniqueCredentialTypes}
+                      setUniqueCredentialTypes={setUniqueCredentialTypes}
+                      selectedCredentialTypes={selectedCredentialTypes}
+                      setSelectedCredentialTypes={setSelectedCredentialTypes}
+                      handleCredentialTypeChange={handleCredentialTypeChange}
+                      uniqueProgramAreas={uniqueProgramAreas}
+                      uniquePlanNames={uniquePlanNames}
+                      setSelectedSector={setSelectedSector}
+                      selectedSector={selectedSector}
+                      setUniqueSectors={setUniqueSectors}
+                      uniqueSectors={uniqueSectors}
+                      selectedCredential={selectedCredential}
+                      setSelectedCredential={setSelectedCredential}
+                      selectedArea={selectedArea}
+                      setSelectedArea={setSelectedArea}
+                      selectedPlan={selectedPlan}
+                      setSelectedPlan={setSelectedPlan}
+                      programs={programs}
+                      searchQuery={searchQuery}
+                      backgroundColor={"light"}
+                    />
+                  </div>
+
+                  <div className="container  mt-[24px]">
+                    <div className="flex flex-col ">
+                      <span className="flex text-[14px] flex-wrap gap-[12px]">
+                        {selectedArea && (
+                          <span className="bg-[#00467F] flex gap-[12px] items-center  overflow-hidden text-ellipsis whitespace-nowrap rounded-[4px] px-[12px] py-[8px] text-[16px] text-[white] font-[600]">
+                            <button
+                              className=""
+                              onClick={() => {
+                                setSelectedArea("");
+                              }}
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="8"
+                                height="9"
+                                viewBox="0 0 8 9"
+                                fill="none"
+                              >
+                                <path
+                                  d="M0.412305 0.5L0 0.912888L3.5874 4.50029L0 8.08769L0.412305 8.5L3.99971 4.9126L7.58769 8.5L8 8.08711L4.4126 4.49971L8 0.912305L7.58769 0.500583L4.00058 4.08799L0.412305 0.5Z"
+                                  fill="white"
+                                ></path>
+                              </svg>
+                            </button>
+                            <span>{selectedArea} </span>
+                          </span>
+                        )}{" "}
+                        {selectedSector && (
+                          <span className="bg-[#00467F] flex gap-[12px] items-center  overflow-hidden text-ellipsis whitespace-nowrap rounded-[4px] px-[12px] py-[8px] text-[16px] text-[white] font-[600]">
+                            <button
+                              className=""
+                              onClick={() => {
+                                setSelectedSector("");
+                              }}
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="8"
+                                height="9"
+                                viewBox="0 0 8 9"
+                                fill="none"
+                              >
+                                <path
+                                  d="M0.412305 0.5L0 0.912888L3.5874 4.50029L0 8.08769L0.412305 8.5L3.99971 4.9126L7.58769 8.5L8 8.08711L4.4126 4.49971L8 0.912305L7.58769 0.500583L4.00058 4.08799L0.412305 0.5Z"
+                                  fill="white"
+                                ></path>
+                              </svg>
+                            </button>
+                            <span>{selectedSector} </span>
+                          </span>
+                        )}{" "}
+                        {selectedPlan && (
+                          <span
                             onClick={() => {
                               setSelectedPlan("");
                             }}
+                            className="bg-[#00467F] flex gap-[8px] overflow-hidden text-ellipsis whitespace-nowrap items-center rounded-[4px] px-[12px] py-[8px] text-[16px] text-[white] font-[600]"
+                          >
+                            <button
+                              className=""
+                              onClick={() => {
+                                setSelectedPlan("");
+                              }}
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="8"
+                                height="9"
+                                viewBox="0 0 8 9"
+                                fill="none"
+                              >
+                                <path
+                                  d="M0.412305 0.5L0 0.912888L3.5874 4.50029L0 8.08769L0.412305 8.5L3.99971 4.9126L7.58769 8.5L8 8.08711L4.4126 4.49971L8 0.912305L7.58769 0.500583L4.00058 4.08799L0.412305 0.5Z"
+                                  fill="white"
+                                ></path>
+                              </svg>
+                            </button>
+                            <span>{selectedPlan}</span>
+                          </span>
+                        )}
+                        {selectedCredential && (
+                          <span
+                            onClick={() => {
+                              setSelectedCredential("");
+                            }}
+                            className="cursor-pointer bg-[#00467F] overflow-hidden text-ellipsis whitespace-nowrap flex gap-[8px] items-center rounded-[6px] py-[8px] px-[12px] text-[16px] text-[white] font-[600]"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -531,56 +528,34 @@ function Programs() {
                                 fill="white"
                               ></path>
                             </svg>
-                          </button>
-                          <span>{selectedPlan}</span>
-                        </span>
-                      )}
-                      {selectedCredential && (
-                        <span
-                          onClick={() => {
-                            setSelectedCredential("");
-                          }}
-                          className="cursor-pointer bg-[#00467F] overflow-hidden text-ellipsis whitespace-nowrap flex gap-[8px] items-center rounded-[6px] py-[8px] px-[12px] text-[16px] text-[white] font-[600]"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="8"
-                            height="9"
-                            viewBox="0 0 8 9"
-                            fill="none"
-                          >
-                            <path
-                              d="M0.412305 0.5L0 0.912888L3.5874 4.50029L0 8.08769L0.412305 8.5L3.99971 4.9126L7.58769 8.5L8 8.08711L4.4126 4.49971L8 0.912305L7.58769 0.500583L4.00058 4.08799L0.412305 0.5Z"
-                              fill="white"
-                            ></path>
-                          </svg>
 
-                          <span>{selectedCredential} </span>
-                        </span>
-                      )}
-                      {searchQuery && (
-                        <span
-                          onClick={clearSearchQuery}
-                          className="bg-[#00467F] flex gap-[8px] overflow-hidden text-ellipsis whitespace-nowrap items-center rounded-[6px] px-[12px] py-[8px] text-[16px] text-[white] font-[600]"
-                        >
-                          <button className="">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="8"
-                              height="9"
-                              viewBox="0 0 8 9"
-                              fill="none"
-                            >
-                              <path
-                                d="M0.412305 0.5L0 0.912888L3.5874 4.50029L0 8.08769L0.412305 8.5L3.99971 4.9126L7.58769 8.5L8 8.08711L4.4126 4.49971L8 0.912305L7.58769 0.500583L4.00058 4.08799L0.412305 0.5Z"
-                                fill="white"
-                              ></path>
-                            </svg>
-                          </button>
-                          <span>{searchQuery}</span>
-                        </span>
-                      )}
-                    </span>
+                            <span>{selectedCredential} </span>
+                          </span>
+                        )}
+                        {searchQuery && (
+                          <span
+                            onClick={clearSearchQuery}
+                            className="bg-[#00467F] flex gap-[8px] overflow-hidden text-ellipsis whitespace-nowrap items-center rounded-[6px] px-[12px] py-[8px] text-[16px] text-[white] font-[600]"
+                          >
+                            <button className="">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="8"
+                                height="9"
+                                viewBox="0 0 8 9"
+                                fill="none"
+                              >
+                                <path
+                                  d="M0.412305 0.5L0 0.912888L3.5874 4.50029L0 8.08769L0.412305 8.5L3.99971 4.9126L7.58769 8.5L8 8.08711L4.4126 4.49971L8 0.912305L7.58769 0.500583L4.00058 4.08799L0.412305 0.5Z"
+                                  fill="white"
+                                ></path>
+                              </svg>
+                            </button>
+                            <span>{searchQuery}</span>
+                          </span>
+                        )}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -601,6 +576,8 @@ function Programs() {
             filteredAcademicPlans={filteredAcademicPlans}
             showLimit={40}
             showCount={true}
+            enableViewToggle={true}
+            enableAZNavigation={true}
           />
         </div>
       </div>

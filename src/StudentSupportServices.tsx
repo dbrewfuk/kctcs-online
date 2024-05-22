@@ -3,9 +3,8 @@ import Hero from "./components/Hero";
 import Header from "./components/Header";
 import DynamicSections from "./DynamicSections";
 import Testimonial from "./components/Testimonial";
-import VideoBlockSlider from "./components/VideoBlockSlider";
 import CollegeCards from "./components/CollegeCards";
-import programs from "./programs-20240207.json";
+import programs from "./programs-20240510.json";
 
 const videoUrls = [
   "https://player.vimeo.com/video/665275644?background=1&autoplay=1&loop=1&byline=0&title=0",
@@ -81,19 +80,19 @@ function StudentSupportServices() {
   //const collegeCards = cardData[selectedCollege.name as keyof typeof cardData];
   return (
     <>
-      <Header />
+      <Header isActive="student-support-services" />
       <Hero title="Student Support Services" />
       <div className="container mx-auto px-[24px] lg:px-0 pt-[64px] lg:pt-[96px] pb-[64px] lg:pb-[96px]">
         <div className="flex flex-col lg:flex-row items-center gap-[64px]">
-          <div className="w-full lg:w-1/2 rounded-[12px] overflow-hidden">
+          <div className="w-full aspect-[4/3] lg:w-1/2 rounded-[12px] overflow-hidden">
             <img
-              src="./src/assets/admissions.jpeg"
+              src="https://southeast.kctcs.edu/about/media/images/about-banner.jpg"
               className="w-full h-full object-cover"
             />
           </div>
           <div className="w-full lg:w-1/2">
-            <h1 className="text-[61.04px] mb-[24px] font-[900] leading-[64px] text-[#00467F]">
-              Online Student Resources
+            <h1 className="text-[61.04px] mb-[24px] font-[800] leading-[64px] text-[#00467F]">
+              Online Student Resources<span className="dot">.</span>
             </h1>
             <p className="text-[21px] font-[500] leading-[32px] text-[#00467F]">
               With our quick change to online classes, we want to make sure

@@ -4,7 +4,6 @@ import Testimonial from "./components/testimonial";
 import HeroSearch from "./components/hero-search";
 import HeroRfi from "./components/hero-rfi";
 import Header from "./components/header";
-import VideoBlockSlider from "./components/video-block-slider";
 import { collegeContent } from "./components/college-content.json";
 
 function DynamicSections({ title, supportingText, contentset }) {

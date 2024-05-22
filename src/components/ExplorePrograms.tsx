@@ -3,7 +3,7 @@ import Search from "./Search";
 
 function ExplorePrograms() {
   return (
-    <div className="py-[64px] lg:pt-[80px] lg:pb-[72px] bg-[#005cb8] relative">
+    <div className="py-[64px] lg:pt-[72px] lg:pb-[72px] bg-[#005cb8] relative">
       <div className="container mx-auto px-[24px] lg:px-0">
         <div className="flex flex-col lg:flex-row items-end gap-[48px] lg:gap-[64px]">
           <div className="w-full lg:w-1/2">

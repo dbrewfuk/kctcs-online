@@ -1,8 +1,6 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 
 const InterestGrid = () => {
-  const history = useHistory();
   const cardData = [
     { id: 1, image: "./assets/as1.jpeg", title: "Academics Support" },
     {
@@ -53,7 +51,6 @@ const InterestGrid = () => {
   ];
 
   const handleCardClick = (newFilterValue) => {
-    history.push(`/programs?sector=${newFilterValue}`);
     window.location.href = `/programs?sector=${newFilterValue}`;
   };
 

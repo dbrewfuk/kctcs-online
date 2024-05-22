@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Suspense } from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import programs from "../programs-20240207.json";
+import programs from "../programs-20240510.json";
 import Filters from "./Filters";
 
 function HeroSearch({
@@ -9,7 +8,6 @@ function HeroSearch({
   uniqueCredentialTypes,
   setUniqueCredentialTypes,
 }) {
-  const history = useHistory();
   const [selectedCredential, setSelectedCredential] = useState("");
   const [selectedArea, setSelectedArea] = useState("");
   const [selectedPlan, setSelectedPlan] = useState("");
@@ -19,40 +17,28 @@ function HeroSearch({
   const [selectedSector, setSelectedSector] = useState([]);
   const [uniqueProgramAreas, setUniqueProgramAreas] = useState([]);
   const [uniquePlanNames, setUniquePlanNames] = useState([]);
-  const words = title.split(" ");
 
   const handleCredentialTypeChange = (e, credentialType) => {
-    // Check if the credential type is already selected
     const isSelected = selectedCredentialTypes.includes(credentialType);
-
-    // If the credential type is already selected, remove it from the selected types
-    // If not selected, add it to the selected types
-    if (isSelected) {
-      setSelectedCredentialTypes((prevSelectedTypes) =>
-        prevSelectedTypes.filter((type) => type !== credentialType),
-      );
-    } else {
-      setSelectedCredentialTypes((prevSelectedTypes) => [
-        ...prevSelectedTypes,
-        credentialType,
-      ]);
-    }
+    setSelectedCredentialTypes((prevSelectedTypes) =>
+      isSelected
+        ? prevSelectedTypes.filter((type) => type !== credentialType)
+        : [...prevSelectedTypes, credentialType],
+    );
   };
 
-  const highlightedTitle = words.map((word, index) => {
-    if (word.toLowerCase() === highlighted.toLowerCase()) {
-      return (
-        <span className="text-[#FBBF24]" key={index}>
-          {word}{" "}
-        </span>
-      );
-    } else {
-      return <span key={index}>{word} </span>;
-    }
-  });
+  const highlightedTitle = title.split(" ").map((word, index) => (
+    <span
+      className={
+        word.toLowerCase() === highlighted.toLowerCase() ? "text-[#FBBF24]" : ""
+      }
+      key={index}
+    >
+      {word}{" "}
+    </span>
+  ));
 
   useEffect(() => {
-    // Extract unique credentials, program areas, and plan names
     const credentials = new Set();
     const programAreas = new Set();
     const planNames = new Set();
@@ -77,7 +63,6 @@ function HeroSearch({
     setUniquePlanNames(Array.from(planNames));
   }, []);
 
-  // Check if uniqueCredentialTypes is undefined
   if (!uniqueCredentialTypes) {
     return <div>Loading...</div>;
   }
@@ -90,13 +75,15 @@ function HeroSearch({
             src="https://www.dropbox.com/s/sd90kljtxqp68dg/background-video.mp4?raw=1"
             className="object-cover w-full h-full"
             autoPlay
+            controls={false}
+            loop
           ></video>
         </Suspense>
         <div className="absolute top-0 w-full h-full pb-[32px]">
           <div className="container px-[24px] lg:px-0 mx-auto h-full">
             <div className="flex h-full items-end lg:items-center justify-end">
               <div className="w-full lg:w-1/2 flex flex-col">
-                <h1 className="text-[64px] leading-[64px] xl:text-[76px] text-[white] font-black mb-[32px]">
+                <h1 className="text-[64px] leading-[64px] xl:text-[76px] text-white font-black mb-[32px]">
                   {highlightedTitle}
                 </h1>
                 <div>
@@ -123,8 +110,8 @@ function HeroSearch({
                       setSelectedSector={setSelectedSector}
                       setUniqueSectors={setUniqueSectors}
                       programs={programs}
-                      backgroundColor={"dark"}
-                      showExplore={"true"}
+                      backgroundColor="dark"
+                      showExplore="true"
                     />
                   </div>
                 </div>

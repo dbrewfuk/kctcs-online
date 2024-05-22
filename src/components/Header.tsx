@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Button from "./Button";
 import Rfi from "./Rfi";
 
-const Header = ({ showModal, setShowModal }) => {
+const Header = ({ showModal, setShowModal, isActive }) => {
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -44,10 +45,14 @@ const Header = ({ showModal, setShowModal }) => {
         }`}
         style={{ background: scrolled ? "" : "" }}
       >
-        <div className="lg:container lg:mx-auto ">
+        <div className="px-[0px] lg:px-[96px] lg:mx-auto">
           <div className="flex items-center pl-[24px] pr-0 lg:pl-0 justify-between">
             <div>
-              <a className="flex gap-[8px] items-end" href="./index.aspx">
+              <a
+                className="flex gap-[8px] items-end"
+                href="./index.html"
+                aria-label="Home"
+              >
                 <svg
                   className="h-[32px]"
                   xmlns="http://www.w3.org/2000/svg"
@@ -55,6 +60,7 @@ const Header = ({ showModal, setShowModal }) => {
                   height="32"
                   viewBox="0 0 329 63"
                   fill="none"
+                  title="KCTCS Short Logo"
                 >
                   <g clipPath="url(#clip0_1_2)">
                     <mask
@@ -107,42 +113,6 @@ const Header = ({ showModal, setShowModal }) => {
                     </clipPath>
                   </defs>
                 </svg>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="123"
-                  height="27"
-                  viewBox="0 0 123 27"
-                  fill="none"
-                >
-                  <path
-                    d="M118.5 18C119.939 18 121.049 18.3489 121.829 19.0467C122.61 19.7445 123 20.729 123 22C123 23.271 122.61 24.2554 121.829 24.9533C121.049 25.6511 119.939 26 118.5 26C117.085 26 115.976 25.6511 115.171 24.9533C114.39 24.2554 114 23.271 114 22C114 20.729 114.39 19.7445 115.171 19.0467C115.976 18.3489 117.085 18 118.5 18Z"
-                    fill="#FBBF24"
-                  />
-                  <path
-                    d="M103.362 26.0743C101.238 26.0743 99.4206 25.7203 97.91 25.0122C96.3994 24.2805 95.2429 23.2302 94.4404 21.8613C93.6379 20.4923 93.2367 18.8283 93.2367 16.8693C93.2367 14.9103 93.6379 13.2463 94.4404 11.8774C95.2665 10.5084 96.4113 9.46991 97.8746 8.76183C99.3616 8.03015 101.085 7.66431 103.044 7.66431C105.05 7.66431 106.749 8.03015 108.142 8.76183C109.558 9.46991 110.632 10.473 111.363 11.7712C112.095 13.0693 112.461 14.5799 112.461 16.3029C112.461 16.6805 112.437 17.0699 112.39 17.4712C112.367 17.8724 112.331 18.1911 112.284 18.4271H98.4765V15.4178H108.744L104.885 16.9401C104.885 15.6656 104.767 14.6979 104.531 14.037C104.318 13.3761 103.834 13.0457 103.079 13.0457C102.583 13.0457 102.17 13.1637 101.84 13.3997C101.533 13.6358 101.309 14.0488 101.167 14.6389C101.026 15.2053 100.955 15.996 100.955 17.0109C100.955 18.0259 101.049 18.8047 101.238 19.3476C101.427 19.8669 101.698 20.2209 102.052 20.4097C102.43 20.5749 102.902 20.6575 103.468 20.6575C104.082 20.6575 104.554 20.5277 104.885 20.2681C105.239 19.9849 105.475 19.6072 105.593 19.1352L112.142 20.9054C111.883 22.0619 111.304 23.0296 110.408 23.8085C109.511 24.5638 108.437 25.1302 107.186 25.5079C105.959 25.8855 104.684 26.0743 103.362 26.0743Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M71.954 26.1324V8.43046H79.2826L79.6366 15.9361L78.8223 15.051C78.9876 13.5876 79.3534 12.3367 79.9199 11.2982C80.4863 10.2597 81.2416 9.46897 82.1857 8.92611C83.1534 8.35965 84.2981 8.07642 85.6199 8.07642C86.8 8.07642 87.8031 8.31244 88.6292 8.7845C89.4553 9.23294 90.0808 9.90562 90.5056 10.8025C90.9541 11.6758 91.1783 12.7497 91.1783 14.0243V26.1324H83.0354V16.0423C83.0354 15.287 82.9292 14.7796 82.7168 14.5199C82.5043 14.2367 82.1857 14.0951 81.7609 14.0951C81.3832 14.0951 81.0646 14.1895 80.805 14.3783C80.5689 14.5435 80.3919 14.8268 80.2739 15.228C80.1559 15.6293 80.0969 16.1485 80.0969 16.7858V26.1324H71.954Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M65.1355 7.29755C63.5305 7.29755 62.3858 7.03792 61.7013 6.51866C61.0404 5.99941 60.71 5.12611 60.71 3.89878C60.71 2.64784 61.0404 1.77454 61.7013 1.27889C62.3858 0.759629 63.5305 0.5 65.1355 0.5C66.7404 0.5 67.8734 0.759629 68.5342 1.27889C69.2187 1.77454 69.5609 2.64784 69.5609 3.89878C69.5609 5.12611 69.2187 5.99941 68.5342 6.51866C67.8734 7.03792 66.7404 7.29755 65.1355 7.29755ZM69.2069 8.43048V26.1324H61.064V8.43048H69.2069Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M57.1406 1.34985V19.0872C57.1406 19.7953 57.2468 20.3145 57.4592 20.645C57.6716 20.9754 58.0493 21.1406 58.5921 21.1406C58.8518 21.1406 59.076 21.1288 59.2648 21.1052C59.4772 21.058 59.6779 21.0108 59.8667 20.9636L59.5126 25.3537C59.0642 25.6841 58.4151 25.9556 57.5654 26.168C56.7393 26.3804 55.9251 26.4866 55.1226 26.4866C52.9275 26.4866 51.3579 26.0146 50.4138 25.0705C49.4697 24.1264 48.9977 22.545 48.9977 20.3263V1.34985H57.1406Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M27.0435 26.1324V8.43046H34.3721L34.7261 15.9361L33.9118 15.051C34.077 13.5876 34.4429 12.3367 35.0093 11.2982C35.5758 10.2597 36.3311 9.46897 37.2752 8.92611C38.2429 8.35965 39.3876 8.07642 40.7094 8.07642C41.8895 8.07642 42.8926 8.31244 43.7187 8.7845C44.5448 9.23294 45.1703 9.90562 45.5951 10.8025C46.0436 11.6758 46.2678 12.7497 46.2678 14.0243V26.1324H38.1249V16.0423C38.1249 15.287 38.0187 14.7796 37.8062 14.5199C37.5938 14.2367 37.2752 14.0951 36.8503 14.0951C36.4727 14.0951 36.1541 14.1895 35.8944 14.3783C35.6584 14.5435 35.4814 14.8268 35.3634 15.228C35.2454 15.6293 35.1864 16.1485 35.1864 16.7858V26.1324H27.0435Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M12.7938 2C15.2721 2 17.3963 2.47205 19.1665 3.41616C20.9367 4.36026 22.2938 5.72921 23.2379 7.52301C24.1821 9.31681 24.6541 11.4882 24.6541 14.0373C24.6541 16.5864 24.1821 18.7578 23.2379 20.5516C22.2938 22.3454 20.9367 23.7144 19.1665 24.6585C17.3963 25.6026 15.2721 26.0747 12.7938 26.0747C10.3391 26.0747 8.21488 25.6026 6.42108 24.6585C4.65089 23.7144 3.28194 22.3454 2.31423 20.5516C1.37013 18.7578 0.898071 16.5864 0.898071 14.0373C0.898071 11.4882 1.37013 9.31681 2.31423 7.52301C3.28194 5.72921 4.65089 4.36026 6.42108 3.41616C8.21488 2.47205 10.3391 2 12.7938 2ZM12.7938 8.19568C11.9913 8.19568 11.3304 8.40811 10.8112 8.83295C10.3155 9.2342 9.93787 9.85967 9.67824 10.7094C9.44222 11.5591 9.32421 12.6684 9.32421 14.0373C9.32421 15.3827 9.44222 16.492 9.67824 17.3653C9.93787 18.215 10.3155 18.8523 10.8112 19.2771C11.3304 19.6784 11.9913 19.879 12.7938 19.879C13.5963 19.879 14.2454 19.6784 14.741 19.2771C15.2603 18.8523 15.6379 18.215 15.8739 17.3653C16.11 16.492 16.228 15.3827 16.228 14.0373C16.228 12.6684 16.11 11.5591 15.8739 10.7094C15.6379 9.85967 15.2603 9.2342 14.741 8.83295C14.2454 8.40811 13.5963 8.19568 12.7938 8.19568Z"
-                    fill="white"
-                  />
-                </svg>
               </a>
             </div>
             <div className="">
@@ -154,10 +124,15 @@ const Header = ({ showModal, setShowModal }) => {
                 style={{
                   pointerEvents: isMobileMenuOpen ? "auto" : "none",
                 }}
+                aria-hidden={!isMobileMenuOpen}
               >
                 <div
                   className="absolute h-[64px] w-[80px] flex items-center justify-center top-[8px] right-[0]"
                   onClick={handleToggleMobileMenu}
+                  role="button"
+                  tabIndex={0}
+                  onKeyPress={handleToggleMobileMenu}
+                  aria-label="Close Menu"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -165,6 +140,7 @@ const Header = ({ showModal, setShowModal }) => {
                     height="24"
                     viewBox="0 0 32 32"
                     fill="none"
+                    aria-hidden="true"
                   >
                     <g clipPath="url(#clip0_211_408)">
                       <path
@@ -184,116 +160,101 @@ const Header = ({ showModal, setShowModal }) => {
                   style={{
                     pointerEvents: isMobileMenuOpen ? "auto" : "none",
                   }}
+                  role="navigation"
+                  aria-label="Mobile Menu"
                 >
                   {/* mobile menu items */}
-                  <motion.a
-                    className="text-white font-black text-[48px]"
-                    href="./admissions.aspx"
-                    variants={menuItemVariants}
-                    initial="hidden"
-                    animate={isMobileMenuOpen ? "visible" : "hidden"}
-                  >
-                    Admissions
-                  </motion.a>
-                  <motion.a
-                    className="text-white font-black text-[48px]"
-                    href="./tuition-and-cost"
-                    variants={menuItemVariants}
-                    initial="hidden"
-                    animate={isMobileMenuOpen ? "visible" : "hidden"}
-                  >
-                    Tuition &amp; Cost
-                  </motion.a>
-                  <motion.a
-                    className="text-white font-black text-[48px]"
-                    href="./programs.aspx"
-                    variants={menuItemVariants}
-                    initial="hidden"
-                    animate={isMobileMenuOpen ? "visible" : "hidden"}
-                  >
-                    Explore Programs
-                  </motion.a>
-                  <motion.a
-                    className="text-white font-black text-[48px]"
-                    href="./student-support-services.aspx"
-                    variants={menuItemVariants}
-                    initial="hidden"
-                    animate={isMobileMenuOpen ? "visible" : "hidden"}
-                  >
-                    Student Support Services
-                  </motion.a>
-                  <motion.a
-                    className="text-white font-black text-[48px]"
-                    href="./success-stories.aspx"
-                    variants={menuItemVariants}
-                    initial="hidden"
-                    animate={isMobileMenuOpen ? "visible" : "hidden"}
-                  >
-                    Student Success
-                  </motion.a>
+                  {[
+                    "Admissions",
+                    "Tuition & Cost",
+                    "Explore Programs",
+                    "Student Support Services",
+                    "Success Stories",
+                  ].map((item, index) => (
+                    <motion.a
+                      key={item}
+                      className="text-white font-[800] leading-[52px] text-[48px] mb-[16px]"
+                      href={`./${item.toLowerCase().replace(/\s+/g, "-").replace("&", "and")}.html`}
+                      variants={menuItemVariants}
+                      initial="hidden"
+                      animate={isMobileMenuOpen ? "visible" : "hidden"}
+                      tabIndex={0}
+                    >
+                      {item}
+                    </motion.a>
+                  ))}
                 </motion.div>
               </motion.div>
             </div>
             <div className="flex gap-[24px]">
-              <nav className="hidden items-center group text-center whitespace-nowrap  xl:flex gap-[32px] text-[17.5px] leading-[20px] font-[600] text-white">
-                <a
-                  className={`py-[24px]  relative border-transparent group transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="./admissions.aspx"
-                >
-                  Admissions
-                  <span className="w-full absolute block bottom-[-1px] left-[0] transition-height ease-in-out duration-[250ms] h-[0] group-hover:h-[6px] bg-[#E3B000] z-[1]"></span>
-                </a>
-                <a
-                  className={`py-[24px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="./tuition-and-cost.aspx"
-                >
-                  Tuition &amp; Cost
-                </a>
-                <a
-                  className={`py-[24px]  border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="./student-support-services.aspx"
-                >
-                  Student Support Services
-                </a>
-                <a
-                  className={`py-[24px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="./success-stories.aspx"
-                >
-                  Student Success
-                </a>
-                <a
-                  className={`py-[24px]    border-b-[6px] border-transparent transition ease-in-out duration-[250ms] hover:border-[#FBBF24] ${scrolled ? "" : "text-white"}`}
-                  href="./programs.aspx"
-                >
-                  Explore Programs
-                </a>
+              <nav
+                className="hidden items-center group text-center whitespace-nowrap xl:flex gap-[32px] text-[17.5px] leading-[20px] font-[600] text-white"
+                aria-label="Main Navigation"
+              >
+                {[
+                  "Admissions",
+                  "Tuition & Cost",
+                  "Student Support Services",
+                  "Success Stories",
+                  "Explore Programs",
+                ].map((item) => (
+                  <a
+                    key={item}
+                    className={`py-[24px]  border-b-[6px] transition ease-in-out duration-[250ms] hover:border-[#00467F] ${
+                      scrolled ? "" : "text-white"
+                    } ${
+                      isActive ===
+                      item
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")
+                        .replace("&", "and")
+                        ? "border-[#FBBF24]"
+                        : "border-transparent "
+                    }`}
+                    href={`./${item
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")
+                      .replace("&", "and")}.html`}
+                    tabIndex={0}
+                  >
+                    {item}
+                  </a>
+                ))}
               </nav>
               <div className="flex items-center gap-[24px]">
-                <a
-                  href="/programs"
-                  className="text-[16px] whitespace-nowrap hidden group relative  border-b-[0px] bg-[white]  text-[#00467F] rounded-full border md:inline-block transition ease-in-out text-center cursor-pointer width-auto bg-[#00467F] py-[12px] font-semibold px-[32px] hover:bg-white hover:text-[#00467F] hover:border-[#00467F]"
-                >
-                  Request Information
-                </a>
-                {/* Menu Icon */}
-                <div
-                  className={`cursor-pointer font-semibold xl:hidden py-[36px] flex bg-[#00467F] items-centered items-center justify-center w-[80px] h-full ${
-                    scrolled ? "text-blue-900" : "text-white"
-                  }`}
-                  onClick={handleToggleMobileMenu}
-                >
-                  <svg
-                    className="w-[24px] h-[24px] absolute "
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 25 25"
-                    fill="white"
-                  >
-                    <path
-                      d="M14.286 18.75v1.786H0V18.75zM25 11.607v1.786H0v-1.786zm0-7.142v2H0v-2z"
-                      fill="white"
-                    ></path>
-                  </svg>
+                <div className="hidden md:block">
+                  <Button
+                    size="small"
+                    label="Request Information"
+                    href="https://kctcs.edu/admissions/request-information/index.html"
+                    aria-label="Request Information"
+                  />
                 </div>
+                {!isMobileMenuOpen && (
+                  <div
+                    className={`cursor-pointer font-semibold xl:hidden py-[36px] flex bg-[#00467F] items-centered items-center justify-center w-[80px] h-full ${
+                      scrolled ? "text-blue-900" : "text-white"
+                    }`}
+                    onClick={handleToggleMobileMenu}
+                    role="button"
+                    tabIndex={0}
+                    onKeyPress={handleToggleMobileMenu}
+                    aria-label="Open Menu"
+                  >
+                    <svg
+                      className="w-[24px] h-[24px] absolute "
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 25 25"
+                      fill="white"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M14.286 18.75v1.786H0V18.75zM25 11.607v1.786H0v-1.786zm0-7.142v2H0v-2z"
+                        fill="white"
+                      ></path>
+                    </svg>
+                  </div>
+                )}
               </div>
             </div>
           </div>

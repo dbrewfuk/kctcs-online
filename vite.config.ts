@@ -16,7 +16,10 @@ export default defineConfig({
       input: {
         home: "/index.html",
         admissions: "/admissions.html",
-        programs: "/programs.html",
+        programs: "/explore-programs.html",
+        tuition: "/tuition-and-cost.html",
+        studentServices: "/student-support-services.html",
+        successStories: "/success-stories.html",
       },
       output: {
         entryFileNames: "app.js", // Output JS file name
@@ -26,6 +29,9 @@ export default defineConfig({
   server: {
     fs: {
       strict: false,
+    },
+    proxy: {
+      "/api": "http://localhost:5173",
     },
   },
 });

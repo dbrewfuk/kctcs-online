@@ -8,11 +8,7 @@ import Search from "./components/Search";
 import HeroRfi from "./components/HeroRfi";
 import Header from "./components/Header";
 import DynamicSections from "./DynamicSections";
-import VideoBlockSlider from "./components/VideoBlockSlider";
 import InterestGrid from "./components/InterestGrid";
-import VideoSliderGrow from "./components/VideoSliderGrow";
-import FeaturedAreas from "./components/FeaturedAreas";
-import FeaturedAreasList from "./components/FeaturedAreasList";
 import FeaturedAreasList2 from "./components/FeaturedAreas2";
 import StudentStoryFeature from "./components/StudentStoryFeature";
 import ContentSlider from "./components/ContentSlider";
@@ -21,12 +17,12 @@ import programs from "./programs-20240510";
 import Filters from "./components/Filters";
 import CurrentFilters from "./components/CurrentFilters";
 import TestimonialMarquee from "./components/TestimonialMarquee";
-import MediaMarquee from "./components/MediaMarquee";
 import { Link } from "react-router-dom";
-import VerticalMediaMarquee from "./components/VerticalMediaMarquee";
 import ExplorePrograms from "./components/ExplorePrograms";
 import SFeaturedAreas from "./SFeaturedAreas";
 import AdmissionsInfo from "./components/AdmissionsInfo";
+import FadeInSection from "./components/FadeInSection";
+import TuitionSection from "./components/TuitionSection";
 
 function Home() {
   const [selectedCredential, setSelectedCredential] = useState("");
@@ -273,14 +269,15 @@ function Home() {
       </div>
 
       <ExplorePrograms />
-
-      <StudentStoryFeature />
-
-      <Testimonial />
+      <FadeInSection>
+        <StudentStoryFeature />
+      </FadeInSection>
 
       <SFeaturedAreas />
+      <Testimonial />
 
       <AdmissionsInfo />
+      <TuitionSection />
     </>
   );
 }
