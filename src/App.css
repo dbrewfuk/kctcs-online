@@ -167,33 +167,49 @@ body {
 
 .bar {
   position: relative;
+  z-index: 2;
   display: inline-block;
-  z-index: 1;
+}
+
+/* Target the last .bar element within each container */
+.bar:only-of-type {
+  margin-bottom: 0.2623em;
 }
 
 .bar:after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: 0;
-  transform: translateY(-40%);
-  height: 0.5em;
+  left: -0.75px;
+  transform: translateY(-0.2623em);
   background-color: #fbbf24;
   width: 100%;
+  left: 0;
   z-index: -1;
-  border-radius: 3px;
+  border-radius: 0px;
+  bottom: -0.325em;
+  height: 0.275em;
+}
+
+.adjusted-e {
+  margin-left: -2.5px;
+}
+
+.adjusted-e.bar:after {
+  width: calc(100% - 5.5px);
+  left: 3px;
 }
 
 .bar.bar--white:after {
   background-color: white;
 }
 
-.bar.bar--white:after {
-  background-color: #99c6ee;
+.bar.bar--white + .dot {
+  color: white;
 }
 
 .dot {
-  color: #fbbf24;
+  color:;
+  position: relative;
 }
 
 .text-\[17\.5px\].mt-\[32px\].lg\:mt-\[48px\].rounded-full.border.inline-block.transition.ease-in-out.text-center.cursor-pointer.width-auto.bg-\[\#00467F\].text-white.py-\[16px\].font-semibold.px-\[48px\].hover\:bg-white.hover\:text-\[\#00467F\].hover\:border-\[\#00467F\] {
@@ -209,5 +225,57 @@ body {
 }
 
 .container {
-  max-width: 1366px;
+  max-width: 1376px !important;
+}
+.lg\:container {
+  max-width: 1376px !important;
+}
+
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+/* For Safari on iOS */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Add this to your CSS file */
+.ripple {
+  position: relative;
+  border-radius: 50%;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1);
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0.05;
+  }
+}
+
+.ripple::before {
+  content: "";
+  position: absolute;
+  width: 0.45em;
+  height: 0.45em;
+  bottom: 0.11em;
+  left: -0.38em;
+  background-color: #fbbf24;
+  border-radius: 50%;
+  animation: ripple 1.5s infinite ease-in-out;
+  opacity: 0;
+  animation-delay: 0s;
+  display: none;
 }

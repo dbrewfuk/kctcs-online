@@ -1,46 +1,34 @@
 import React, { useState, useEffect, useRef } from "react";
 import Header from "./components/Header";
-import HeroRfi from "./components/HeroRfi";
-import programs from "./programs-20240510";
 import Filters from "./components/Filters";
-import CurrentFilters from "./components/CurrentFilters";
-import KeywordSearch from "./components/KeywordSearch";
 import ProgramResults from "./components/ProgramResults";
+import Button from "./components/Button";
 
 function Programs() {
   const [selectedCredential, setSelectedCredential] = useState("");
   const [selectedArea, setSelectedArea] = useState("");
   const [selectedPlan, setSelectedPlan] = useState("");
   const [selectedSector, setSelectedSector] = useState("");
-  const [uniqueSectors, setUniqueSectors] = useState("");
+  const [uniqueSectors, setUniqueSectors] = useState([]);
   const [uniqueCredentialTypes, setUniqueCredentialTypes] = useState([]);
   const [selectedCredentialTypes, setSelectedCredentialTypes] = useState([]);
-  const [filteredPlans, setFilteredPlans] = useState([]);
   const [academicPlans, setAcademicPlans] = useState([]);
-  const [searchQueryInput, setSearchQueryInput] = useState("");
-  const [searchQueryFromURL, setSearchQueryFromURL] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [uniqueCredentials, setUniqueCredentials] = useState([]);
   const [uniqueProgramAreas, setUniqueProgramAreas] = useState([]);
   const [uniquePlanNames, setUniquePlanNames] = useState([]);
   const [filteredAcademicPlans, setFilteredAcademicPlans] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
-  const [expandedPrograms, setExpandedPrograms] = useState({}); // State to track expanded state for each program
-  const [isExpanded] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedColleges, setSelectedColleges] = useState(
-    Array(filteredAcademicPlans.length).fill({ name: "", url: "" }),
-  );
+  const [expandedPrograms, setExpandedPrograms] = useState({});
+  const [selectedColleges, setSelectedColleges] = useState([]);
   const [selectedCollegeIndex, setSelectedCollegeIndex] = useState(null);
   const [isSticky, setIsSticky] = useState(false);
-
-  // Other useEffect hooks remain unchanged
 
   const handleSectorChange = (e) => {
     const selectedSector = e.target.value;
     setSelectedSector(selectedSector);
 
-    // Update URL parameters
     const urlSearchParams = new URLSearchParams(window.location.search);
     urlSearchParams.set("sector", selectedSector);
     const newParamsString = urlSearchParams.toString();
@@ -52,23 +40,16 @@ function Programs() {
   };
 
   const handleCredentialTypeChange = (e, credentialType) => {
-    // Check if the credential type is already selected
     const isSelected = selectedCredentialTypes.includes(credentialType);
-
-    // If the credential type is already selected, remove it from the selected types
-    // If not selected, add it to the selected types
     const updatedSelectedTypes = isSelected
       ? selectedCredentialTypes.filter((type) => type !== credentialType)
       : [...selectedCredentialTypes, credentialType];
 
     setSelectedCredentialTypes(updatedSelectedTypes);
 
-    // Update URL parameters
     const urlSearchParams = new URLSearchParams(window.location.search);
     urlSearchParams.set("credentialTypes", updatedSelectedTypes.join(","));
     const newParamsString = urlSearchParams.toString();
-
-    // Replace the current URL without reloading the page
     window.history.replaceState(
       {},
       "",
@@ -77,171 +58,97 @@ function Programs() {
   };
 
   useEffect(() => {
-    // Extract unique credential types from programsData
-    const credentialTypesSet = new Set();
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://77ykxy-5000.csb.app/api/programs-with-colleges",
+        );
+        const data = await response.json();
 
-    // Iterate over each program
-    programs.forEach((program) => {
-      // Iterate over each college in the program
-      program.colleges.forEach((college) => {
-        // Check if academic plans exist and iterate over them
-        if (college.academic_plans && college.academic_plans.length > 0) {
-          college.academic_plans.forEach((plan) => {
-            // Add the credential type to the Set
-            credentialTypesSet.add(plan.credential_type);
-          });
-        }
-      });
-    });
+        const sectors = [...new Set(data.map((item) => item.sector))];
+        const credentials = [...new Set(data.map((item) => item.credential))];
+        const plans = [...new Set(data.map((item) => item.plan))];
+        const areas = [...new Set(data.map((item) => item.area))];
 
-    // Convert the Set to an array
-    const uniqueTypesArray = Array.from(credentialTypesSet);
+        setUniqueSectors(sectors);
+        setUniqueCredentials(credentials);
+        setUniquePlanNames(plans);
+        setUniqueProgramAreas(areas);
 
-    // Update state with unique credential types
-    setUniqueCredentialTypes(uniqueTypesArray);
-  }, [programs]); // Empty dependency array ensures this effect runs only once
-  useEffect(() => {
-    // Update URL search query parameter when search query changes
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    urlSearchParams.set("search", searchQuery);
-    const newParamsString = urlSearchParams.toString();
-  }, [searchQuery]);
+        const credentialTypesSet = new Set(data.map((item) => item.credential));
+        setUniqueCredentialTypes(Array.from(credentialTypesSet));
 
-  useEffect(() => {
-    // Extract unique credentials, program areas, and plan names
-    const credentials = new Set();
-    const programAreas = new Set();
-    const planNames = new Set();
-    const sectors = new Set();
-
-    programs.forEach((program) => {
-      program.colleges.forEach((college) => {
-        if (college.academic_plans && college.academic_plans.length > 0) {
-          college.academic_plans.forEach((plan) => {
-            credentials.add(plan.credentials_awarded);
-            programAreas.add(program.program);
-            sectors.add(program.sector);
-            planNames.add(plan.name);
-          });
-        }
-      });
-    });
-
-    setUniqueCredentials(Array.from(credentials));
-    setUniqueSectors(Array.from(sectors));
-    setUniqueProgramAreas(Array.from(programAreas));
-    setUniquePlanNames(Array.from(planNames));
-  }, []);
-
-  // useEffect to populate academicPlans with unique academic plans data
-  useEffect(() => {
-    // Function to extract unique academic plans from programs data
-    const getUniqueAcademicPlans = () => {
-      const uniquePlans = {};
-
-      programs.forEach((program) => {
-        program.colleges.forEach((college) => {
-          if (college.academic_plans && college.academic_plans.length > 0) {
-            college.academic_plans.forEach((plan) => {
-              const key = `${plan.name} - ${plan.credentials_awarded}`;
-              if (!uniquePlans[key]) {
-                uniquePlans[key] = {
-                  name: plan.name,
-                  credentials_awarded: plan.credentials_awarded,
-                  credential_type: plan.credential_type,
-                  colleges: [],
-                  area: program.program,
-                  sector: program.sector,
-                };
-              }
-
-              uniquePlans[key].colleges.push(college);
-            });
+        const uniqueAcademicPlans = data.reduce((acc, program) => {
+          const key = `${program.plan} - ${program.credential}`;
+          if (!acc[key]) {
+            acc[key] = {
+              name: program.plan,
+              credential: program.credential,
+              colleges: Array.isArray(program.colleges) ? program.colleges : [], // Ensure colleges is an array
+              area: program.area,
+              sector: program.sector,
+              description: program.description,
+            };
           }
-        });
-      });
+          return acc;
+        }, {});
 
-      return Object.values(uniquePlans);
+        setAcademicPlans(Object.values(uniqueAcademicPlans));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
-    // Update academicPlans state with unique academic plans data
-    const uniqueAcademicPlans = getUniqueAcademicPlans();
-    setAcademicPlans(uniqueAcademicPlans);
-  }, [programs]); // empty dependency array to ensure it runs only onceuseEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
-    // Initialize search query from URL when component mounts
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    const searchQueryParam = urlSearchParams.get("search");
+    const queryParams = new URLSearchParams(window.location.search);
+    const credential = queryParams.get("credential") || "";
+    const area = queryParams.get("area") || "";
+    const plan = queryParams.get("plan") || "";
+    const sector = queryParams.get("sector") || "";
+    const credentialTypes = queryParams.get("credentialTypes") || "";
+    const searchQuery = queryParams.get("search") || "";
 
-    if (searchQueryParam) {
-      setSearchQuery(searchQueryParam);
+    setSelectedCredential(credential);
+    setSelectedArea(area);
+    setSelectedPlan(plan);
+    setSelectedSector(sector);
+    setSearchQuery(searchQuery);
+
+    // Split the credentialTypes string into an array
+    if (credentialTypes) {
+      setSelectedCredentialTypes(credentialTypes.split(","));
     }
   }, []);
 
-  const handleSearchClick = (searchVal: string) => {
-    setSearchQuery(searchVal);
-  };
-
   useEffect(() => {
-    // Update URL search query parameter when search query changes
-    if (searchQuery !== "") {
-      const urlSearchParams = new URLSearchParams(window.location.search);
-      urlSearchParams.set("search", searchQuery);
-      const newParamsString = urlSearchParams.toString();
-    }
-  }, [searchQuery]);
-
-  const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  // useEffect hook to scroll to top when filtered results change
-  useEffect(() => {
-    // Scroll to the top of the page
-    window.scrollTo(0, 0);
-  }, [filteredAcademicPlans]);
-  useEffect(() => {
-    // Parse URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const credential = urlParams.get("credential");
-    const area = urlParams.get("area");
-    const plan = urlParams.get("plan");
-    const credentialTypes = urlParams.get("credentialTypes");
-    const sector = urlParams.get("sector");
-
-    // Update state with parsed URL parameters
-
-    const credentialTypesArray = credentialTypes
-      ? credentialTypes.split(",")
-      : [];
-
-    // Set the state only if credentialTypesArray is different from the current state
-    if (
-      JSON.stringify(credentialTypesArray) !==
-      JSON.stringify(selectedCredentialTypes)
-    ) {
-      setSelectedCredentialTypes(credentialTypesArray);
-    }
-
-    // Filter the academic plans based on the search query, selected filters, etc.
     const filteredPlans = academicPlans.filter((plan) => {
-      // Check if the plan's credential type is included in the selected credential types
+      // Normalize credential to check against selected types
+      const normalizedCredential = plan.credential.toLowerCase();
+
+      // Check if the plan's credential matches the selected credential types
       const matchesCredentialTypes =
         selectedCredentialTypes.length === 0 ||
-        selectedCredentialTypes.includes(plan.credential_type);
+        selectedCredentialTypes.some((type) => {
+          if (type.toLowerCase() === "degree") {
+            return normalizedCredential.includes("associate");
+          } else {
+            return normalizedCredential === type.toLowerCase();
+          }
+        });
 
       // Check if the plan matches the search query
       const matchesSearch =
         !searchQuery ||
         plan.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        plan.credentials_awarded
-          .toLowerCase()
-          .includes(searchQuery.toLowerCase());
+        normalizedCredential.includes(searchQuery.toLowerCase());
 
-      // Other filtering conditions remain unchanged
+      // Check if the plan matches the selected filters
       const matchesFilters =
-        (!selectedCredential || plan.credential_type === selectedCredential) &&
+        (!selectedCredential ||
+          normalizedCredential.includes(selectedCredential.toLowerCase())) &&
         (!selectedArea || plan.area === selectedArea) &&
         (!selectedSector || plan.sector === selectedSector) &&
         (!selectedPlan || plan.name === selectedPlan);
@@ -249,7 +156,6 @@ function Programs() {
       return matchesSearch && matchesCredentialTypes && matchesFilters;
     });
 
-    // Update the filtered academic plans state
     setFilteredAcademicPlans(filteredPlans);
   }, [
     selectedCredential,
@@ -258,19 +164,63 @@ function Programs() {
     selectedSector,
     selectedCredentialTypes,
     academicPlans,
-    programs,
     searchQuery,
   ]);
 
-  const clearSearchQuery = () => {
-    setSearchQuery(""); // Clear the search query state// Update the URL to remove the search query parameter
+  const handleApplyClick = () => {
+    const queryParams = new URLSearchParams();
+    if (selectedCredential) queryParams.set("credential", selectedCredential);
+    if (selectedArea) queryParams.set("area", selectedArea);
+    if (selectedSector) queryParams.set("sector", selectedSector);
+    if (selectedPlan) queryParams.set("plan", selectedPlan);
+    if (selectedCredentialTypes.length > 0)
+      queryParams.set("credentialTypes", selectedCredentialTypes.join(","));
+
+    const queryString = queryParams.toString();
+    window.location.href = `/explore-programs.html?${queryString}`;
   };
 
-  // Modify the toggleExpanded function to toggle the expansion state for a specific index
+  const isAnyOptionSelected = () => {
+    return (
+      selectedCredential ||
+      selectedArea ||
+      selectedSector ||
+      selectedPlan ||
+      selectedCredentialTypes.length > 0
+    );
+  };
+
+  const updateOptions = (title, selectedOption) => {
+    switch (title) {
+      case "Credential":
+        const filteredPlans = academicPlans
+          .filter((plan) => plan.credential_type === selectedOption)
+          .map((plan) => plan.name);
+        const filteredAreas = academicPlans
+          .filter((plan) => plan.credential_type === selectedOption)
+          .map((plan) => plan.area);
+
+        setUniquePlanNames([...new Set(filteredPlans)]);
+        setUniqueProgramAreas([...new Set(filteredAreas)]);
+        setSelectedPlan("");
+        setSelectedArea("");
+        break;
+      case "Program Area":
+        setSelectedPlan("");
+        break;
+      default:
+        break;
+    }
+  };
+
+  const clearSearchQuery = () => {
+    setSearchQuery("");
+  };
+
   const toggleExpanded = (index) => {
     setExpandedPrograms((prevExpanded) => ({
       ...prevExpanded,
-      [index]: !prevExpanded[index], // Toggle the expanded state for the given index
+      [index]: !prevExpanded[index],
     }));
   };
 
@@ -294,7 +244,7 @@ function Programs() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (filterRef && !filterRef.current.contains(event.target)) {
+      if (filterRef.current && !filterRef.current.contains(event.target)) {
         setFilterOpen(false);
       }
     };
@@ -314,32 +264,32 @@ function Programs() {
           id="sticky-search"
           className="w-full lg:min-w-[25vw] lg:max-w-[25vw] sticky h-full z-10 bg-white lg:top-[80px] shadow-[0px_2px_2px_rgba(0,0,0,0.15)] lg:shadow-[none]"
         >
-          <div className="container mx-auto px-[24px] py-[24px] lg:py-[48px] lg:pl-[56px] lg:pr-[32px]">
+          <div className="container mx-auto px-[24px] pt-[36px] pb-[24px] lg:py-[48px] lg:pl-[56px] lg:pr-[32px]">
             {" "}
             <div className="flex flex-col">
               <div className="lg:block">
-                <div className=" text-[#00467F] text-[32px] leading-[36px] font-[800] mb-[12px]">
-                  Unlock Your Future: Explore 90+ Online Program Options
+                <div className=" text-[#00467F] text-[31.5px] leading-[36px] font-[800] mb-[12px]">
+                  Unlock Your Future.
                 </div>
                 <p className="text-[#00467F] text-[18px] mb-[24px]">
                   From{" "}
                   <a
                     className="cursor-pointer border-b-2"
-                    onClick={() => handleSearchClick("agriculture")}
+                    onClick={() => setSearchQuery("agriculture")}
                   >
                     agriculture
                   </a>{" "}
                   to{" "}
                   <a
                     className="cursor-pointer border-b-2"
-                    onClick={() => handleSearchClick("health")}
+                    onClick={() => setSearchQuery("health")}
                   >
-                    health science technology
+                    health
                   </a>{" "}
                   to{" "}
                   <a
                     className="cursor-pointer border-b-2"
-                    onClick={() => handleSearchClick("Paralegal")}
+                    onClick={() => setSearchQuery("Paralegal")}
                   >
                     paralegal
                   </a>
@@ -350,7 +300,7 @@ function Programs() {
               </div>
 
               <div className="sticky flex flex-row gap-[16px] items-center lg:flex-col">
-                <form className="lg:block lg:mb-[24px] w-full">
+                <form className="lg:block w-full">
                   <div className="flex items-center gap-4 text-[18px] relative">
                     <span className="absolute w-[24px] ml-[12px] left-0">
                       <svg
@@ -366,12 +316,12 @@ function Programs() {
                       type="text"
                       placeholder="Search programs"
                       value={searchQuery}
-                      onChange={handleSearchInputChange}
+                      onChange={(e) => setSearchQuery(e.target.value)}
                       className="text-[17.5px] border-[6px] transition ease-in-out duration-[250ms] border-[transparent] focus:border-[#fdd000] focus:outline-none text-[#00467F] leading-[24px] pl-[48px] py-[12px] bg-[#f3f3f3] text-[#00467F] w-full"
                     />
                     {searchQuery && (
                       <span
-                        onClick={clearSearchQuery} // Clear search query
+                        onClick={clearSearchQuery}
                         className="absolute cursor-pointer mr-[16px] right-0 w-[18px] text-white rounded-md transition-colors duration-300 hover:bg-opacity-80 focus:outline-none"
                       >
                         <svg
@@ -379,22 +329,28 @@ function Programs() {
                           viewBox="0 0 27.436 27.436"
                           fill="#00467F"
                         >
-                          <path d="M1.414 0L0 1.416l12.303 12.303L0 26.022l1.414 1.414 12.303-12.303 12.305 12.303 1.414-1.416-12.303-12.303L27.436 1.414 26.022.002 13.72 12.305 1.414 0z"></path>
+                          <path d="M0.412305 0L0 1.416l12.303 12.303L0 26.022l1.414 1.414 12.303-12.303 12.305 12.303 1.414-1.416-12.303-12.303L27.436 1.414 26.022.002 13.72 12.305 1.414 0z"></path>
                         </svg>
                       </span>
                     )}
                   </div>
                 </form>
-                <div>
-                  <div
-                    className="inline-block lg:hidden items-center justify-center text-[16px] py-[12px] px-[32px] hover:bg-[white] transition ease-in-out duration-[250ms] cursor-pointer hover:border-[#00467F] text-[#00467F] font-[600] text-center  rounded-full border border-[transparent] bg-[#f5f5f5]"
+                <div
+                  className="lg:hidden
+                "
+                >
+                  <Button
+                    type="outline"
+                    className="inline-block lg:hidden items-center justify-center text-[16px] py-[12px] px-[32px] hover:bg-[white] transition ease-in-out duration-[250ms] cursor-pointer hover:border-[#00467F] text-[#00467F] font-[600] text-center rounded-full border border-[transparent] bg-[#f5f5f5]"
                     onClick={() => setFilterOpen(true)}
                   >
                     <span className="">Filter</span>
-                  </div>
+                  </Button>
                 </div>
 
-                <div className="lg:flex flex-col gap-[24px]">
+                <div
+                  className={`lg:flex flex-col w-full gap-[24px] ${filterOpen ? "block" : "hidden"}`}
+                >
                   <div
                     ref={filterRef}
                     className={`
@@ -404,6 +360,35 @@ function Programs() {
                   `}
                   >
                     {" "}
+                    <button
+                      className="absolute top-2 right-2 z-10 "
+                      onClick={() => setFilterOpen(false)}
+                      tabIndex={0}
+                      aria-label="Close filter modal"
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          setFilterOpen(false);
+                        }
+                      }}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          clipRule="evenodd"
+                          d="M12 10.586L17.707 4.879 18.707 5.879 13 11.586 18.707 17.293 17.707 18.293 12 12.707 6.293 18.293 5.293 17.293 11 11.586 5.293 5.879 6.293 4.879 12 10.586Z"
+                          fill="#00467F"
+                        />
+                      </svg>
+                    </button>{" "}
                     <Filters
                       uniqueCredentials={uniqueCredentials}
                       uniqueCredentialTypes={uniqueCredentialTypes}
@@ -423,13 +408,13 @@ function Programs() {
                       setSelectedArea={setSelectedArea}
                       selectedPlan={selectedPlan}
                       setSelectedPlan={setSelectedPlan}
-                      programs={programs}
+                      programs={academicPlans}
                       searchQuery={searchQuery}
                       backgroundColor={"light"}
                     />
                   </div>
 
-                  <div className="container  mt-[24px]">
+                  <div className="container mt-[24px]">
                     <div className="flex flex-col ">
                       <span className="flex text-[14px] flex-wrap gap-[12px]">
                         {selectedArea && (
@@ -528,7 +513,6 @@ function Programs() {
                                 fill="white"
                               ></path>
                             </svg>
-
                             <span>{selectedCredential} </span>
                           </span>
                         )}
@@ -558,20 +542,20 @@ function Programs() {
                     </div>
                   </div>
                 </div>
+                <div className="hidden lg:block pt-[32px] border-t border-[#f3f3f3]">
+                  <a
+                    href="https://kctcs.edu/class-search.aspx"
+                    type="button"
+                    className="inline-block hover:bg-[white] border border-[#f3f3f3] transition ease-in-out duration-250 hover:text-[#00467F] hover:border-[#00467F] px-[32px] rounded-full py-[12px] whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer font-semibold bg-[#f3f3f3] text-[#00467F] text-[16px] text-center"
+                  >
+                    Online Courses
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className="hidden lg:block pt-[32px] mt-[32px] border-t border-[#f3f3f3]">
-              <a
-                href="https://kctcs.edu/class-search.aspx"
-                type="button"
-                className="inline-block hover:bg-[white] border border-[#f3f3f3] transition ease-in-out duration-250 hover:text-[#00467F] hover:border-[#00467F] px-[32px] rounded-full py-[12px] whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer font-semibold bg-[#f3f3f3] text-[#00467F] text-[16px] text-center"
-              >
-                Online Courses
-              </a>
             </div>
           </div>
         </div>
-        <div className="w-full lg:border-l-[1px] border-[#f3f3f3] p-[32px] lg:p-[48px]">
+        <div className="w-full lg:border-l-[1px] border-[#f3f3f3] p-[24px] lg:p-[48px]">
           <ProgramResults
             filteredAcademicPlans={filteredAcademicPlans}
             showLimit={40}

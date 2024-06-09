@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ProgramResults from "./ProgramResults";
 
-const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
+const FeaturedAreasList2 = ({
+  handleProgramAreaClick,
+  academicPlans,
+  setAcademicPlans,
+}) => {
   const history = useHistory();
 
   const [uniquePlanNames, setUniquePlanNames] = useState([]);
@@ -49,7 +53,7 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
     {
       id: 9,
       image: "./assets/as4.jpeg",
-      title: "Visual Communications Multimedia",
+      title: "Visual Communication Multimedia",
       content:
         "Learn the art of animation, audio/video production, web design and graphic design.",
     },
@@ -72,15 +76,13 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
   const [selectedArea, setSelectedArea] = useState("Paralegal");
 
   useEffect(() => {
-    // Filter the academic plans based on the search query, selected filters, etc.
     const filteredPlans = academicPlans.filter((plan) => {
-      const matchesFilters = !selectedArea || plan.area === selectedArea;
-      // Consider the selected sector filter
-
+      const matchesFilters =
+        (!selectedArea || plan.area === selectedArea) &&
+        (!selectedPlan || plan.name === selectedPlan);
       return matchesFilters;
     });
 
-    // Update the filtered academic plans state
     setFilteredAcademicPlans(filteredPlans);
   }, [selectedArea, selectedPlan, academicPlans]);
 
@@ -89,7 +91,7 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
       <div className="flex flex-row flex-wrap">
         {cardData.map((card) => (
           <div
-            className={`w-full relative group lg:border-l-[2px] border-[#FBBF24] transition ease-in-out cursor-pointer ${
+            className={`w-full relative group order-[2] lg:border-l-[2px] border-[#FBBF24] transition ease-in-out cursor-pointer border-b border-b-[#f3f3f3] last:border-b-[0] ${
               selectedFilters.includes(card.title) ? "selected" : ""
             }`}
             key={card.id}
@@ -97,12 +99,30 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
               setSelectedArea(card.title);
               handleProgramAreaClick(card.title);
             }}
+            tabIndex={0}
+            role="button"
+            aria-pressed={selectedFilters.includes(card.title)} // Indicate if the button is "pressed"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                // Add spacebar key support
+                setSelectedArea(card.title);
+                handleProgramAreaClick(card.title);
+              }
+            }}
+            aria-label={`Select ${card.title} program area`}
           >
             <div
-              className={` flex flex-col transition-all lg:border-l-[4px] ease-in-out text-[#00467F] duration-[250ms] w-full h-full justify-center p-[20px] pl-[16px]  ${selectedArea === card.title ? "bg-[#f5f5f5] border-[#FBBF24]" : " bg-[white] border-[transparent] hover:bg-[#f3f3f3]"}`}
+              className={` flex flex-col transition-all lg:border-l-[4px]  ease-in-out text-[#00467F] duration-[250ms] w-full h-full justify-center p-[20px] pl-[16px]  ${
+                selectedArea === card.title
+                  ? "bg-[#f5f5f5] border-[#FBBF24]"
+                  : " bg-[white] border-[transparent] hover:bg-[#f3f3f3]"
+              }`}
             >
               {" "}
-              <div className="flex gap-[16px] items-center">
+              <div className="flex gap-[16px] items-center ">
+                <h1 className="text-[20px] whitespace-wrap font-semibold order-[2]">
+                  {card.title}
+                </h1>
                 <div className="max-w-[18px] min-w-[18px]">
                   {selectedArea !== card.title ? (
                     <svg
@@ -126,9 +146,6 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
                     </svg>
                   )}
                 </div>
-                <h1 className="text-[20px] whitespace-wrap font-semibold">
-                  {card.title}
-                </h1>
               </div>
               {selectedArea === card.title && (
                 <>
@@ -141,6 +158,7 @@ const FeaturedAreasList2 = ({ handleProgramAreaClick, academicPlans }) => {
                       filteredAcademicPlans={filteredAcademicPlans}
                       showCount={false}
                       darkBg={true}
+                      showViewToggle={false}
                     />
                   </div>
                 </>

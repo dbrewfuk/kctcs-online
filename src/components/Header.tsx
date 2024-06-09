@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Button from "./Button";
 import Rfi from "./Rfi";
@@ -7,6 +7,7 @@ const Header = ({ showModal, setShowModal, isActive }) => {
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,17 +37,49 @@ const Header = ({ showModal, setShowModal, isActive }) => {
   const handleRequestButtonClick = () => {
     setShowModal(true);
   };
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+        triggerButtonRef.current.focus(); // Return focus to the trigger button
+      }
+    };
+
+    const trapFocus = (e) => {
+      if (isMobileMenuOpen && menuRef.current) {
+        const focusableElements = menuRef.current.querySelectorAll("a, button");
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey && document.activeElement === firstElement) {
+          lastElement.focus();
+          e.preventDefault();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          firstElement.focus();
+          e.preventDefault();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keydown", trapFocus);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keydown", trapFocus);
+    };
+  }, [isMobileMenuOpen]);
 
   return (
-    <div>
+    <div
+      className={`flex flex-col fixed w-full z-[100] transition ease-in-out duration-[250ms] ${scrolled ? "fixed top-0 shadow-sm" : "relative"}`}
+    >
       <header
-        className={`w-full z-50 bg-[#005cb8] ${
-          scrolled ? "fixed top-0 shadow-sm" : "relative"
+        className={`w-full fixed z-[100] bg-[#005cb8] relative lg:top-0 border-[#00467F]  flex justify-between w-full h-[64px] lg:h-[auto] lg:px-[32px] lg:h-[auto] 
         }`}
         style={{ background: scrolled ? "" : "" }}
       >
-        <div className="px-[0px] lg:px-[96px] lg:mx-auto">
-          <div className="flex items-center pl-[24px] pr-0 lg:pl-0 justify-between">
+        <div className="px-[0px] flex justify-between w-full z-[50] bg-[#005cb8] border-b border-[#00467F]">
+          <div className="flex items-center w-full pl-[24px] pr-0 lg:pl-0 justify-between relative">
             <div>
               <a
                 className="flex gap-[8px] items-end"
@@ -54,10 +87,10 @@ const Header = ({ showModal, setShowModal, isActive }) => {
                 aria-label="Home"
               >
                 <svg
-                  className="h-[32px]"
+                  className="h-[30px] lg:h-[36px]"
                   xmlns="http://www.w3.org/2000/svg"
                   width="auto"
-                  height="32"
+                  height="40"
                   viewBox="0 0 329 63"
                   fill="none"
                   title="KCTCS Short Logo"
@@ -115,29 +148,16 @@ const Header = ({ showModal, setShowModal, isActive }) => {
                 </svg>
               </a>
             </div>
-            <div className="">
-              <motion.div
-                className={`lg:hidden fixed bg-[#005cb8] text-white top-0 left-0 right-0 bottom-0 h-screen z-90`}
-                initial={{ opacity: 1 }}
-                animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
-                transition={{ duration: 0.25 }}
-                style={{
-                  pointerEvents: isMobileMenuOpen ? "auto" : "none",
-                }}
-                aria-hidden={!isMobileMenuOpen}
-              >
+            {isMobileMenuOpen && (
+              <div className="overflow-hidden h-full">
                 <div
-                  className="absolute h-[64px] w-[80px] flex items-center justify-center top-[8px] right-[0]"
+                  className="w-[64px] overflow-hidden h-[64px] bg-[#00467F] flex items-center justify-center cursor-pointer"
                   onClick={handleToggleMobileMenu}
-                  role="button"
-                  tabIndex={0}
-                  onKeyPress={handleToggleMobileMenu}
-                  aria-label="Close Menu"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
+                    width="18"
+                    height="18"
                     viewBox="0 0 32 32"
                     fill="none"
                     aria-hidden="true"
@@ -155,107 +175,128 @@ const Header = ({ showModal, setShowModal, isActive }) => {
                     </defs>
                   </svg>
                 </div>
-                <motion.div
-                  className={`flex flex-col px-[24px] justify-center h-full`}
-                  style={{
-                    pointerEvents: isMobileMenuOpen ? "auto" : "none",
-                  }}
-                  role="navigation"
-                  aria-label="Mobile Menu"
-                >
-                  {/* mobile menu items */}
-                  {[
-                    "Admissions",
-                    "Tuition & Cost",
-                    "Explore Programs",
-                    "Student Support Services",
-                    "Success Stories",
-                  ].map((item, index) => (
-                    <motion.a
-                      key={item}
-                      className="text-white font-[800] leading-[52px] text-[48px] mb-[16px]"
-                      href={`./${item.toLowerCase().replace(/\s+/g, "-").replace("&", "and")}.html`}
-                      variants={menuItemVariants}
-                      initial="hidden"
-                      animate={isMobileMenuOpen ? "visible" : "hidden"}
-                      tabIndex={0}
-                    >
-                      {item}
-                    </motion.a>
-                  ))}
-                </motion.div>
-              </motion.div>
-            </div>
-            <div className="flex gap-[24px]">
-              <nav
-                className="hidden items-center group text-center whitespace-nowrap xl:flex gap-[32px] text-[17.5px] leading-[20px] font-[600] text-white"
-                aria-label="Main Navigation"
+              </div>
+            )}
+            {!isMobileMenuOpen && (
+              <div
+                className={`cursor-pointer text-[16px] font-semibold xl:hidden flex bg-[#00467F] items-centered items-center justify-center w-[64px] h-[64px] ${
+                  scrolled ? "text-blue-900" : "text-white"
+                }`}
+                onClick={handleToggleMobileMenu}
+                role="button"
+                tabIndex={0}
+                onKeyPress={handleToggleMobileMenu}
+                aria-label="Open Menu"
               >
+                <svg
+                  className="w-[24px] h-[24px] "
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 25 25"
+                  fill="white"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M14.286 18.75v1.786H0V18.75zM25 11.607v1.786H0v-1.786zm0-7.142v2H0v-2z"
+                    fill="white"
+                  ></path>
+                </svg>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="flex items-center relative z-[-1]">
+          <div className="w-full">
+            <motion.div
+              className={`lg:hidden fixed bg-[#005cb8] text-white top-[64px] left-0 right-0 z-[-1]`}
+              initial={{ opacity: 1, transform: "translateY(-100%)" }}
+              tabIndex={-1}
+              animate={{
+                opacity: isMobileMenuOpen ? 1 : 1,
+                transform: isMobileMenuOpen
+                  ? "translateY(0%)"
+                  : "translateY(-100%)",
+              }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              style={{ pointerEvents: isMobileMenuOpen ? "auto" : "none" }}
+              aria-hidden={!isMobileMenuOpen}
+              role="dialog" // Define as dialog when open
+              aria-modal="true" // Mark as a modal
+              aria-labelledby="mobile-menu-title" // Associate with a heading
+            >
+              <motion.div
+                ref={menuRef}
+                className="flex flex-col"
+                style={{ pointerEvents: isMobileMenuOpen ? "auto" : "none" }}
+                role="navigation"
+                aria-label="Mobile Menu"
+                tabIndex={-1}
+              >
+                <h2 id="mobile-menu-title" className="sr-only">
+                  Mobile Menu
+                </h2>{" "}
+                {/* Screen reader only heading */}
                 {[
                   "Admissions",
                   "Tuition & Cost",
+                  "Explore Programs",
                   "Student Support Services",
                   "Success Stories",
-                  "Explore Programs",
                 ].map((item) => (
-                  <a
+                  <motion.a
                     key={item}
-                    className={`py-[24px]  border-b-[6px] transition ease-in-out duration-[250ms] hover:border-[#00467F] ${
-                      scrolled ? "" : "text-white"
-                    } ${
-                      isActive ===
-                      item
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")
-                        .replace("&", "and")
-                        ? "border-[#FBBF24]"
-                        : "border-transparent "
-                    }`}
-                    href={`./${item
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")
-                      .replace("&", "and")}.html`}
-                    tabIndex={0}
+                    className="text-white font-[600] leading-[24px] text-[20px] px-[24px] py-[16px] border-b border-[#00467F]"
+                    href={`./${item.toLowerCase().replace(/\s+/g, "-").replace("&", "and")}.html`}
+                    variants={menuItemVariants}
+                    initial="hidden"
+                    animate={isMobileMenuOpen ? "visible" : "hidden"}
+                    tabIndex={isMobileMenuOpen ? 0 : -1} // Focusable only when open
                   >
                     {item}
-                  </a>
+                  </motion.a>
                 ))}
-              </nav>
-              <div className="flex items-center gap-[24px]">
-                <div className="hidden md:block">
-                  <Button
-                    size="small"
-                    label="Request Information"
-                    href="https://kctcs.edu/admissions/request-information/index.html"
-                    aria-label="Request Information"
-                  />
-                </div>
-                {!isMobileMenuOpen && (
-                  <div
-                    className={`cursor-pointer font-semibold xl:hidden py-[36px] flex bg-[#00467F] items-centered items-center justify-center w-[80px] h-full ${
-                      scrolled ? "text-blue-900" : "text-white"
-                    }`}
-                    onClick={handleToggleMobileMenu}
-                    role="button"
-                    tabIndex={0}
-                    onKeyPress={handleToggleMobileMenu}
-                    aria-label="Open Menu"
-                  >
-                    <svg
-                      className="w-[24px] h-[24px] absolute "
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 25 25"
-                      fill="white"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M14.286 18.75v1.786H0V18.75zM25 11.607v1.786H0v-1.786zm0-7.142v2H0v-2z"
-                        fill="white"
-                      ></path>
-                    </svg>
-                  </div>
-                )}
-              </div>
+              </motion.div>
+            </motion.div>
+          </div>
+          <nav
+            className="hidden mr-[32px] items-center group text-center whitespace-nowrap xl:flex gap-[32px] text-[17.5px] leading-[20px] font-[600] text-white"
+            aria-label="Main Navigation"
+          >
+            {[
+              "Admissions",
+              "Tuition & Cost",
+              "Student Support Services",
+              "Success Stories",
+              "Explore Programs",
+            ].map((item) => (
+              <a
+                key={item}
+                className={`pt-[24px] pb-[18px]  border-b-[6px] text-[16px] transition ease-in-out duration-[250ms] hover:border-[#00467F] ${
+                  scrolled ? "" : "text-white"
+                } ${
+                  isActive ===
+                  item.toLowerCase().replace(/\s+/g, "-").replace("&", "and")
+                    ? "border-[#FBBF24]"
+                    : "border-transparent "
+                }`}
+                href={`./${item
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")
+                  .replace("&", "and")}.html`}
+                tabIndex={0}
+              >
+                {item}
+              </a>
+            ))}
+          </nav>
+          <div className="flex items-center gap-[24px]">
+            <div className="hidden md:inline-block">
+              <Button
+                size="small"
+                label="Request Information"
+                type="primary-dark"
+                href="https://kctcs.edu/admissions/request-information/index.html"
+                aria-label="Request Information"
+              />
             </div>
           </div>
         </div>

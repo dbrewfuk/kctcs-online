@@ -90,11 +90,11 @@ function VideoGrid() {
       initial={{ opacity: 0, y: 50 }} // Fade up effect
       animate={{ opacity: 1, y: 0 }} // Fade up effect
       transition={{ duration: 0.25 }}
-      className="pt-[80px] pb-[0px] lg:pt-[96px] lg:pb-[80px] transition-all ease-in-out duration-300"
+      className="pt-[80px] pb-[0px] lg:pt-[96px] lg:pb-[80px]  transition-all ease-in-out duration-300"
     >
       <div className="container relative overflow-hidden px-8 lg:px-0 mx-auto">
         {/* Video Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-[32px] gap-y-[48px] pb-[48px]">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-[32px] gap-y-[48px] pb-[48px] ">
           {videos.map((video, index) => (
             <div key={video.id}>
               <Suspense fallback={<div>Loading...</div>}>
@@ -126,17 +126,17 @@ function VideoGrid() {
                     </button>
                   )}
                   {!isFullscreen[index] && (
-                    <div className="absolute w-full h-full">
+                    <div
+                      className="absolute w-full h-full cursor-pointer"
+                      onClick={() => toggleFullscreen(index)}
+                    >
                       <div className="aspect-video absolute z-50 w-full z-[1] top-[50%] transform translate-y-[-50%]">
                         {/* Video Player */}
 
                         <div className="group absolute w-[400px] h-[400px] top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] z-[-1]">
-                          <button
-                            onClick={() => toggleFullscreen(index)}
-                            className="p-[12px] absolute top-[50%] transition-ease-in-out duration-[200ms] left-[50%] opacity-0 group-hover:opacity-100 z-[-1] transform translate-x-[-50%] translate-y-[-50%]  bg-[#E7A614] text-white rounded-full"
-                          >
+                          <button className="p-[12px] absolute top-[50%] transition-ease-in-out duration-[200ms] left-[50%]  group-hover:scale-[1.125] z-[-1] transform translate-x-[-50%] translate-y-[-50%]  bg-[#E7A614] text-white rounded-full">
                             <svg
-                              className="w-[32px] h-[32px] fill-white"
+                              className="w-[24px] h-[24px] fill-white"
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 24 24"
                             >
@@ -150,7 +150,7 @@ function VideoGrid() {
                   )}
                   {/* Video Player */}
 
-                  <div className="aspect-w-16 aspect-h-9 bg-[#f5f5f5] overflow-hidden">
+                  <div className="aspect-w-16 aspect-h-9 bg-[#f5f5f5] overflow-hidden ">
                     <video
                       id={`video-${index}`}
                       src={video.src}

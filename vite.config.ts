@@ -31,7 +31,7 @@ export default defineConfig({
       strict: false,
     },
     proxy: {
-      "/api": "http://localhost:5173",
+      "/api": "http://localhost:5000",
     },
   },
 });

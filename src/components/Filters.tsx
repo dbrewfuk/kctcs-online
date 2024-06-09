@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Button from "./Button";
-import programs from "../programs-20240510.json";
 
 // Dropdown component
 function FilterDropdown({
@@ -30,7 +29,7 @@ function FilterDropdown({
   return (
     <div className="relative w-full">
       <div
-        className={`font-semibold uppercase mb-[4px] ${
+        className={`font-semibold uppercase mb-[4px] text-[14px] tracking-[0.25px] ${
           isBackgroundColorDark() ? "text-white" : "text-[#00467F]"
         }`}
       >
@@ -81,7 +80,7 @@ function FilterDropdown({
               fill="none"
             >
               <path
-                d="M16.2207 24.8276L0 9.15863L1.54483 7.6138L16.1103 21.8483L30.4552 7.17242L32 8.71725L16.2207 24.8276Z"
+                d="M16.2207 24.8276L0 9.15857L1.54483 7.6138L16.1103 21.8482L30.4552 7.17242L32 8.71725L16.2207 24.8276Z"
                 fill="#00467F"
               />
             </svg>
@@ -113,36 +112,133 @@ function Filters({
   uniqueCredentialTypes,
   handleCredentialTypeChange,
   selectedCredentialTypes,
-  uniqueCredentials,
-  uniquePlanNames,
-  uniqueProgramAreas,
+  setSelectedCredentialTypes,
   selectedCredential,
   setSelectedCredential,
   selectedArea,
   setSelectedArea,
   selectedSector,
   setSelectedSector,
-  uniqueSectors,
   selectedPlan,
   setSelectedPlan,
-  setUniquePlanNames,
-  setUniqueProgramAreas,
-  programs,
   backgroundColor,
   showExplore,
 }) {
-  useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const credential = queryParams.get("credential") || "";
-    const area = queryParams.get("area") || "";
-    const plan = queryParams.get("plan") || "";
-    const sector = queryParams.get("sector") || "";
+  const [uniqueSectors, setUniqueSectors] = useState([]);
+  const [uniqueCredentials, setUniqueCredentials] = useState([]);
+  const [uniquePlanNames, setUniquePlanNames] = useState([]);
+  const [uniqueProgramAreas, setUniqueProgramAreas] = useState([]);
+  const [academicPlans, setAcademicPlans] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [disabledCredentials, setDisabledCredentials] = useState([]);
 
-    setSelectedCredential(credential);
-    setSelectedArea(area);
-    setSelectedPlan(plan);
-    setSelectedSector(sector);
+  // Standardize credentials
+  const credentialMapping = {
+    "Assoc in Applied Science": "Degree",
+    "Assoicate in Applied Science": "Degree",
+    "Associate in Applied Science": "Degree",
+    "Associates in Applied Science": "Degree",
+    "Associate in Arts": "Degree",
+    "Associate in Science": "Degree",
+    Certificate: "Certificate",
+    Diploma: "Diploma",
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://77ykxy-5000.csb.app/api/programs-with-colleges",
+        );
+        const data = await response.json();
+
+        const sectors = [...new Set(data.map((item) => item.sector))];
+        const credentials = [
+          ...new Set(
+            data.map(
+              (item) => credentialMapping[item.credential] || item.credential,
+            ),
+          ),
+        ];
+        const plans = [...new Set(data.map((item) => item.plan))];
+        const areas = [...new Set(data.map((item) => item.area))];
+
+        setUniqueSectors(sectors);
+        setUniqueCredentials(credentials);
+        setUniquePlanNames(plans);
+        setUniqueProgramAreas(areas);
+
+        const uniqueAcademicPlans = data.reduce((acc, program) => {
+          const key = `${program.plan} - ${credentialMapping[program.credential] || program.credential}`;
+          if (!acc[key]) {
+            acc[key] = {
+              name: program.plan,
+              credential:
+                credentialMapping[program.credential] || program.credential,
+              colleges: [],
+              area: program.area,
+              sector: program.sector,
+            };
+          }
+          acc[key].colleges.push({ name: program.colleges });
+          return acc;
+        }, {});
+
+        setAcademicPlans(Object.values(uniqueAcademicPlans));
+
+        // Initialize selectedCredentialTypes with all credentials
+        setSelectedCredentialTypes(credentials);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
   }, []);
+
+  useEffect(() => {
+    const updateFilteredOptions = () => {
+      const filteredPlans = academicPlans.filter((plan) => {
+        const matchesCredential =
+          !selectedCredential || plan.credential === selectedCredential;
+        const matchesArea = !selectedArea || plan.area === selectedArea;
+        const matchesSector = !selectedSector || plan.sector === selectedSector;
+        const matchesPlan = !selectedPlan || plan.name === selectedPlan;
+        const matchesCredentialTypes =
+          selectedCredentialTypes.length === 0 ||
+          selectedCredentialTypes.includes(
+            credentialMapping[plan.credential] || plan.credential,
+          );
+
+        return (
+          matchesCredential &&
+          matchesArea &&
+          matchesSector &&
+          matchesPlan &&
+          matchesCredentialTypes
+        );
+      });
+
+      setUniqueSectors(
+        [...new Set(filteredPlans.map((plan) => plan.sector))].sort(),
+      );
+      setUniquePlanNames(
+        [...new Set(filteredPlans.map((plan) => plan.name))].sort(),
+      );
+      setUniqueProgramAreas(
+        [...new Set(filteredPlans.map((plan) => plan.area))].sort(),
+      );
+    };
+
+    updateFilteredOptions();
+  }, [
+    selectedCredential,
+    selectedArea,
+    selectedSector,
+    selectedPlan,
+    selectedCredentialTypes,
+    academicPlans,
+  ]);
 
   const handleApplyClick = () => {
     const queryParams = new URLSearchParams();
@@ -168,40 +264,7 @@ function Filters({
   };
 
   const updateOptions = (title, selectedOption) => {
-    switch (title) {
-      case "Credential":
-        const filteredPlans = programs
-          .flatMap((college) =>
-            college.academic_plans.filter(
-              (plan) =>
-                plan.credential_type === selectedOption &&
-                (selectedArea ? plan.area === selectedArea : true) &&
-                (selectedPlan ? plan.name === selectedPlan : true),
-            ),
-          )
-          .map((plan) => plan.name);
-
-        const filteredAreas = programs
-          .flatMap((college) =>
-            college.academic_plans.filter(
-              (plan) =>
-                plan.credential_type === selectedOption &&
-                (selectedPlan ? plan.name === selectedPlan : true),
-            ),
-          )
-          .map((plan) => plan.area);
-
-        setUniquePlanNames([...new Set(filteredPlans)]);
-        setUniqueProgramAreas([...new Set(filteredAreas)]);
-        setSelectedPlan("");
-        setSelectedArea("");
-        break;
-      case "Program Area":
-        setSelectedPlan("");
-        break;
-      default:
-        break;
-    }
+    // Update the options based on the selection
   };
 
   return (
@@ -234,33 +297,43 @@ function Filters({
           backgroundColor={backgroundColor}
         />
       </div>
-      <div className="flex flex-row justify-between w-full items-end mt-[16px]">
-        <div className="hidden lg:flex flex-col gap-[8px]">
+      <div className="flex flex-row justify-between w-full items-center">
+        <div className="flex flex-col gap-[8px]">
           <div
-            className={`font-semibold uppercase mb-[4px] ${
+            className={`font-semibold uppercase mb-[4px] text-[14px] tracking-[0.25px] ${
               backgroundColor === "dark" ? "text-white" : "text-[#00467F]"
             }`}
           >
             Credential
           </div>
           <div className="flex flex-row gap-[12px]">
-            {uniqueCredentialTypes.map((type, index) => (
+            {uniqueCredentials.map((credential, index) => (
               <div
                 key={index}
-                className="flex gap-[8px] items-center"
+                className={`flex gap-[8px] items-center ${
+                  disabledCredentials.includes(credential)
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
+                }`}
                 tabIndex={0}
                 role="button"
-                aria-label={`Select ${type}`}
+                aria-label={`Select ${credential}`}
                 onKeyDown={(e) =>
-                  e.key === "Enter" && handleCredentialTypeChange(e, type)
+                  e.key === "Enter" &&
+                  !disabledCredentials.includes(credential) &&
+                  handleCredentialTypeChange(e, credential)
                 }
               >
                 <input
                   type="checkbox"
                   id={`credentialType-${index}`}
-                  value={type}
-                  checked={selectedCredentialTypes.includes(type)}
-                  onChange={(e) => handleCredentialTypeChange(e, type)}
+                  value={credential}
+                  checked={selectedCredentialTypes.includes(credential)}
+                  onChange={(e) =>
+                    !disabledCredentials.includes(credential) &&
+                    handleCredentialTypeChange(e, credential)
+                  }
+                  disabled={disabledCredentials.includes(credential)}
                 />
                 <label
                   className={`font-[600] ${
@@ -268,7 +341,7 @@ function Filters({
                   }`}
                   htmlFor={`credentialType-${index}`}
                 >
-                  {type}
+                  {credentialMapping[credential] || credential}
                 </label>
               </div>
             ))}
@@ -282,7 +355,7 @@ function Filters({
                 : "translate-y-[20px] opacity-0"
             }`}
           >
-            <Button label="Explore" onClick={handleApplyClick} />
+            <Button label="Explore" type="outline" onClick={handleApplyClick} />
           </div>
         )}
       </div>

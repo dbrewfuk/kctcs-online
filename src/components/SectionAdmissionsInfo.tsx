@@ -6,6 +6,7 @@ function AdmissionsInfo() {
   const [selectedTab, setSelectedTab] = useState("");
   const [showOptions, setShowOptions] = useState(false);
   const [selectedCollege, setSelectedCollege] = useState("Select a College");
+
   const [selectedCollegeVideo, setSelectedCollegeVideo] = useState("");
   const dropdownRefs = useRef([]);
 
@@ -136,18 +137,18 @@ function AdmissionsInfo() {
       <header className="pt-[0px] lg:pb-[96px]">
         {/* ... (Your header content) */}
       </header>
-      <main className="relative px-[24px] w-full container mx-auto px-[24px] lg:px-0 pb-[64px] pt-[32px] lg:pt-[56px] border-t-[1px] border-[#f0f0f0] lg:pb-[96px] lg:mb-[56px]">
-        <section className="flex flex-row justify-center gap-[64px] w-full">
-          <div className="flex w-full lg:w-[40%] flex-col order-2">
-            <h3 className="text-[31px] leading-[36px] lg:text-[39px] leading-[44px] mb-[32px] font-[800] text-[#00467F]">
+      <main className="relative px-[24px] w-full container mx-auto px-[24px] lg:px-0 pb-[64px] pt-[48px] lg:pt-[56px] border-[#f0f0f0] lg:pb-[96px] lg:mb-[56px]">
+        <section className="flex flex-row justify-center items-center gap-[64px] w-full">
+          <div className="flex w-full lg:w-[50%] flex-col order-2">
+            <h3 className="text-[31px] leading-[36px] lg:text-[39px] lg:leading-[44px] mb-[16px] lg:mb-[32px] font-[800] text-[#00467F]">
               Programs that fit your needs.
             </h3>
             <div className="flex flex-row flex-wrap">
               {tabs.slice(0, 2).map((tab, index) => (
                 <div
                   key={index}
-                  className={`w-full relative group lg:border-l-[2px] border-[#FBBF24] transition ease-in-out cursor-pointer`}
-                  onClick={() => setSelectedTab(index)}
+                  className={`w-full relative group lg:border-l-[2px] border-[#FBBF24] border-b border-b-[#f3f3f3] last:border-b-[0] transition ease-in-out cursor-pointer`}
+                  onClick={() => setSelectedTab(index) && setShowOptions(false)}
                   role="button"
                   tabIndex={0}
                   onKeyDown={(e) => e.key === "Enter" && setSelectedTab(index)}
@@ -230,14 +231,14 @@ function AdmissionsInfo() {
               ))}
             </div>
           </div>
-          <div className="hidden lg:w-[40%] lg:flex flex-row justify-center flex-wrap gap-[24px]">
+          <div className="hidden lg:w-[50%] lg:flex flex-row items-center justify-center flex-wrap gap-[24px]">
             {tabs.slice(0, 2).map((item, index) => (
               <div
-                className="flex w-[calc(50%-12px)] aspect-[16/9] flex-row gap-[24px] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)] rounded-[12px] overflow-hidden cursor-pointer"
+                className="flex w-[calc(50%-12px)] aspect-square flex-row gap-[24px] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)] rounded-[12px] overflow-hidden cursor-pointer"
                 key={index}
                 role="button"
                 tabIndex={0}
-                onClick={() => setSelectedTab(index)}
+                onClick={() => setSelectedTab(index) && setShowOptions(false)}
                 onKeyDown={(e) => e.key === "Enter" && setSelectedTab(index)}
               >
                 <div
@@ -254,13 +255,13 @@ function AdmissionsInfo() {
                     src={item.image}
                     alt={item.name}
                   />
-                  <div className="absolute p-[24px] flex bottom-0 w-full">
+                  <div className="absolute p-[24px] flex bottom-0 w-full h-full items-center justify-center">
                     {item.stat && (
                       <div
                         className={`p-[12px] rounded-[12px] font-[600] text-[#00467F] ${
                           selectedTab === index
-                            ? "bg-[#005CB8] bg-opacity-[1] text-[white]"
-                            : "bg-[white] bg-opacity-[0.5] backdrop-blur-[20px] text-[white]"
+                            ? "bg-[#005CB8] bg-opacity-[1] "
+                            : "bg-[white] bg-opacity-[1] backdrop-blur-[20px] "
                         }`}
                       >
                         {item.stat}
@@ -273,9 +274,9 @@ function AdmissionsInfo() {
           </div>
         </section>
         <section className="flex flex-row items-center justify-center gap-[64px] lg:mt-[56px] w-full">
-          <div className="flex w-full lg:w-[40%] flex-col">
+          <div className="flex w-full lg:w-[50%] flex-col">
             <div className="flex flex-row items-center flex-wrap">
-              <h3 className="text-[31px] leading-[36px] lg:text-[39px] mt-[32px] lg:mt-[0] leading-[44px] mb-[32px] font-[800] text-[#00467F]">
+              <h3 className="text-[31px] leading-[36px] lg:text-[39px] mt-[32px] lg:mt-[0] lg:leading-[44px] mb-[8px] lg:mb-[32px] font-[800] text-[#00467F]">
                 What Kind of Student Are You?
               </h3>
               {tabs.slice(2, 6).map((tab, index) => {
@@ -283,8 +284,10 @@ function AdmissionsInfo() {
                 return (
                   <div
                     key={adjustedIndex}
-                    className={`w-full relative group lg:border-l-[2px] border-[#FBBF24] transition ease-in-out cursor-pointer`}
-                    onClick={() => setSelectedTab(adjustedIndex)}
+                    className={`w-full relative group lg:border-l-[2px] border-[#FBBF24] border-b border-b-[#f3f3f3] last:border-b-[0] transition ease-in-out cursor-pointer`}
+                    onClick={() =>
+                      setSelectedTab(adjustedIndex) && setShowOptions(false)
+                    }
                     role="button"
                     tabIndex={0}
                     onKeyDown={(e) =>
@@ -344,35 +347,38 @@ function AdmissionsInfo() {
                             key={adjustedIndex}
                             role="button"
                             tabIndex={0}
-                            onClick={() => setSelectedTab(adjustedIndex)}
+                            onClick={() =>
+                              setSelectedTab(adjustedIndex) &&
+                              setShowOptions(false)
+                            }
                             onKeyDown={(e) =>
                               e.key === "Enter" && setSelectedTab(adjustedIndex)
                             }
                           >
                             <div
-                              className={`aspect-[1/1] cursor-pointer overflow-hidden rounded-[12px] w-full relative transition ease-in-out duration-[250ms] ${
+                              className={`aspect-video lg:aspect-[1/1] cursor-pointer overflow-hidden rounded-[12px] w-full relative transition ease-in-out duration-[250ms] ${
                                 selectedTab === adjustedIndex
                                   ? "bg-[#00467F] border-[#FBBF24] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)]"
                                   : "bg-[#FBBF24]"
                               }`}
                             >
-                              <img
-                                className={`w-full h-full rounded-[12px] object-cover transition ease-in-out duration-[250ms] absolute transform top-0 left-0 ${
-                                  selectedTab === adjustedIndex
-                                    ? "scale-[1.15]"
-                                    : "scale-[1]"
-                                }`}
-                                src={tab.image}
-                                alt={tab.name}
-                              />
-                              <div className="relative w-full h-full">
+                              <div className="overflow-hidden relative h-full w-full rounded-[12px]">
+                                <img
+                                  className={`w-full h-full rounded-[12px] object-cover transition ease-in-out duration-[250ms] absolute transform top-0 left-0 ${
+                                    selectedTab === adjustedIndex
+                                      ? "scale-[1.15]"
+                                      : "scale-[1]"
+                                  }`}
+                                  src={tab.image}
+                                  alt={tab.name}
+                                />
+                              </div>
+                              <div className="absolute top-0 z-[2] w-full h-full">
                                 <div className="absolute p-[24px] flex h-full justify-center items-center w-full">
                                   {selectedTab === adjustedIndex && (
                                     <div
-                                      className={`cursor-pointer text-[16px] font-[600] rounded-full bg-[white] bg-opacity-[15%] hover:bg-opacity-[30%] transition ease-in-out duration-[250] backdrop-blur-[20px] appearance-none py-[12px] pl-[24px] pr-[16px] ${
-                                        selectedCollege
-                                          ? "text-[white]"
-                                          : "text-white "
+                                      className={`cursor-pointer text-[16px] text-[#00467F] font-[600] rounded-full bg-[white] bg-opacity-[100%] hover:bg-opacity-[100%] transition ease-in-out duration-[250] backdrop-blur-[20px] appearance-none py-[12px] pl-[24px] pr-[16px] ${
+                                        selectedCollege ? "" : " "
                                       }`}
                                       onClick={() => {
                                         setShowOptions(!showOptions);
@@ -406,7 +412,7 @@ function AdmissionsInfo() {
                                             height="24px"
                                             viewBox="0 -960 960 960"
                                             width="24px"
-                                            fill="#fff"
+                                            fill="#00467F"
                                             aria-hidden="true"
                                           >
                                             <path d="M480-371.69 267.69-584 296-612.31l184 184 184-184L692.31-584 480-371.69Z" />
@@ -416,10 +422,10 @@ function AdmissionsInfo() {
                                     </div>
                                   )}
                                 </div>
-                                {showOptions &&
+                                {showOptions === true &&
                                   selectedTab === adjustedIndex && (
                                     <div
-                                      className="absolute max-w-[200px] max-h-[200px] top-[16px] overflow-scroll m-auto z-10 w-full left-[50%] transform translate-x-[-50%] rounded-[12px] p-[16px] shadow-lg bg-white bg-opacity-[70%] backdrop-blur-[20px] ring-1 ring-black ring-opacity-5"
+                                      className="absolute top-[60%] max-w-[200px] max-h-[200px] top-[16px] overflow-scroll m-auto z-10 w-full left-[50%] transform translate-x-[-50%] rounded-[12px] p-[16px] shadow-lg bg-white bg-opacity-[100%] backdrop-blur-[20px] ring-1 ring-black ring-opacity-5"
                                       role="listbox"
                                       aria-activedescendant={selectedCollege}
                                       ref={(el) => {
@@ -509,42 +515,49 @@ function AdmissionsInfo() {
               })}
             </div>
           </div>
-          <div className="hidden lg:w-[40%] rounded-[12px] lg:flex flex-row justify-center flex-wrap gap-[24px]">
+          <div className="hidden lg:w-[50%] relative aspect-square rounded-[12px] lg:flex flex-row justify-center flex-wrap gap-[24px]">
             {tabs.slice(2, 6).map((item, index) => {
               const adjustedIndex = index + 2; // Adjust the index for the second set of tabs
               return (
                 <div
-                  className="flex w-[calc(50%-12px)] rounded-[12px] flex-row gap-[24px] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)] cursor-pointer"
+                  className="flex w-[calc(50%-12px)] aspect-square rounded-[12px] flex-row gap-[24px] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)] cursor-pointer"
                   key={adjustedIndex}
                   role="button"
                   tabIndex={0}
-                  onClick={() => setSelectedTab(adjustedIndex)}
+                  onClick={() =>
+                    setSelectedTab(adjustedIndex) && setShowOptions(false)
+                  }
                   onKeyDown={(e) =>
                     e.key === "Enter" && setSelectedTab(adjustedIndex)
                   }
                 >
                   <div
-                    className={`aspect-[1/1] cursor-pointer overflow-hidden rounded-[12px] w-full relative transition ease-in-out duration-[250ms] ${
+                    className={`aspect-[1/1] cursor-pointer rounded-[12px] w-full relative transition ease-in-out duration-[250ms] ${
                       selectedTab === adjustedIndex
                         ? "bg-[#00467F] border-[#FBBF24] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)]"
                         : "bg-[#FBBF24]"
                     }`}
                   >
-                    <img
-                      className={`w-full h-full rounded-[12px] object-cover transition ease-in-out duration-[250ms] absolute transform top-0 left-0 ${
-                        selectedTab === adjustedIndex
-                          ? "scale-[1.15]"
-                          : "scale-[1]"
-                      }`}
-                      src={item.image}
-                      alt={item.name}
-                    />
-                    <div className="relative w-full h-full">
-                      <div className="absolute p-[24px] flex h-full items-center justify-center w-full">
+                    <div className="w-full h-full aspect-square overflow-hidden relative rounded-[12px]">
+                      <img
+                        className={`w-full h-full rounded-[12px] object-cover transition ease-in-out duration-[250ms] absolute transform top-0 left-0 ${
+                          selectedTab === adjustedIndex
+                            ? "scale-[1.15]"
+                            : "scale-[1]"
+                        }`}
+                        src={item.image}
+                        alt={item.name}
+                      />
+                    </div>
+                    <div className="absolute top-0 w-full h-full z-10">
+                      <div className="absolute p-[16px] flex h-full items-center justify-center w-full">
                         {selectedTab === adjustedIndex && (
                           <div
-                            className={`cursor-pointer text-[16px] font-[600] rounded-full bg-[white] bg-opacity-[15%] hover:bg-opacity-[30%] transition ease-in-out duration-[250] backdrop-blur-[20px] appearance-none py-[12px] pl-[24px] pr-[16px] ${
-                              selectedCollege ? "text-[white]" : "text-white "
+                            className={`cursor-pointer text-[16px] font-[600] rounded-full bg-[white] transition ease-in-out duration-[250] backdrop-blur-[20px] appearance-none py-[12px] pl-[24px] pr-[16px] ${
+                              (selectedCollege !== "Select a College",
+                              showOptions && selectedTab === adjustedIndex
+                                ? " bg-opacity-[100%] text-[#00467F] "
+                                : "bg-opacity-[100%] text-[#00467F] ")
                             }`}
                             onClick={() => {
                               setShowOptions(!showOptions);
@@ -577,7 +590,7 @@ function AdmissionsInfo() {
                                   height="24px"
                                   viewBox="0 -960 960 960"
                                   width="24px"
-                                  fill="#fff"
+                                  fill={`${(selectedCollege !== "Select a College", showOptions && selectedTab === adjustedIndex ? "#00467F" : "#00467F")}`}
                                   aria-hidden="true"
                                 >
                                   <path d="M480-371.69 267.69-584 296-612.31l184 184 184-184L692.31-584 480-371.69Z" />
@@ -589,7 +602,7 @@ function AdmissionsInfo() {
                       </div>
                       {showOptions && selectedTab === adjustedIndex && (
                         <div
-                          className="absolute max-w-[200px] max-h-[200px] top-[16px] overflow-scroll m-auto z-10 w-full left-[50%] transform translate-x-[-50%] rounded-[12px] p-[16px] shadow-lg bg-white bg-opacity-[70%] backdrop-blur-[20px] ring-1 ring-black ring-opacity-5"
+                          className="absolute max-w-[200px] max-h-[200px] top-[184px] overflow-scroll m-auto z-10 w-full left-[50%] transform translate-x-[-50%] rounded-[8px] p-[12px] shadow-lg bg-white bg-opacity-[100%] backdrop-blur-[20px] ring-1 ring-black ring-opacity-5"
                           role="listbox"
                           aria-activedescendant={selectedCollege}
                           ref={(el) => {
@@ -609,7 +622,7 @@ function AdmissionsInfo() {
                                   .toLowerCase()}.kctcs.edu/${item.admissionsPage}`}
                                 role="option"
                                 aria-selected={selectedCollege === college}
-                                className={`text-[16px] w-full font-[600] cursor-pointer text-[#00467F] hover:bg-gray-100 rounded-[4px] group flex items-center px-[16px] py-[8px] ${
+                                className={`text-[16px] w-full font-[600] text-center justify-center cursor-pointer text-[#00467F] hover:bg-gray-100 rounded-[4px] group flex items-center px-[16px] py-[8px] ${
                                   selectedCollege === college
                                     ? "bg-gray-100"
                                     : ""
@@ -661,7 +674,11 @@ function AdmissionsInfo() {
         </section>
 
         <div className="flex justify-center mt-[48px]">
-          <Button label="Explore Admissions" href="./admissions.aspx" />
+          <Button
+            label="Explore Admissions"
+            type="primary"
+            href="./admissions.aspx"
+          />
         </div>
       </main>
     </div>

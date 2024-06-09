@@ -1,7 +1,7 @@
 const express = require("express");
 const { Pool } = require("pg");
 const dotenv = require("dotenv");
-const cors = require("cors"); // Import the cors package
+const cors = require("cors");
 
 dotenv.config();
 
@@ -24,18 +24,40 @@ pool.on("error", (err) => {
 // Use CORS middleware
 app.use(cors());
 
-app.get("/api/programs", async (req, res) => {
+app.get("/api/programs-with-colleges", async (req, res) => {
   const client = await pool.connect();
   try {
     const result = await client.query(`
       SELECT 
-        sector,
-        area,
-        plan,
-        description,
-        credential,
-        college
-      FROM programs
+        s.name AS sector,
+        a.name AS area,
+        pl.name AS plan,
+        d.text AS description,
+        c.name AS credential,
+        JSON_AGG(
+          JSON_BUILD_OBJECT(
+            'name', co.name,
+            'url', pau.url
+          )
+        ) AS colleges
+      FROM 
+        "Program" p
+      JOIN 
+        "Sector" s ON p.sectorid = s.id
+      JOIN 
+        "Area" a ON p.areaid = a.id
+      JOIN 
+        "Plan" pl ON p.planid = pl.id
+      JOIN 
+        "Credential" c ON p.credentialid = c.id
+      JOIN 
+        "Description" d ON p.descriptionid = d.id
+      JOIN 
+        "College" co ON p.collegeid = co.id
+      JOIN 
+        "ProgramAreaUrl" pau ON p.programareaurlid = pau.id
+      GROUP BY 
+        s.name, a.name, pl.name, d.text, c.name;
     `);
     res.status(200).json(result.rows);
   } catch (error) {

@@ -7,7 +7,7 @@ function Hero({ title, bgVideo, bgImage }) {
   // Extract unique credentials, program areas, and plan names
 
   return (
-    <div className="bg-primary h-[400px] relative lg:h-[520px] overflow-hidden">
+    <div className="bg-primary hidden h-[400px] relative lg:h-[520px] overflow-hidden">
       <div className="w-full h-full">
         <div className="bg-[rgba(0,0,0,0.20)] absolute w-full h-full left-0 top-0 z-[1]"></div>
         <Suspense fallback={<div>Loading...</div>}>
@@ -29,7 +29,8 @@ function Hero({ title, bgVideo, bgImage }) {
             <div className="flex h-full items-end  justify-end">
               <div className="w-full lg:w-1/2 flex flex-col lg:pl-[32px]">
                 <h1 className="text-[64px] leading-[64px] xl:text-[76px] text-[white] font-black mb-[32px]">
-                  {title}
+                  Real World Success, <span className="bar">Anywhere</span>
+                  <span className="ripple dot">.</span>
                 </h1>
               </div>
             </div>

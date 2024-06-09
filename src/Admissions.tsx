@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import Testimonial from "./components/Testimonial";
 import Hero from "./components/Hero";
 import Header from "./components/Header";
+import AltSections from "./components/SAltSections";
 import DynamicSections from "./DynamicSections";
 import CollegeCards from "./components/CollegeCards";
 import { collegeContent } from "./components/content.json";
@@ -79,18 +80,25 @@ function Admissions() {
     <>
       <Header isActive="admissions" />
       <Hero title="Admissions" />
+
       <div className="container mx-auto px-[24px] lg:px-0 pt-[64px] lg:pt-[96px] pb-[64px] lg:pb-[96px]">
         <div className="flex flex-col lg:flex-row items-center gap-[32px] lg:gap-[64px]">
-          <div className="w-full lg:w-1/2 rounded-[12px] overflow-hidden">
+          <div className="w-full  aspect-[4/3] lg:w-1/2 rounded-[12px] overflow-hidden">
             <img
               src="https://southeast.kctcs.edu/about/media/images/about-campuses.jpg"
               className="w-full h-full object-cover"
             />
           </div>
           <div className="w-full lg:w-1/2">
+            <span className="text-[#00467F] text-[20px] mb-[4px] inline-block font-[600]">
+              Admissions
+            </span>
             <h1 className="text-[48px] leading-[52px] lg:text-[61.04px] mb-[24px] font-[800] lg:leading-[64px] text-[#00467F]">
-              Let's Get You Started
-              <span className="dot">.</span>
+              Let's Get You{" "}
+              <span className="whitespace-nowrap">
+                <span className="bar">Started</span>
+                <span className="dot">.</span>
+              </span>
             </h1>
             <p className="text-[17.5px] leading-[28px] lg:text-[21px] font-[500] lg:leading-[32px] text-[#00467F]">
               Whether you’re a high school student, a returning student or just
@@ -101,12 +109,18 @@ function Admissions() {
               <Button
                 label="Visit Admissions"
                 href="https://kctcs.edu/admissions/"
+                type="primary"
               />
             </div>
           </div>
         </div>
       </div>
-      <CollegeCards contentset="admissions" theme="" />
+
+      <CollegeCards
+        contentset="admissions"
+        theme=""
+        subheadline="Choose a college to find more Admissions resources."
+      />
     </>
   );
 }

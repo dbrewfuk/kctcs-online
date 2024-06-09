@@ -77,12 +77,12 @@ function StudentStoryFeature() {
       <div className="relative lg:container lg:mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-[24px] lg:gap-[72px]">
           <div className="container mx-auto px-[24px] lg:px-0 w-full lg:w-[50%]">
-            <h1 className="text-[48.8px] leading-[52px] lg:text-[61.04px] lg:leading-[64px] font-[800] text-[#00467F] lg-[96px] mb-[16px] lg:mb-[24px]">
+            <h1 className="text-[48.8px] leading-[52px] lg:text-[61.04px] lg:leading-[64px] font-[800] text-[#00467F] lg-[96px] mb-[16px] lg:mb-[24px] has-bar">
               <span className="relative">
                 <motion.span />
                 Transform{" "}
               </span>
-              Your Education
+              Your <span className="bar adjusted-e">Education</span>
               <span className="dot">.</span>
             </h1>
             <p className="text-[18px] lg:text-[21px] lg:leading-[32px] leading-[28px] text-[#00467F]">
@@ -96,7 +96,7 @@ function StudentStoryFeature() {
               {videos.map((video, index) => (
                 <div
                   key={index}
-                  className="cursor-pointer w-full max-w-[220px] lg:w-auto"
+                  className="cursor-pointer w-full lg:max-w-[220px] lg:w-auto"
                   onClick={() => handleVideoTitleClick(index)}
                 >
                   <div
@@ -120,7 +120,6 @@ function StudentStoryFeature() {
                         className="object-cover w-full h-full object-center"
                         muted={true}
                         controls={false}
-                        autoPlay="autoplay"
                       />
                     </div>
                     <div className="text-[#00467F] text-[20px] font-[600] pb-[16px]">
@@ -172,7 +171,7 @@ function StudentStoryFeature() {
                     </div>
                   )}
 
-                  <div className="aspect-w-16 aspect-h-9 bg-[#f5f5f5] overflow-hidden">
+                  <div className="aspect-w-16 aspect-h-9 bg-[#f5f5f5] overflow-hidden lg:rounded-[12px]">
                     <video
                       ref={(el) => (videoRefs.current[currentVideo] = el)}
                       id={`video-${currentVideo}`}
@@ -180,7 +179,6 @@ function StudentStoryFeature() {
                       className="object-cover w-full h-full object-center"
                       muted={false}
                       controls={isFullscreen}
-                      autoPlay="autoplay"
                     />
                     {!isFullscreen && (
                       <>
@@ -215,8 +213,9 @@ function StudentStoryFeature() {
         </div>
         <div className="w-full flex justify-center mt-[40px] lg:mt-[64px]">
           <Button
-            label="Watch All Student Stories"
+            label="Watch All Stories"
             href="/success-stories.aspx"
+            type="primary"
           />
         </div>
       </div>
