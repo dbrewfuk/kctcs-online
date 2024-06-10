@@ -77,8 +77,8 @@ function Section({
           <div className="w-full flex justify-center lg:justify-start">
             <Button
               label={buttonLabel}
-              size="small"
-              type="outline"
+              size=""
+              type="primary"
               href={buttonHref}
             />
           </div>

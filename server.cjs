@@ -6,7 +6,7 @@ const cors = require("cors");
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,

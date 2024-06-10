@@ -148,7 +148,7 @@ function Filters({
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://77ykxy-5000.csb.app/api/programs-with-colleges",
+          "https://kctcs-online.vercel.app/api/programs-with-colleges",
         );
         const data = await response.json();
 

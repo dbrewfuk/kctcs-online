@@ -23,9 +23,11 @@ const videos = [
 function StudentStoryFeature() {
   const [currentVideo, setCurrentVideo] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const history = useHistory();
   const videoRefs = useRef([]);
+  const closeButtonRef = useRef(null);
+  const triggerButtonRef = useRef(null); // Ref for the button that triggered the modal
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -42,24 +44,19 @@ function StudentStoryFeature() {
   const toggleFullscreen = () => {
     setIsFullscreen((prevFullscreen) => !prevFullscreen);
 
-    if (!isFullscreen) {
-      const videoElement = videoRefs.current[currentVideo];
-      if (videoElement) {
-        videoElement.muted = false;
+    const videoElement = videoRefs.current[currentVideo];
+    if (videoElement) {
+      videoElement.muted = isFullscreen;
+      if (!isFullscreen) {
         videoElement.play();
-      }
-    } else {
-      const videoElement = videoRefs.current[currentVideo];
-      if (videoElement) {
+      } else {
         videoElement.pause();
-        videoElement.muted = true;
       }
     }
   };
 
   const handleProgramClick = (program) => {
     history.push(`/programs?search=${program}`);
-    window.location.href = `/programs?search=${program}`;
   };
 
   const handleVideoTitleClick = (index) => {
@@ -72,12 +69,77 @@ function StudentStoryFeature() {
     }
   };
 
+  const toggleModal = () => {
+    setIsModalOpen((prev) => !prev);
+    setIsFullscreen((prevFullscreen) => !prevFullscreen);
+
+    const videoElement = videoRefs.current[currentVideo];
+    if (videoElement) {
+      videoElement.muted = isFullscreen;
+      if (!isFullscreen) {
+        videoElement.play();
+      } else {
+        videoElement.pause();
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      // Save the element that triggered the modal
+      triggerButtonRef.current = document.activeElement;
+      if (closeButtonRef.current) {
+        closeButtonRef.current.focus();
+      }
+
+      // Log the currently focused element
+      const logFocus = (event) => {
+        console.log("Focused element:", event.target);
+      };
+
+      document.addEventListener("focus", logFocus, true);
+
+      return () => {
+        document.removeEventListener("focus", logFocus, true);
+      };
+    } else if (triggerButtonRef.current) {
+      // Return focus to the element that triggered the modal
+      triggerButtonRef.current.focus();
+    }
+  }, [isModalOpen]);
+
+  // Handle trapping focus within the modal
+  const handleKeyDown = (e) => {
+    if (e.key === "Tab" && isModalOpen) {
+      const focusableElements = [
+        closeButtonRef.current,
+        // Add more focusable elements in modal if present
+      ].filter(Boolean);
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey && document.activeElement === firstElement) {
+        // Shift + Tab on first element: move to last element
+        e.preventDefault();
+        lastElement.focus();
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        // Tab on last element: move to first element
+        e.preventDefault();
+        firstElement.focus();
+      }
+    }
+  };
+
   return (
-    <div className="pt-[64px] pb-[48px] lg:pt-[128px] lg:pb-[96px]">
+    <div
+      className="pt-[64px] pb-[48px] lg:pt-[128px] lg:pb-[96px]"
+      onKeyDown={handleKeyDown} // Listen for Tab key presses
+    >
       <div className="relative lg:container lg:mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-[24px] lg:gap-[72px]">
           <div className="container mx-auto px-[24px] lg:px-0 w-full lg:w-[50%]">
-            <h1 className="text-[48.8px] leading-[52px] lg:text-[61.04px] lg:leading-[64px] font-[800] text-[#00467F] lg-[96px] mb-[16px] lg:mb-[24px] has-bar">
+            <h1 className="text-[48.8px] leading-[52px] lg:text-[64px] lg:leading-[64px] tracking-[-1.5px] font-[800] text-[#00467F] lg-[96px] mb-[16px] lg:mb-[24px] has-bar">
               <span className="relative">
                 <motion.span />
                 Transform{" "}
@@ -133,7 +195,12 @@ function StudentStoryFeature() {
 
           {/* Video Content */}
           <div className="lg:w-[50%]">
-            <div key={videos[currentVideo].id}>
+            <div
+              key={videos[currentVideo].id}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-title"
+            >
               {isFullscreen && (
                 <div className="fixed top-0 left-0 w-full h-full z-[999] bg-[rgba(0,0,0,0.5)]"></div>
               )}
@@ -147,11 +214,20 @@ function StudentStoryFeature() {
                 >
                   {isFullscreen && (
                     <div className="flex justify-end mb-[16px] lg:absolute top-0 right-0 lg:p-[24px]">
-                      <div
+                      <button
                         className="flex items-center gap-[8px] cursor-pointer group"
-                        onClick={toggleFullscreen}
+                        onClick={toggleModal}
+                        ref={closeButtonRef}
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            toggleModal();
+                          }
+                        }}
+                        aria-label="Close fullscreen video"
                       >
-                        <button className="p-[8px] group-hover:scale-[1.15] lg:p-[8px] transform rotate-45 inline-block transition-ease-in-out hover:opacity-100 duration-[200ms] group-hover:opacity-100 text-white rounded-full bg-[#FBBF24]">
+                        <span className="p-[8px] group-hover:scale-[1.15] lg:p-[8px] transform rotate-45 inline-block transition-ease-in-out hover:opacity-100                         duration-[200ms] group-hover:opacity-100 text-white rounded-full bg-[#FBBF24]">
                           <svg
                             className="lg:w-[18px] group-hover:scale-[1] lg:h-[18px] w-[16px] h-[16px] fill-white"
                             viewBox="0 0 33 34"
@@ -163,11 +239,11 @@ function StudentStoryFeature() {
                               fill="white"
                             ></path>
                           </svg>
-                        </button>
+                        </span>
                         <span className="text-[11.7px] lg:text-[14px] transition-ease-in-out duration-[200ms] uppercase font-[600] tracking-[1px] text-[white]">
                           Close
                         </span>
-                      </div>
+                      </button>
                     </div>
                   )}
 
@@ -181,32 +257,34 @@ function StudentStoryFeature() {
                       controls={isFullscreen}
                     />
                     {!isFullscreen && (
-                      <>
-                        <div
-                          className="cursor-pointer group absolute w-full h-full top-0 left-0 z-[2]"
-                          onClick={toggleFullscreen}
-                        >
-                          <div className="text-[#00467F] absolute flex w-full h-full items-center justify-center p-[16px] z-[1]">
-                            <div className="flex items-center gap-[8px] z-[2] group cursor-pointer">
-                              <button className="w-[56px] h-[56px] flex items-center justify-center group-hover:scale-[1.095] border-[white] transition-ease-in-out duration-[200ms] opacity-1 group-hover:opacity-100 bg-[] text-white bg-[#E7A614] rounded-full">
-                                <svg
-                                  className="w-[32px] group-hover:scale-[1] h-[32px] fill-white"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path d="M8 5v14l11-7z"></path>
-                                  <path d="M0 0h24v24H0z" fill="none"></path>
-                                </svg>
-                              </button>
-                            </div>
-                          </div>
+                      <div
+                        className="cursor-pointer group absolute w-full h-full flex items-center justify-center top-0 left-0 z-[2]"
+                        onClick={toggleFullscreen}
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            toggleFullscreen();
+                          }
+                        }}
+                        aria-label="Open fullscreen video"
+                      >
+                        <div className="group absolute w-[400px] h-[400px] top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] z-[-1]">
+                          <button className="p-[12px] absolute top-[50%] transition-ease-in-out duration-[200ms] left-[50%]  group-hover:scale-[1.125] z-[-1] transform translate-x-[-50%] translate-y-[-50%]  bg-[#E7A614] text-white rounded-full">
+                            <svg
+                              className="w-[32px] h-[32px] fill-white"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M8 5v14l11-7z"></path>
+                              <path d="M0 0h24v24H0z" fill="none"></path>
+                            </svg>
+                          </button>
                         </div>
-                      </>
+                      </div>
                     )}
                   </div>
                 </div>
-
-                {!isFullscreen && <></>}
               </Suspense>
             </div>
           </div>

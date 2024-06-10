@@ -140,14 +140,14 @@ function AdmissionsInfo() {
       <main className="relative px-[24px] w-full container mx-auto px-[24px] lg:px-0 pb-[64px] pt-[48px] lg:pt-[56px] border-[#f0f0f0] lg:pb-[96px] lg:mb-[56px]">
         <section className="flex flex-row justify-center items-center gap-[64px] w-full">
           <div className="flex w-full lg:w-[50%] flex-col order-2">
-            <h3 className="text-[31px] leading-[36px] lg:text-[39px] lg:leading-[44px] mb-[16px] lg:mb-[32px] font-[800] text-[#00467F]">
+            <h3 className="text-[31px] leading-[32px] lg:text-[39px] lg:leading-[44px] mb-[16px] lg:mb-[32px] font-[800] text-[#00467F]">
               Programs that fit your needs.
             </h3>
             <div className="flex flex-row flex-wrap">
               {tabs.slice(0, 2).map((tab, index) => (
                 <div
                   key={index}
-                  className={`w-full relative group lg:border-l-[2px] border-[#FBBF24] border-b border-b-[#f3f3f3] last:border-b-[0] transition ease-in-out cursor-pointer`}
+                  className={`w-full relative group border-l-[1px] border-[#FBBF24] border-b border-b-[#f3f3f3] last:border-b-[0] transition ease-in-out cursor-pointer`}
                   onClick={() => setSelectedTab(index) && setShowOptions(false)}
                   role="button"
                   tabIndex={0}
@@ -276,7 +276,7 @@ function AdmissionsInfo() {
         <section className="flex flex-row items-center justify-center gap-[64px] lg:mt-[56px] w-full">
           <div className="flex w-full lg:w-[50%] flex-col">
             <div className="flex flex-row items-center flex-wrap">
-              <h3 className="text-[31px] leading-[36px] lg:text-[39px] mt-[32px] lg:mt-[0] lg:leading-[44px] mb-[8px] lg:mb-[32px] font-[800] text-[#00467F]">
+              <h3 className="text-[31px] leading-[32px] w-full lg:text-[39px] mt-[32px] lg:mt-[0] lg:leading-[44px] mb-[16px] lg:mb-[32px] font-[800] text-[#00467F]">
                 What Kind of Student Are You?
               </h3>
               {tabs.slice(2, 6).map((tab, index) => {
@@ -284,7 +284,7 @@ function AdmissionsInfo() {
                 return (
                   <div
                     key={adjustedIndex}
-                    className={`w-full relative group lg:border-l-[2px] border-[#FBBF24] border-b border-b-[#f3f3f3] last:border-b-[0] transition ease-in-out cursor-pointer`}
+                    className={`w-full relative group border-l-[1px] border-[#FBBF24] border-b border-b-[#f3f3f3] last:border-b-[0] transition ease-in-out cursor-pointer`}
                     onClick={() =>
                       setSelectedTab(adjustedIndex) && setShowOptions(false)
                     }

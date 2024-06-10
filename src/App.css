@@ -169,6 +169,7 @@ body {
   position: relative;
   z-index: 2;
   display: inline-block;
+  margin-bottom: 0.375em;
 }
 
 /* Target the last .bar element within each container */
@@ -186,12 +187,8 @@ body {
   left: 0;
   z-index: -1;
   border-radius: 0px;
-  bottom: -0.325em;
+  bottom: -0.45em;
   height: 0.275em;
-}
-
-.adjusted-e {
-  margin-left: -2.5px;
 }
 
 .adjusted-e.bar:after {

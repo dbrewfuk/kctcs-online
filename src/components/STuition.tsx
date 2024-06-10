@@ -12,7 +12,7 @@ function TuitionSection() {
                 <span className="hidden text-[#00467f] inline-block text-[20px] mb-[16px] font-[600]">
                   Online Tuition
                 </span>
-                <h1 className="text-[48px] leading-[52px] lg:text-[61.04px] lg:leading-[64px] mb-[16px] font-[800] text-[#00467f] has-bar">
+                <h1 className="text-[48px] leading-[48px] tracking-[-0.093rem] lg:text-[61.04px] lg:leading-[64px] mb-[16px] font-[800] text-[#00467f] has-bar">
                   Convenient and <span className="bar">Affordable</span>
                   <span className="dot">.</span>
                 </h1>

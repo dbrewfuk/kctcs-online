@@ -121,14 +121,17 @@ function CollegeCards({ contentset, theme, subheadline }) {
         <div className={`${theme === "gray" ? "bg-[#fafafa]" : "bg-[white]"}`}>
           <div className="container mx-auto">
             <div className="px-[24px] lg:px-0 pt-[32px] lg:pt-[48px]">
-              <h1 className="text-[39.1px] leading-[42px] lg:text-[48.8px] z-[2] relative lg:leading-[52px] font-[800] text-[#00467F] mb-[10px] lg:mb-[16px] text-center">
+              <h1 className="text-[35px] leading-[36px] lg:text-[48.8px] z-[2] relative lg:leading-[52px] font-[800] text-[#00467F] mb-[12px] lg:mb-[16px] text-center">
                 16 Colleges. <br />
-                <span className="highlight bar bar--bottom whitespace-nowrap">
-                  Unlimited Possibilities
+                <span className="whitespace-nowrap">
+                  <span className="highlight  bar--bottom whitespace-nowrap">
+                    <span className="text-[#FBBF24]">Unlimited</span>{" "}
+                    Possibilities
+                  </span>
+                  <span className="dot">.</span>
                 </span>
-                <span className="dot">.</span>
               </h1>
-              <h1 className="text-[17.5px] leading-[24px] lg:text-[20px] z-[2] relative lg:leading-[24px] font-[600] text-[#00467F] mb-[24px] lg:mb-[36px] text-center">
+              <h1 className="text-[17.5px] leading-[20px] lg:text-[20px] z-[2] relative lg:leading-[24px] font-[600] text-[#00467F] mb-[24px] lg:mb-[36px] text-center">
                 {subheadline}
               </h1>
             </div>
@@ -153,7 +156,7 @@ function CollegeCards({ contentset, theme, subheadline }) {
                 <div className="flex justify-center w-full h-full left-0 top-0 items-center absolute z-[2]">
                   <div className="relative">
                     <div
-                      className={`cursor-pointer  text-[17.5px] font-[600] rounded-full bg-[white] text-[#00467F]  transition ease-in-out duration-[250] backdrop-blur-[20px] appearance-none py-[16px] pl-[32px] pr-[24px] ${
+                      className={`cursor-pointer  py-[12px] text-[16px] lg:text-[17.5px] font-[600] rounded-full bg-[white] text-[#00467F]  transition ease-in-out duration-[250] backdrop-blur-[20px] appearance-none lg:py-[16px] pl-[32px] pr-[24px] ${
                         selectedCollege ? "text-[#00467F]" : "text-white "
                       }`}
                       onClick={() => {
@@ -302,7 +305,7 @@ function CollegeCards({ contentset, theme, subheadline }) {
             >
               {selectedCollege !== "Select a College" && (
                 <>
-                  <div className="overflow-y-visible  z-[1] snap-x snap-mandatory smooth-scroll no-scrollbar ">
+                  <div className="overflow-y-visible overflow-x-auto  z-[1] snap-x snap-mandatory smooth-scroll no-scrollbar ">
                     <div className="px-[24px] lg:px-[0]  lg:container mx-auto overflow-visible flex items-start gap-[24px] lg:gap-[32px]">
                       {collegeContent[selectedCollege]?.[contentset]
                         .slice(0, 3)

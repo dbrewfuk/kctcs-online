@@ -9,7 +9,7 @@ const ProgramResults = ({
   minWidth,
   showViewToggle,
 }) => {
-  const [isGridLayout, setIsGridLayout] = useState(true);
+  const [isGridLayout, setIsGridLayout] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [expandedPrograms, setExpandedPrograms] = useState({});
 
@@ -162,10 +162,13 @@ const ProgramResults = ({
                                 aria-expanded={
                                   expandedPrograms[index] ? "true" : "false"
                                 }
-                                onClick={() => toggleDropdown(index)}
+                                onClick={(e) => {
+                                  e.stopPropagation(); // Prevent event propagation issues
+                                  toggleDropdown(index);
+                                }}
                                 onKeyDown={(e) => {
                                   if (e.key === "Enter" || e.key === " ") {
-                                    e.preventDefault();
+                                    e.preventDefault(); // Prevent default action for space and enter keys
                                     toggleDropdown(index);
                                   }
                                   if (expandedPrograms[index]) {
@@ -188,7 +191,7 @@ const ProgramResults = ({
                                 {expandedPrograms[index] && (
                                   <div
                                     id={`dropdown-${index}`}
-                                    className="p-4 absolute left-[50%] transform translate-x-[-50%] min-w-[320px] rounded-[0px] bg-white border shadow flex flex-col items-center gap-2 z-10"
+                                    className="p-[16px] absolute left-[50%] transform translate-x-[-50%] min-w-[320px] rounded-[8px] bg-white shadow flex flex-col items-center gap-[0px] z-10"
                                     role="region" // Ensure region role for accessibility
                                     tabIndex={-1} // Exclude dropdown container from sequential focus
                                     onKeyDown={(e) => {
@@ -225,15 +228,16 @@ const ProgramResults = ({
                                   >
                                     {plan.colleges.map(
                                       (college, collegeIndex) => (
-                                        <div
+                                        <a
                                           key={collegeIndex}
-                                          className="p-2 dropdown-item"
+                                          className="px-[12px] py-[8px] rounded-[4px] w-full hover:bg-[#f5f5f5] transition ease-in-out duration-[250ms] dropdown-item"
                                           tabIndex={0} // Make each dropdown item focusable
                                           role="button"
+                                          href={college.url}
                                           data-url={college.url}
                                         >
                                           {college.name}
-                                        </div>
+                                        </a>
                                       ),
                                     )}
                                   </div>

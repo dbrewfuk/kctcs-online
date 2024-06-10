@@ -91,7 +91,7 @@ const FeaturedAreasList2 = ({
       <div className="flex flex-row flex-wrap">
         {cardData.map((card) => (
           <div
-            className={`w-full relative group order-[2] lg:border-l-[2px] border-[#FBBF24] transition ease-in-out cursor-pointer border-b border-b-[#f3f3f3] last:border-b-[0] ${
+            className={`w-full relative group order-[2] border-l-[1px] border-[#FBBF24] transition ease-in-out cursor-pointer border-b border-b-[#f3f3f3] last:border-b-[0] ${
               selectedFilters.includes(card.title) ? "selected" : ""
             }`}
             key={card.id}
@@ -112,7 +112,7 @@ const FeaturedAreasList2 = ({
             aria-label={`Select ${card.title} program area`}
           >
             <div
-              className={` flex flex-col transition-all lg:border-l-[4px]  ease-in-out text-[#00467F] duration-[250ms] w-full h-full justify-center p-[20px] pl-[16px]  ${
+              className={` flex flex-col transition-all border-l-[4px]  ease-in-out text-[#00467F] duration-[250ms] w-full h-full justify-center p-[20px] pl-[16px]  ${
                 selectedArea === card.title
                   ? "bg-[#f5f5f5] border-[#FBBF24]"
                   : " bg-[white] border-[transparent] hover:bg-[#f3f3f3]"
@@ -149,7 +149,7 @@ const FeaturedAreasList2 = ({
               </div>
               {selectedArea === card.title && (
                 <>
-                  <p className="text-[16px] text-[#00467F] mt-[8px] ">
+                  <p className="text-[16px] text-[#00467F] mt-[16px] ">
                     {card.content}
                   </p>{" "}
                   <div className="lg:hidden mt-[24px]">

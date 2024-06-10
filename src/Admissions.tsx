@@ -119,7 +119,7 @@ function Admissions() {
       <CollegeCards
         contentset="admissions"
         theme=""
-        subheadline="Choose a college to find more Admissions resources."
+        subheadline="Choose a college to explore more Admissions resources."
       />
     </>
   );

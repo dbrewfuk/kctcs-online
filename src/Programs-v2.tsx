@@ -61,7 +61,7 @@ function Programs() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://77ykxy-5000.csb.app/api/programs-with-colleges",
+          "https://kctcs-online.vercel.app/api/programs-with-colleges",
         );
         const data = await response.json();
 
@@ -361,7 +361,7 @@ function Programs() {
                   >
                     {" "}
                     <button
-                      className="absolute top-2 right-2 z-10 "
+                      className="absolute lg:hidden top-2 right-2 z-10 "
                       onClick={() => setFilterOpen(false)}
                       tabIndex={0}
                       aria-label="Close filter modal"
@@ -562,6 +562,7 @@ function Programs() {
             showCount={true}
             enableViewToggle={true}
             enableAZNavigation={true}
+            showViewToggle={true}
           />
         </div>
       </div>

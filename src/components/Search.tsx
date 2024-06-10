@@ -28,12 +28,12 @@ const Search = () => {
 
   return (
     <div>
-      <h3 className="text-[16px] lg:text-[20px] flex font-semibold text-white mb-[12px]">
+      <h3 className="text-[16px] lg:text-[20px] flex font-[600] text-white mb-[12px]">
         <span>Explore Online Programs</span>
       </h3>
-      <div className="relative w-full mb-[24px]">
+      <div className="relative w-full shadow-[0px_4px_8px_rgba(0,0,0,0.25)]">
         <form onSubmit={handleSubmit}>
-          <div className="flex items-center gap-[24px] text-[18px] relative overflow-hidden">
+          <div className="flex items-center gap-[24px] text-[18px] overflow-hidden rounded-[6px] h-[48px] relative ">
             <span
               className="absolute w-[24px] ml-[12px] left-0"
               aria-hidden="true"
@@ -56,7 +56,7 @@ const Search = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => setShowInputLabel(true)}
-              className="w-full text-[16px] leading-[24px] pl-[48px] py-[12px] border border-[#00467F] text-[#00467F]"
+              className="w-full text-[17.5px] leading-[24px] pl-[48px] py-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.25)] border border-[#00467F] text-[#00467F]"
               aria-label="Search programs"
             />
 
@@ -80,7 +80,7 @@ const Search = () => {
             )}
 
             <span
-              className={`p-[8px] absolute right-0 mr-[8px] rounded-[12px] bg-[#FBBF24] cursor-pointer hover:bg-opacity-70 transition ease-in-out duration-[200ms] ${searchQuery ? "transform translate-x-[0px]" : "translate-x-[50px]"} flex items-center`}
+              className={`p-[8px] absolute right-0 mr-[8px] rounded-[12px]  cursor-pointer hover:bg-opacity-70 transition ease-in-out duration-[200ms] ${searchQuery ? "transform translate-x-[0px]" : "translate-x-[50px]"} flex items-center`}
               onClick={handleSubmit} // Submit form when the button is clicked
               role="button"
               tabIndex="0"
@@ -89,8 +89,8 @@ const Search = () => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="32"
+                height="auto"
                 fill="#00467F"
                 viewBox="0 0 16 16"
               >
@@ -104,7 +104,7 @@ const Search = () => {
         </form>
       </div>
 
-      <div className="flex flex-col gap-[8px] lg:gap-[12px]">
+      <div className="flex flex-col gap-[8px] lg:gap-[12px] hidden">
         <h4 className="text-[14px] lg:text-[16px] text-white font-[600]">
           Popular Searches
         </h4>

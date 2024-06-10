@@ -32,7 +32,7 @@ function SFeaturedAreas() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://77ykxy-5000.csb.app/api/programs-with-colleges",
+          "https://kctcs-online.vercel.app/api/programs-with-colleges",
         );
         const data = await response.json();
 
@@ -121,11 +121,11 @@ function SFeaturedAreas() {
       <div className="pt-[48px] lg:pt-[0px] lg:pb-[56px]">
         <div className="flex flex-col">
           <div className="relative w-full group overflow-hidden">
-            <div className="px-[24px] container mx-auto px-[24px] lg:px-0 flex items-end mb-[32px] lg:mb-[48px] w-full">
-              <h1 className="text-[48.8px] leading-[52px] lg:w-[50%] lg:text-[61.04px] lg:leading-[64px] text-[#00467F] font-[800] has-bar">
+            <div className="px-[24px] container mx-auto px-[24px] lg:px-0 flex items-end mb-[48px] lg:mb-[64px] w-full">
+              <h1 className="text-[48.8px] leading-[48px] tracking-[-0.09375rem] lg:w-[50%] lg:text-[61.04px] lg:leading-[64px] text-[#00467F] font-[800] has-bar">
                 Real World Success,{" "}
                 <span className="whitespace-nowrap">
-                  <span className="bar">Anywhere</span>
+                  <span className="text-[#FBBF24]">Anywhere</span>
                   <span className="dot">.</span>
                 </span>
               </h1>
@@ -138,12 +138,12 @@ function SFeaturedAreas() {
                 src="https://kctcs.edu/aa-female-no-mask.png"
               />
             </div>
-            <div className="px-[24px] pt-[48px] lg:pt-[0] pb-[48px] flex flex-col gap-[32px] lg:px-0 w-full  lg:w-[50%] text-center">
+            <div className="px-[24px] pt-[24px] lg:pt-[0] pb-[48px] flex flex-col gap-[32px] lg:px-0 w-full  lg:w-[50%] text-center">
               <div>
-                <h1 className="text-[35.21px] w-full leading-[40px] mb-[16px] lg:mb-[24px] w-[50%] lg:text-[48.8px] lg:leading-[52px] text-[#00467F] font-[800]">
+                <h1 className="text-[31px] w-full leading-[28px] mb-[16px] lg:mb-[24px] w-[50%] lg:text-[48.8px] lg:leading-[48px] lg:tracking-[-0.09rem] text-[#00467F] font-[800]">
                   Start Your Future.
                 </h1>
-                <p className="text-[20px] lg:text-[25px] font-[600] text-[#00467F] max-w-[calc(27.5*25px)] mx-auto">
+                <p className="text-[16px] lg:text-[20px] text-[#00467F] max-w-[calc(27.5*25px)] mx-auto">
                   Whether you’re starting college for the first time or thinking
                   about a career change, we’ve got you covered. We offer{" "}
                   <a className="border-b" href="">
@@ -169,8 +169,8 @@ function SFeaturedAreas() {
           </div>
         </div>
       </div>
-      <div className="relative w-full container mx-auto px-[24px] lg:px-0 mx-auto pb-[64px] border-[#f0f0f0] lg:pb-[96px]">
-        <h3 className="text-[35.21px] leading-[40px] lg:text-[48.8px] mb-[24px] lg:leading-[52px] lg:mb-[56px] font-[800] text-[#00467F]">
+      <div className="relative w-full container mx-auto px-[24px] lg:px-0 mx-auto pb-[56px] border-[#f0f0f0] lg:pb-[96px]">
+        <h3 className="text-[31px] leading-[32px] lg:text-[48.8px] mb-[24px] lg:leading-[52px] lg:mb-[56px] font-[800] text-[#00467F]">
           Shape Your Future.
         </h3>
         <div className="flex flex-col lg:flex-row gap-[32px] lg:gap-[64px]">
@@ -195,7 +195,7 @@ function SFeaturedAreas() {
             </div>
           </div>
         </div>
-        <div className="w-full flex justify-center mt-[24px] lg:mt-[64px]">
+        <div className="w-full hidden flex justify-center lg:mt-[64px]">
           <Button
             href="/programs.aspx"
             label="Explore All Programs"
