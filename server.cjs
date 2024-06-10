@@ -9,7 +9,10 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL, // Use the connection string
+  connectionString: process.env.POSTGRES_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 pool.on("connect", () => {
@@ -21,7 +24,6 @@ pool.on("error", (err) => {
   process.exit(-1);
 });
 
-// Use CORS middleware
 app.use(cors());
 
 app.get("/api/programs-with-colleges", async (req, res) => {
@@ -61,7 +63,7 @@ app.get("/api/programs-with-colleges", async (req, res) => {
     `);
     res.status(200).json(result.rows);
   } catch (error) {
-    console.error(error);
+    console.error("Query Error: ", error); // Log error for debugging
     res.status(500).json({ error: "Failed to fetch data" });
   } finally {
     client.release();
@@ -72,13 +74,15 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-app.get("/api/test-connection", async (req, res) => {
+app.get("/api/programs-with-colleges", async (req, res) => {
+  const client = await pool.connect();
   try {
-    const client = await pool.connect();
-    const result = await client.query("SELECT NOW()");
-    client.release();
-    res.json({ status: "success", time: result.rows[0] });
+    const result = await client.query(/* your query */);
+    res.status(200).json(result.rows);
   } catch (error) {
-    res.status(500).json({ status: "failure", error: error.message });
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Failed to fetch data" });
+  } finally {
+    client.release();
   }
 });
