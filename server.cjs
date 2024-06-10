@@ -6,10 +6,10 @@ const cors = require("cors");
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL,
+  connectionString: process.env.POSTGRES_URL, // Use the connection string
 });
 
 pool.on("connect", () => {
@@ -70,4 +70,15 @@ app.get("/api/programs-with-colleges", async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+});
+
+app.get("/api/test-connection", async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const result = await client.query("SELECT NOW()");
+    client.release();
+    res.json({ status: "success", time: result.rows[0] });
+  } catch (error) {
+    res.status(500).json({ status: "failure", error: error.message });
+  }
 });
