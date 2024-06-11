@@ -2,6 +2,7 @@ const express = require("express");
 const { Pool } = require("pg");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const fs = require("fs");
 
 dotenv.config();
 
@@ -12,6 +13,9 @@ const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
   ssl: {
     rejectUnauthorized: false,
+    ssl: false, // Disable SSL
+    // This allows self-signed certificates
+    //ca: fs.readFileSync("./etc/ssl/certs/server.crt").toString(),
   },
 });
 
@@ -63,7 +67,7 @@ app.get("/api/programs-with-colleges", async (req, res) => {
     `);
     res.status(200).json(result.rows);
   } catch (error) {
-    console.error("Query Error: ", error); // Log error for debugging
+    console.error("Query Error: ", error);
     res.status(500).json({ error: "Failed to fetch data" });
   } finally {
     client.release();
@@ -72,17 +76,4 @@ app.get("/api/programs-with-colleges", async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
-});
-
-app.get("/api/programs-with-colleges", async (req, res) => {
-  const client = await pool.connect();
-  try {
-    const result = await client.query(/* your query */);
-    res.status(200).json(result.rows);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    res.status(500).json({ error: "Failed to fetch data" });
-  } finally {
-    client.release();
-  }
 });
