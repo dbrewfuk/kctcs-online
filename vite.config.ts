@@ -14,14 +14,15 @@ export default defineConfig({
   },
   build: {
     assetsDir: "assets",
+    outDir: "dist",
     rollupOptions: {
       input: {
-        home: "/index.html",
-        admissions: "/admissions.html",
-        programs: "/explore-programs.html",
-        tuition: "/tuition-and-cost.html",
-        studentServices: "/student-support-services.html",
-        successStories: "/success-stories.html",
+        home: "index.html",
+        admissions: "admissions.html",
+        programs: "explore-programs.html",
+        tuition: "tuition-and-cost.html",
+        studentServices: "student-support-services.html",
+        successStories: "success-stories.html",
       },
       output: {
         entryFileNames: "js/[name].js", // Output JS file name with chunk names
