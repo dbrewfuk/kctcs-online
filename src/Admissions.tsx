@@ -83,7 +83,7 @@ function Admissions() {
 
       <div className="container mx-auto px-[24px] lg:px-0 pt-[64px] lg:pt-[96px] pb-[64px] lg:pb-[96px]">
         <div className="flex flex-col lg:flex-row items-center gap-[32px] lg:gap-[64px]">
-          <div className="w-full  aspect-[4/3] lg:w-1/2 rounded-[12px] overflow-hidden">
+          <div className="w-full  aspect-[4/3] lg:w-1/2 overflow-hidden">
             <img
               src="https://southeast.kctcs.edu/about/media/images/about-campuses.jpg"
               className="w-full h-full object-cover"

@@ -1,0 +1,58 @@
+[
+  {
+    "id": 6,
+    "title": "Southeast Kentucky Community And Technical College",
+    "college": "Southeast Kentucky Community And Technical College",
+    "program": "",
+    "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southeast-kentucky-community-and-technical-college.mp4",
+    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southeast-kentucky-community-and-technical-college.vtt"
+  },
+  {
+    "id": 7,
+    "title": "Ashland Community And Technical College",
+    "college": "Ashland Community And Technical College",
+    "program": "",
+    "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-ashland-community-and-technical-college.mp4",
+    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-ashland-community-and-technical-college.vtt"
+  },
+  {
+    "id": 16,
+    "title": "Elizabethtown Community And Technical College",
+    "college": "Elizabethtown Community And Technical College",
+    "program": "",
+    "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-elizabethtown-community-and-technical-college.mp4",
+    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-elizabethtown-community-and-technical-college.vtt"
+  },
+  {
+    "id": 19,
+    "title": "Somerset Community College",
+    "college": "Somerset Community College",
+    "program": "Your Program Name",
+    "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-somerset-community-college.mp4",
+    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-somerset-community-college.vtt"
+  },
+  {
+    "id": 20,
+    "title": "West Kentucky Community And Technical College",
+    "college": "West Kentucky Community And Technical College",
+    "program": "Your Program Name",
+    "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-west-kentucky-community-and-technical-college.mp4",
+    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-west-kentucky-community-and-technical-college.vtt"
+  },
+  {
+    "id": 21,
+    "title": "Southcentral Kentucky Community And Technical College",
+    "college": "Southcentral Kentucky Community And Technical College",
+    "program": "Your Program Name",
+    "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southcentral-kentucky-community-and-technical-college.mp4",
+    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southcentral-kentucky-community-and-technical-college.vtt"
+  },
+  {
+    "id": 24,
+    "title": "Madisonville Community College",
+    "college": "Madisonville Community College",
+    "program": "Your Program Name",
+    "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-madisonville-community-college.mp4",
+    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-madisonville-community-college.vtt"
+  }
+]

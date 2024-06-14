@@ -28,12 +28,12 @@ const Search = () => {
 
   return (
     <div>
-      <h3 className="text-[16px] lg:text-[20px] flex font-[600] text-white mb-[12px]">
+      <h3 className="text-[16px] lg:text-[20px] text-center w-full items-center justify-center flex font-[600] text-white mb-[12px]">
         <span>Explore Online Programs</span>
       </h3>
       <div className="relative w-full shadow-[0px_4px_8px_rgba(0,0,0,0.25)]">
         <form onSubmit={handleSubmit}>
-          <div className="flex items-center gap-[24px] text-[18px] overflow-hidden rounded-[6px] h-[48px] relative ">
+          <div className="flex items-center gap-[32px] overflow-hidden relative ">
             <span
               className="absolute w-[24px] ml-[12px] left-0"
               aria-hidden="true"
@@ -56,13 +56,13 @@ const Search = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => setShowInputLabel(true)}
-              className="w-full text-[17.5px] leading-[24px] pl-[48px] py-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.25)] border border-[#00467F] text-[#00467F]"
+              className="w-full text-[17.5px] leading-[24px] overflow-hidden focus:border-[#fbbf24] border-[6px] border-[#f3f3f3] transition ease-in-out duration-250 rounded-[0px] h-[60px] pl-[48px] bg-[#f3f3f3] py-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.25)] border border-[#00467F] text-[#00467F]"
               aria-label="Search programs"
             />
 
             {searchQuery && (
               <span
-                className="absolute right-[60px] w-[18px] cursor-pointer"
+                className="absolute right-[72px] w-[18px] cursor-pointer"
                 onClick={() => setSearchQuery("")}
                 onKeyDown={(e) => handleKeyDown(e, () => setSearchQuery(""))}
                 tabIndex="0"
@@ -80,7 +80,7 @@ const Search = () => {
             )}
 
             <span
-              className={`p-[8px] absolute right-0 mr-[8px] rounded-[12px]  cursor-pointer hover:bg-opacity-70 transition ease-in-out duration-[200ms] ${searchQuery ? "transform translate-x-[0px]" : "translate-x-[50px]"} flex items-center`}
+              className={`p-[8px] absolute right-0 mr-[8px] rounded-[12px] bg-[#fbbf24] h-[42px] w-[42px] cursor-pointer hover:bg-opacity-70 transition ease-in-out duration-[300ms] ${searchQuery ? "transform translate-x-[-2px]" : "translate-x-[56px]"} flex items-center`}
               onClick={handleSubmit} // Submit form when the button is clicked
               role="button"
               tabIndex="0"

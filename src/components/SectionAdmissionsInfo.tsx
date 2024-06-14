@@ -58,7 +58,7 @@ function AdmissionsInfo() {
       image:
         "https://southcentral.kctcs.edu/about/media/images/career-services-contact-us-skctc.jpg",
       stat: "50+ Degree Plans",
-      buttonText: "Explore Degree Plans",
+      buttonText: "Degree Plans",
     },
     {
       name: "Non-Degree Seeking",
@@ -67,7 +67,7 @@ function AdmissionsInfo() {
       url: "https://77ykxy-5173.csb.app/explore-programs.html?area=&credentialTypes=Certificate%2CDiploma",
       image: "./src/assets/admissions.jpeg",
       stat: "100+ Program Options",
-      buttonText: "Explore Non-degree Programs",
+      buttonText: "Non-degree Programs",
     },
     {
       name: "First Time Student",
@@ -138,7 +138,7 @@ function AdmissionsInfo() {
         {/* ... (Your header content) */}
       </header>
       <main className="relative px-[24px] w-full container mx-auto px-[24px] lg:px-0 pb-[64px] pt-[48px] lg:pt-[56px] border-[#f0f0f0] lg:pb-[96px] lg:mb-[56px]">
-        <section className="flex flex-row justify-center items-center gap-[64px] w-full">
+        <section className="flex flex-row justify-center items-center gap-[80px] w-full">
           <div className="flex w-full lg:w-[50%] flex-col order-2">
             <h3 className="text-[31px] leading-[32px] lg:text-[39px] lg:leading-[44px] mb-[16px] lg:mb-[32px] font-[800] text-[#00467F]">
               Programs that fit your needs.
@@ -199,7 +199,7 @@ function AdmissionsInfo() {
                           {tab.description}
                         </p>
                         {tab.url && (
-                          <div className="text-center lg:text-left mt-[24px]">
+                          <div className="text-center hidden lg:text-left mt-[24px]">
                             <a
                               href={tab.url}
                               className="w-full rounded-full text-[17.5px] flex gap-2 group items-center hover:transform transition inline-block transition ease-in-out text-center cursor-pointer width-auto text-[#00467F] font-semibold"
@@ -234,7 +234,7 @@ function AdmissionsInfo() {
           <div className="hidden lg:w-[50%] lg:flex flex-row items-center justify-center flex-wrap gap-[24px]">
             {tabs.slice(0, 2).map((item, index) => (
               <div
-                className="flex w-[calc(50%-12px)] aspect-square flex-row gap-[24px] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)] rounded-[12px] overflow-hidden cursor-pointer"
+                className={`flex w-[calc(50%-12px)] aspect-square flex-row gap-[24px]  overflow-hidden cursor-pointer ${selectedTab === index ? "shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)]" : ""}`}
                 key={index}
                 role="button"
                 tabIndex={0}
@@ -244,7 +244,7 @@ function AdmissionsInfo() {
                 <div
                   className={`cursor-pointer w-full h-full relative overflow-hidden transition ease-in-out duration-[250ms] ${
                     selectedTab === index
-                      ? "bg-[#00467F] border-[#FBBF24] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)]"
+                      ? "bg-[#00467F] border-[#FBBF24] border-[11px] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)]"
                       : "bg-[#FBBF24]"
                   }`}
                 >
@@ -257,14 +257,27 @@ function AdmissionsInfo() {
                   />
                   <div className="absolute p-[24px] flex bottom-0 w-full h-full items-center justify-center">
                     {item.stat && (
-                      <div
-                        className={`p-[12px] rounded-[12px] font-[600] text-[#00467F] ${
-                          selectedTab === index
-                            ? "bg-[#005CB8] bg-opacity-[1] "
-                            : "bg-[white] bg-opacity-[1] backdrop-blur-[20px] "
-                        }`}
-                      >
-                        {item.stat}
+                      <div className="flex flex-col gap-[12px]">
+                        <div
+                          className={`p-[12px] rounded-[12px] text-center font-[600] text-[#00467F] ${
+                            selectedTab === index
+                              ? "bg-[#00467F] text-[white] bg-opacity-[1] "
+                              : "bg-[white] bg-opacity-[1] backdrop-blur-[20px] "
+                          }`}
+                        >
+                          {item.stat}
+                        </div>
+                        <div
+                          className={`transform absolute bottom-[48px] w-full flex justify-center left-[0] transition ease-in-out duration-[350ms] ${selectedTab === index ? "translate-y-[0] opacity-[1]" : "translate-y-[25%] opacity-[0]"}`}
+                        >
+                          <Button
+                            type="primary-dark"
+                            size="small"
+                            depth="medium"
+                          >
+                            {item.buttonText}
+                          </Button>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -273,7 +286,7 @@ function AdmissionsInfo() {
             ))}
           </div>
         </section>
-        <section className="flex flex-row items-center justify-center gap-[64px] lg:mt-[56px] w-full">
+        <section className="flex flex-row items-center justify-center gap-[80px] lg:mt-[56px] w-full">
           <div className="flex w-full lg:w-[50%] flex-col">
             <div className="flex flex-row items-center flex-wrap">
               <h3 className="text-[31px] leading-[32px] w-full lg:text-[39px] mt-[32px] lg:mt-[0] lg:leading-[44px] mb-[16px] lg:mb-[32px] font-[800] text-[#00467F]">
@@ -340,7 +353,7 @@ function AdmissionsInfo() {
                             {tab.description}
                           </p>
                           <div
-                            className="flex lg:hidden w-full mt-[32px] rounded-[12px]
+                            className="flex lg:hidden w-full mt-[32px]
                           flex-row gap-[24px]
                           shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)]
                           cursor-pointer"
@@ -356,7 +369,7 @@ function AdmissionsInfo() {
                             }
                           >
                             <div
-                              className={`aspect-video lg:aspect-[1/1] cursor-pointer overflow-hidden rounded-[12px] w-full relative transition ease-in-out duration-[250ms] ${
+                              className={`aspect-video lg:aspect-[1/1] cursor-pointer overflow-hidden w-full relative transition ease-in-out duration-[250ms] ${
                                 selectedTab === adjustedIndex
                                   ? "bg-[#00467F] border-[#FBBF24] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)]"
                                   : "bg-[#FBBF24]"
@@ -515,12 +528,12 @@ function AdmissionsInfo() {
               })}
             </div>
           </div>
-          <div className="hidden lg:w-[50%] relative aspect-square rounded-[12px] lg:flex flex-row justify-center flex-wrap gap-[24px]">
+          <div className="hidden lg:w-[50%] relative aspect-square lg:flex flex-row justify-center flex-wrap gap-[24px]">
             {tabs.slice(2, 6).map((item, index) => {
               const adjustedIndex = index + 2; // Adjust the index for the second set of tabs
               return (
                 <div
-                  className="flex w-[calc(50%-12px)] aspect-square rounded-[12px] flex-row gap-[24px] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)] cursor-pointer"
+                  className={`flex w-[calc(50%-12px)] aspect-square flex-row gap-[24px]  cursor-pointer ${selectedTab === adjustedIndex ? "shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)]" : ""}`}
                   key={adjustedIndex}
                   role="button"
                   tabIndex={0}
@@ -532,15 +545,15 @@ function AdmissionsInfo() {
                   }
                 >
                   <div
-                    className={`aspect-[1/1] cursor-pointer rounded-[12px] w-full relative transition ease-in-out duration-[250ms] ${
+                    className={`aspect-[1/1] cursor-pointer w-full  relative transition ease-in-out duration-[250ms] ${
                       selectedTab === adjustedIndex
-                        ? "bg-[#00467F] border-[#FBBF24] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)]"
+                        ? "bg-[#00467F] border-[#FBBF24] border-[11px] shadow-[0_4px_8px_1px_rgba(0,0,0,0.15)]"
                         : "bg-[#FBBF24]"
                     }`}
                   >
-                    <div className="w-full h-full aspect-square overflow-hidden relative rounded-[12px]">
+                    <div className="w-full h-full aspect-square overflow-hidden relative ">
                       <img
-                        className={`w-full h-full rounded-[12px] object-cover transition ease-in-out duration-[250ms] absolute transform top-0 left-0 ${
+                        className={`w-full h-full object-cover transition ease-in-out duration-[250ms] absolute transform top-0 left-0 ${
                           selectedTab === adjustedIndex
                             ? "scale-[1.15]"
                             : "scale-[1]"
@@ -673,7 +686,7 @@ function AdmissionsInfo() {
           </div>
         </section>
 
-        <div className="flex justify-center mt-[48px]">
+        <div className="flex justify-center mt-[72px]">
           <Button
             label="Explore Admissions"
             type="primary"

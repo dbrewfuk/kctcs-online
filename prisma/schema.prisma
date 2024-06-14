@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+model Area {
+  id      Int       @id @default(autoincrement())
+  name    String?   @unique @db.VarChar(255)
+  Program Program[]
+}
+
+model College {
+  id      Int       @id @default(autoincrement())
+  name    String?   @unique @db.VarChar(255)
+  Program Program[]
+}
+
+model Credential {
+  id      Int       @id @default(autoincrement())
+  name    String?   @unique @db.VarChar(255)
+  Program Program[]
+}
+
+model Description {
+  id      Int       @id @default(autoincrement())
+  text    String?   @unique
+  Program Program[]
+}
+
+model Plan {
+  id      Int       @id @default(autoincrement())
+  name    String?   @unique @db.VarChar(255)
+  Program Program[]
+}
+
+model Program {
+  id               Int      @id @default(autoincrement())
+  name             String
+  sectorid         Int?
+  areaid           Int?
+  planid           Int?
+  credentialid     Int?
+  descriptionid    Int?
+  collegeid        Int?
+  programareaurlid Int?
+  Area             Area?    @relation(fields: [areaid], references: [id])
+  College          College? @relation(fields: [collegeid], references: [id])
+  Credential       Credential? @relation(fields: [credentialid], references: [id])
+  Description      Description? @relation(fields: [descriptionid], references: [id])
+  Plan             Plan?    @relation(fields: [planid], references: [id])
+  ProgramAreaUrl   ProgramAreaUrl? @relation(fields: [programareaurlid], references: [id])
+  Sector           Sector?  @relation(fields: [sectorid], references: [id])
+  
+  @@unique([sectorid, areaid, planid, credentialid, collegeid])
+}
+
+
+
+
+
+
+
+model ProgramAreaUrl {
+  id      Int       @id @default(autoincrement())
+  url     String?   @unique
+  Program Program[]
+}
+
+model Sector {
+  id      Int       @id @default(autoincrement())
+  name    String?   @unique @db.VarChar(255)
+  Program Program[]
+}
+
+model users {
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(255)
+  email     String    @unique @db.VarChar(255)
+  image     String?   @db.VarChar(255)
+  createdAt DateTime? @default(now()) @db.Timestamptz(6)
+}

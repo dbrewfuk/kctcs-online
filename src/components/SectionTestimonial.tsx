@@ -66,12 +66,12 @@ const Testimonial = () => {
       >
         <div className="container mx-auto relative z-20">
           <div className="flex flex-col gap-[32px]">
-            <div className="flex flex-col lg:flex-row gap-[24px] lg:gap-[40px]">
-              <div className="w-[56px] lg:min-w-[64px] lg:min-h-[64px]">
+            <div className="flex lg:flex-row gap-[24px] items-end lg:gap-[40px]">
+              <div className="h-[56px] w-[56px] lg:min-h-[64px]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="100%"
-                  height="67"
+                  height="56px"
                   viewBox="0 0 80 67"
                   fill="none"
                 >
@@ -82,11 +82,11 @@ const Testimonial = () => {
                   />
                 </svg>
               </div>
-              <div className="w-auto flex flex-col gap-[12px] flex-wrap">
-                <div className="text-[31px] leading-[36px] text-[#FBBF24] font-[600]">
+              <div className="w-auto flex flex-col gap-[10px] flex-wrap">
+                <div className="text-[25px] leading-[28px] lg:text-[31px] lg:leading-[36px] text-[#FBBF24] font-[600]">
                   {currentSlide.name}
                 </div>
-                <div className="text-[16px] lg:text-[20px] font-[600] text-white whitespace-wrap">
+                <div className="text-[16px] leading-[16px] lg:text-[20px] font-[600] text-white whitespace-wrap">
                   {currentSlide.major}
                 </div>
               </div>

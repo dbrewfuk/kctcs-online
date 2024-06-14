@@ -3,12 +3,7 @@ import { useHistory } from "react-router-dom";
 import Testimonial from "./components/Testimonial";
 import HeroSearch from "./components/HeroSearch";
 import Search from "./components/Search";
-import Hero from "./components/Hero";
 import Header from "./components/Header";
-import DynamicSections from "./DynamicSections";
-import ProgramResults from "./components/ProgramResults";
-import programs from "./programs-20240510";
-import Filters from "./components/Filters";
 import VideoGrid from "./components/VideoGrid";
 import { Link } from "react-router-dom";
 
@@ -54,49 +49,6 @@ function SuccessStories() {
   };
 
   useEffect(() => {
-    // Extract unique credential types from programsData
-    const credentialTypesSet = new Set();
-
-    // Iterate over each program
-    programs.forEach((program) => {
-      // Iterate over each college in the program
-      program.colleges.forEach((college) => {
-        // Check if academic plans exist and iterate over them
-        if (college.academic_plans && college.academic_plans.length > 0) {
-          college.academic_plans.forEach((plan) => {
-            // Add the credential type to the Set
-            credentialTypesSet.add(plan.credential_type);
-          });
-        }
-      });
-    });
-
-    // Convert the Set to an array
-    const uniqueTypesArray = Array.from(credentialTypesSet);
-
-    // Update state with unique credential types
-    setUniqueCredentialTypes(uniqueTypesArray);
-  }, []); // Empty dependency array ensures this effect runs only once
-
-  const handleCredentialTypeChange = (e, credentialType) => {
-    // Check if the credential type is already selected
-    const isSelected = selectedCredentialTypes.includes(credentialType);
-
-    // If the credential type is already selected, remove it from the selected types
-    // If not selected, add it to the selected types
-    if (isSelected) {
-      setSelectedCredentialTypes((prevSelectedTypes) =>
-        prevSelectedTypes.filter((type) => type !== credentialType),
-      );
-    } else {
-      setSelectedCredentialTypes((prevSelectedTypes) => [
-        ...prevSelectedTypes,
-        credentialType,
-      ]);
-    }
-  };
-
-  useEffect(() => {
     // Filter the academic plans based on the selected credential types
     const filteredPlans = academicPlans.filter((plan) =>
       selectedCredentialTypes.includes(plan.credential_type),
@@ -127,109 +79,6 @@ function SuccessStories() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  useEffect(() => {
-    // Extract unique credentials, program areas, and plan names
-    const credentials = new Set();
-    const programAreas = new Set();
-    const planNames = new Set();
-    const sectors = new Set();
-
-    programs.forEach((program) => {
-      program.colleges.forEach((college) => {
-        if (college.academic_plans && college.academic_plans.length > 0) {
-          college.academic_plans.forEach((plan) => {
-            credentials.add(plan.credentials_awarded);
-            programAreas.add(program.program);
-            sectors.add(program.sector);
-            planNames.add(plan.name);
-          });
-        }
-      });
-    });
-
-    setUniqueCredentials(Array.from(credentials));
-    setUniqueSectors(Array.from(sectors));
-    setUniqueProgramAreas(Array.from(programAreas));
-    setUniquePlanNames(Array.from(planNames));
-  }, []);
-
-  // useEffect to populate academicPlans with unique academic plans data
-  useEffect(() => {
-    // Function to extract unique academic plans from programs data
-    const getUniqueAcademicPlans = () => {
-      const uniquePlans = {};
-
-      programs.forEach((program) => {
-        program.colleges.forEach((college) => {
-          if (college.academic_plans && college.academic_plans.length > 0) {
-            college.academic_plans.forEach((plan) => {
-              const key = `${plan.name} - ${plan.credentials_awarded}`;
-              if (!uniquePlans[key]) {
-                uniquePlans[key] = {
-                  name: plan.name,
-                  credentials_awarded: plan.credentials_awarded,
-                  credential_type: plan.credential_type,
-                  colleges: [],
-                  area: program.program,
-                  sector: program.sector,
-                };
-              }
-              uniquePlans[key].colleges.push(college);
-            });
-          }
-        });
-      });
-
-      return Object.values(uniquePlans);
-    };
-
-    // Update academicPlans state with unique academic plans data
-    const uniqueAcademicPlans = getUniqueAcademicPlans();
-    setAcademicPlans(uniqueAcademicPlans);
-  }, []); // empty dependency array to ensure it runs only onceuseEffect(() => {
-  const handleProgramAreaClick = (title) => {
-    setSelectedArea(title);
-    console.log("Clicked on:", title);
-  };
-  useEffect(() => {
-    // Filter the academic plans based on the search query, selected filters, etc.
-    const filteredPlans = academicPlans.filter((plan) => {
-      // Check if the plan's credential type is included in the selected credential types
-      const matchesCredentialTypes =
-        selectedCredentialTypes.length === 0 ||
-        selectedCredentialTypes.includes(plan.credential_type);
-
-      // Other filtering conditions remain unchanged
-      const matchesSearch =
-        !searchQuery ||
-        plan.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        plan.credentials_awarded
-          .toLowerCase()
-          .includes(searchQuery.toLowerCase());
-
-      const matchesFilters =
-        (!selectedCredential || plan.credential_type === selectedCredential) &&
-        (!selectedArea || plan.area === selectedArea) &&
-        (!selectedPlan || plan.name === selectedPlan); // Consider the selected sector filter
-
-      return matchesSearch && matchesFilters && matchesCredentialTypes;
-    });
-
-    // Update the filtered academic plans state
-    setFilteredAcademicPlans(filteredPlans);
-
-    // Logging for debugging
-    console.log("Selected Credential Types:", selectedCredentialTypes);
-    console.log("Filtered Academic Plans:", filteredPlans);
-  }, [
-    selectedCredential,
-    selectedCredentialTypes,
-    selectedArea,
-    selectedPlan,
-    academicPlans,
-    searchQuery,
-  ]);
 
   const clearSearchQuery = () => {
     setSearchQuery(""); // Clear the search query state
@@ -269,9 +118,6 @@ function SuccessStories() {
   return (
     <>
       <Header isActive="success-stories" />
-      <div className="relative">
-        <Hero title="Success Stories" />
-      </div>
 
       <VideoGrid />
       <div className="py-[64px] lg:py-[80px] bg-[#005CB8] relative">

@@ -276,3 +276,27 @@ video::-webkit-media-controls {
   animation-delay: 0s;
   display: none;
 }
+.rfm-marquee-container {
+  overflow-x: visible;
+}
+.rfm-marquee {
+  max-height: 20vh;
+  min-width: 20vh;
+}
+.rfm-marquee + .rfm-marquee {
+  display: none;
+}
+
+.noscrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+p a {
+  border-bottom: solid 1px #00467f;
+  transition: ease-in-out 0.2s;
+}
+
+p a:hover {
+  border-bottom: solid 2.5px;
+  cursor: pointer;
+}

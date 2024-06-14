@@ -274,21 +274,21 @@ function Programs() {
                 <p className="text-[#00467F] text-[18px] mb-[24px]">
                   From{" "}
                   <a
-                    className="cursor-pointer border-b-2"
+                    className="cursor-pointer"
                     onClick={() => setSearchQuery("agriculture")}
                   >
                     agriculture
                   </a>{" "}
                   to{" "}
                   <a
-                    className="cursor-pointer border-b-2"
+                    className="cursor-pointer "
                     onClick={() => setSearchQuery("health")}
                   >
                     health
                   </a>{" "}
                   to{" "}
                   <a
-                    className="cursor-pointer border-b-2"
+                    className="cursor-pointer "
                     onClick={() => setSearchQuery("Paralegal")}
                   >
                     paralegal
@@ -299,7 +299,7 @@ function Programs() {
                 </p>
               </div>
 
-              <div className="sticky flex flex-row gap-[16px] items-center lg:flex-col">
+              <div className="sticky flex flex-col gap-[24px] items-center lg:flex-col">
                 <form className="lg:block w-full">
                   <div className="flex items-center gap-4 text-[18px] relative">
                     <span className="absolute w-[24px] ml-[12px] left-0">
@@ -317,7 +317,7 @@ function Programs() {
                       placeholder="Search programs"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="text-[17.5px] border-[6px] transition ease-in-out duration-[250ms] border-[transparent] focus:border-[#fdd000] focus:outline-none text-[#00467F] leading-[24px] pl-[48px] py-[12px] bg-[#f3f3f3] text-[#00467F] w-full"
+                      className="text-[17.5px] border-[6px] transition ease-in-out duration-[250ms] border-[transparent] focus:border-[#fbbf24] focus:outline-none text-[#00467F] leading-[24px] pl-[48px] py-[12px] bg-[#f3f3f3] text-[#00467F] w-full"
                     />
                     {searchQuery && (
                       <span
@@ -336,15 +336,16 @@ function Programs() {
                   </div>
                 </form>
                 <div
-                  className="lg:hidden
+                  className="lg:hidden w-full
                 "
                 >
                   <Button
                     type="outline"
-                    className="inline-block lg:hidden items-center justify-center text-[16px] py-[12px] px-[32px] hover:bg-[white] transition ease-in-out duration-[250ms] cursor-pointer hover:border-[#00467F] text-[#00467F] font-[600] text-center rounded-full border border-[transparent] bg-[#f5f5f5]"
+                    width="full"
+                    size="large"
                     onClick={() => setFilterOpen(true)}
                   >
-                    <span className="">Filter</span>
+                    Filter
                   </Button>
                 </div>
 
@@ -359,36 +360,38 @@ function Programs() {
                     ${filterOpen ? "lg:flex" : "hidden lg:flex"}
                   `}
                   >
-                    {" "}
-                    <button
-                      className="absolute lg:hidden top-2 right-2 z-10 "
-                      onClick={() => setFilterOpen(false)}
-                      tabIndex={0}
-                      aria-label="Close filter modal"
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ") {
-                          e.preventDefault();
-                          setFilterOpen(false);
-                        }
-                      }}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        aria-hidden="true"
-                        focusable="false"
+                    <div className="absolute lg:hidden top-0 right-0 transform translate-y-[calc(-100%-12px)]">
+                      <a
+                        className="lg:hidden bg-[#fbbf24] h-[36px] w-[36px] flex justify-center items-center hover:scale-[1.15] transition easeInOut duration-[250ms] cursor-pointer rounded-full"
+                        type="icon"
+                        onClick={() => setFilterOpen(false)}
+                        tabIndex={0}
+                        aria-label="Close filter modal"
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setFilterOpen(false);
+                          }
+                        }}
                       >
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M12 10.586L17.707 4.879 18.707 5.879 13 11.586 18.707 17.293 17.707 18.293 12 12.707 6.293 18.293 5.293 17.293 11 11.586 5.293 5.879 6.293 4.879 12 10.586Z"
-                          fill="#00467F"
-                        />
-                      </svg>
-                    </button>{" "}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          aria-hidden="true"
+                          focusable="false"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                            d="M12 10.586L17.707 4.879 18.707 5.879 13 11.586 18.707 17.293 17.707 18.293 12 12.707 6.293 18.293 5.293 17.293 11 11.586 5.293 5.879 6.293 4.879 12 10.586Z"
+                            fill="white"
+                          />
+                        </svg>
+                      </a>{" "}
+                    </div>{" "}
                     <Filters
                       uniqueCredentials={uniqueCredentials}
                       uniqueCredentialTypes={uniqueCredentialTypes}
@@ -414,7 +417,7 @@ function Programs() {
                     />
                   </div>
 
-                  <div className="container mt-[24px]">
+                  <div className="container hidden">
                     <div className="flex flex-col ">
                       <span className="flex text-[14px] flex-wrap gap-[12px]">
                         {selectedArea && (
@@ -542,14 +545,15 @@ function Programs() {
                     </div>
                   </div>
                 </div>
-                <div className="hidden lg:block pt-[32px] border-t border-[#f3f3f3]">
-                  <a
+                <div className="hidden lg:block pt-[32px] border-t border-[#f3f3f3] w-full text-center">
+                  <Button
                     href="https://kctcs.edu/class-search.aspx"
-                    type="button"
+                    type="tonal-white"
+                    width="full"
                     className="inline-block hover:bg-[white] border border-[#f3f3f3] transition ease-in-out duration-250 hover:text-[#00467F] hover:border-[#00467F] px-[32px] rounded-full py-[12px] whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer font-semibold bg-[#f3f3f3] text-[#00467F] text-[16px] text-center"
                   >
                     Online Courses
-                  </a>
+                  </Button>
                 </div>
               </div>
             </div>

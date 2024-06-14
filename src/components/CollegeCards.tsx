@@ -121,7 +121,7 @@ function CollegeCards({ contentset, theme, subheadline }) {
         <div className={`${theme === "gray" ? "bg-[#fafafa]" : "bg-[white]"}`}>
           <div className="container mx-auto">
             <div className="px-[24px] lg:px-0 pt-[32px] lg:pt-[48px]">
-              <h1 className="text-[35px] leading-[36px] lg:text-[48.8px] z-[2] relative lg:leading-[52px] font-[800] text-[#00467F] mb-[12px] lg:mb-[16px] text-center">
+              <h1 className="text-[35px] leading-[36px] lg:text-[56px] z-[2] relative lg:leading-[56px] font-[800] text-[#00467F] mb-[12px] lg:mb-[8px] text-center">
                 16 Colleges. <br />
                 <span className="whitespace-nowrap">
                   <span className="highlight  bar--bottom whitespace-nowrap">
@@ -131,21 +131,19 @@ function CollegeCards({ contentset, theme, subheadline }) {
                   <span className="dot">.</span>
                 </span>
               </h1>
-              <h1 className="text-[17.5px] leading-[20px] lg:text-[20px] z-[2] relative lg:leading-[24px] font-[600] text-[#00467F] mb-[24px] lg:mb-[36px] text-center">
+              <h1 className="text-[17.5px] leading-[20px] lg:text-[20px] z-[2] relative lg:leading-[24px] font-[600] text-[#00467F] mb-[32px] text-center">
                 {subheadline}
               </h1>
             </div>
             <div className="flex flex-col gap-[32px] relative  justify-center w-full">
-              <div className="w-full relative px-[32px] aspect-[21/9] lg:aspect-[5/1] overflow-hidden rounded-[0px] lg:rounded-[12px]">
+              <div className="w-full relative px-[32px] aspect-[16/9] lg:aspect-[5/1] overflow-hidden rounded-[0px] lg:rounded-[12px]">
                 <div className="bg-[rgba(0,0,0,0.20)] absolute w-full h-full left-0 top-0 z-[1]"></div>
                 <iframe
-                  width="2000px"
-                  height="1366px"
                   frameBorder="0"
                   allow="autoplay; FullScreen; picture-in-picture"
                   allowFullScreen
                   autoPlay="1"
-                  className="absolute top-[-150%] left-[0] z-1 transform object-cover"
+                  className="absolute top-[-200%] w-[100%] h-[100%] lg:w-[2000px] lg:h-[1366px]  top-[-250%] left-[0] z-1 transform object-cover"
                   src={`${
                     selectedCollegeVideo
                       ? selectedCollegeVideo
@@ -154,7 +152,10 @@ function CollegeCards({ contentset, theme, subheadline }) {
                 ></iframe>
 
                 <div className="flex justify-center w-full h-full left-0 top-0 items-center absolute z-[2]">
-                  <div className="relative">
+                  <div className="relative flex flex-col items-center">
+                    <h1 className="hidden text-[17.5px] leading-[20px] lg:text-[20px] z-[2] relative lg:leading-[24px] font-[600] text-[white] mb-[24px] lg:mb-[24px] text-center">
+                      {subheadline}
+                    </h1>
                     <div
                       className={`cursor-pointer  py-[12px] text-[16px] lg:text-[17.5px] font-[600] rounded-full bg-[white] text-[#00467F]  transition ease-in-out duration-[250] backdrop-blur-[20px] appearance-none lg:py-[16px] pl-[32px] pr-[24px] ${
                         selectedCollege ? "text-[#00467F]" : "text-white "

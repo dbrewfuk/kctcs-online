@@ -29,27 +29,29 @@ function FilterDropdown({
   return (
     <div className="relative w-full">
       <div
-        className={`font-semibold uppercase mb-[4px] text-[14px] tracking-[0.25px] ${
+        className={`font-[700] uppercase mb-[4px] text-[16px] tracking-[0.35px] ${
           isBackgroundColorDark() ? "text-white" : "text-[#00467F]"
         }`}
       >
         {title}
       </div>
       <div
-        className="flex items-center text-[18px] py-[8px] pl-[12px] pr-[12px] text-[#00467F] justify-between border border-[#00467F] bg-white cursor-pointer"
+        className="flex items-center text-[17.5px] py-[8px] h-[48px] pl-[16px] pr-[12px] text-[#00467F] justify-between border-[1.35px] border-[#00467F] bg-white cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
         tabIndex={0}
         role="button"
         aria-expanded={isOpen}
         onKeyDown={(e) => e.key === "Enter" && setIsOpen(!isOpen)}
       >
-        <span className="overflow-hidden whitespace-nowrap text-ellipsis">
+        <span
+          className={`overflow-hidden whitespace-nowrap placeholder-[#f3f3f3] text-ellipsis" ${selectedOption ? "text-[#00467F]" : "text-[rgba(0,0,0,0.35)]"}`}
+        >
           {selectedOption || "Select"}
         </span>
         <div className="flex gap-[0px]">
           {selectedOption && (
             <div
-              className="rounded-full group flex items-center p-[12px] bg-[#f3f3f3] mr-[8px] justify-center cursor-pointer transition ease-in-out duration-[200ms]"
+              className="rounded-full group flex items-center mr-[16px] justify-center cursor-pointer transition ease-in-out duration-[200ms]"
               onClick={handleClearSelection}
               role="button"
               aria-label="Clear selection"
@@ -58,8 +60,8 @@ function FilterDropdown({
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="12"
-                height="12"
+                width="18"
+                height="18"
                 viewBox="0 0 32 32"
                 fill="none"
               >
@@ -70,12 +72,12 @@ function FilterDropdown({
               </svg>
             </div>
           )}
-          <div className="cursor-pointer flex items-center justify-center">
+          <div className="cursor-pointer flex items-center justify-center mr-[8px]">
             <svg
               className={`transform ${isOpen ? "rotate-180" : ""}`}
               xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
+              width="24"
+              height="24"
               viewBox="0 0 32 32"
               fill="none"
             >
@@ -88,7 +90,7 @@ function FilterDropdown({
         </div>
       </div>
       {isOpen && (
-        <div className="absolute w-full bg-white shadow z-10">
+        <div className="absolute w-full bg-white shadow z-10 overflow-scroll max-h-[320px]">
           {options.map((option, index) => (
             <div
               key={index}
@@ -297,10 +299,10 @@ function Filters({
           backgroundColor={backgroundColor}
         />
       </div>
-      <div className="flex flex-row justify-between w-full items-center">
-        <div className="flex flex-col gap-[8px]">
+      <div className="flex flex-col lg:flex-row gap-[32px] justify-between w-full items-end">
+        <div className="flex flex-col w-full gap-[8px]">
           <div
-            className={`font-semibold uppercase mb-[4px] text-[14px] tracking-[0.25px] ${
+            className={`font-semibold uppercase mb-[4px] text-[16px] tracking-[0.25px] ${
               backgroundColor === "dark" ? "text-white" : "text-[#00467F]"
             }`}
           >
@@ -349,13 +351,42 @@ function Filters({
         </div>
         {showExplore && (
           <div
-            className={`transition ease-in-out duration-[250] ${
+            className={`transition w-full lg:w-auto text-center ease-in-out duration-[250] ${
               isAnyOptionSelected()
                 ? "opacity-100 translate-y-0"
                 : "translate-y-[20px] opacity-0"
             }`}
           >
-            <Button label="Explore" type="outline" onClick={handleApplyClick} />
+            <div className="group">
+              <Button type="primary-dark" onClick={handleApplyClick}>
+                <div className="gap-[12px] flex flex-row items-center">
+                  <span className="font-[600] w-[220px] lg:w-[auto] text-center text-[17.5px] whitespace-nowrap">
+                    Explore
+                  </span>
+                  <span
+                    className={`right-0 hidden rounded-[12px] cursor-pointer  transition ease-in-out duration-[300ms] ${isAnyOptionSelected ? "transform translate-x-[-2px] opacity-100" : "translate-x-[56px] opacity-0"} flex items-center`}
+                    // Submit form when the button is clicked
+                    role="button"
+                    tabIndex="0"
+                    aria-label="Submit search"
+                    onKeyDown={(e) => handleKeyDown(e, handleApplyClick)}
+                  >
+                    <svg
+                      className="group-hover:fill-white fill-[#00467F] transition ease-in-out duration-[250ms] group-hover:translate-x-[8px]"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="auto"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+                      ></path>
+                    </svg>
+                  </span>
+                </div>
+              </Button>
+            </div>
           </div>
         )}
       </div>

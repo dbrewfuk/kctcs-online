@@ -9,6 +9,7 @@ import Testimonial from "./components/SectionTestimonial";
 import AdmissionsInfo from "./components/SectionAdmissionsInfo";
 import TuitionSection from "./components/STuition";
 import FadeInSection from "./components/FadeInSection";
+import GlobalFooter from "./components/GlobalFooter";
 
 function Home() {
   const [selectedCredential, setSelectedCredential] = useState("");
@@ -172,8 +173,8 @@ function Home() {
 
       <SFeaturedAreas />
       <Testimonial />
-      <AdmissionsInfo />
       <TuitionSection />
+      <GlobalFooter />
     </>
   );
 }

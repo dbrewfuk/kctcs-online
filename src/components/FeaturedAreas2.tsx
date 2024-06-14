@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ProgramResults from "./ProgramResults";
+import Button from "./Button";
 
 const FeaturedAreasList2 = ({
   handleProgramAreaClick,
@@ -17,21 +18,24 @@ const FeaturedAreasList2 = ({
   const cardData = [
     {
       id: 1,
-      image: "./assets/as1.jpeg",
+      image:
+        "https://gateway.kctcs.edu/education-training/media/images/paralegal-technology.png",
       title: "Paralegal",
       content:
         "Become a vital part of the legal team by assisting lawyers, law offices, corporations and the courts to defend and prosecute the law, and administer justice.",
     },
     {
       id: 3,
-      image: "./assets/as3.jpeg",
+      image:
+        "https://webassets.kctcs.edu/images/global/education-training/criminal-justice-gateway.jpeg",
       title: "Criminal Justice",
       content:
         "Serve your community while promoting public safety. Our degree and certificate programs prepare for you for police, corrections, or security careers.",
     },
     {
       id: 4,
-      image: "./assets/as4.jpeg",
+      image:
+        "https://southcentral.kctcs.edu/_resources/images/Homepage/medical-information-technology.jpg",
       title: "Medical Information Technology",
       content:
         "Connect your people skills with technical know-how for administrative work in the medical field, including coding, transcription and billing. ",
@@ -45,7 +49,8 @@ const FeaturedAreasList2 = ({
     },
     {
       id: 8,
-      image: "./assets/as8.jpeg",
+      image:
+        "https://jefferson.kctcs.edu/education-training/program-finder/media/hero/human-services-hero.jpg",
       title: "Human Services",
       content:
         "Affect change through meaningful work helping people in need. Our programs train you for careers in social, community, education and mental health services.",
@@ -59,21 +64,30 @@ const FeaturedAreasList2 = ({
     },
     {
       id: 12,
-      image: "./assets/as2.jpeg",
+      image:
+        "https://hazard.kctcs.edu/education-training/media/2019/45480453_2160136080927272_6828600132049567744_o.jpg",
       title: "Unmanned Systems Technology",
       content:
         "Soar to new heights in your career!  Drone technology is one of the fastest growing sectors of the economy. ",
     },
     {
       id: 13,
-      image: "./assets/as1.jpeg",
+      image:
+        "https://westkentucky.kctcs.edu/education-training/media/images/programs/marine-technology/marine-technology.jpg",
       title: "Marine Technology",
       content:
         "Rock the boat with the technical training you need to advance as a professional mariner.",
     },
   ];
 
-  const [selectedArea, setSelectedArea] = useState("Paralegal");
+  const handleApplyClick = (buttonText) => {
+    const queryParams = new URLSearchParams();
+    queryParams.append("area", buttonText);
+    const queryString = queryParams.toString();
+    window.location.href = `/explore-programs.html?${queryString}`;
+  };
+
+  const [selectedArea, setSelectedArea] = useState("");
 
   useEffect(() => {
     const filteredPlans = academicPlans.filter((plan) => {
@@ -87,12 +101,14 @@ const FeaturedAreasList2 = ({
   }, [selectedArea, selectedPlan, academicPlans]);
 
   return (
-    <div className="">
-      <div className="flex flex-row flex-wrap">
+    <div className="overflow-x-auto w-full noscrollbar ">
+      <div className="flex flex-row w-[200%] gap-[24px] items-start snap-proximity snap-x noscrollbar overflow-x-auto">
         {cardData.map((card) => (
           <div
-            className={`w-full relative group order-[2] border-l-[1px] border-[#FBBF24] transition ease-in-out cursor-pointer border-b border-b-[#f3f3f3] last:border-b-[0] ${
-              selectedFilters.includes(card.title) ? "selected" : ""
+            className={`w-full min-w-[320px] min-h-[320px]  snap-center noscrollbar transition ease-in-out duration-[250ms] relative group order-[2] border-[#FBBF24] transition ease-in-out cursor-pointer ${
+              selectedArea.includes(card.title)
+                ? "border-[8px] shadow-[0_4px_8px_rgba(0,0,0,0.15)]"
+                : ""
             }`}
             key={card.id}
             onClick={() => {
@@ -112,57 +128,76 @@ const FeaturedAreasList2 = ({
             aria-label={`Select ${card.title} program area`}
           >
             <div
-              className={` flex flex-col transition-all border-l-[4px]  ease-in-out text-[#00467F] duration-[250ms] w-full h-full justify-center p-[20px] pl-[16px]  ${
+              className={` flex flex-col transition-all  border-[#f3f3f3] bg-[#f3f3f3]  ease-in-out text-[#00467F] duration-[250ms] w-full h-full justify-center ${
                 selectedArea === card.title
                   ? "bg-[#f5f5f5] border-[#FBBF24]"
                   : " bg-[white] border-[transparent] hover:bg-[#f3f3f3]"
               }`}
             >
               {" "}
-              <div className="flex gap-[16px] items-center ">
-                <h1 className="text-[20px] whitespace-wrap font-semibold order-[2]">
-                  {card.title}
-                </h1>
-                <div className="max-w-[18px] min-w-[18px]">
-                  {selectedArea !== card.title ? (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 18 18"
-                      fill="#00467f"
-                      className="w-full"
-                    >
-                      <path
-                        d="M7.706 18v-7.657H.5V7.62h7.206V0h2.623v7.621H17.5v2.722h-7.17V18z"
-                        fillRule="evenodd"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 18 18"
-                      fill="#00467f"
-                    >
-                      <path d="M.5 10.343V7.62h17v2.722z" fillRule="evenodd" />
-                    </svg>
-                  )}
-                </div>
+              <div className="aspect-[4/3] overflow-hidden relative">
+                <img
+                  src={card.image}
+                  className={`transition ease-in-out absolute scale-[1] w-full h-full duration-[250ms] object-cover ${selectedArea === card.title ? "scale-[125%]" : ""}`}
+                />
               </div>
-              {selectedArea === card.title && (
-                <>
-                  <p className="text-[16px] text-[#00467F] mt-[16px] ">
-                    {card.content}
-                  </p>{" "}
-                  <div className="lg:hidden mt-[24px]">
-                    <ProgramResults
-                      key={selectedArea}
-                      filteredAcademicPlans={filteredAcademicPlans}
-                      showCount={false}
-                      darkBg={true}
-                      showViewToggle={false}
-                    />
+              <div className="p-[24px]">
+                <div className="flex gap-[16px] items-center">
+                  <h1 className="text-[20px] whitespace-wrap font-semibold order-[2]">
+                    {card.title}
+                  </h1>
+                  <div className="max-w-[18px] min-w-[18px]">
+                    {selectedArea !== card.title ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 18 18"
+                        fill="#00467f"
+                        className="w-full"
+                      >
+                        <path
+                          d="M7.706 18v-7.657H.5V7.62h7.206V0h2.623v7.621H17.5v2.722h-7.17V18z"
+                          fillRule="evenodd"
+                        />
+                      </svg>
+                    ) : (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 18 18"
+                        fill="#00467f"
+                      >
+                        <path
+                          d="M.5 10.343V7.62h17v2.722z"
+                          fillRule="evenodd"
+                        />
+                      </svg>
+                    )}
                   </div>
-                </>
-              )}
+                </div>
+                {selectedArea === card.title && (
+                  <>
+                    <p className="text-[16px] text-[#00467F] mt-[16px] mb-[32px]">
+                      {card.content}
+                    </p>{" "}
+                    <Button
+                      type="primary"
+                      onClick={() => handleApplyClick(card.title)}
+                      width="full"
+                    >
+                      Explore Programs
+                    </Button>
+                    <div className="lg:hidden mt-[24px]">
+                      <ProgramResults
+                        key={selectedArea}
+                        filteredAcademicPlans={filteredAcademicPlans}
+                        showCount={false}
+                        depth="medium"
+                        darkBg={true}
+                        showViewToggle={false}
+                      />
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         ))}

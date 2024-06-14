@@ -2,7 +2,6 @@ const express = require("express");
 const { Pool } = require("pg");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const fs = require("fs");
 
 dotenv.config();
 
@@ -11,12 +10,7 @@ const port = process.env.PORT || 3001;
 
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
-  ssl: {
-    rejectUnauthorized: false,
-    ssl: false, // Disable SSL
-    // This allows self-signed certificates
-    //ca: fs.readFileSync("./etc/ssl/certs/server.crt").toString(),
-  },
+  ssl: false, // Disable SSL
 });
 
 pool.on("connect", () => {

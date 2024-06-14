@@ -43,31 +43,46 @@ function TuitionAndCost() {
       heading: "Managing Your Money.",
       description:
         "College is a whole new time and experience for young adults. Between going to a whole new school, you may be living on your own, starting your first job, managing money on your own for the first time, and so on. This can be a scary thing, but it is very possible to do it correctly!",
-      imgSrc: "/src/assets/admissions.jpeg",
+      imgSrc: "/src/assets/tc-mm-1920x1281.jpg",
       imgAlt: "tuition",
+      youtubeId: "",
       buttonLabel: "Learn More",
-      buttonHref: "/tuition-and-costs.html",
+      buttonHref:
+        "https://kctcs.edu/affording-college/managing-your-money/index.aspx",
+      buttonStyle: "",
+      buttonIcon: "",
     },
     {
       title: "Online Tuition",
       heading: "Program Applicability.",
       description:
         "If you are receiving financial aid, keep in mind that the federal government will only pay for the courses that apply toward your major.  Your aid may be adjusted accordingly, if you chose to remain in those courses. ",
-      imgSrc: "/src/assets/admissions.jpeg",
+      imgSrc: "/src/assets/tc-mm-cat-guy-1920x1281.jpg",
       imgAlt: "tuition",
+      youtubeId: "",
       buttonLabel: "Learn More",
-      buttonHref: "/tuition-and-costs.html",
+      buttonHref:
+        "https://kctcs.edu/affording-college/program-applicability/index.aspx",
+      buttonStyle: "",
+      buttonIcon: "",
     },
     {
       title: "Financial Aid",
-      heading: "Graduate Debt Free.",
-      headingHighlight: "",
+      heading: "Graduate",
+      headingHighlight: "Debt Free",
       description:
         "We are here to provide you with what you need to succeed. Paying for college can be confusing. Learn about financial aid with these great videos.",
-      imgSrc: "/src/assets/admissions.jpeg",
+      imgSrc: "/src/assets/tc-gdf-purse-932-699.jpg",
       imgAlt: "tuition",
+      youtubeId: [
+        { id: "3cb1nv2IF2s", title: "Your financial aid questions answered!" },
+        { id: "mnQReKOtNvo", title: "Part 1 Verification is OK!" },
+        { id: "7-DSeG-v3Bc", title: "Part 2 Verification Tips" },
+      ],
       buttonLabel: "Learn More",
-      buttonHref: "/tuition-and-costs.html",
+      buttonStyle: "",
+      buttonIcon: "",
+      buttonHref: "https://kctcs.edu/financial-aid/index.aspx",
     },
   ];
 
@@ -78,7 +93,7 @@ function TuitionAndCost() {
       <div className="bg-[] mb-[64px] lg:mb-[96px]">
         <div className="container mx-auto px-[24px] lg:px-0 pt-[64px] lg:pt-[96px] pb-[56px] lg:pb-[96px]">
           <div className="flex flex-col lg:flex-row items-center gap-[32px] lg:gap-[64px]">
-            <div className="w-full aspect-[4/3] lg:w-1/2 rounded-[12px] overflow-hidden">
+            <div className="w-full aspect-[4/3] lg:w-1/2 overflow-hidden">
               <img
                 src="https://southeast.kctcs.edu/about/media/images/about-tuition-cost.jpg"
                 className="w-full h-full object-cover"
@@ -97,8 +112,12 @@ function TuitionAndCost() {
                 application process, our colleges have you covered. We'll help
                 you reach your dreams at a price that won't break the bank.
               </p>
-              <div className="flex justify-center mt-[32px]">
-                <Button label="How to Pay for College" href="" type="primary" />
+              <div className="flex mt-[32px]">
+                <Button
+                  label="How to Pay for College"
+                  href="https://kctcs.edu/affording-college/"
+                  type="primary"
+                />
               </div>
             </div>
           </div>

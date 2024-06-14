@@ -3,9 +3,9 @@ import Button from "../components/Button";
 
 function TuitionSection() {
   return (
-    <div className="pb-[56px] lg:pb-[80px]">
+    <div className="py-[56px] lg:py-[80px]">
       <div className="px-[24px] lg:px-[0] container mx-auto">
-        <div className="flex flex-col lg:flex-row lg:justify-center gap-[32px] lg:gap-[48px]">
+        <div className="flex flex-col lg:flex-row items-center lg:justify-center gap-[32px] lg:gap-[48px]">
           <div className="w-full lg:w-[50%]">
             <div className="flex flex-col items-center gap-[32px]">
               <div className="text-center lg:text-left has-bar">
@@ -20,7 +20,10 @@ function TuitionSection() {
                   KCTCS Online is convenient and affordable. Our tuition rates
                   are the lowest in the state. KCTCS makes it easy to enroll in
                   over{" "}
-                  <a className="border-b-[1px] border-[#00467f]" href="">
+                  <a
+                    className="border-b-[1px] border-[#00467f]"
+                    href="./explore-programs.html"
+                  >
                     100 online programs
                   </a>{" "}
                   without breaking the bank. 
@@ -30,29 +33,29 @@ function TuitionSection() {
                 <div className="flex w-full justify-center items-center relative">
                   <div className="w-[320px] h-[320px] overflow-hidden rounded-full">
                     <div className="w-full lg:w-[60%] h-full absolute left-1/2 -translate-x-1/2">
-                      <div className="flex flex-col w-full h-full justify-between">
+                      <div className="flex flex-col w-full h-full justify-end">
                         <div className="flex flex-row items-start w-full justify-between">
-                          <div className="p-[12px] bg-[white] bg-opacity-[25%] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 hover:bg-[white] group transition ease-in-out duration-[250ms]">
+                          <div className="p-[12px] bg-[white] border-b-[4px] border-b-[#f3f3f3]  backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 hover:bg-[white] group transition ease-in-out duration-[250ms]">
                             <span className="text-center text-[#00467F] font-[600] group-hover:text-[#00467f] transition ease-in-out duration-[250ms]">
                               Tuition
                               <br />
                               $186/credit hour
                             </span>
                           </div>
-                          <div className="mt-[48px] p-[12px] bg-[white] bg-opacity-[25%] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 hover:bg-[white] group transition ease-in-out duration-[250ms]">
+                          <div className="mt-[48px] p-[12px] bg-[white] border-b-[4px] border-b-[#f3f3f3] border-l-[1px]  backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 hover:bg-[white] group transition ease-in-out duration-[250ms]">
                             <span className="text-center text-[#00467F] font-[600] group-hover:text-[#00467f] transition ease-in-out duration-[250ms]">
-                              Tuition
+                              Online Learning Fee
                               <br />
-                              $186/credit hour
+                              $20/credit hour
                             </span>
                           </div>
                         </div>
                         <div className="flex flex-row">
-                          <div className="ml-[48px] p-[12px] bg-[white] bg-opacity-[25%] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 hover:bg-[white] group transition ease-in-out duration-[250ms]">
+                          <div className="ml-[48px] p-[12px] bg-[white]  border-b-[4px] border-b-[#f3f3f3] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 hover:bg-[white] group transition ease-in-out duration-[250ms]">
                             <span className="text-center text-[#00467F] font-[600] group-hover:text-[#00467f] transition ease-in-out duration-[250ms]">
-                              Tuition
+                              Total Cost
                               <br />
-                              $186/credit hour
+                              $206/credit hour
                             </span>
                           </div>
                         </div>
@@ -80,29 +83,36 @@ function TuitionSection() {
             <div className="flex w-full justify-center items-center relative">
               <div className="w-[400px] h-[400px] overflow-hidden rounded-full">
                 <div className="w-full lg:w-[90%] h-full absolute left-1/2 -translate-x-1/2">
-                  <div className="flex flex-col w-full h-full justify-between">
-                    <div className="flex flex-row items-start w-full justify-between">
-                      <div className="p-[12px] bg-[white] text-center bg-opacity-[25%] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 group transition ease-in-out duration-[250ms]">
+                  <div className="flex flex-col w-full h-full justify-end pb-[32px]">
+                    <div className="flex flex-row items-start w-full justify-around">
+                      <div className="p-[12px] bg-[white] text-center border-b-[4px] border-b-[#f3f3f3] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 group transition ease-in-out duration-[250ms]">
                         <span className="text-center text-[#00467F] font-[600] group-hover:text-[#00467f] transition ease-in-out duration-[250ms]">
                           Tuition
                           <br />
                           $186/credit hour
                         </span>
                       </div>
-                      <div className="mt-[48px] p-[12px] text-center  bg-[white] bg-opacity-[25%] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 group transition ease-in-out duration-[250ms]">
+                      <div className="p-[12px] text-center  bg-[white] border-b-[4px] border-b-[#f3f3f3] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 group transition ease-in-out duration-[250ms]">
                         <span className="text-center text-[#00467F] font-[600] group-hover:text-[#00467f] transition ease-in-out duration-[250ms]">
-                          Tuition
+                          Online Learning Fee
                           <br />
-                          $186/credit hour
+                          $20/credit hour
+                        </span>
+                      </div>
+                      <div className="text-center p-[12px] bg-[white] border-b-[4px] border-b-[#f3f3f3] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 group transition ease-in-out duration-[250ms]">
+                        <span className="text-center text-[#00467F] font-[600] group-hover:text-[#00467f] transition ease-in-out duration-[250ms]">
+                          Total Cost
+                          <br />
+                          $206/credit hour
                         </span>
                       </div>
                     </div>
-                    <div className="flex flex-row">
-                      <div className="ml-[48px] text-center p-[12px] bg-[white] bg-opacity-[25%] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 group transition ease-in-out duration-[250ms]">
+                    <div className="flex flex-row hidden">
+                      <div className="ml-[48px] text-center p-[12px] bg-[white] border-b-[4px] border-b-[#f3f3f3] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 group transition ease-in-out duration-[250ms]">
                         <span className="text-center text-[#00467F] font-[600] group-hover:text-[#00467f] transition ease-in-out duration-[250ms]">
-                          Tuition
+                          Total Cost
                           <br />
-                          $186/credit hour
+                          $206/credit hour
                         </span>
                       </div>
                     </div>

@@ -10,6 +10,7 @@ import SuccessStories from "./SuccessStories";
 import ProgramList from "./components/ProgramList";
 import Programs from "./Programs-v2";
 import StudentStoryFeature from "./components/StudentStoryFeature";
+import GlobalFooter from "./components/GlobalFooter";
 
 import "./App.css";
 
@@ -102,6 +103,7 @@ function App() {
         </div>
       </Router>
       <Footer showModal={showModal} setShowModal={setShowModal} />
+      <GlobalFooter />
     </div>
   );
 }

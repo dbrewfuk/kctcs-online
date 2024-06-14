@@ -36,7 +36,7 @@ const ProgramResults = ({
           <div className="container flex flex-col">
             <div className="flex w-full items-center justify-between">
               {showCount && (
-                <span className="text-[#00467F] py-[16px]" aria-live="polite">
+                <span className="text-[#00467F] py-[24px]" aria-live="polite">
                   Showing {filteredAcademicPlans.length} Programs
                 </span>
               )}
@@ -115,7 +115,7 @@ const ProgramResults = ({
                   <div
                     key={index}
                     role="listitem"
-                    className={`hover:opacity-100 transition-all ease-in-out duration-[200ms] ${isGridLayout ? "w-full" : "w-[calc(33%-13px)]"} ${
+                    className={`hover:opacity-100 transition-all w-full ease-in-out duration-[200ms] ${isGridLayout ? "w-full" : "lg:w-[calc(33%-13px)]"} ${
                       expandedPrograms[index]
                         ? "transform translate-y-[-4px] z-[9]"
                         : ""
@@ -157,7 +157,7 @@ const ProgramResults = ({
                           <div className="w-full flex flex-col gap-[24px]">
                             <div>
                               <div
-                                className="border border-[2px] w-full gap-[8px] text-[17.5px] items-center border-[#00467F] font-[600] py-[12px] px-[16px] whitespace-nowrap text-ellipsis overflow-hidden cursor-pointer text-[#00467F]"
+                                className="border border-[2px] w-full gap-[8px] text-[17.5px] items-center border-[#00467F] font-[600] py-[12px] px-[16px] whitespace-nowrap flex justify-between text-ellipsis overflow-hidden cursor-pointer text-[#00467F]"
                                 aria-controls={`dropdown-${index}`}
                                 aria-expanded={
                                   expandedPrograms[index] ? "true" : "false"
@@ -187,11 +187,33 @@ const ProgramResults = ({
                                 role="button"
                                 tabIndex={0} // Make the div focusable
                               >
-                                {`Available at ${Array.isArray(plan.colleges) ? plan.colleges.length : 0} College${Array.isArray(plan.colleges) && plan.colleges.length > 1 ? "s" : ""}`}
+                                <span>
+                                  {" "}
+                                  {`Available at ${Array.isArray(plan.colleges) ? plan.colleges.length : 0} College${Array.isArray(plan.colleges) && plan.colleges.length > 1 ? "s" : ""}`}
+                                </span>
+                                <span>
+                                  <div className="flex gap-[0px]">
+                                    <div className="cursor-pointer flex items-center justify-center mr-[8px]">
+                                      <svg
+                                        className="transform "
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 32 32"
+                                        fill="none"
+                                      >
+                                        <path
+                                          d="M16.2207 24.8276L0 9.15857L1.54483 7.6138L16.1103 21.8482L30.4552 7.17242L32 8.71725L16.2207 24.8276Z"
+                                          fill="#00467F"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </span>
                                 {expandedPrograms[index] && (
                                   <div
                                     id={`dropdown-${index}`}
-                                    className="p-[16px] absolute left-[50%] transform translate-x-[-50%] min-w-[320px] rounded-[8px] bg-white shadow flex flex-col items-center gap-[0px] z-10"
+                                    className="p-[16px] absolute top-[90%] w-full min-w-[320px] left-0 max-h-[320px] overflow-y-auto rounded-[8px] bg-white shadow flex flex-col items-center gap-[0px] z-10"
                                     role="region" // Ensure region role for accessibility
                                     tabIndex={-1} // Exclude dropdown container from sequential focus
                                     onKeyDown={(e) => {

@@ -121,24 +121,24 @@ function SFeaturedAreas() {
       <div className="pt-[48px] lg:pt-[0px] lg:pb-[56px]">
         <div className="flex flex-col">
           <div className="relative w-full group overflow-hidden">
-            <div className="px-[24px] container mx-auto px-[24px] lg:px-0 flex items-end mb-[48px] lg:mb-[64px] w-full">
+            <div className="px-[24px] container mx-auto px-[24px] lg:px-0 flex items-end mb-[32px] lg:mb-[64px] w-full">
               <h1 className="text-[48.8px] leading-[48px] tracking-[-0.09375rem] lg:w-[50%] lg:text-[61.04px] lg:leading-[64px] text-[#00467F] font-[800] has-bar">
                 Real World Success,{" "}
                 <span className="whitespace-nowrap">
-                  <span className="text-[#FBBF24]">Anywhere</span>
+                  <span className="bar">Anywhere</span>
                   <span className="dot">.</span>
                 </span>
               </h1>
             </div>
           </div>
-          <div className="flex flex-col lg:flex-row  lg:gap-[64px]  lg:mb-[0]  lg:container lg:mx-auto lg:px-0">
-            <div className="w-full lg:w-[50%] h-full relative z-1 aspect-[16/9] overflow-hidden lg:rounded-[12px]">
+          <div className="flex flex-col lg:flex-row  lg:gap-[80px] items-center lg:mb-[0]  lg:container lg:mx-auto lg:px-0">
+            <div className="w-full lg:w-[50%] h-full relative z-1 aspect-[16/9] overflow-hidden">
               <img
                 className="w-full group-hover:scale-110 transition ease-in-out duration-[250ms] h-full absolute z-1 object-cover"
                 src="https://kctcs.edu/aa-female-no-mask.png"
               />
             </div>
-            <div className="px-[24px] pt-[24px] lg:pt-[0] pb-[48px] flex flex-col gap-[32px] lg:px-0 w-full  lg:w-[50%] text-center">
+            <div className="px-[24px] pt-[32px] lg:pt-[0] pb-[48px] lg:pb-0 flex flex-col gap-[24px] lg:gap-[32px] lg:px-0 w-full  lg:w-[50%] text-center">
               <div>
                 <h1 className="text-[31px] w-full leading-[28px] mb-[16px] lg:mb-[24px] w-[50%] lg:text-[48.8px] lg:leading-[48px] lg:tracking-[-0.09rem] text-[#00467F] font-[800]">
                   Start Your Future.
@@ -170,18 +170,18 @@ function SFeaturedAreas() {
         </div>
       </div>
       <div className="relative w-full container mx-auto px-[24px] lg:px-0 mx-auto pb-[56px] border-[#f0f0f0] lg:pb-[96px]">
-        <h3 className="text-[31px] leading-[32px] lg:text-[48.8px] mb-[24px] lg:leading-[52px] lg:mb-[56px] font-[800] text-[#00467F]">
+        <h3 className="text-[31px] leading-[32px] lg:text-[48.8px] mb-[32px] lg:leading-[52px] lg:mb-[56px] font-[800] text-[#00467F]">
           Shape Your Future.
         </h3>
         <div className="flex flex-col lg:flex-row gap-[32px] lg:gap-[64px]">
-          <div className="w-full lg:w-[25%] lg:sticky lg:top-0 h-full">
+          <div className="w-full  lg:sticky lg:top-0 h-full">
             <FeaturedAreasList2
               handleProgramAreaClick={handleProgramAreaClick}
               academicPlans={academicPlans}
               setAcademicPlans={setAcademicPlans}
             />
           </div>
-          <div className="w-full  lg:w-[70%]">
+          <div className="w-full hidden  lg:w-[70%]">
             <div className={`w-full hidden lg:block `}>
               <ProgramResults
                 key={selectedArea}

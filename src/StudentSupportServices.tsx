@@ -3,7 +3,6 @@ import Hero from "./components/Hero";
 import Header from "./components/Header";
 import AltSections from "./components/SAltSections";
 import CollegeCards from "./components/CollegeCards";
-import programs from "./programs-20240510.json";
 
 const sections = [
   {
@@ -13,7 +12,11 @@ const sections = [
       "This guide is designed to help you navigate some of the technical concerns you may have with Blackboard.",
     imgSrc: "/src/assets/admissions.jpeg",
     imgAlt: "tuition",
-    buttonLabel: "Download",
+    videoSrc: "",
+    youtubeId: "2fT2HzxEIng",
+    buttonLabel: "Download Guide",
+    buttonStyle: "leadingIcon",
+    buttonIcon: "Download",
     buttonHref:
       "https://kctcs.edu/current-students/academic-resources/blackboard-student-guide.pdf",
   },
@@ -22,7 +25,7 @@ const sections = [
     heading: "Training & Learning Center",
     description:
       "The TLC is your one-stop shop to find information and assistance for all the systems and solutions you use every day. From Blackboard eLearning tips and training, to Student Self Service best practices, to help with Microsoft Office 365 tools.",
-    imgSrc: "/src/assets/admissions.jpeg",
+    imgSrc: "/src/assets/sss-tlc-desk-1920x1080.jpg",
     imgAlt: "tuition",
     buttonLabel: "Learn More",
     buttonHref:
@@ -32,11 +35,12 @@ const sections = [
     title: "Financial Aid",
     heading: "Statewide Internet Access",
     description:
-      "The Kentucky Council on Postsecondary Education (CPE) has put together a list of access points for outdoor wifi at all of the higher education institutions across the state for Kentucky students to access online learning courses.&nbsp;",
-    imgSrc: "/src/assets/admissions.jpeg",
+      "The Kentucky Council on Postsecondary Education (CPE) has put together a list of access points for outdoor wifi at all of the higher education institutions across the state for Kentucky students to access online learning courses.",
+    imgSrc: "/src/assets/tc-mm-bed-dog-1920x1281.jpg",
     imgAlt: "tuition",
     buttonLabel: "Learn More",
-    buttonHref: "/tuition-and-costs.html",
+    buttonHref:
+      "https://kctcs.edu/current-students/academic-resources/statewide-internet-access.aspx",
   },
 ];
 
@@ -86,31 +90,6 @@ function StudentSupportServices() {
     setSelectedCollege?.(selectedCollege!);
   };
 
-  useEffect(() => {
-    // Extract unique credential types from programsData
-    const credentialTypesSet = new Set();
-
-    // Iterate over each program
-    programs.forEach((program) => {
-      // Iterate over each college in the program
-      program.colleges.forEach((college) => {
-        // Check if academic plans exist and iterate over them
-        if (college.academic_plans && college.academic_plans.length > 0) {
-          college.academic_plans.forEach((plan) => {
-            // Add the credential type to the Set
-            credentialTypesSet.add(plan.credential_type);
-          });
-        }
-      });
-    });
-
-    // Convert the Set to an array
-    const uniqueTypesArray = Array.from(credentialTypesSet);
-
-    // Update state with unique credential types
-    setUniqueCredentialTypes(uniqueTypesArray);
-  }, []); // Empty dependency array ensures this effect runs only once
-
   //const collegeCards = cardData[selectedCollege.name as keyof typeof cardData];
   return (
     <>
@@ -119,7 +98,7 @@ function StudentSupportServices() {
       <div className="bg-[#FFF9E6] mb-[96px]">
         <div className="container mx-auto px-[24px] lg:px-0 pt-[64px] lg:pt-[96px] pb-[64px] lg:pb-[96px]">
           <div className="flex flex-col lg:flex-row items-center gap-[32px] lg:gap-[64px]">
-            <div className="w-full aspect-[4/3] lg:w-1/2 rounded-[12px] overflow-hidden">
+            <div className="w-full aspect-[4/3] lg:w-1/2 overflow-hidden">
               <img
                 src="https://southeast.kctcs.edu/about/media/images/about-banner.jpg"
                 className="w-full h-full object-cover"

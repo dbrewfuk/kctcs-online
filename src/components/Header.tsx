@@ -216,7 +216,7 @@ const Header = ({ showModal, setShowModal, isActive }) => {
                   ? "translateY(0%)"
                   : "translateY(-100%)",
               }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
               style={{ pointerEvents: isMobileMenuOpen ? "auto" : "none" }}
               aria-hidden={!isMobileMenuOpen}
               role="dialog" // Define as dialog when open

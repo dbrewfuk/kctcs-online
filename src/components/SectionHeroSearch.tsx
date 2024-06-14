@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, Suspense } from "react";
 import Filters from "./Filters";
 
+
 function HeroSearch({
   title,
   highlighted,
@@ -178,7 +179,7 @@ function HeroSearch({
             ref={videoRef}
           ></video>
         </Suspense>
-        <div className="absolute top-0 w-full h-full pb-[32px]">
+        <div className="absolute top-0 w-full h-full pb-[48px] lg:pb-0">
           <div className="container px-[24px] lg:px-0 mx-auto h-full">
             <div className="flex h-full items-end lg:items-center justify-end">
               <div className="w-full lg:w-1/2 flex flex-col">

@@ -6,17 +6,21 @@ import Button from "./Button";
 const videos = [
   {
     id: 1,
-    title: "Jae",
-    college: "West Kentucky Community & Technical College",
-    program: "Criminal Justice",
-    src: "https://demo.kctcs.edu/ko/media/jae.mp4",
+    title: "Drew",
+    college: "Ashland Community & Technical College",
+    program: "",
+    src: "https://demo.kctcs.edu/ko/media/kctcs-online-at-ashland-community-and-technical-college.mp4",
+    subtitles:
+      "https://demo.kctcs.edu/ko/media/kctcs-online-at-ashland-community-and-technical-college.vtt",
   },
   {
     id: 2,
-    title: "Drew",
-    college: "Your College Name",
+    title: "Stacy",
+    college: "Somerset Community College",
     program: "Your Program Name",
-    src: "https://demo.kctcs.edu/ko/media/drew.mp4",
+    src: "https://demo.kctcs.edu/ko/media/kctcs-online-at-somerset-community-college.mp4",
+    subtitles:
+      "https://demo.kctcs.edu/ko/media/kctcs-online-at-somerset-community-college.vtt",
   },
 ];
 
@@ -122,11 +126,9 @@ function StudentStoryFeature() {
       if (e.shiftKey && document.activeElement === firstElement) {
         // Shift + Tab on first element: move to last element
         e.preventDefault();
-        lastElement.focus();
       } else if (!e.shiftKey && document.activeElement === lastElement) {
         // Tab on last element: move to first element
         e.preventDefault();
-        firstElement.focus();
       }
     }
   };
@@ -137,7 +139,7 @@ function StudentStoryFeature() {
       onKeyDown={handleKeyDown} // Listen for Tab key presses
     >
       <div className="relative lg:container lg:mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-[24px] lg:gap-[72px]">
+        <div className="flex flex-col lg:flex-row items-center gap-[24px] lg:gap-[80px]">
           <div className="container mx-auto px-[24px] lg:px-0 w-full lg:w-[50%]">
             <h1 className="text-[48.8px] leading-[52px] lg:text-[64px] lg:leading-[64px] tracking-[-1.5px] font-[800] text-[#00467F] lg-[96px] mb-[16px] lg:mb-[24px] has-bar">
               <span className="relative">
@@ -175,14 +177,15 @@ function StudentStoryFeature() {
                           : "shadow-[0] border-[0]"
                       }`}
                     >
+                      {" "}
                       <video
                         ref={(el) => (videoRefs.current[index] = el)}
                         id={`video-${index}`}
                         src={video.src}
                         className="object-cover w-full h-full object-center"
                         muted={true}
-                        controls={false}
-                      />
+                        controls={isFullscreen}
+                      ></video>
                     </div>
                     <div className="text-[#00467F] text-[20px] font-[600] pb-[16px]">
                       {video.title}
@@ -202,94 +205,119 @@ function StudentStoryFeature() {
               aria-labelledby="modal-title"
             >
               {isFullscreen && (
-                <div className="fixed top-0 left-0 w-full h-full z-[999] bg-[rgba(0,0,0,0.5)]"></div>
+                <div className="fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center z-[999] bg-[rgba(0,0,0,0.5)]"></div>
               )}
               <Suspense fallback={<div>Loading...</div>}>
                 <div
                   className={`${
                     isFullscreen
-                      ? "m-[24px] fixed w-[calc(100%-48px)] h-auto lg:h-[calc(100%-24px)] top-0 left-0 z-[1000]"
+                      ? "m-[24px] fixed w-[calc(100%-48px)] top-0 flex flex-col h-full items-center justify-center left-0 z-[1000]"
                       : "relative"
                   }`}
                 >
-                  {isFullscreen && (
-                    <div className="flex justify-end mb-[16px] lg:absolute top-0 right-0 lg:p-[24px]">
-                      <button
-                        className="flex items-center gap-[8px] cursor-pointer group"
-                        onClick={toggleModal}
-                        ref={closeButtonRef}
-                        tabIndex={0}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            toggleModal();
-                          }
-                        }}
-                        aria-label="Close fullscreen video"
-                      >
-                        <span className="p-[8px] group-hover:scale-[1.15] lg:p-[8px] transform rotate-45 inline-block transition-ease-in-out hover:opacity-100                         duration-[200ms] group-hover:opacity-100 text-white rounded-full bg-[#FBBF24]">
-                          <svg
-                            className="lg:w-[18px] group-hover:scale-[1] lg:h-[18px] w-[16px] h-[16px] fill-white"
-                            viewBox="0 0 33 34"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M17.7792 0.904053L16.0287 0.90529L16.0287 16.1254L0.808594 16.1254L0.808594 17.8746H16.0287L16.0299 33.0959L17.7804 33.0947V17.8746H33.0005L32.9992 16.1266L17.7798 16.1272L17.7792 0.904053Z"
-                              fill="white"
-                            ></path>
-                          </svg>
-                        </span>
-                        <span className="text-[11.7px] lg:text-[14px] transition-ease-in-out duration-[200ms] uppercase font-[600] tracking-[1px] text-[white]">
-                          Close
-                        </span>
-                      </button>
-                    </div>
-                  )}
-
-                  <div className="aspect-w-16 aspect-h-9 bg-[#f5f5f5] overflow-hidden lg:rounded-[12px]">
-                    <video
-                      ref={(el) => (videoRefs.current[currentVideo] = el)}
-                      id={`video-${currentVideo}`}
-                      src={videos[currentVideo].src}
-                      className="object-cover w-full h-full object-center"
-                      muted={false}
-                      controls={isFullscreen}
-                    />
-                    {!isFullscreen && (
-                      <div
-                        className="cursor-pointer group absolute w-full h-full flex items-center justify-center top-0 left-0 z-[2]"
-                        onClick={toggleFullscreen}
-                        tabIndex={0}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            toggleFullscreen();
-                          }
-                        }}
-                        aria-label="Open fullscreen video"
-                      >
-                        <div className="group absolute w-[400px] h-[400px] top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] z-[-1]">
-                          <button className="p-[12px] absolute top-[50%] transition-ease-in-out duration-[200ms] left-[50%]  group-hover:scale-[1.125] z-[-1] transform translate-x-[-50%] translate-y-[-50%]  bg-[#E7A614] text-white rounded-full">
+                  <div className="container mx-auto">
+                    {isFullscreen && (
+                      <div className="flex justify-end w-full mb-[16px] top-0 right-0">
+                        <button
+                          className="flex items-center gap-[8px] cursor-pointer group"
+                          onClick={toggleModal}
+                          ref={closeButtonRef}
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              toggleModal();
+                            }
+                          }}
+                          aria-label="Close fullscreen video"
+                        >
+                          <span className="p-[8px] group-hover:scale-[1.15] lg:p-[8px] transform rotate-45 inline-block transition-ease-in-out hover:opacity-100                         duration-[200ms] group-hover:opacity-100 text-white rounded-full bg-[#FBBF24]">
                             <svg
-                              className="w-[32px] h-[32px] fill-white"
+                              className="lg:w-[18px] group-hover:scale-[1] lg:h-[18px] w-[16px] h-[16px] fill-white"
+                              viewBox="0 0 33 34"
+                              fill="none"
                               xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
                             >
-                              <path d="M8 5v14l11-7z"></path>
-                              <path d="M0 0h24v24H0z" fill="none"></path>
+                              <path
+                                d="M17.7792 0.904053L16.0287 0.90529L16.0287 16.1254L0.808594 16.1254L0.808594 17.8746H16.0287L16.0299 33.0959L17.7804 33.0947V17.8746H33.0005L32.9992 16.1266L17.7798 16.1272L17.7792 0.904053Z"
+                                fill="white"
+                              ></path>
                             </svg>
-                          </button>
-                        </div>
+                          </span>
+                          <span className="hidden text-[11.7px] lg:text-[14px] transition-ease-in-out duration-[200ms] uppercase font-[600] tracking-[1px] text-[white]">
+                            Close
+                          </span>
+                        </button>
                       </div>
                     )}
+
+                    <div className="aspect-[16/9] w-full bg-[#f5f5f5] relative overflow-hidden ">
+                      <video
+                        ref={(el) => (videoRefs.current[currentVideo] = el)}
+                        id={`video-${currentVideo}`}
+                        className="object-cover w-full h-full object-center"
+                        muted={false}
+                        controls={false}
+                      >
+                        <source
+                          src={videos[currentVideo].src}
+                          type="video/mp4"
+                        />
+                        {isFullscreen && (
+                          <track
+                            src={videos[currentVideo].subtitles}
+                            kind="subtitles"
+                            srcLang="en"
+                            label="English"
+                            default
+                          />
+                        )}
+                      </video>
+                      {!isFullscreen && (
+                        <div
+                          className="cursor-pointer group absolute w-full h-full flex items-center justify-center top-0 left-0 z-[2]"
+                          onClick={toggleFullscreen}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              toggleFullscreen();
+                            }
+                          }}
+                          aria-label="Open fullscreen video"
+                        >
+                          <div className="group absolute w-[400px] h-[400px] top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] z-[-1]">
+                            <button className="p-[12px] absolute top-[50%] transition-ease-in-out duration-[200ms] left-[50%]  group-hover:scale-[1.125] z-[-1] transform translate-x-[-50%] translate-y-[-50%]  bg-[#E7A614] text-white rounded-full">
+                              <svg
+                                className="w-[32px] h-[32px] fill-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                              >
+                                <path d="M8 5v14l11-7z"></path>
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
+                </div>
+                <div className="w-full flex justify-center mt-[40px] lg:mt-[64px]">
+                  <a
+                    href="/success-stories.aspx"
+                    role="button"
+                    aria-label="Watch All Stories"
+                    tabIndex="0"
+                    className="cursor-pointer inline-block rounded-full bg-[#00467F] font-[600] border text-center whitespace-nowrap transition ease-in-out duration-[250ms]      bg-[#00467F] border-[#00467F] text-[white] hover:bg-[white] hover:text-[#00467F] text-[500] hover:border-[#00467F]    py-[16px] px-[32px] text-[16px] lg:py-[14px] lg:px-[40px] lg:text-[17.5px] "
+                  >
+                    Watch All Stories
+                  </a>
                 </div>
               </Suspense>
             </div>
           </div>
         </div>
-        <div className="w-full flex justify-center mt-[40px] lg:mt-[64px]">
+        <div className="w-full hidden flex justify-center mt-[32px] lg:mt-[48px]">
           <Button
             label="Watch All Stories"
             href="/success-stories.aspx"
