@@ -25,7 +25,7 @@ const sections = [
     heading: "Training & Learning Center",
     description:
       "The TLC is your one-stop shop to find information and assistance for all the systems and solutions you use every day. From Blackboard eLearning tips and training, to Student Self Service best practices, to help with Microsoft Office 365 tools.",
-    imgSrc: "/src/assets/sss-tlc-desk-1920x1080.jpg",
+    imgSrc: "/assets/sss-tlc-desk-1920x1080.jpg",
     imgAlt: "tuition",
     buttonLabel: "Learn More",
     buttonHref:
@@ -36,7 +36,7 @@ const sections = [
     heading: "Statewide Internet Access",
     description:
       "The Kentucky Council on Postsecondary Education (CPE) has put together a list of access points for outdoor wifi at all of the higher education institutions across the state for Kentucky students to access online learning courses.",
-    imgSrc: "/src/assets/tc-mm-bed-dog-1920x1281.jpg",
+    imgSrc: "/assets/tc-mm-bed-dog-1920x1281.jpg",
     imgAlt: "tuition",
     buttonLabel: "Learn More",
     buttonHref:
