@@ -143,7 +143,13 @@ function HeroSearch({
   }, []);
 
   // Array of texts to cycle through
-  const texts = ["Anywhere", "Everywhere", "Globally", "Universally"];
+  const texts = [
+    "From Home",
+    "For Parents",
+    "For Veterans",
+    "For Learners",
+    "Anywhere",
+  ];
   const [currentText, setCurrentText] = useState(0);
   const [nextText, setNextText] = useState(1);
   const [isFading, setIsFading] = useState(false);
@@ -155,8 +161,8 @@ function HeroSearch({
         setCurrentText((prev) => (prev + 1) % texts.length);
         setNextText((prev) => (prev + 1) % texts.length);
         setIsFading(false);
-      }, 500); // Match this duration with your animation duration
-    }, 3000); // Change text every 3 seconds
+      }, 300); // Match this duration with your animation duration
+    }, 5000); // Change text every 3 seconds
 
     return () => clearInterval(interval);
   }, [texts.length]);
