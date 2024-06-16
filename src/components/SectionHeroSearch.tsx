@@ -144,11 +144,12 @@ function HeroSearch({
 
   // Array of texts to cycle through
   const texts = [
-    "From Home",
+    "From Full-Time Workers",
     "For Parents",
     "For Veterans",
+    "For the Curious",
     "For Learners",
-    "Anywhere",
+    "For Anyone",
   ];
   const [currentText, setCurrentText] = useState(0);
   const [nextText, setNextText] = useState(1);
