@@ -65,7 +65,7 @@ function AdmissionsInfo() {
       description:
         "Seeking professional development and skill enhancement opportunities without committing to a traditional degree program? Look no further — we've got you covered.",
       url: "https://77ykxy-5173.csb.app/explore-programs.html?area=&credentialTypes=Certificate%2CDiploma",
-      image: "./src/assets/admissions.jpeg",
+      image: "/assets/admissions.jpeg",
       stat: "100+ Program Options",
       buttonText: "Non-degree Programs",
     },

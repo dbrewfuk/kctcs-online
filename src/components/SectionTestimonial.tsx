@@ -56,7 +56,7 @@ const Testimonial = () => {
       <div className="absolute w-full h-full top-0 left-0 -z-0 background-cover">
         <img
           className="absolute w-full h-full top-0 left-0 -z-0 object-cover"
-          src="./src/assets/header.jpeg"
+          src="/assets/header.jpeg"
         />
       </div>
       <motion.div

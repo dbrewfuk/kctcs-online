@@ -41,7 +41,7 @@ function TuitionAndCost() {
       heading: "Managing Your Money.",
       description:
         "College is a whole new time and experience for young adults. Between going to a whole new school, you may be living on your own, starting your first job, managing money on your own for the first time, and so on. This can be a scary thing, but it is very possible to do it correctly!",
-      imgSrc: "/src/assets/tc-mm-1920x1281.jpg",
+      imgSrc: "/assets/tc-mm-1920x1281.jpg",
       imgAlt: "tuition",
       youtubeId: "",
       buttonLabel: "Learn More",
@@ -55,7 +55,7 @@ function TuitionAndCost() {
       heading: "Program Applicability.",
       description:
         "If you are receiving financial aid, keep in mind that the federal government will only pay for the courses that apply toward your major.  Your aid may be adjusted accordingly, if you chose to remain in those courses. ",
-      imgSrc: "/src/assets/tc-mm-cat-guy-1920x1281.jpg",
+      imgSrc: "/assets/tc-mm-cat-guy-1920x1281.jpg",
       imgAlt: "tuition",
       youtubeId: "",
       buttonLabel: "Learn More",
@@ -70,7 +70,7 @@ function TuitionAndCost() {
       headingHighlight: "Debt Free",
       description:
         "We are here to provide you with what you need to succeed. Paying for college can be confusing. Learn about financial aid with these great videos.",
-      imgSrc: "/src/assets/tc-gdf-purse-932-699.jpg",
+      imgSrc: "/assets/tc-gdf-purse-932-699.jpg",
       imgAlt: "tuition",
       youtubeId: [
         { id: "3cb1nv2IF2s", title: "Your financial aid questions answered!" },

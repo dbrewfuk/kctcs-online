@@ -11,7 +11,7 @@ const sections = [
     heading: "Blackboard Learning Guide",
     description:
       "This guide is designed to help you navigate some of the technical concerns you may have with Blackboard.",
-    imgSrc: "/src/assets/admissions.jpeg",
+    imgSrc: "/assets/admissions.jpeg",
     imgAlt: "tuition",
     videoSrc: "",
     youtubeId: "2fT2HzxEIng",
@@ -131,7 +131,7 @@ function StudentSupportServices() {
         contentset="student-support-services"
         subheadline="Choose a college to explore more resources."
       />
-        <GlobalFooter />{" "}
+      <GlobalFooter />{" "}
     </>
   );
 }

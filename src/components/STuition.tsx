@@ -66,7 +66,7 @@ function TuitionSection() {
                     </div>
                     <img
                       className="w-full h-full object-cover"
-                      src="/src/assets/admissions.jpeg"
+                      src="/assets/admissions.jpeg"
                       alt="tuition"
                     />
                   </div>

@@ -60,8 +60,9 @@ function Admissions() {
         <div className="flex flex-col lg:flex-row items-center gap-[32px] lg:gap-[64px]">
           <div className="w-full  aspect-[4/3] lg:w-1/2 overflow-hidden">
             <img
-              src="https://southeast.kctcs.edu/about/media/images/about-campuses.jpg"
+              src="/assets/admissions.jpeg"
               className="w-full h-full object-cover"
+              alt="admissions-photo"
             />
           </div>
           <div className="w-full lg:w-1/2">

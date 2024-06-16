@@ -256,8 +256,12 @@ const ProgramResults = ({
                                       }
                                     }}
                                   >
-                                    {plan.colleges.map(
-                                      (college, collegeIndex) => (
+                                    {plan.colleges
+                                      .slice() // Creates a shallow copy to avoid mutating the original array
+                                      .sort((a, b) =>
+                                        a.name.localeCompare(b.name),
+                                      ) // Sorts colleges by name alphabetically
+                                      .map((college, collegeIndex) => (
                                         <a
                                           key={collegeIndex}
                                           className="px-[12px] py-[8px] rounded-[4px] w-full hover:bg-[#f5f5f5] transition ease-in-out duration-[250ms] dropdown-item"
@@ -268,8 +272,7 @@ const ProgramResults = ({
                                         >
                                           {college.name}
                                         </a>
-                                      ),
-                                    )}
+                                      ))}
                                   </div>
                                 )}
                               </div>
