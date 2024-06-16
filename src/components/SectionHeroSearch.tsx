@@ -162,7 +162,7 @@ function HeroSearch({
         setNextText((prev) => (prev + 1) % texts.length);
         setIsFading(false);
       }, 300); // Match this duration with your animation duration
-    }, 5000); // Change text every 3 seconds
+    }, 4000); // Change text every 3 seconds
 
     return () => clearInterval(interval);
   }, [texts.length]);
