@@ -6,9 +6,7 @@ import Header from "./components/Header";
 import CollegeCards from "./components/CollegeCards";
 import AltSections from "./components/SAltSections";
 import Button from "./components/Button";
-import DynamicSections from "./DynamicSections";
-import VideoBlockSlider from "./components/VideoBlockSlider";
-import programs from "./programs-20240207";
+import GlobalFooter from "./components/GlobalFooter";
 
 function TuitionAndCost() {
   const [selectedCredential, setSelectedCredential] = useState("");
@@ -91,7 +89,7 @@ function TuitionAndCost() {
       <Header isActive="tuition-and-cost" />
       <Hero title="Tuition and Costs" />
       <div className="bg-[] mb-[64px] lg:mb-[96px]">
-        <div className="container mx-auto px-[24px] lg:px-0 pt-[64px] lg:pt-[96px] pb-[56px] lg:pb-[96px]">
+        <div className="container mx-auto px-[24px] lg:px-0 pt-[64px] lg:pt-[96px] pb-[56px] lg:pb-[96px] border-b-[1px] border-[rgba(0,0,0,0.1)]">
           <div className="flex flex-col lg:flex-row items-center gap-[32px] lg:gap-[64px]">
             <div className="w-full aspect-[4/3] lg:w-1/2 overflow-hidden">
               <img
@@ -104,13 +102,13 @@ function TuitionAndCost() {
                 Tuition & Cost
               </span>
               <h1 className="text-[48.8px] leading-[52px] lg:text-[61.04px] mb-[24px] font-[800] lg:leading-[64px] text-[#00467F]">
-                Afraid You Can't Afford College<span className="">?</span>
+                Affordable Education<span className="bar">Online</span>.
               </h1>
               <p className="text-[21px] font-[500] leading-[32px] text-[#00467F]">
-                Well, you can. With the lowest tuition in Kentucky, financial
-                aid options, and a helping hand to guide you through the
-                application process, our colleges have you covered. We'll help
-                you reach your dreams at a price that won't break the bank.
+                Concerned about paying for your online education? We’ve got you
+                covered. We have the lowest tuition in Kentucky, and online
+                students are eligible for a wide array of scholarships and
+                financial aid.
               </p>
               <div className="flex mt-[32px]">
                 <Button
@@ -130,6 +128,7 @@ function TuitionAndCost() {
         contentset="tuition"
         subheadline="Choose a college to explore more Tuition resources."
       />
+      <GlobalFooter />
     </>
   );
 }

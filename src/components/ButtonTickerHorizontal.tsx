@@ -47,24 +47,24 @@ function ButtonTicker() {
   }
 
   return (
-    <div className="relative h-full w-full py-[24px] flex flex-col gap-[16px]">
+    <div className="relative h-full w-full pt-[24px] pb-[32px] flex flex-col gap-[12px]">
       <Marquee
         direction="left"
         speed={20}
         gradient={false}
         gradientColor="#0070D4"
         pauseOnHover={true}
-        className="custom-marquee flex w-full gap-[24px]"
+        className="custom-marquee flex w-full gap-[12px]"
       >
-        <div className="marquee-inner w-full flex  gap-[24px]">
+        <div className="marquee-inner w-full flex  gap-[12px]">
           {buttons.map((button, index) => (
             <div
               key={index}
-              className={`marquee-item flex  ${index % 2 === 0 ? "" : ""}`}
+              className={`marquee-item flex opacity-[50%]  ${index % 2 === 0 ? "" : ""}`}
             >
               <Button
                 type="primary"
-                depth="medium"
+                depth=""
                 size="small"
                 onClick={() => handleApplyClick(button)}
               >
@@ -79,17 +79,17 @@ function ButtonTicker() {
         speed={20}
         gradient={false}
         pauseOnHover={true}
-        className="custom-marquee flex w-full gap-[24px]"
+        className="custom-marquee flex w-full gap-[12px]"
       >
-        <div className="marquee-inner w-full flex  gap-[24px]">
+        <div className="marquee-inner w-full flex  gap-[12px]">
           {buttons.map((button, index) => (
             <div
               key={index}
-              className={`marquee-item flex  ${index % 2 === 0 ? "" : ""}`}
+              className={`marquee-item flex opacity-[50%]  ${index % 2 === 0 ? "" : ""}`}
             >
               <Button
                 type="primary"
-                depth="medium"
+                depth=""
                 size="small"
                 onClick={() => handleApplyClick(button)}
               >

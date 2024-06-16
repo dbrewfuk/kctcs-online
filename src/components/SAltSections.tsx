@@ -34,7 +34,7 @@ function Section({
             <span className="hidden text-[#00467f] inline-block text-[20px] mb-[16px] font-[600]">
               {title}
             </span>
-            <h1 className="text-[39px] leading-[44px] lg:text-[61.04px] lg:leading-[64px] mb-[24px] lg:mb-[24px] font-[800] text-[#00467f] has-bar">
+            <h1 className="text-[39px] leading-[44px] lg:text-[48px] lg:leading-[56px] mb-[24px] lg:mb-[24px] font-[800] text-[#00467f] has-bar">
               {heading}&nbsp;
               {headingHighlight && (
                 <>
@@ -270,7 +270,7 @@ function AltSections({ sections }) {
       {sections.map((section, index) => (
         <div
           key={index}
-          className="px-[24px] lg:px-[0] container mx-auto pb-[64px] lg:pb-[96px] border-b-[1px] border-[#f3f3f3]"
+          className="px-[24px] lg:px-[0] container mx-auto pb-[64px] lg:pb-[96px] border-b-[1px]  border-[rgba(0,0,0,0.1)]"
         >
           <Section
             title={section.title}

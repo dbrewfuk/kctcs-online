@@ -2,27 +2,7 @@ import React, { useRef, useState, useEffect, Suspense } from "react";
 import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import Button from "./Button";
-
-const videos = [
-  {
-    id: 1,
-    title: "Drew",
-    college: "Ashland Community & Technical College",
-    program: "",
-    src: "https://demo.kctcs.edu/ko/media/kctcs-online-at-ashland-community-and-technical-college.mp4",
-    subtitles:
-      "https://demo.kctcs.edu/ko/media/kctcs-online-at-ashland-community-and-technical-college.vtt",
-  },
-  {
-    id: 2,
-    title: "Stacy",
-    college: "Somerset Community College",
-    program: "Your Program Name",
-    src: "https://demo.kctcs.edu/ko/media/kctcs-online-at-somerset-community-college.mp4",
-    subtitles:
-      "https://demo.kctcs.edu/ko/media/kctcs-online-at-somerset-community-college.vtt",
-  },
-];
+import videos from "../data/stories.json";
 
 function StudentStoryFeature() {
   const [currentVideo, setCurrentVideo] = useState(0);
@@ -146,8 +126,11 @@ function StudentStoryFeature() {
                 <motion.span />
                 Transform{" "}
               </span>
-              Your <span className="bar adjusted-e">Education</span>
-              <span className="dot">.</span>
+              Your{" "}
+              <span className="whitespace-nowrap">
+                <span className="bar adjusted-e">Education</span>
+                <span className="dot">.</span>
+              </span>
             </h1>
             <p className="text-[18px] lg:text-[21px] lg:leading-[32px] leading-[28px] text-[#00467F]">
               At KCTCS, we understand that every student has unique needs and
@@ -157,47 +140,52 @@ function StudentStoryFeature() {
               pursue your dreams without breaking the bank.
             </p>
             <div className="flex gap-[8px] mt-[32px]">
-              {videos.map((video, index) => (
-                <div
-                  key={index}
-                  className="cursor-pointer w-full lg:max-w-[220px] lg:w-auto"
-                  onClick={() => handleVideoTitleClick(index)}
-                >
-                  <div
-                    className={`flex flex-col transition ease-in-out duration-[200ms] gap-[8px] ${
-                      currentVideo === index
-                        ? "bg-[white] hover:bg-[white]"
-                        : "shadow-[0]"
-                    }`}
-                  >
+              {videos.map(
+                (video, index) =>
+                  video.feature && (
                     <div
-                      className={`overflow-hidden aspect-video w-full bg-[#f5f5f5] ${
-                        currentVideo === index
-                          ? "border-[#FBBF24] border-[6px]"
-                          : "shadow-[0] border-[0]"
-                      }`}
+                      key={index}
+                      className="cursor-pointer w-full lg:max-w-[220px] lg:w-auto"
+                      onClick={() => handleVideoTitleClick(index)}
                     >
-                      {" "}
-                      <video
-                        ref={(el) => (videoRefs.current[index] = el)}
-                        id={`video-${index}`}
-                        src={video.src}
-                        className="object-cover w-full h-full object-center"
-                        muted={true}
-                        controls={isFullscreen}
-                      ></video>
+                      <div
+                        className={`flex flex-col transition ease-in-out duration-[200ms] gap-[8px] ${
+                          currentVideo === index
+                            ? "bg-[white] hover:bg-[white]"
+                            : "shadow-[0]"
+                        }`}
+                      >
+                        <div
+                          className={`overflow-hidden aspect-video w-full bg-[#f5f5f5] ${
+                            currentVideo === index
+                              ? "border-[#FBBF24] border-[6px]"
+                              : "shadow-[0] border-[0]"
+                          }`}
+                        >
+                          {" "}
+                          <video
+                            ref={(el) => (videoRefs.current[index] = el)}
+                            id={`video-${index}`}
+                            className="object-cover w-full h-full object-center"
+                            muted={true}
+                            controls={isFullscreen}
+                          >
+                            {" "}
+                            <source src={video.src} type="video/mp4" />
+                          </video>
+                        </div>
+                        <div className="text-[#00467F] text-[20px] font-[600] pb-[16px]">
+                          {video.firstname}
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-[#00467F] text-[20px] font-[600] pb-[16px]">
-                      {video.title}
-                    </div>
-                  </div>
-                </div>
-              ))}
+                  ),
+              )}
             </div>
           </div>
 
           {/* Video Content */}
-          <div className="lg:w-[50%]">
+          <div className="w-full lg:w-[50%]">
             <div
               key={videos[currentVideo].id}
               role="dialog"
@@ -310,7 +298,7 @@ function StudentStoryFeature() {
                     tabIndex="0"
                     className="cursor-pointer inline-block rounded-full bg-[#00467F] font-[600] border text-center whitespace-nowrap transition ease-in-out duration-[250ms]      bg-[#00467F] border-[#00467F] text-[white] hover:bg-[white] hover:text-[#00467F] text-[500] hover:border-[#00467F]    py-[16px] px-[32px] text-[16px] lg:py-[14px] lg:px-[40px] lg:text-[17.5px] "
                   >
-                    Watch All Stories
+                    See All Stories
                   </a>
                 </div>
               </Suspense>

@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import Header from "./components/Header";
 import AltSections from "./components/SAltSections";
 import CollegeCards from "./components/CollegeCards";
+import GlobalFooter from "./components/GlobalFooter";
 
 const sections = [
   {
@@ -130,6 +131,7 @@ function StudentSupportServices() {
         contentset="student-support-services"
         subheadline="Choose a college to explore more resources."
       />
+        <GlobalFooter />{" "}
     </>
   );
 }

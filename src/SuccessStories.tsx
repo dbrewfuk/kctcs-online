@@ -3,8 +3,10 @@ import { useHistory } from "react-router-dom";
 import Testimonial from "./components/Testimonial";
 import HeroSearch from "./components/HeroSearch";
 import Search from "./components/Search";
+import ExplorePrograms from "./components/SectionExplorePrograms";
 import Header from "./components/Header";
 import VideoGrid from "./components/VideoGrid";
+import GlobalFooter from "./components/GlobalFooter";
 import { Link } from "react-router-dom";
 
 function SuccessStories() {
@@ -118,28 +120,9 @@ function SuccessStories() {
   return (
     <>
       <Header isActive="success-stories" />
-
       <VideoGrid />
-      <div className="py-[64px] lg:py-[80px] bg-[#005CB8] relative">
-        <div className="container mx-auto px-8 lg:px-0">
-          <div className="flex flex-col lg:flex-row items-end gap-[32px] lg:gap-[64px]">
-            <div className="w-full lg:w-1/2">
-              <h1 className="text-[48px] leading-[52px] lg:text-[56px] lg:leading-[64px] font-[800] text-white mb-[16px] lg:mb-[24px]">
-                Something for <span className="bar">Everyone</span>
-                <span className="dot">.</span>
-              </h1>
-              <p className="text-[20px] lg:text-[25px] leading-[32px] text-white font-semibold">
-                We’ve been expanding our online offerings for years, and our
-                programs are all designed to help you land an in-demand,
-                high-paying job. So, what are you waiting for?
-              </p>
-            </div>
-            <div className="w-full lg:w-1/2">
-              <Search />
-            </div>
-          </div>
-        </div>
-      </div>
+      <ExplorePrograms />
+      <GlobalFooter />{" "}
     </>
   );
 }

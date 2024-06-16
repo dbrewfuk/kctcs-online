@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import stories from "../stories.json";
+import stories from "../data/stories.json";
 import { motion } from "framer-motion";
 // Import the image file
 
@@ -47,7 +47,12 @@ const Testimonial = () => {
   const currentSlide = stories[slideIndex];
 
   return (
-    <div className="relative pt-[64px] lg:pt-[80px] pb-[56px] lg:pb-[80px] overflow-hidden">
+    <div className="relative pt-[64px] lg:pt-[80px] pb-[56px] min-h-[66vh] lg:pb-[80px] overflow-hidden bg-[#FBBF24]">
+      <div className="container mx-auto relative z-[999]">
+        <h1 className="text-[48px] hidden font-[800] text-[white] mb-[32px] text-center">
+          What Students are Saying.
+        </h1>
+      </div>
       <div className="absolute w-full h-full top-0 left-0 -z-0 background-cover">
         <img
           className="absolute w-full h-full top-0 left-0 -z-0 object-cover"
@@ -62,7 +67,7 @@ const Testimonial = () => {
           y: isTextInView ? 0 : 40,
           transition: { duration: 0.5, ease: "easeInOut" },
         }}
-        className="pt-[56px] pb-[56px] w-[calc(100%-48px)]  lg:pt-[64px] lg:pb-[64px] relative z-[1] px-[48px] lg:px-[64px]  mx-[24px] lg:mx-[auto] bg-[#005CB8] mb-[0] container overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,0,0,0.15)]"
+        className="pt-[56px] pb-[56px] w-[calc(100%-48px)] lg:pt-[64px] lg:pb-[64px] relative z-[1] px-[48px] lg:px-[64px]  mx-[24px] lg:mx-[auto] bg-[#005CB8] mb-[0] container overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,0,0,0.15)]"
       >
         <div className="container mx-auto relative z-20">
           <div className="flex flex-col gap-[32px]">
@@ -129,6 +134,22 @@ const Testimonial = () => {
           ))}
         </div>
       </motion.div>
+      <div className="container mx-auto px-[24px] absolute bottom-[48px] lg:px-[0]">
+        <div className="flex justify-end gap-[16px] mt-[24px] relative">
+          <button
+            onClick={handlePreviousSlide}
+            className="bg-[#005CB8] text-white px-[12px] py-[8px] rounded-[4px] focus:outline-none"
+          >
+            Previous
+          </button>
+          <button
+            onClick={handleNextSlide}
+            className="bg-[#005CB8] text-white px-[12px] py-[8px] rounded-[4px] focus:outline-none"
+          >
+            Next
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

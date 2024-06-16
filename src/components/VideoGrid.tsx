@@ -83,7 +83,7 @@ function VideoGrid() {
             <div key={video.id}>
               <Suspense fallback={<div>Loading...</div>}>
                 {isFullscreen[index] && (
-                  <div className="fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center z-[999] bg-[rgba(0,0,0,0.5)]"></div>
+                  <div className="fixed top-0 left-0 w-full h-full flex flex-col items-center justify-center z-[999] bg-[rgba(0,0,0,0.65)]"></div>
                 )}
                 <div
                   onMouseEnter={() =>

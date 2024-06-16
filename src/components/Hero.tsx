@@ -4,8 +4,6 @@ import { useHistory, useLocation } from "react-router-dom";
 function Hero({ title, bgVideo, bgImage }) {
   const words = title.split(" ");
 
-  // Extract unique credentials, program areas, and plan names
-
   return (
     <div className="bg-primary hidden h-[400px] relative lg:h-[520px] overflow-hidden">
       <div className="w-full h-full">
@@ -21,15 +19,20 @@ function Hero({ title, bgVideo, bgImage }) {
             height="1366px"
             frameBorder="0"
             allow="autoplay; fullscreen"
-            allowfullscreen
+            aria-label="Background video"
           ></iframe>
         </Suspense>
         <div className="absolute top-0 w-full h-full pb-[32px] z-[1]">
           <div className="container px-[24px] lg:px-0 mx-auto h-full">
-            <div className="flex h-full items-end  justify-end">
+            <div className="flex h-full items-end justify-end">
               <div className="w-full lg:w-1/2 flex flex-col lg:pl-[32px]">
                 <h1 className="text-[64px] leading-[64px] xl:text-[76px] text-[white] font-black mb-[32px]">
-                  Real World Success, <span className="bar">Anywhere</span>
+                  {words.map((word, index) => (
+                    <span key={index} className="inline-block">
+                      {word}{" "}
+                    </span>
+                  ))}
+                  <span className="bar">Anywhere</span>
                   <span className="ripple dot">.</span>
                 </h1>
               </div>

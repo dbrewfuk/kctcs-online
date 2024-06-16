@@ -18,10 +18,18 @@ const ProgramResults = ({
   };
 
   const toggleDropdown = (index) => {
-    setExpandedPrograms((prevExpanded) => ({
-      ...prevExpanded,
-      [index]: !prevExpanded[index],
-    }));
+    setExpandedPrograms((prevExpanded) => {
+      // Close all toggles first
+      const newExpanded = Object.keys(prevExpanded).reduce((acc, key) => {
+        acc[key] = false;
+        return acc;
+      }, {});
+
+      // Open the selected toggle
+      newExpanded[index] = !prevExpanded[index];
+
+      return newExpanded;
+    });
   };
 
   return (
@@ -115,7 +123,7 @@ const ProgramResults = ({
                   <div
                     key={index}
                     role="listitem"
-                    className={`hover:opacity-100 transition-all w-full ease-in-out duration-[200ms] ${isGridLayout ? "w-full" : "lg:w-[calc(33%-13px)]"} ${
+                    className={`hover:opacity-100 z-[1] transition-all w-full ease-in-out duration-[200ms] ${isGridLayout ? "w-full" : "lg:w-[calc(33%-13px)]"} ${
                       expandedPrograms[index]
                         ? "transform translate-y-[-4px] z-[9]"
                         : ""
@@ -213,7 +221,7 @@ const ProgramResults = ({
                                 {expandedPrograms[index] && (
                                   <div
                                     id={`dropdown-${index}`}
-                                    className="p-[16px] absolute top-[90%] w-full min-w-[320px] left-0 max-h-[320px] overflow-y-auto rounded-[8px] bg-white shadow flex flex-col items-center gap-[0px] z-10"
+                                    className="p-[16px] absolute top-[90%] w-full min-w-[320px] left-0 max-h-[320px] overflow-y-auto rounded-[8px] bg-white shadow flex flex-col items-center gap-[0px] z-999"
                                     role="region" // Ensure region role for accessibility
                                     tabIndex={-1} // Exclude dropdown container from sequential focus
                                     onKeyDown={(e) => {

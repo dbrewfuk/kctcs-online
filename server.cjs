@@ -2,11 +2,18 @@ const express = require("express");
 const { Pool } = require("pg");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const path = require("path");
+const fs = require("fs");
+
+const caCertPath = path.join(__dirname, "./etc/ssl/certs/ca.crt");
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001;
+
+const sslConfig =
+  process.env.NODE_ENV === "production" ? { rejectUnauthorized: true } : false;
 
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
@@ -24,7 +31,7 @@ pool.on("error", (err) => {
 
 app.use(cors());
 
-app.get("/api/programs-with-colleges", async (req, res) => {
+app.get("/api/programs", async (req, res) => {
   const client = await pool.connect();
   try {
     const result = await client.query(`

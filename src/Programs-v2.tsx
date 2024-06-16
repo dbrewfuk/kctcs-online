@@ -259,6 +259,7 @@ function Programs() {
   return (
     <>
       <Header isActive="explore-programs" />
+
       <div id="sticky-search" className="flex flex-col lg:flex-row ">
         <div
           id="sticky-search"
@@ -352,6 +353,8 @@ function Programs() {
                 <div
                   className={`lg:flex flex-col w-full gap-[24px] ${filterOpen ? "block" : "hidden"}`}
                 >
+                  <div className="fixed lg:hidden top-0 left-0 w-full h-full flex flex-col items-center justify-center z-[998] bg-[rgba(0,0,0,0.65)]"></div>
+
                   <div
                     ref={filterRef}
                     className={`

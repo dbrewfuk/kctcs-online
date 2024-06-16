@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Search from "./Search";
 import { InView } from "react-intersection-observer";
-import ButtonTicker from "./ButtonTicker";
+import ButtonTicker from "./ButtonTickerHorizontal";
 import Button from "./Button";
 
 function ExplorePrograms() {
@@ -9,16 +9,41 @@ function ExplorePrograms() {
     <InView>
       {({ inView, ref, entry }) => (
         <div className="overflow-hidden">
-          <div className="pt-[56px] lg:pb-[12px] lg:pt-[80px]  bg-[#005cb8] relative">
-            <div className="container mx-auto px-[0px] lg:px-0">
-              <div className="flex flex-col lg:flex-row lg:gap-[32px] lg:pb-[32px] lg:pb-[0] lg:gap-[96px] items-center">
+          <div className="py-[56px] lg:pb-[80px] lg:pt-[80px]  bg-[#005cb8] relative">
+            <div className="container mx-auto px-[24px] lg:px-0">
+              <div className="flex flex-col lg:flex-row gap-[32px] lg:pb-[0] lg:gap-[96px] items-center">
+                <div className="w-full lg:w-1/2 px-[24px] lg:px-[0]">
+                  <h1 className="text-[56px] text-center tracking-[-1.5px] lg:px-[0] leading-[56px] lg:text-[64px] lg:leading-[64px] font-[800] text-white mb-[24px] has-bar">
+                    Something for{" "}
+                    <span className="whitespace-nowrap">
+                      <span
+                        className={`text-[#fbbf24] transform transition ease-in-out duration-[300ms] `}
+                      >
+                        <span
+                          className={`transform  transition inline-block ease-in-out duration-[450ms] ${inView ? "translate-y-[100px] opacity-[0]" : "translate-y-[0px] opacity-[1] "}`}
+                        >
+                          Everyone
+                        </span>
+                      </span>
+                      .
+                    </span>
+                  </h1>
+                  <p className="text-[16px] text-center leading-[24px] lg:text-[20px] lg:leading-[32px] text-white ">
+                    We’ve been expanding our online offerings for years, and our
+                    programs are all designed to help you land an in-demand,
+                    high-paying job. So, what are you waiting for?
+                  </p>
+                </div>
                 <div className="w-full lg:block lg:w-1/2 flex flex-col gap-[8px] order-2">
+                  <div className="">
+                    <Search />
+                  </div>
                   <div className="lg:block relative w-full">
-                    <div className="w-full h-full absolute left-[0] z-[2] overflow-hidden lg:overflow-visible">
+                    <div className="w-full hidden h-full  left-[0] z-[2] overflow-hidden lg:overflow-visible">
                       <ButtonTicker />
                     </div>
-                    <div className="aspect-video overflow-hidden relative z-[1]">
-                      <div className="py-[32px] lg:py-[0] ">
+                    <div className="aspect-video hidden overflow-hidden relative z-[1]">
+                      <div className="py-[32px]  lg:py-[0] ">
                         <svg
                           className="absolute w-full h-full object-cover"
                           viewBox="0 0 530 337"
@@ -253,27 +278,6 @@ function ExplorePrograms() {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="w-full lg:w-1/2 px-[24px] lg:px-[0]">
-                  <h1 className="text-[56px] text-center px-[24px] tracking-[-1.5px] lg:px-[0] leading-[56px] lg:text-[64px] lg:leading-[64px] font-[800] text-white mb-[24px] has-bar">
-                    Something for{" "}
-                    <span
-                      className={`text-[#fbbf24] transform transition ease-in-out duration-[300ms] `}
-                    >
-                      <span
-                        className={`transform  transition inline-block ease-in-out duration-[450ms] ${inView ? "translate-y-[100px] opacity-[0]" : "translate-y-[0px] opacity-[1] "}`}
-                      >
-                        Everyone
-                      </span>
-                    </span>
-                    <span className="dot">.</span>
-                  </h1>
-                  <p className="text-[16px] text-center leading-[24px] lg:text-[20px] lg:leading-[32px] text-white mb-[24px]">
-                    We’ve been expanding our online offerings for years, and our
-                    programs are all designed to help you land an in-demand,
-                    high-paying job. So, what are you waiting for?
-                  </p>
-                  <Search />
                 </div>
               </div>
             </div>

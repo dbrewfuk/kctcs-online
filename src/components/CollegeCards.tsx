@@ -114,7 +114,7 @@ function CollegeCards({ contentset, theme, subheadline }) {
   return (
     <>
       <div
-        className={`flex flex-col gap-[48px] lg:gap-[64px] pb-[96px] ${
+        className={`flex flex-col gap-[48px] lg:gap-[64px] ${
           theme === "gray" ? "bg-[#fafafa] lg:pt-[80px]" : "bg-[white]"
         }`}
       >
@@ -135,30 +135,15 @@ function CollegeCards({ contentset, theme, subheadline }) {
                 {subheadline}
               </h1>
             </div>
-            <div className="flex flex-col gap-[32px] relative  justify-center w-full">
-              <div className="w-full relative px-[32px] aspect-[16/9] lg:aspect-[5/1] overflow-hidden rounded-[0px] lg:rounded-[12px]">
-                <div className="bg-[rgba(0,0,0,0.20)] absolute w-full h-full left-0 top-0 z-[1]"></div>
-                <iframe
-                  frameBorder="0"
-                  allow="autoplay; FullScreen; picture-in-picture"
-                  allowFullScreen
-                  autoPlay="1"
-                  className="absolute top-[-200%] w-[100%] h-[100%] lg:w-[2000px] lg:h-[1366px]  top-[-250%] left-[0] z-1 transform object-cover"
-                  src={`${
-                    selectedCollegeVideo
-                      ? selectedCollegeVideo
-                      : "https://player.vimeo.com/video/697035346?background=1&autoplay=1&loop=1&byline=0&title=0"
-                  }`}
-                ></iframe>
-
-                <div className="flex justify-center w-full h-full left-0 top-0 items-center absolute z-[2]">
+            <div className="flex flex-col gap-[32px] relative justify-center w-full">
+              <div className="w-full relative px-[32px] overflow-hidden rounded-[0px] lg:rounded-[12px]">
+                <div className="flex justify-center w-full h-full left-0 top-0 items-center z-[2]">
                   <div className="relative flex flex-col items-center">
-                    <h1 className="hidden text-[17.5px] leading-[20px] lg:text-[20px] z-[2] relative lg:leading-[24px] font-[600] text-[white] mb-[24px] lg:mb-[24px] text-center">
-                      {subheadline}
-                    </h1>
-                    <div
-                      className={`cursor-pointer  py-[12px] text-[16px] lg:text-[17.5px] font-[600] rounded-full bg-[white] text-[#00467F]  transition ease-in-out duration-[250] backdrop-blur-[20px] appearance-none lg:py-[16px] pl-[32px] pr-[24px] ${
-                        selectedCollege ? "text-[#00467F]" : "text-white "
+                    <a
+                      className={`cursor-pointer hover:bg-[white] group flex items-center border-[1.15px] border-[#00467F] gap-[12px] hover:text-[#00467F] py-[12px] text-[16px] lg:text-[17.5px] font-[600] rounded-full bg-[#00467F] transition ease-in-out duration-[250] lg:py-[16px] pl-[32px] pr-[24px] ${
+                        selectedCollege && !showOptions
+                          ? "text-white"
+                          : "text-[#00467F] bg-[white] "
                       }`}
                       onClick={() => {
                         setShowOptions(!showOptions);
@@ -193,27 +178,21 @@ function CollegeCards({ contentset, theme, subheadline }) {
                         }
                       }}
                     >
-                      <div
-                        className={`selected-option flex gap-[8px] justify-between items-center ${
-                          selectedCollege ? "selected" : ""
-                        }`}
-                      >
-                        <span className="truncate max-w-[10em]">
-                          {selectedCollege || "Select a College"}
-                        </span>
-                        <span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="24px"
-                            viewBox="0 -960 960 960"
-                            width="24px"
-                            fill="#00467F"
-                          >
-                            <path d="M480-371.69 267.69-584 296-612.31l184 184 184-184L692.31-584 480-371.69Z" />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
+                      <span className="truncate max-w-[10em]">
+                        {selectedCollege || "Select a College"}
+                      </span>
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="24px"
+                          viewBox="0 -960 960 960"
+                          width="24px"
+                          className={`group-hover:fill-[#00467F] ${selectedCollege && showOptions ? "fill-[#00467F" : "fill-white"}`}
+                        >
+                          <path d="M480-371.69 267.69-584 296-612.31l184 184 184-184L692.31-584 480-371.69Z" />
+                        </svg>
+                      </span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -349,7 +328,7 @@ function CollegeCards({ contentset, theme, subheadline }) {
                                         {section.content}
                                       </p>
                                       <div className="text-center lg:text-left">
-                                        <div className="w-full rounded-full text-[20px] flex gap-2 group items-center hover:transform transition inline-block transition ease-in-out text-center cursor-pointer width-auto text-[#00467F] py-3 font-semibold">
+                                        <div className="w-full rounded-full text-[20px] flex gap-[8px] group items-center hover:transform transition inline-block transition ease-in-out text-center cursor-pointer width-auto text-[#00467F] font-semibold">
                                           Learn More
                                           <span className="group-hover:translate-x-2 opacity-0 group-hover:opacity-100 transition">
                                             <svg
@@ -378,7 +357,7 @@ function CollegeCards({ contentset, theme, subheadline }) {
                     </div>
                   </div>
 
-                  <div className="px-[24px] lg:px-[0] container mx-auto mt-[64px]">
+                  <div className="px-[24px] lg:px-[0] container mx-auto mt-[64px] pb-[96px]">
                     <div className="w-full flex flex-wrap gap-x-[24px] [&>:first-child]:border-t-[2px]  [&>:nth-child(2)]:border-t-[2px] lg:[&>:nth-child(3)]:border-t-[2px] justify-center">
                       {collegeContent[selectedCollege]?.[contentset]
                         ?.slice(3)
@@ -411,18 +390,18 @@ function CollegeCards({ contentset, theme, subheadline }) {
                             ),
                         )}
                     </div>
-                  </div>
-                  <div className="flex justify-center mt-[48px]">
-                    <Button
-                      label="Learn More"
-                      size=""
-                      type="primary"
-                      href={
-                        collegeContent[selectedCollege]?.[contentset]?.slice(
-                          -1,
-                        )?.[0]?.source_page || "#"
-                      }
-                    />
+                    <div className="flex justify-center mt-[48px] lg:mt-[56px]">
+                      <Button
+                        label="Learn More"
+                        size=""
+                        type="primary"
+                        href={
+                          collegeContent[selectedCollege]?.[contentset]?.slice(
+                            -1,
+                          )?.[0]?.source_page || "#"
+                        }
+                      />
+                    </div>
                   </div>
                 </>
               )}

@@ -7,8 +7,8 @@ import AltSections from "./components/SAltSections";
 import DynamicSections from "./DynamicSections";
 import CollegeCards from "./components/CollegeCards";
 import { collegeContent } from "./components/content.json";
-import programs from "./programs-20240510";
 import Button from "./components/Button";
+import GlobalFooter from "./components/GlobalFooter";
 
 function Admissions() {
   const [showOptions, setShowOptions] = useState(false);
@@ -51,37 +51,12 @@ function Admissions() {
     window.location.href = `/programs?search=${searchQuery}`;
   };
 
-  useEffect(() => {
-    // Extract unique credential types from programsData
-    const credentialTypesSet = new Set();
-
-    // Iterate over each program
-    programs.forEach((program) => {
-      // Iterate over each college in the program
-      program.colleges.forEach((college) => {
-        // Check if academic plans exist and iterate over them
-        if (college.academic_plans && college.academic_plans.length > 0) {
-          college.academic_plans.forEach((plan) => {
-            // Add the credential type to the Set
-            credentialTypesSet.add(plan.credential_type);
-          });
-        }
-      });
-    });
-
-    // Convert the Set to an array
-    const uniqueTypesArray = Array.from(credentialTypesSet);
-
-    // Update state with unique credential types
-    setUniqueCredentialTypes(uniqueTypesArray);
-  }, []); // Empty dependency array ensures this effect runs only once
-
   return (
     <>
       <Header isActive="admissions" />
       <Hero title="Admissions" />
 
-      <div className="container mx-auto px-[24px] lg:px-0 pt-[64px] lg:pt-[96px] pb-[64px] lg:pb-[96px]">
+      <div className="container mx-auto px-[24px] lg:px-0 pt-[64px] lg:pt-[96px] pb-[64px] border-b-[1px] border-[rgba(0,0,0,0.1)] lg:pb-[96px]">
         <div className="flex flex-col lg:flex-row items-center gap-[32px] lg:gap-[64px]">
           <div className="w-full  aspect-[4/3] lg:w-1/2 overflow-hidden">
             <img
@@ -121,6 +96,7 @@ function Admissions() {
         theme=""
         subheadline="Choose a college to explore more Admissions resources."
       />
+      <GlobalFooter />
     </>
   );
 }
