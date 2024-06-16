@@ -144,7 +144,7 @@ function HeroSearch({
 
   // Array of texts to cycle through
   const texts = [
-    "From Full-Time Workers",
+    "From Professionals",
     "For Parents",
     "For Veterans",
     "For the Curious",
