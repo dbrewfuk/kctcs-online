@@ -5,14 +5,18 @@ import Button from "./Button";
 import videos from "../data/stories.json";
 
 function StudentStoryFeature() {
-  const [currentVideo, setCurrentVideo] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const history = useHistory();
   const videoRefs = useRef([]);
   const closeButtonRef = useRef(null);
   const triggerButtonRef = useRef(null); // Ref for the button that triggered the modal
-
+  // Get the index of the first featured video
+  const initialIndex = videos.findIndex((video) => video.feature);
+  // Initialize state with the index of the first featured video or 0 if none are featured
+  const [currentVideo, setCurrentVideo] = useState(
+    initialIndex !== -1 ? initialIndex : 0,
+  );
   useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullscreen((prevFullscreen) => !prevFullscreen);
@@ -53,6 +57,12 @@ function StudentStoryFeature() {
     }
   };
 
+  useEffect(() => {
+    // Reset to the first featured video whenever the videos array updates
+    const newInitialIndex = videos.findIndex((video) => video.feature);
+    setCurrentVideo(newInitialIndex !== -1 ? newInitialIndex : 0);
+  }, [videos]);
+
   const toggleModal = () => {
     setIsModalOpen((prev) => !prev);
     setIsFullscreen((prevFullscreen) => !prevFullscreen);
@@ -81,8 +91,6 @@ function StudentStoryFeature() {
         console.log("Focused element:", event.target);
       };
 
-      document.addEventListener("focus", logFocus, true);
-
       return () => {
         document.removeEventListener("focus", logFocus, true);
       };
@@ -99,9 +107,6 @@ function StudentStoryFeature() {
         closeButtonRef.current,
         // Add more focusable elements in modal if present
       ].filter(Boolean);
-
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
 
       if (e.shiftKey && document.activeElement === firstElement) {
         // Shift + Tab on first element: move to last element

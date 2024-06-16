@@ -55,18 +55,6 @@
     "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-west-kentucky-community-and-technical-college.vtt"
   },
   {
-    "id": 21,
-    "title": "Southcentral Kentucky Community And Technical College",
-    "college": "Southcentral Kentucky Community And Technical College",
-    "program": "Information Security and Network",
-    "name": "Cooper Alls",
-    "feature": "Yes",
-    "firstname": "Cooper",
-    "quote": "The flexible work-life balance has given me a great opportunity. I really wanted to get in-person work experience, and I was able to be part of the IT internship on campus. This provided me with real-world experience and in-person skills that I did not get in the classroom.",
-    "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southcentral-kentucky-community-and-technical-college.mp4",
-    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southcentral-kentucky-community-and-technical-college.vtt"
-  },
-  {
     "id": 24,
     "title": "Madisonville Community College",
     "college": "Madisonville Community College",
@@ -77,5 +65,17 @@
     "quote": "I earned my degree online at Southeast Kentucky Community and Technical College. The cost and flexibility allowed me to graduate pretty much debt-free while working a part-time to full-time job.",
     "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-madisonville-community-college.mp4",
     "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-madisonville-community-college.vtt"
+  },
+  {
+    "id": 21,
+    "title": "Southcentral Kentucky Community And Technical College",
+    "college": "Southcentral Kentucky Community And Technical College",
+    "program": "Information Security and Network",
+    "name": "Cooper Alls",
+    "feature": "Yes",
+    "firstname": "Cooper",
+    "quote": "The flexible work-life balance has given me a great opportunity. I really wanted to get in-person work experience, and I was able to be part of the IT internship on campus. This provided me with real-world experience and in-person skills that I did not get in the classroom.",
+    "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southcentral-kentucky-community-and-technical-college.mp4",
+    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southcentral-kentucky-community-and-technical-college.vtt"
   }
 ]
