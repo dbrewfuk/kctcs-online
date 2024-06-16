@@ -60,7 +60,7 @@ function Admissions() {
         <div className="flex flex-col lg:flex-row items-center gap-[32px] lg:gap-[64px]">
           <div className="w-full  aspect-[4/3] lg:w-1/2 overflow-hidden">
             <img
-              src="/assets/admissions.jpeg"
+              src="https://bluegrass.kctcs.edu/media/images/commencement-may-3-2024.jpg"
               className="w-full h-full object-cover"
               alt="admissions-photo"
             />
