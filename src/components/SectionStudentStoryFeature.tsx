@@ -297,7 +297,7 @@ function StudentStoryFeature() {
                 </div>
                 <div className="w-full flex justify-center mt-[40px] lg:mt-[64px]">
                   <a
-                    href="/success-stories.aspx"
+                    href="/success-stories.html"
                     role="button"
                     aria-label="Watch All Stories"
                     tabIndex="0"
