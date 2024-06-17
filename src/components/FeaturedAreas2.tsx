@@ -92,99 +92,102 @@ const FeaturedAreasList2 = ({
   return (
     <div className="overflow-x-auto w-full noscrollbar ">
       <div className="flex flex-row w-[calc(200%+8px)] gap-[24px] items-start snap-center snap-x noscrollbar overflow-x-auto transform">
-        {cardData.map((card) => (
-          <div
-            className={`w-full min-w-[320px] border-[8px] mr-[-8px] group min-h-[320px] bg-[#f3f3f3] snap-center noscrollbar transition ease-in-out duration-[250ms] relative group order-[2] transition ease-in-out cursor-pointer ${
-              selectedArea.includes(card.title)
-                ? "shadow-[0_4px_8px_rgba(0,0,0,0.15)] border-[#FBBF24]"
-                : "bg-[#f3f3f3] border-white"
-            }`}
-            key={card.id}
-            onClick={() => {
-              setSelectedArea(card.title);
-              handleProgramAreaClick(card.title);
-            }}
-            tabIndex={0}
-            role="button"
-            aria-pressed={selectedFilters.includes(card.title)} // Indicate if the button is "pressed"
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                // Add spacebar key support
+        {cardData
+          .slice() // Create a shallow copy of the array to avoid mutating the original
+          .sort((a, b) => a.title.localeCompare(b.title)) // Sort alphabetically by the 'title' property
+          .map((card, index) => (
+            <div
+              className={`w-full min-w-[320px] border-[8px] mr-[-8px] group min-h-[320px] bg-[#f3f3f3] snap-center noscrollbar transition ease-in-out duration-[250ms] relative group order-[2] transition ease-in-out cursor-pointer ${
+                selectedArea.includes(card.title)
+                  ? "shadow-[0_4px_8px_rgba(0,0,0,0.15)] border-[#FBBF24]"
+                  : "bg-[#f3f3f3] border-white"
+              }`}
+              key={card.id}
+              onClick={() => {
                 setSelectedArea(card.title);
                 handleProgramAreaClick(card.title);
-              }
-            }}
-            aria-label={`Select ${card.title} program area`}
-          >
-            <div className="hover:shadow-[0_4px_8px_rgba(0,0,0,0.15)]">
-              <div
-                className={` flex flex-col transition-all  border-[#f3f3f3]   ease-in-out text-[#00467F] duration-[250ms] w-full h-full  ${
-                  selectedArea === card.title
-                    ? ""
-                    : "border-[transparent] bg-[#f3f3f3]"
-                }`}
-              >
-                {" "}
-                <div className="aspect-[4/3] overflow-hidden relative">
-                  <img
-                    src={card.image}
-                    alt="area-photo"
-                    className={`transition ease-in-out absolute  group-hover:scale-[1.15]
+              }}
+              tabIndex={0}
+              role="button"
+              aria-pressed={selectedFilters.includes(card.title)} // Indicate if the button is "pressed"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  // Add spacebar key support
+                  setSelectedArea(card.title);
+                  handleProgramAreaClick(card.title);
+                }
+              }}
+              aria-label={`Select ${card.title} program area`}
+            >
+              <div className="hover:shadow-[0_4px_8px_rgba(0,0,0,0.15)]">
+                <div
+                  className={` flex flex-col transition-all  border-[#f3f3f3]   ease-in-out text-[#00467F] duration-[250ms] w-full h-full  ${
+                    selectedArea === card.title
+                      ? ""
+                      : "border-[transparent] bg-[#f3f3f3]"
+                  }`}
+                >
+                  {" "}
+                  <div className="aspect-[4/3] overflow-hidden relative">
+                    <img
+                      src={card.image}
+                      alt="area-photo"
+                      className={`transition ease-in-out absolute  group-hover:scale-[1.15]
                      w-full h-full duration-[250ms] object-cover ${selectedArea === card.title ? "scale-[1.15]" : "scale-[1]"}`}
-                  />
-                </div>
-                <div className="p-[24px]">
-                  <div className="flex gap-[16px] items-center">
-                    <h1 className="text-[20px] whitespace-wrap font-semibold order-[2]">
-                      {card.title}
-                    </h1>
-                    <div className="max-w-[18px] min-w-[18px]">
-                      {selectedArea !== card.title ? (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 18 18"
-                          fill="#00467f"
-                          className="w-full"
-                        >
-                          <path
-                            d="M7.706 18v-7.657H.5V7.62h7.206V0h2.623v7.621H17.5v2.722h-7.17V18z"
-                            fillRule="evenodd"
-                          />
-                        </svg>
-                      ) : (
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 18 18"
-                          fill="#00467f"
-                        >
-                          <path
-                            d="M.5 10.343V7.62h17v2.722z"
-                            fillRule="evenodd"
-                          />
-                        </svg>
-                      )}
-                    </div>
+                    />
                   </div>
-                  {selectedArea === card.title && (
-                    <>
-                      <p className="text-[16px] text-[#00467F] mt-[16px] mb-[32px]">
-                        {card.content}
-                      </p>{" "}
-                      <div className="w-full flex justify-center">
-                        <Button
-                          type="primary"
-                          onClick={() => handleApplyClick(card.title)}
-                        >
-                          Explore Programs
-                        </Button>
+                  <div className="p-[24px]">
+                    <div className="flex gap-[16px] items-center">
+                      <h1 className="text-[20px] whitespace-wrap font-semibold order-[2]">
+                        {card.title}
+                      </h1>
+                      <div className="max-w-[18px] min-w-[18px]">
+                        {selectedArea !== card.title ? (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 18 18"
+                            fill="#00467f"
+                            className="w-full"
+                          >
+                            <path
+                              d="M7.706 18v-7.657H.5V7.62h7.206V0h2.623v7.621H17.5v2.722h-7.17V18z"
+                              fillRule="evenodd"
+                            />
+                          </svg>
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 18 18"
+                            fill="#00467f"
+                          >
+                            <path
+                              d="M.5 10.343V7.62h17v2.722z"
+                              fillRule="evenodd"
+                            />
+                          </svg>
+                        )}
                       </div>
-                    </>
-                  )}
+                    </div>
+                    {selectedArea === card.title && (
+                      <>
+                        <p className="text-[16px] text-[#00467F] mt-[16px] mb-[32px]">
+                          {card.content}
+                        </p>{" "}
+                        <div className="w-full flex justify-center">
+                          <Button
+                            type="primary"
+                            onClick={() => handleApplyClick(card.title)}
+                          >
+                            Explore Programs
+                          </Button>
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );
