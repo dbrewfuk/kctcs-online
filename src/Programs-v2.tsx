@@ -65,30 +65,80 @@ function Programs() {
         );
         const data = await response.json();
 
-        const sectors = [...new Set(data.map((item) => item.sector))];
-        const credentials = [...new Set(data.map((item) => item.credential))];
-        const plans = [...new Set(data.map((item) => item.plan))];
-        const areas = [...new Set(data.map((item) => item.area))];
+        // Mapping of misspellings to corrections
+        const corrections = {
+          "Release of Informatin Data Spec.":
+            "Release of Information Data Specialist",
+          "Release of Information Data Specicalist":
+            "Release of Information Data Specialist",
+          "Application Support Technician ": "Application Support Technician",
+          "Criminal Behavior ": "Criminal Behavior",
+          // Add more corrections as needed
+        };
+
+        // Utility function to correct misspellings and trim trailing spaces
+        const correctAndTrim = (str) => {
+          const trimmedStr = str.trim();
+          return corrections[trimmedStr] || trimmedStr;
+        };
+
+        // Clean up the data
+        const cleanedData = data.map((item) => ({
+          ...item,
+          sector: correctAndTrim(item.sector),
+          credential: correctAndTrim(item.credential),
+          plan: correctAndTrim(item.plan),
+          area: correctAndTrim(item.area),
+          description: correctAndTrim(item.description),
+          // Ensure colleges is an array and correct each college name and url
+          colleges: Array.isArray(item.colleges)
+            ? item.colleges.map((college) => ({
+                ...college,
+                name: correctAndTrim(college.name),
+                url: correctAndTrim(college.url),
+              }))
+            : [],
+        }));
+
+        const sectors = [...new Set(cleanedData.map((item) => item.sector))];
+        const credentials = [
+          ...new Set(cleanedData.map((item) => item.credential)),
+        ];
+        const plans = [...new Set(cleanedData.map((item) => item.plan))];
+        const areas = [...new Set(cleanedData.map((item) => item.area))];
 
         setUniqueSectors(sectors);
         setUniqueCredentials(credentials);
         setUniquePlanNames(plans);
         setUniqueProgramAreas(areas);
 
-        const credentialTypesSet = new Set(data.map((item) => item.credential));
+        const credentialTypesSet = new Set(
+          cleanedData.map((item) => item.credential),
+        );
         setUniqueCredentialTypes(Array.from(credentialTypesSet));
 
-        const uniqueAcademicPlans = data.reduce((acc, program) => {
+        const uniqueAcademicPlans = cleanedData.reduce((acc, program) => {
           const key = `${program.plan} - ${program.credential}`;
           if (!acc[key]) {
             acc[key] = {
               name: program.plan,
               credential: program.credential,
-              colleges: Array.isArray(program.colleges) ? program.colleges : [], // Ensure colleges is an array
               area: program.area,
               sector: program.sector,
               description: program.description,
+              colleges: program.colleges, // Start with the colleges for this program
             };
+          } else {
+            // Merge colleges if this key already exists
+            acc[key].colleges = [...acc[key].colleges, ...program.colleges];
+            // Remove duplicates from colleges
+            acc[key].colleges = acc[key].colleges.filter(
+              (value, index, self) =>
+                index ===
+                self.findIndex(
+                  (t) => t.name === value.name && t.url === value.url,
+                ),
+            );
           }
           return acc;
         }, {});

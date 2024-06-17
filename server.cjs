@@ -3,21 +3,17 @@ const { Pool } = require("pg");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const path = require("path");
-const fs = require("fs");
-
-const caCertPath = path.join(__dirname, "./etc/ssl/certs/ca.crt");
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-const sslConfig =
-  process.env.NODE_ENV === "production" ? { rejectUnauthorized: true } : false;
-
 const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
-  ssl: false, // Disable SSL
+  ssl: {
+    rejectUnauthorized: false, // Disable SSL verification
+  },
 });
 
 pool.on("connect", () => {
@@ -30,6 +26,23 @@ pool.on("error", (err) => {
 });
 
 app.use(cors());
+
+// Utility function to trim trailing spaces
+const trimTrailingSpaces = (data) => {
+  if (typeof data === "string") {
+    return data.trim();
+  } else if (Array.isArray(data)) {
+    return data.map(trimTrailingSpaces);
+  } else if (data !== null && typeof data === "object") {
+    return Object.fromEntries(
+      Object.entries(data).map(([key, value]) => [
+        key,
+        trimTrailingSpaces(value),
+      ]),
+    );
+  }
+  return data;
+};
 
 app.get("/api/programs", async (req, res) => {
   const client = await pool.connect();
@@ -66,7 +79,11 @@ app.get("/api/programs", async (req, res) => {
       GROUP BY 
         s.name, a.name, pl.name, d.text, c.name;
     `);
-    res.status(200).json(result.rows);
+
+    // Trim trailing spaces from the result rows
+    const cleanedData = result.rows.map(trimTrailingSpaces);
+
+    res.status(200).json(cleanedData);
   } catch (error) {
     console.error("Query Error: ", error);
     res.status(500).json({ error: "Failed to fetch data" });
