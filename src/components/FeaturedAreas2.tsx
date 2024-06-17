@@ -91,7 +91,7 @@ const FeaturedAreasList2 = ({
 
   return (
     <div className="overflow-x-auto w-full noscrollbar ">
-      <div className="flex flex-row w-[calc(200%+8px)] gap-[24px] items-start snap-center snap-x noscrollbar overflow-x-auto transform">
+      <div className="flex flex-row w-[calc(200%+8px)] gap-[24px] items-start snap-center snap-x noscrollbar transform">
         {cardData
           .slice() // Create a shallow copy of the array to avoid mutating the original
           .sort((a, b) => a.title.localeCompare(b.title)) // Sort alphabetically by the 'title' property
