@@ -21,17 +21,6 @@ const sections = [
     buttonHref: "https://kctcs.edu/current-students/",
   },
   {
-    title: "Online Tuition",
-    heading: "Training & Learning Center",
-    description:
-      "The TLC is your one-stop shop to find information and assistance for all the systems and solutions you use every day. From Blackboard eLearning tips and training, to Student Self Service best practices, to help with Microsoft Office 365 tools.",
-    imgSrc: "/assets/sss-tlc-desk-1920x1080.jpg",
-    imgAlt: "tuition",
-    buttonLabel: "Learn More",
-    buttonHref:
-      "https://kctcs.sharepoint.com/sites/tlc/SitePages/Pick-Your-Training-Topic.aspx",
-  },
-  {
     title: "Financial Aid",
     heading: "Statewide Internet Access",
     description:
