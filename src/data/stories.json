@@ -8,7 +8,7 @@
     "firstname": "Emily",
     "quote": "I was hesitant to start an online learning program at first, but I'm so glad I did! The flexibility of being able to learn at my own pace and on my own time has been amazing. I've been able to balance my studies with my work and family life without any problems.",
     "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southeast-kentucky-community-and-technical-college.mp4",
-    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southeast-kentucky-community-and-technical-college.vtt"
+    "subtitles": "/assets/skctcs-online-at-southeast-kentucky-community-and-technical-college.vtt"
   },
   {
     "id": 7,
@@ -19,7 +19,7 @@
     "firstname": "Drew",
     "quote": "KCTCS online classes have helped me meet my goal to finish my college degree. I’m thriving thanks to this program.",
     "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-ashland-community-and-technical-college.mp4",
-    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-ashland-community-and-technical-college.vtt"
+    "subtitles": "/assets/kctcs-online-at-ashland-community-and-technical-college.vtt"
   },
   {
     "id": 16,
@@ -30,7 +30,7 @@
     "program": "Your Program Name",
     "quote": "The flexibility of the online program allowed me to manage my assignments around my schedule, even after being diagnosed with breast cancer in my last semester. The support from the faculty and staff was crucial in helping me graduate on time.",
     "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-elizabethtown-community-and-technical-college.mp4",
-    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-elizabethtown-community-and-technical-college.vtt"
+    "subtitles": "/assets/kctcs-online-at-elizabethtown-community-and-technical-college.vtt"
   },
   {
     "id": 19,
@@ -41,7 +41,7 @@
     "firstname": "Stacy",
     "quote": "I feel like SCC has been pivotal in taking my career to the next level. It has opened up so many opportunities with the different positions that I’ve been able to hold for the last few years at Firestone. Continuing my education has been an absolute key.",
     "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-somerset-community-college.mp4",
-    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-somerset-community-college.vtt"
+    "subtitles": "/assets/kctcs-online-at-somerset-community-college.vtt"
   },
   {
     "id": 20,
@@ -52,7 +52,7 @@
     "firstname": "Jae",
     "quote": "I chose to take online classes at KCTCS because I have three children and needed an education that fit around my busy schedule. The flexibility allowed me to work and support my family while continuing my studies.",
     "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-west-kentucky-community-and-technical-college.mp4",
-    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-west-kentucky-community-and-technical-college.vtt"
+    "subtitles": "/assets/kctcs-online-at-west-kentucky-community-and-technical-college.vtt"
   },
   {
     "id": 24,
@@ -64,7 +64,7 @@
     "program": "Your Program Name",
     "quote": "I earned my degree online at Southeast Kentucky Community and Technical College. The cost and flexibility allowed me to graduate pretty much debt-free while working a part-time to full-time job.",
     "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-madisonville-community-college.mp4",
-    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-madisonville-community-college.vtt"
+    "subtitles": "/assets/kctcs-online-at-madisonville-community-college.vtt"
   },
   {
     "id": 21,
@@ -76,6 +76,6 @@
     "firstname": "Cooper",
     "quote": "The flexible work-life balance has given me a great opportunity. I really wanted to get in-person work experience, and I was able to be part of the IT internship on campus. This provided me with real-world experience and in-person skills that I did not get in the classroom.",
     "src": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southcentral-kentucky-community-and-technical-college.mp4",
-    "subtitles": "https://demo.kctcs.edu/ko/media/kctcs-online-at-southcentral-kentucky-community-and-technical-college.vtt"
+    "subtitles": "/assets/kctcs-online-at-southcentral-kentucky-community-and-technical-college.vtt"
   }
 ]

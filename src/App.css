@@ -2,6 +2,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
+body {
+  overflow-x: auto;
+}
+
 .bg-blue-900 {
   background: #005cb8 !important;
 }

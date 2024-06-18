@@ -250,21 +250,19 @@ function StudentStoryFeature() {
                         id={`video-${currentVideo}`}
                         className="object-cover w-full h-full object-center"
                         muted={false}
-                        controls={false}
+                        controls={true} // Enable controls temporarily
                       >
                         <source
                           src={videos[currentVideo].src}
                           type="video/mp4"
                         />
-                        {isFullscreen && (
-                          <track
-                            src={videos[currentVideo].subtitles}
-                            kind="subtitles"
-                            srcLang="en"
-                            label="English"
-                            default
-                          />
-                        )}
+                        <track
+                          src={videos[currentVideo].subtitles}
+                          kind="subtitles"
+                          srcLang="en"
+                          label="English"
+                          default
+                        />
                       </video>
                       {!isFullscreen && (
                         <div

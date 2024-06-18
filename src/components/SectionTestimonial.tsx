@@ -134,7 +134,7 @@ const Testimonial = () => {
           ))}
         </div>
       </motion.div>
-      <div className="container mx-auto px-[24px] absolute bottom-[48px] lg:px-[0]">
+      <div className="container mx-auto px-[24px] bottom-[48px] lg:px-[0]">
         <div className="flex justify-end gap-[16px] mt-[24px] relative">
           <button
             onClick={handlePreviousSlide}
