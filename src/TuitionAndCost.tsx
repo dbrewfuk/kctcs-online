@@ -55,7 +55,7 @@ function TuitionAndCost() {
       heading: "Affordable Tuition for All Students.",
       description:
         "Whether you’re in Kentucky or across the country, our online tuition remains consistent and accessible. At KCTCS, both in-state and out-of-state students benefit from the same low rate for online courses. Explore your educational opportunities with transparent, predictable costs, ensuring you get the best value for your investment in your future.",
-      imgSrc: "/assets/tc-mm-1920x1281.jpg",
+      imgSrc: "/assets/tc-gdf-lei-932x699.jpg",
       imgAlt: "tuition",
       youtubeId: "",
       buttonLabel: "Learn More",
