@@ -8,7 +8,7 @@ import GlobalFooter from "./components/GlobalFooter";
 const sections = [
   {
     title: "Online Tuition",
-    heading: "Blackboard Learning Guide",
+    heading: "Blackboard Learning",
     description:
       "At KCTCS Online, we use Blackboard Ultra to deliver our classes. Navigating Blackboard Ultra is simple and straightforward. For those new to this system, there’s no need to worry. All students have access to a complimentary orientation course that walks you through everything you need to know about using our learning management system.",
     imgSrc: "/assets/sss-bb-tab-man-1920x1280.jpg",
