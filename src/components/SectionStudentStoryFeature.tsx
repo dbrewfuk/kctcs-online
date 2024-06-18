@@ -256,15 +256,14 @@ function StudentStoryFeature() {
                           src={videos[currentVideo].src}
                           type="video/mp4"
                         />
-                        {isFullscreen[index] && (
-                          <track
-                            src={videos[currentVideo].subtitles}
-                            kind="subtitles"
-                            srcLang="en"
-                            label="English"
-                            default
-                          />
-                        )}
+
+                        <track
+                          src={videos[currentVideo].subtitles}
+                          kind="subtitles"
+                          srcLang="en"
+                          label="English"
+                          default
+                        />
                       </video>
                       {!isFullscreen && (
                         <div
