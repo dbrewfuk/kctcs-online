@@ -173,14 +173,15 @@ function VideoGrid() {
                           // Ensures controls are shown based on fullscreen state
                         >
                           <source src={video.src} type="video/mp4" />
-
-                          <track
-                            src={video.subtitles}
-                            kind="subtitles"
-                            srcLang="en"
-                            label="English"
-                            default
-                          />
+                          {isFullscreen[index] && (
+                            <track
+                              src={video.subtitles}
+                              kind="subtitles"
+                              srcLang="en"
+                              label="English"
+                              default
+                            />
+                          )}
                         </video>
                       </div>
                     </div>

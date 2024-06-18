@@ -104,11 +104,12 @@ function StudentSupportServices() {
                 <span className="dot">.</span>
               </h1>
               <p className="text-[21px] font-[500] leading-[32px] text-[#00467F]">
-                With our quick change to online classes, we want to make sure
-                you're comfortable with your new learning environment. If you've
-                never taken an online class, or if you're looking for some tips
-                and tricks to keep you on track, you'll find resources to help
-                you here.
+                KCTCS Online is dedicated to your success. Each college offers a
+                variety of student support to ensure you enroll in and complete
+                your courses. Support offerings include virtual advising,
+                registration for courses, online tutoring, virtual IT support,
+                and more. Visit college links to learn more about the unique
+                offerings at each institution.
               </p>
             </div>
           </div>
