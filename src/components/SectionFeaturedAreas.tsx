@@ -87,8 +87,7 @@ function SFeaturedAreas() {
           Shape Your Future.
         </h3>
         <p className="mb-[24px] lg:mb-[32px] text-[16px] lg:text-[20px] leading-[24px] lg:leading-[28px]">
-          Explore our comprehensive academic programs tailored to meet the
-          evolving demands of the workforce.
+          Explore featured online programs in growing professions.
           <span className="hidden">
             Shape your future with the expertise to thrive in growing
             professional fields.
