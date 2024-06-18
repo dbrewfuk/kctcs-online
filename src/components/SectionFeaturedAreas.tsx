@@ -83,9 +83,17 @@ function SFeaturedAreas() {
         </div>
       </section>
       <section className="relative w-full container mx-auto px-[24px] lg:px-0 pb-[56px] border-[#f0f0f0] lg:pb-[96px]">
-        <h3 className="text-[31px] leading-[32px] lg:text-[48.8px] mb-[32px] lg:leading-[52px] lg:mb-[48px] font-[800] text-[#00467F]">
+        <h3 className="text-[31px] leading-[32px] lg:text-[48.8px] mb-[16px] lg:leading-[52px] lg:mb-[24px] font-[800] text-[#00467F]">
           Shape Your Future.
         </h3>
+        <p className="mb-[24px] lg:mb-[32px] text-[16px] lg:text-[20px] leading-[24px] lg:leading-[28px]">
+          Explore our comprehensive academic programs tailored to meet the
+          evolving demands of the workforce.
+          <span className="hidden">
+            Shape your future with the expertise to thrive in growing
+            professional fields.
+          </span>
+        </p>
         <div className="flex flex-col lg:flex-row gap-[32px] lg:gap-[64px]">
           <div className="w-full lg:sticky lg:top-0 h-full">
             <FeaturedAreasList2

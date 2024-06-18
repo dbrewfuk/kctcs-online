@@ -87,7 +87,7 @@ const FeaturedAreasList2 = ({
     window.location.href = `/explore-programs.html?${queryString}`;
   };
 
-  const [selectedArea, setSelectedArea] = useState("");
+  const [selectedArea, setSelectedArea] = useState("Criminal Justice");
 
   return (
     <div className="overflow-x-auto w-full noscrollbar ">
