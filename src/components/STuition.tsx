@@ -56,7 +56,7 @@ function TuitionSection() {
                         <div className="flex flex-row">
                           <div className="ml-[48px] p-[12px] bg-[white]  border-b-[4px] border-b-[#f3f3f3] backdrop-filter backdrop-blur-[20px] rounded-[12px] shadow-[0px_4px_8px_rgba(0,0,0,0.15)] cursor-pointer hover:bg-opacity-100 hover:bg-[white] group transition ease-in-out duration-[250ms]">
                             <span className="text-center text-[#00467F] font-[600] group-hover:text-[#00467f] transition ease-in-out duration-[250ms]">
-                              Total Cost
+                              *Total Cost
                               <br />
                               $206/credit hour
                             </span>
