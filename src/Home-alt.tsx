@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import config from "./config";
 import Header from "./components/Header";
 import HeroSearch from "./components/SectionHeroSearch";
 import ExplorePrograms from "./components/SectionExplorePrograms";
@@ -8,7 +9,6 @@ import SFeaturedAreas from "./components/SectionFeaturedAreas";
 import Testimonial from "./components/SectionTestimonial";
 import AdmissionsInfo from "./components/SectionAdmissionsInfo";
 import TuitionSection from "./components/STuition";
-import FadeInSection from "./components/FadeInSection";
 import GlobalFooter from "./components/GlobalFooter";
 
 function Home() {
@@ -43,9 +43,7 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://77ykxy-5000.csb.app/api/programs-with-colleges",
-        );
+        const response = await fetch(`${config.pgUrl}`);
         const data = await response.json();
 
         const sectors = [...new Set(data.map((item) => item.sector))];
