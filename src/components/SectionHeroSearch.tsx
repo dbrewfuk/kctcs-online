@@ -156,17 +156,24 @@ function HeroSearch({
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIsFading(true);
-      setTimeout(() => {
-        setCurrentText((prev) => (prev + 1) % texts.length);
-        setNextText((prev) => (prev + 1) % texts.length);
-        setIsFading(false);
-      }, 300); // Match this duration with your animation duration
-    }, 4000); // Change text every 3 seconds
+    const interval = setInterval(
+      () => {
+        setIsFading(true);
+        setTimeout(() => {
+          setCurrentText((prev) => (prev + 1) % texts.length);
+          setNextText((prev) => (prev + 1) % texts.length);
+          setIsFading(false);
+        }, 300); // Match this duration with your animation duration
+      },
+      currentText === texts.length - 1 ? 6000 : 4000,
+    ); // Pause longer on the last text
 
     return () => clearInterval(interval);
-  }, [texts.length]);
+  }, [texts.length, currentText]);
+
+  if (!uniqueCredentialTypes) {
+    return <div>Loading...</div>;
+  }
 
   if (!uniqueCredentialTypes) {
     return <div>Loading...</div>;
