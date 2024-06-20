@@ -136,10 +136,10 @@ const Testimonial = () => {
         </div>
       </motion.div>
       <div className="container mx-auto px-[24px] bottom-[48px] lg:px-[0]">
-        <div className="flex justify-end gap-[16px] mt-[24px] relative">
+        <div className="flex justify-end gap-[8px] mt-[24px] relative">
           <button
             onClick={handlePreviousSlide}
-            className="bg-[#005CB8] text-white px-[12px] py-[8px] rounded-[4px] focus:outline-none"
+            className="bg-[#005CB8] text-white px-[8px] py-[8px] rounded-[4px] focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +155,7 @@ const Testimonial = () => {
           </button>
           <button
             onClick={handleNextSlide}
-            className="bg-[#005CB8] text-white px-[12px] py-[8px] rounded-[4px] focus:outline-none"
+            className="bg-[#005CB8] text-white px-[8px] py-[8px] rounded-[4px] focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
