@@ -294,7 +294,7 @@ const Header = ({ showModal, setShowModal, isActive }) => {
                 size="small"
                 label="Request Information"
                 type="primary-dark"
-                href="https://kctcs.edu/admissions/request-information/index.html"
+                href="https://kctcs.edu/admissions/request-information/index.aspx"
                 aria-label="Request Information"
               />
             </div>

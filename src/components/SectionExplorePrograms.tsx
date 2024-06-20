@@ -11,7 +11,7 @@ function ExplorePrograms() {
         <div className="overflow-hidden">
           <div className="py-[56px] lg:pb-[80px] lg:pt-[80px]  bg-[#005cb8] relative">
             <div className="container mx-auto px-[24px] lg:px-0">
-              <div className="flex flex-col lg:flex-row gap-[32px] lg:pb-[0] lg:gap-[96px] items-center">
+              <div className="flex flex-col lg:flex-row gap-[32px] lg:pb-[0] lg:gap-[96px] items-end">
                 <div className="w-full lg:w-1/2 px-[24px] lg:px-[0]">
                   <h1 className="text-[56px] text-center tracking-[-1.5px] lg:px-[0] leading-[56px] lg:text-[64px] lg:leading-[64px] font-[800] text-white mb-[24px] has-bar">
                     Something for{" "}

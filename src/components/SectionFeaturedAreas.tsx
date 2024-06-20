@@ -61,21 +61,21 @@ function SFeaturedAreas() {
                   about a career change, we’ve got you covered. We offer{" "}
                   <a
                     className="border-b"
-                    href="/explore-programs.html?credential=degree"
+                    href="/explore-programs.html?credentialTypes=Degree"
                   >
                     associate degrees
                   </a>
                   ,{" "}
                   <a
                     className="border-b"
-                    href="/explore-programs.html?credential=diploma"
+                    href="/explore-programs.html?credentialTypes=Diploma"
                   >
                     diplomas
                   </a>
                   , and{" "}
                   <a
                     className="border-b"
-                    href="/explore-programs.html?credential=certificate"
+                    href="/explore-programs.html?credentialTypes=Certificate"
                   >
                     certificates
                   </a>{" "}
