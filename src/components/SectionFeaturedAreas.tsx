@@ -59,16 +59,28 @@ function SFeaturedAreas() {
                 <p className="text-[16px] lg:text-[20px] text-[#00467F] max-w-[calc(27.5*25px)] mx-auto">
                   Whether you’re starting college for the first time or thinking
                   about a career change, we’ve got you covered. We offer{" "}
-                  <a className="border-b" href="">
+                  <a
+                    className="border-b"
+                    href="/explore-programs.html?credential=degree"
+                  >
                     associate degrees
                   </a>
                   ,{" "}
-                  <a className="border-b" href="">
+                  <a
+                    className="border-b"
+                    href="/explore-programs.html?credential=diploma"
+                  >
                     diplomas
                   </a>
-                  , and <a className="border-b">certificates</a> - and we’re
-                  here to help you reach your goals. Get started by finding the
-                  program that works for you!
+                  , and{" "}
+                  <a
+                    className="border-b"
+                    href="/explore-programs.html?credential=certificate"
+                  >
+                    certificates
+                  </a>{" "}
+                  - and we’re here to help you reach your goals. Get started by
+                  finding the program that works for you!
                 </p>
               </div>
               <div className="w-full flex justify-center text-center">
