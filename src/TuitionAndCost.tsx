@@ -115,7 +115,10 @@ function TuitionAndCost() {
                 Tuition & Cost
               </span>
               <h1 className="text-[48.8px] leading-[52px] lg:text-[61.04px] mb-[24px] font-[800] lg:leading-[64px] text-[#00467F]">
-                Affordable Education<span className="bar">Online</span>.
+                Affordable Education{" "}
+                <span className="whitespace-nowrap">
+                  <span className="bar"> Online</span>.
+                </span>
               </h1>
               <p className="text-[21px] font-[500] leading-[32px] text-[#00467F]">
                 Concerned about paying for your online education? We’ve got you

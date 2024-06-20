@@ -73,11 +73,11 @@ function Section({
                         ></iframe>
                       </div>
                     </div>
-                    <div className="flex gap-[8px] mt-[32px] ">
+                    <div className="flex gap-[12px] mt-[32px] ">
                       {youtubeId.map((id, index) => (
                         <div
                           key={index}
-                          className="cursor-pointer w-full lg:max-w-[220px] lg:w-auto"
+                          className="cursor-pointer w-[50%] lg:max-w-[220px] lg:w-auto"
                           onClick={() => handleVideoClick(index)}
                         >
                           <div
@@ -100,7 +100,7 @@ function Section({
                                 className="object-cover w-full h-full object-center"
                               />
                             </div>
-                            <div className="text-[20px] font-[600] leading-[24px] text-left">
+                            <div className="text-[16px] font-[600] leading-[20px] text-left">
                               {id.title}
                             </div>
                           </div>
@@ -166,7 +166,7 @@ function Section({
                     ></iframe>
                   </div>
                 </div>
-                <div className="flex gap-[8px] mt-[32px]">
+                <div className="flex gap-[12px] mt-[32px]">
                   {youtubeId.map((id, index) => (
                     <div
                       key={index}

@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import stories from "../data/stories.json";
 import { motion } from "framer-motion";
+import Button from "./Button";
 // Import the image file
 
 const Testimonial = () => {
@@ -140,13 +141,30 @@ const Testimonial = () => {
             onClick={handlePreviousSlide}
             className="bg-[#005CB8] text-white px-[12px] py-[8px] rounded-[4px] focus:outline-none"
           >
-            Previous
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 22"
+              fill="none"
+              className="w-[24px] h-[24px]"
+            >
+              <path
+                d="M0.290794 11.41L10.2908 21.41L11.7108 19.99L3.41079 11.7L32.0008 11.7V9.7L3.41079 9.7L11.7008 1.41L10.2908 0L0.290794 10C0.104543 10.1874 2.30959e-08 10.4408 0 10.705C-2.30959e-08 10.9692 0.104543 11.2226 0.290794 11.41Z"
+                fill="white"
+              />
+            </svg>
           </button>
           <button
             onClick={handleNextSlide}
-            className="bg-[#005CB8] text-white px-[12px] py-[8px] rounded-[4px] focus:outline-none"
+            className="bg-[#005CB8] text-white px-[12px] py-[8px] rounded-[full] focus:outline-none"
           >
-            Next
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              fill="#fff"
+              className="w-[24px] h-[24px]"
+            >
+              <path d="m31.71 15.295-10-10-1.42 1.42 8.3 8.29H0v2h28.59l-8.29 8.29 1.41 1.41 10-10a1 1 0 0 0 0-1.41z" />
+            </svg>
           </button>
         </div>
       </div>
