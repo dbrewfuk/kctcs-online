@@ -98,8 +98,8 @@ function StudentSupportServices() {
                 Student Support Services
               </span>
               <h1 className="text-[48.8px] leading-[52px] lg:text-[61.04px] mb-[36px] font-[800] lg:leading-[64px] text-[#00467F]">
-                <span className="bar adjusted-e mr-[4px]">Elevate</span>
-                Your Online{" "}
+                <span className="bar adjusted-e">Elevate </span>
+                &nbsp;Your Online{" "}
                 <span className="bar bar--bottom adjusted-e">Experience</span>
                 <span className="dot">.</span>
               </h1>
