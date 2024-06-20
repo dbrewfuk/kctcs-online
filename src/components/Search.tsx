@@ -53,7 +53,7 @@ const Search = () => {
         <span>Explore Online Programs</span>
       </h3>
       <div
-        className={`relative w-full shadow-[0px_4px_8px_rgba(0,0,0,0.25)] w-[calc(100% + 6px)] overflow-hidden relative focus:border-[#fbbf24]`}
+        className={`relative w-full  w-[calc(100% + 6px)] overflow-hidden relative focus:border-[#fbbf24]`}
       >
         <form onSubmit={handleSubmit}>
           <div className="flex items-center gap-[32px] ">
@@ -67,27 +67,28 @@ const Search = () => {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 29.811 29.811"
               fill="#00467F"
-              className="absolute w-[24px] ml-[12px] left-0"
+              className="absolute w-[24px] ml-[24px] left-0 z-10"
               aria-hidden="true"
             >
               <path d="M14.884 2.25A10.5 10.5 0 009.62 3.67a10.49 10.49 0 00-4.921 6.414A10.493 10.493 0 005.754 18.1c2.735 4.738 8.613 6.556 13.496 4.344l1.82-1.05a10.476 10.476 0 004.034-5.842c.73-2.725.356-5.572-1.055-8.015s-3.688-4.19-6.414-4.922a10.66 10.66 0 00-2.751-.364zm8.606 27.561l-3.121-5.406c-5.962 2.817-13.21.626-16.563-5.18-3.533-6.12-1.43-13.97 4.689-17.504a12.74 12.74 0 019.723-1.28 12.727 12.727 0 017.779 5.97 12.73 12.73 0 011.28 9.723 12.717 12.717 0 01-4.965 7.137l3.126 5.415z"></path>
             </svg>
-
-            <input
-              useRef="inputRef"
-              id="searchInput"
-              type="text"
-              placeholder="Search programs"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onFocus={() => setInputActive(true)}
-              className="w-full text-[17.5px] leading-[24px] overflow-hidden transition ease-in-outduration-250 h-[60px] pl-[48px] py-[12px] text-[#00467F]"
-              aria-label="Search programs"
-            />
+            <div className="relative w-full border-[8px] focus-within:shadow-[0px_24px_28px_rgba(0,0,0,0.5)] border-transparent focus-within:border-[#fbbf24]  transition duration-200 ease-in-out">
+              <input
+                useRef="inputRef"
+                id="searchInput"
+                type="text"
+                placeholder="Search programs"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setInputActive(true)}
+                className="w-full text-[17.5px] shadow-[0px_4px_8px_rgba(0,0,0,0.25)] leading-[24px] overflow-hidden transition ease-in-out duration-250 h-[60px] focus:shadow-[0,0,0,0.0] focus:border-[0] focus:outline-none pl-[48px] py-[12px] text-[#00467F]"
+                aria-label="Search programs"
+              />
+            </div>
             {searchQuery && (
               <button
                 type="button"
-                className="absolute right-[72px] w-[18px] cursor-pointer"
+                className="absolute right-[80px] w-[18px] cursor-pointer"
                 onClick={() => setSearchQuery("")}
                 onKeyDown={(e) => handleKeyDown(e, () => setSearchQuery(""))}
                 aria-label="Clear search"
@@ -103,10 +104,10 @@ const Search = () => {
             )}
             <button
               type="submit"
-              className={`p-[8px] absolute right-0 mr-[8px] rounded-[12px] bg-[#fbbf24] h-[48px] w-[48px] cursor-pointer hover:bg-opacity-70 transition ease-in-out duration-[300ms] ${
+              className={`p-[8px] absolute right-[8px] mr-[8px] rounded-[12px] bg-[#fbbf24] h-[48px] w-[48px] cursor-pointer hover:bg-opacity-70 transition ease-in-out duration-[300ms] ${
                 searchQuery
                   ? "transform translate-x-[-2px]"
-                  : "translate-x-[56px]"
+                  : "translate-x-[64px]"
               } flex items-center`}
               aria-label="Submit search"
             >

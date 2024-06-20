@@ -125,7 +125,7 @@ const ProgramResults = ({
                     role="listitem"
                     className={`hover:opacity-100 z-[1] transition-all w-full ease-in-out duration-[200ms] ${isGridLayout ? "w-full" : "lg:w-[calc(33%-13px)]"} ${
                       expandedPrograms[index]
-                        ? "transform translate-y-[-4px] z-[9]"
+                        ? "transform translate-y-[-4px] shadow-[0px_4px_8px_rgba(0, 0, 0, 0.25)] z-[9]"
                         : ""
                     } ${darkBg ? "bg-[white] lg:bg-[#f5f5f5]" : "bg-[#f5f5f5]"} ${
                       square ? "aspect-square lg:w-[calc(50%-12px)]" : ""

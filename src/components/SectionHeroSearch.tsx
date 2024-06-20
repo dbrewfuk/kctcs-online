@@ -144,12 +144,12 @@ function HeroSearch({
 
   // Array of texts to cycle through
   const texts = [
-    "For Professionals",
-    "For Parents",
-    "For Veterans",
-    "For the Curious",
-    "For Learners",
-    "For Anyone",
+    "Professionals",
+    "Parents",
+    "Veterans",
+    "the Curious",
+    "Learners",
+    "Anyone",
   ];
   const [currentText, setCurrentText] = useState(0);
   const [nextText, setNextText] = useState(1);
@@ -197,7 +197,7 @@ function HeroSearch({
             <div className="flex h-full items-end lg:items-center justify-end">
               <div className="w-full lg:w-1/2 flex flex-col">
                 <h1 className="text-[64px] relative leading-[64px] xl:text-[76px] xl:leading-[76px] text-white font-black mb-[32px]">
-                  <span className="">Real World Success,</span> <br />
+                  <span className="">Real World Success, For</span> <br />
                   <span className="relative w-[200px] text-[white]">
                     <span
                       className={`absolute whitespace-nowrap transform inline-block transition ease-in-out duration-[300ms] ${
