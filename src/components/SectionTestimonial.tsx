@@ -155,7 +155,7 @@ const Testimonial = () => {
           </button>
           <button
             onClick={handleNextSlide}
-            className="bg-[#005CB8] text-white px-[12px] py-[8px] rounded-[full] focus:outline-none"
+            className="bg-[#005CB8] text-white px-[12px] py-[8px] rounded-[4px] focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

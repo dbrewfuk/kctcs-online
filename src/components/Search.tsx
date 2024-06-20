@@ -104,7 +104,7 @@ const Search = () => {
             )}
             <button
               type="submit"
-              className={`p-[8px] absolute right-[8px] mr-[8px] rounded-[12px] bg-[#fbbf24] h-[48px] w-[48px] cursor-pointer hover:bg-opacity-70 transition ease-in-out duration-[300ms] ${
+              className={`h-[32px] flex justify-center items-center absolute right-[8px] mr-[8px] rounded-[12px] bg-[#fbbf24] h-[48px] w-[48px] cursor-pointer hover:bg-opacity-70 transition ease-in-out duration-[300ms] ${
                 searchQuery
                   ? "transform translate-x-[-2px]"
                   : "translate-x-[64px]"
@@ -113,15 +113,11 @@ const Search = () => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="auto"
+                viewBox="0 0 32 32"
                 fill="#00467F"
-                viewBox="0 0 16 16"
+                className="w-[24px] h-auto"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
-                ></path>
+                <path d="m31.71 15.295-10-10-1.42 1.42 8.3 8.29H0v2h28.59l-8.29 8.29 1.41 1.41 10-10a1 1 0 0 0 0-1.41z" />
               </svg>
             </button>
           </div>
