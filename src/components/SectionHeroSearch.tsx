@@ -180,12 +180,12 @@ function HeroSearch({
   }
 
   return (
-    <div className="bg-primary min-h-[800px] h-[100%]">
+    <div className="bg-primary min-h-[720px] h-[800px]">
       <div className="w-full h-full">
         <Suspense fallback={<div>Loading...</div>}>
           <video
             src="https://www.dropbox.com/s/sd90kljtxqp68dg/background-video.mp4?raw=1"
-            className="object-cover w-full h-full min-h-[800px]"
+            className="object-cover w-full h-full min-h-[720px]"
             controls={false}
             muted="true"
             loop

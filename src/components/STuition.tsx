@@ -76,7 +76,7 @@ function TuitionSection() {
               <div className="w-full flex justify-center lg:justify-start">
                 <Button
                   label="Learn About Paying for College"
-                  href="/tuition-and-costs.html"
+                  href="/tuition-and-cost.html"
                   type="primary"
                 />
               </div>
